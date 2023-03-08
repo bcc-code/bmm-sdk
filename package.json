@@ -1,0 +1,21 @@
+{
+  "name": "@bcc-code/bmm-sdk-fetch",
+  "description": "An SDK for the BMM API using the OpenAPI generator for typescript-fetch.",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "/dist"
+  ],
+  "scripts": {
+    "generate": "shx rm -rf src && openapi-generator-cli generate",
+    "prepublish": "tsc",
+    "lint": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.5.2",
+    "shx": "^0.3.4",
+    "typescript": "^4.9.5"
+  },
+  "license": "AGPL-3.0"
+}
