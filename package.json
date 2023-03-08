@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "generate": "shx rm -rf src && openapi-generator-cli generate",
-    "prepublish": "tsc",
+    "prepublish": "shx rm -rf dist && tsc",
     "lint": "tsc --noEmit"
   },
   "devDependencies": {
