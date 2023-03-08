@@ -128,7 +128,7 @@ export class StatisticsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters.createTrackPlayedEventsCommandEvent.map(CreateTrackPlayedEventsCommandEventToJSON),
+            body: requestParameters.createTrackPlayedEventsCommandEvent?.map(CreateTrackPlayedEventsCommandEventToJSON),
         }, initOverrides);
 
         return new runtime.VoidApiResponse(response);
