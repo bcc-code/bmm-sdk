@@ -80,12 +80,6 @@ export interface Playlist {
      * @memberof Playlist
      */
     translations?: Array<PlaylistPlaylistTranslation> | null;
-    /**
-     * 
-     * @type {any}
-     * @memberof Playlist
-     */
-    compressed?: any | null;
 }
 
 /**
@@ -116,7 +110,6 @@ export function PlaylistFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
         'tags': !exists(json, 'tags') ? undefined : json['tags'],
         'trackCollectionId': !exists(json, 'trackCollectionId') ? undefined : json['trackCollectionId'],
         'translations': !exists(json, 'translations') ? undefined : (json['translations'] === null ? null : (json['translations'] as Array<any>).map(PlaylistPlaylistTranslationFromJSON)),
-        'compressed': !exists(json, 'compressed') ? undefined : json['compressed'],
     };
 }
 
@@ -136,7 +129,6 @@ export function PlaylistToJSON(value?: Playlist | null): any {
         'tags': value.tags,
         'trackCollectionId': value.trackCollectionId,
         'translations': value.translations === undefined ? undefined : (value.translations === null ? null : (value.translations as Array<any>).map(PlaylistPlaylistTranslationToJSON)),
-        'compressed': value.compressed,
     };
 }
 

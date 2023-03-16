@@ -74,12 +74,15 @@ export interface PlaylistIdDeleteRequest {
 
 export interface PlaylistIdGetRequest {
     id: number;
-    raw?: boolean;
 }
 
 export interface PlaylistIdPutRequest {
     id: number;
     playlist?: Playlist;
+}
+
+export interface PlaylistIdRawGetRequest {
+    id: number;
 }
 
 export interface PlaylistIdTrackGetRequest {
@@ -340,16 +343,12 @@ export class PlaylistApi extends runtime.BaseAPI {
 
     /**
      */
-    async playlistIdGetRaw(requestParameters: PlaylistIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Playlist>> {
+    async playlistIdGetRaw(requestParameters: PlaylistIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PlaylistModel>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling playlistIdGet.');
         }
 
         const queryParameters: any = {};
-
-        if (requestParameters.raw !== undefined) {
-            queryParameters['raw'] = requestParameters.raw;
-        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -360,12 +359,12 @@ export class PlaylistApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => PlaylistFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => PlaylistModelFromJSON(jsonValue));
     }
 
     /**
      */
-    async playlistIdGet(requestParameters: PlaylistIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Playlist> {
+    async playlistIdGet(requestParameters: PlaylistIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PlaylistModel> {
         const response = await this.playlistIdGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -398,6 +397,34 @@ export class PlaylistApi extends runtime.BaseAPI {
      */
     async playlistIdPut(requestParameters: PlaylistIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.playlistIdPutRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async playlistIdRawGetRaw(requestParameters: PlaylistIdRawGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Playlist>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling playlistIdRawGet.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/playlist/{id}/raw`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => PlaylistFromJSON(jsonValue));
+    }
+
+    /**
+     */
+    async playlistIdRawGet(requestParameters: PlaylistIdRawGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Playlist> {
+        const response = await this.playlistIdRawGetRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**

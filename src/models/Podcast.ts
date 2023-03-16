@@ -80,12 +80,6 @@ export interface Podcast {
      * @memberof Podcast
      */
     translations?: Array<PodcastPodcastTranslation> | null;
-    /**
-     * 
-     * @type {any}
-     * @memberof Podcast
-     */
-    compressed?: any | null;
 }
 
 /**
@@ -115,7 +109,6 @@ export function PodcastFromJSONTyped(json: any, ignoreDiscriminator: boolean): P
         'createdAt': !exists(json, 'createdAt') ? undefined : (new Date(json['createdAt'])),
         'query': !exists(json, 'query') ? undefined : PodcastPQueryFromJSON(json['query']),
         'translations': !exists(json, 'translations') ? undefined : (json['translations'] === null ? null : (json['translations'] as Array<any>).map(PodcastPodcastTranslationFromJSON)),
-        'compressed': !exists(json, 'compressed') ? undefined : json['compressed'],
     };
 }
 
@@ -134,7 +127,6 @@ export function PodcastToJSON(value?: Podcast | null): any {
         'createdAt': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'query': PodcastPQueryToJSON(value.query),
         'translations': value.translations === undefined ? undefined : (value.translations === null ? null : (value.translations as Array<any>).map(PodcastPodcastTranslationToJSON)),
-        'compressed': value.compressed,
     };
 }
 

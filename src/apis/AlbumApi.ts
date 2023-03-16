@@ -75,12 +75,15 @@ export interface AlbumIdDownloadGetRequest {
 export interface AlbumIdGetRequest {
     id: number;
     unpublished?: PublishedFilter;
-    raw?: boolean;
 }
 
 export interface AlbumIdPutRequest {
     id: number;
     album?: Album;
+}
+
+export interface AlbumIdRawGetRequest {
+    id: number;
 }
 
 export interface AlbumPostRequest {
@@ -352,7 +355,7 @@ export class AlbumApi extends runtime.BaseAPI {
 
     /**
      */
-    async albumIdGetRaw(requestParameters: AlbumIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Album>> {
+    async albumIdGetRaw(requestParameters: AlbumIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AlbumModel>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling albumIdGet.');
         }
@@ -361,10 +364,6 @@ export class AlbumApi extends runtime.BaseAPI {
 
         if (requestParameters.unpublished !== undefined) {
             queryParameters['unpublished'] = requestParameters.unpublished;
-        }
-
-        if (requestParameters.raw !== undefined) {
-            queryParameters['raw'] = requestParameters.raw;
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -376,12 +375,12 @@ export class AlbumApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => AlbumFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => AlbumModelFromJSON(jsonValue));
     }
 
     /**
      */
-    async albumIdGet(requestParameters: AlbumIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Album> {
+    async albumIdGet(requestParameters: AlbumIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AlbumModel> {
         const response = await this.albumIdGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -414,6 +413,34 @@ export class AlbumApi extends runtime.BaseAPI {
      */
     async albumIdPut(requestParameters: AlbumIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.albumIdPutRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async albumIdRawGetRaw(requestParameters: AlbumIdRawGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Album>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling albumIdRawGet.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/album/{id}/raw`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AlbumFromJSON(jsonValue));
+    }
+
+    /**
+     */
+    async albumIdRawGet(requestParameters: AlbumIdRawGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Album> {
+        const response = await this.albumIdRawGetRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**

@@ -112,12 +112,6 @@ export interface Album {
     readonly isDocumentPublished?: boolean;
     /**
      * 
-     * @type {any}
-     * @memberof Album
-     */
-    compressed?: any | null;
-    /**
-     * 
      * @type {Date}
      * @memberof Album
      */
@@ -155,7 +149,6 @@ export function AlbumFromJSONTyped(json: any, ignoreDiscriminator: boolean): Alb
         'translations': !exists(json, 'translations') ? undefined : (json['translations'] === null ? null : (json['translations'] as Array<any>).map(AlbumAlbumTranslationFromJSON)),
         'type': !exists(json, 'type') ? undefined : json['type'],
         'isDocumentPublished': !exists(json, 'isDocumentPublished') ? undefined : json['isDocumentPublished'],
-        'compressed': !exists(json, 'compressed') ? undefined : json['compressed'],
         'modifiedAt': !exists(json, 'modifiedAt') ? undefined : (new Date(json['modifiedAt'])),
     };
 }
@@ -178,7 +171,6 @@ export function AlbumToJSON(value?: Album | null): any {
         'publishedAt': value.publishedAt === undefined ? undefined : (value.publishedAt.toISOString()),
         'tags': value.tags,
         'translations': value.translations === undefined ? undefined : (value.translations === null ? null : (value.translations as Array<any>).map(AlbumAlbumTranslationToJSON)),
-        'compressed': value.compressed,
     };
 }
 

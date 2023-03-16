@@ -63,7 +63,6 @@ export interface PodcastIdDeleteRequest {
 
 export interface PodcastIdGetRequest {
     id: number;
-    raw?: boolean;
 }
 
 export interface PodcastIdPutRequest {
@@ -72,6 +71,10 @@ export interface PodcastIdPutRequest {
 }
 
 export interface PodcastIdRandomGetRequest {
+    id: number;
+}
+
+export interface PodcastIdRawGetRequest {
     id: number;
 }
 
@@ -306,16 +309,12 @@ export class PodcastApi extends runtime.BaseAPI {
 
     /**
      */
-    async podcastIdGetRaw(requestParameters: PodcastIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Podcast>> {
+    async podcastIdGetRaw(requestParameters: PodcastIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PodcastModel>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling podcastIdGet.');
         }
 
         const queryParameters: any = {};
-
-        if (requestParameters.raw !== undefined) {
-            queryParameters['raw'] = requestParameters.raw;
-        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -326,12 +325,12 @@ export class PodcastApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => PodcastFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => PodcastModelFromJSON(jsonValue));
     }
 
     /**
      */
-    async podcastIdGet(requestParameters: PodcastIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Podcast> {
+    async podcastIdGet(requestParameters: PodcastIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PodcastModel> {
         const response = await this.podcastIdGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -391,6 +390,34 @@ export class PodcastApi extends runtime.BaseAPI {
      */
     async podcastIdRandomGet(requestParameters: PodcastIdRandomGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TrackModel> {
         const response = await this.podcastIdRandomGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     */
+    async podcastIdRawGetRaw(requestParameters: PodcastIdRawGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Podcast>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling podcastIdRawGet.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/podcast/{id}/raw`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => PodcastFromJSON(jsonValue));
+    }
+
+    /**
+     */
+    async podcastIdRawGet(requestParameters: PodcastIdRawGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Podcast> {
+        const response = await this.podcastIdRawGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

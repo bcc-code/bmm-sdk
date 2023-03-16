@@ -48,12 +48,6 @@ export interface TrackGetRequest {
     excludeTags2?: Array<string>;
 }
 
-export interface TrackGetByIdsGetRequest {
-    unpublished?: PublishedFilter;
-    raw?: boolean;
-    requestBody?: Array<number>;
-}
-
 export interface TrackIdCoverPostRequest {
     id: number;
     trackId?: number;
@@ -73,12 +67,15 @@ export interface TrackIdFilesPostRequest {
 export interface TrackIdGetRequest {
     id: number;
     unpublished?: PublishedFilter;
-    raw?: boolean;
 }
 
 export interface TrackIdPutRequest {
     id: number;
     track?: Track;
+}
+
+export interface TrackIdRawGetRequest {
+    id: number;
 }
 
 export interface TrackIdSourceLanguageChangeToTargetLanguagePostRequest {
@@ -161,41 +158,6 @@ export class TrackApi extends runtime.BaseAPI {
      */
     async trackGet(requestParameters: TrackGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<TrackModel>> {
         const response = await this.trackGetRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     */
-    async trackGetByIdsGetRaw(requestParameters: TrackGetByIdsGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Track>>> {
-        const queryParameters: any = {};
-
-        if (requestParameters.unpublished !== undefined) {
-            queryParameters['unpublished'] = requestParameters.unpublished;
-        }
-
-        if (requestParameters.raw !== undefined) {
-            queryParameters['raw'] = requestParameters.raw;
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json-patch+json';
-
-        const response = await this.request({
-            path: `/track/GetByIds`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-            body: requestParameters.requestBody,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(TrackFromJSON));
-    }
-
-    /**
-     */
-    async trackGetByIdsGet(requestParameters: TrackGetByIdsGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Track>> {
-        const response = await this.trackGetByIdsGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -334,7 +296,7 @@ export class TrackApi extends runtime.BaseAPI {
 
     /**
      */
-    async trackIdGetRaw(requestParameters: TrackIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Track>> {
+    async trackIdGetRaw(requestParameters: TrackIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TrackModel>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling trackIdGet.');
         }
@@ -343,10 +305,6 @@ export class TrackApi extends runtime.BaseAPI {
 
         if (requestParameters.unpublished !== undefined) {
             queryParameters['unpublished'] = requestParameters.unpublished;
-        }
-
-        if (requestParameters.raw !== undefined) {
-            queryParameters['raw'] = requestParameters.raw;
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -358,12 +316,12 @@ export class TrackApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => TrackFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => TrackModelFromJSON(jsonValue));
     }
 
     /**
      */
-    async trackIdGet(requestParameters: TrackIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Track> {
+    async trackIdGet(requestParameters: TrackIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TrackModel> {
         const response = await this.trackIdGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -396,6 +354,34 @@ export class TrackApi extends runtime.BaseAPI {
      */
     async trackIdPut(requestParameters: TrackIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.trackIdPutRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async trackIdRawGetRaw(requestParameters: TrackIdRawGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Track>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling trackIdRawGet.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/track/{id}/raw`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => TrackFromJSON(jsonValue));
+    }
+
+    /**
+     */
+    async trackIdRawGet(requestParameters: TrackIdRawGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Track> {
+        const response = await this.trackIdRawGetRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**

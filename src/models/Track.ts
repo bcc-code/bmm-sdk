@@ -178,12 +178,6 @@ export interface Track {
     readonly isDocumentPublished?: boolean;
     /**
      * 
-     * @type {any}
-     * @memberof Track
-     */
-    compressed?: any | null;
-    /**
-     * 
      * @type {Date}
      * @memberof Track
      */
@@ -230,7 +224,6 @@ export function TrackFromJSONTyped(json: any, ignoreDiscriminator: boolean): Tra
         'type': !exists(json, 'type') ? undefined : json['type'],
         'meta': !exists(json, 'meta') ? undefined : TrackTrackMetaFromJSON(json['meta']),
         'isDocumentPublished': !exists(json, 'isDocumentPublished') ? undefined : json['isDocumentPublished'],
-        'compressed': !exists(json, 'compressed') ? undefined : json['compressed'],
         'modifiedAt': !exists(json, 'modifiedAt') ? undefined : (new Date(json['modifiedAt'])),
     };
 }
@@ -259,7 +252,6 @@ export function TrackToJSON(value?: Track | null): any {
         'tags': value.tags,
         'translations': value.translations === undefined ? undefined : (value.translations === null ? null : (value.translations as Array<any>).map(TrackTranslationToJSON)),
         'meta': TrackTrackMetaToJSON(value.meta),
-        'compressed': value.compressed,
     };
 }
 
