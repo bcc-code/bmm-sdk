@@ -18,16 +18,16 @@
  * @export
  */
 export const Role = {
-    NUMBER_0: 0,
-    NUMBER_1: 1,
-    NUMBER_2: 2,
-    NUMBER_3: 3,
-    NUMBER_4: 4,
-    NUMBER_5: 5,
-    NUMBER_6: 6,
-    NUMBER_7: 7,
-    NUMBER_8: 8,
-    NUMBER_9: 9
+    Administrator: 'ROLE_ADMINISTRATOR',
+    AlbumManager: 'ROLE_ALBUM_MANAGER',
+    TrackManager: 'ROLE_TRACK_MANAGER',
+    ContributorManager: 'ROLE_CONTRIBUTOR_MANAGER',
+    PodcastManager: 'ROLE_PODCAST_MANAGER',
+    PlaylistManager: 'ROLE_PLAYLIST_MANAGER',
+    NotificationManager: 'ROLE_NOTIFICATION_MANAGER',
+    FeaturePreview: 'ROLE_FEATURE_PREVIEW',
+    LiveManager: 'ROLE_LIVE_MANAGER',
+    ServiceAdmin: 'ROLE_SERVICE_ADMIN'
 } as const;
 export type Role = typeof Role[keyof typeof Role];
 

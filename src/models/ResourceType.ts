@@ -18,8 +18,8 @@
  * @export
  */
 export const ResourceType = {
-    NUMBER_0: 0,
-    NUMBER_1: 1
+    Album: 'album',
+    Track: 'track'
 } as const;
 export type ResourceType = typeof ResourceType[keyof typeof ResourceType];
 

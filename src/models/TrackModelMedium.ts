@@ -72,7 +72,7 @@ export function TrackModelMediumFromJSONTyped(json: any, ignoreDiscriminator: bo
     return {
         
         'type': !exists(json, 'type') ? undefined : MediaTypeEnumFromJSON(json['type']),
-        'isVisible': !exists(json, 'isVisible') ? undefined : json['isVisible'],
+        'isVisible': !exists(json, 'is_visible') ? undefined : json['is_visible'],
         'files': !exists(json, 'files') ? undefined : (json['files'] === null ? null : (json['files'] as Array<any>).map(TrackModelMediumFileFromJSON)),
     };
 }
@@ -87,7 +87,7 @@ export function TrackModelMediumToJSON(value?: TrackModelMedium | null): any {
     return {
         
         'type': MediaTypeEnumToJSON(value.type),
-        'isVisible': value.isVisible,
+        'is_visible': value.isVisible,
         'files': value.files === undefined ? undefined : (value.files === null ? null : (value.files as Array<any>).map(TrackModelMediumFileToJSON)),
     };
 }

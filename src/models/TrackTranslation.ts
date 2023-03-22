@@ -85,7 +85,7 @@ export interface TrackTranslation {
      * @type {TrackTranslationTranslatedTrackMeta}
      * @memberof TrackTranslation
      */
-    translatedMeta?: TrackTranslationTranslatedTrackMeta;
+    meta?: TrackTranslationTranslatedTrackMeta;
 }
 
 /**
@@ -108,13 +108,13 @@ export function TrackTranslationFromJSONTyped(json: any, ignoreDiscriminator: bo
     return {
         
         'language': !exists(json, 'language') ? undefined : LanguageEnumFromJSON(json['language']),
-        'isVisible': !exists(json, 'isVisible') ? undefined : json['isVisible'],
+        'isVisible': !exists(json, 'is_visible') ? undefined : json['is_visible'],
         'title': !exists(json, 'title') ? undefined : json['title'],
         'transcription': !exists(json, 'transcription') ? undefined : json['transcription'],
         'publisher': !exists(json, 'publisher') ? undefined : json['publisher'],
         'copyright': !exists(json, 'copyright') ? undefined : json['copyright'],
         'media': !exists(json, 'media') ? undefined : (json['media'] === null ? null : (json['media'] as Array<any>).map(TrackTranslationMediumFromJSON)),
-        'translatedMeta': !exists(json, 'translatedMeta') ? undefined : TrackTranslationTranslatedTrackMetaFromJSON(json['translatedMeta']),
+        'meta': !exists(json, '_meta') ? undefined : TrackTranslationTranslatedTrackMetaFromJSON(json['_meta']),
     };
 }
 
@@ -128,13 +128,13 @@ export function TrackTranslationToJSON(value?: TrackTranslation | null): any {
     return {
         
         'language': LanguageEnumToJSON(value.language),
-        'isVisible': value.isVisible,
+        'is_visible': value.isVisible,
         'title': value.title,
         'transcription': value.transcription,
         'publisher': value.publisher,
         'copyright': value.copyright,
         'media': value.media === undefined ? undefined : (value.media === null ? null : (value.media as Array<any>).map(TrackTranslationMediumToJSON)),
-        'translatedMeta': TrackTranslationTranslatedTrackMetaToJSON(value.translatedMeta),
+        '_meta': TrackTranslationTranslatedTrackMetaToJSON(value.meta),
     };
 }
 

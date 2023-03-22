@@ -75,7 +75,7 @@ export function UpdateTrackCollectionCommandFromJSONTyped(json: any, ignoreDiscr
         'id': !exists(json, 'id') ? undefined : json['id'],
         'name': !exists(json, 'name') ? undefined : json['name'],
         'access': !exists(json, 'access') ? undefined : json['access'],
-        'trackReferences': !exists(json, 'trackReferences') ? undefined : (json['trackReferences'] === null ? null : (json['trackReferences'] as Array<any>).map(TrackReferenceFromJSON)),
+        'trackReferences': !exists(json, 'track_references') ? undefined : (json['track_references'] === null ? null : (json['track_references'] as Array<any>).map(TrackReferenceFromJSON)),
     };
 }
 
@@ -91,7 +91,7 @@ export function UpdateTrackCollectionCommandToJSON(value?: UpdateTrackCollection
         'id': value.id,
         'name': value.name,
         'access': value.access,
-        'trackReferences': value.trackReferences === undefined ? undefined : (value.trackReferences === null ? null : (value.trackReferences as Array<any>).map(TrackReferenceToJSON)),
+        'track_references': value.trackReferences === undefined ? undefined : (value.trackReferences === null ? null : (value.trackReferences as Array<any>).map(TrackReferenceToJSON)),
     };
 }
 

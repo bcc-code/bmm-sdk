@@ -28,12 +28,6 @@ import {
 export interface GeneralNotification {
     /**
      * 
-     * @type {string}
-     * @memberof GeneralNotification
-     */
-    readonly queueName?: string | null;
-    /**
-     * 
      * @type {Array<NotificationTranslation>}
      * @memberof GeneralNotification
      */
@@ -78,11 +72,10 @@ export function GeneralNotificationFromJSONTyped(json: any, ignoreDiscriminator:
     }
     return {
         
-        'queueName': !exists(json, 'queueName') ? undefined : json['queueName'],
         'translations': ((json['translations'] as Array<any>).map(NotificationTranslationFromJSON)),
-        'scheduledTime': !exists(json, 'scheduledTime') ? undefined : (json['scheduledTime'] === null ? null : new Date(json['scheduledTime'])),
-        'actionUrl': !exists(json, 'actionUrl') ? undefined : json['actionUrl'],
-        'filterOutConfirmedListeners': !exists(json, 'filterOutConfirmedListeners') ? undefined : json['filterOutConfirmedListeners'],
+        'scheduledTime': !exists(json, 'scheduled_time') ? undefined : (json['scheduled_time'] === null ? null : new Date(json['scheduled_time'])),
+        'actionUrl': !exists(json, 'action_url') ? undefined : json['action_url'],
+        'filterOutConfirmedListeners': !exists(json, 'filter_out_confirmed_listeners') ? undefined : json['filter_out_confirmed_listeners'],
     };
 }
 
@@ -96,9 +89,9 @@ export function GeneralNotificationToJSON(value?: GeneralNotification | null): a
     return {
         
         'translations': ((value.translations as Array<any>).map(NotificationTranslationToJSON)),
-        'scheduledTime': value.scheduledTime === undefined ? undefined : (value.scheduledTime === null ? null : value.scheduledTime.toISOString()),
-        'actionUrl': value.actionUrl,
-        'filterOutConfirmedListeners': value.filterOutConfirmedListeners,
+        'scheduled_time': value.scheduledTime === undefined ? undefined : (value.scheduledTime === null ? null : value.scheduledTime.toISOString()),
+        'action_url': value.actionUrl,
+        'filter_out_confirmed_listeners': value.filterOutConfirmedListeners,
     };
 }
 

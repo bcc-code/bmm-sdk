@@ -53,7 +53,7 @@ export function GroupGoalModelTrackReferenceFromJSONTyped(json: any, ignoreDiscr
     return {
         
         'date': !exists(json, 'date') ? undefined : (new Date(json['date'])),
-        'trackId': !exists(json, 'trackId') ? undefined : json['trackId'],
+        'trackId': !exists(json, 'track_id') ? undefined : json['track_id'],
     };
 }
 
@@ -67,7 +67,7 @@ export function GroupGoalModelTrackReferenceToJSON(value?: GroupGoalModelTrackRe
     return {
         
         'date': value.date === undefined ? undefined : (value.date.toISOString()),
-        'trackId': value.trackId,
+        'track_id': value.trackId,
     };
 }
 

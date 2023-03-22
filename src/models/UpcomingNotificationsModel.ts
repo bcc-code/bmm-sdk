@@ -66,8 +66,8 @@ export function UpcomingNotificationsModelFromJSONTyped(json: any, ignoreDiscrim
     return {
         
         'podcasts': !exists(json, 'podcasts') ? undefined : (json['podcasts'] === null ? null : (json['podcasts'] as Array<any>).map(UpcomingNotificationsModelPodcastFromJSON)),
-        'graceTimeNotificationJob': !exists(json, 'graceTimeNotificationJob') ? undefined : json['graceTimeNotificationJob'],
-        'notificationBatchPeriod': !exists(json, 'notificationBatchPeriod') ? undefined : json['notificationBatchPeriod'],
+        'graceTimeNotificationJob': !exists(json, 'grace_time_notification_job') ? undefined : json['grace_time_notification_job'],
+        'notificationBatchPeriod': !exists(json, 'notification_batch_period') ? undefined : json['notification_batch_period'],
     };
 }
 
@@ -81,8 +81,8 @@ export function UpcomingNotificationsModelToJSON(value?: UpcomingNotificationsMo
     return {
         
         'podcasts': value.podcasts === undefined ? undefined : (value.podcasts === null ? null : (value.podcasts as Array<any>).map(UpcomingNotificationsModelPodcastToJSON)),
-        'graceTimeNotificationJob': value.graceTimeNotificationJob,
-        'notificationBatchPeriod': value.notificationBatchPeriod,
+        'grace_time_notification_job': value.graceTimeNotificationJob,
+        'notification_batch_period': value.notificationBatchPeriod,
     };
 }
 

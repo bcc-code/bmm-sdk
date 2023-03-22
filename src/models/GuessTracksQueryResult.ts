@@ -66,7 +66,7 @@ export function GuessTracksQueryResultFromJSONTyped(json: any, ignoreDiscriminat
     return {
         
         'unguessable': !exists(json, 'unguessable') ? undefined : json['unguessable'],
-        'unknownBmmId': !exists(json, 'unknownBmmId') ? undefined : json['unknownBmmId'],
+        'unknownBmmId': !exists(json, 'unknown_bmm_id') ? undefined : json['unknown_bmm_id'],
         'guessed': !exists(json, 'guessed') ? undefined : (json['guessed'] === null ? null : (json['guessed'] as Array<any>).map(GuessTracksQueryResultGuessResultFromJSON)),
     };
 }
@@ -81,7 +81,7 @@ export function GuessTracksQueryResultToJSON(value?: GuessTracksQueryResult | nu
     return {
         
         'unguessable': value.unguessable,
-        'unknownBmmId': value.unknownBmmId,
+        'unknown_bmm_id': value.unknownBmmId,
         'guessed': value.guessed === undefined ? undefined : (value.guessed === null ? null : (value.guessed as Array<any>).map(GuessTracksQueryResultGuessResultToJSON)),
     };
 }

@@ -18,13 +18,13 @@
  * @export
  */
 export const TrackSubtype = {
-    NUMBER_0: 0,
-    NUMBER_1: 1,
-    NUMBER_2: 2,
-    NUMBER_3: 3,
-    NUMBER_4: 4,
-    NUMBER_5: 5,
-    NUMBER_6: 6
+    Song: 'song',
+    Speech: 'speech',
+    Audiobook: 'audiobook',
+    Singsong: 'singsong',
+    Exegesis: 'exegesis',
+    Video: 'video',
+    Live: 'live'
 } as const;
 export type TrackSubtype = typeof TrackSubtype[keyof typeof TrackSubtype];
 

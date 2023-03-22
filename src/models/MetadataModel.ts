@@ -60,7 +60,7 @@ export function MetadataModelFromJSONTyped(json: any, ignoreDiscriminator: boole
         
         'title': !exists(json, 'title') ? undefined : json['title'],
         'description': !exists(json, 'description') ? undefined : json['description'],
-        'coverUrl': !exists(json, 'coverUrl') ? undefined : json['coverUrl'],
+        'coverUrl': !exists(json, 'cover_url') ? undefined : json['cover_url'],
     };
 }
 
@@ -75,7 +75,7 @@ export function MetadataModelToJSON(value?: MetadataModel | null): any {
         
         'title': value.title,
         'description': value.description,
-        'coverUrl': value.coverUrl,
+        'cover_url': value.coverUrl,
     };
 }
 

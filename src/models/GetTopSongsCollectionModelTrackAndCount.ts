@@ -60,7 +60,7 @@ export function GetTopSongsCollectionModelTrackAndCountFromJSONTyped(json: any, 
     return {
         
         'track': !exists(json, 'track') ? undefined : TrackModelFromJSON(json['track']),
-        'playCount': !exists(json, 'playCount') ? undefined : json['playCount'],
+        'playCount': !exists(json, 'play_count') ? undefined : json['play_count'],
     };
 }
 
@@ -74,7 +74,7 @@ export function GetTopSongsCollectionModelTrackAndCountToJSON(value?: GetTopSong
     return {
         
         'track': TrackModelToJSON(value.track),
-        'playCount': value.playCount,
+        'play_count': value.playCount,
     };
 }
 

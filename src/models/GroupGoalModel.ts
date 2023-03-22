@@ -125,19 +125,19 @@ export function GroupGoalModelFromJSONTyped(json: any, ignoreDiscriminator: bool
     }
     return {
         
-        'ownerName': !exists(json, 'ownerName') ? undefined : json['ownerName'],
+        'ownerName': !exists(json, 'owner_name') ? undefined : json['owner_name'],
         'name': !exists(json, 'name') ? undefined : json['name'],
         'participants': !exists(json, 'participants') ? undefined : json['participants'],
         'tracks': !exists(json, 'tracks') ? undefined : json['tracks'],
         'start': !exists(json, 'start') ? undefined : (new Date(json['start'])),
         'end': !exists(json, 'end') ? undefined : (new Date(json['end'])),
         'joined': !exists(json, 'joined') ? undefined : json['joined'],
-        'percentOnTrack': !exists(json, 'percentOnTrack') ? undefined : json['percentOnTrack'],
-        'percentCaughtUp': !exists(json, 'percentCaughtUp') ? undefined : json['percentCaughtUp'],
-        'currentTrackTitle': !exists(json, 'currentTrackTitle') ? undefined : json['currentTrackTitle'],
-        'trackList': !exists(json, 'trackList') ? undefined : (json['trackList'] === null ? null : (json['trackList'] as Array<any>).map(GroupGoalModelTrackReferenceFromJSON)),
-        'percentListenedLatest': !exists(json, 'percentListenedLatest') ? undefined : json['percentListenedLatest'],
-        'collectiveEpisodes': !exists(json, 'collectiveEpisodes') ? undefined : json['collectiveEpisodes'],
+        'percentOnTrack': !exists(json, 'percent_on_track') ? undefined : json['percent_on_track'],
+        'percentCaughtUp': !exists(json, 'percent_caught_up') ? undefined : json['percent_caught_up'],
+        'currentTrackTitle': !exists(json, 'current_track_title') ? undefined : json['current_track_title'],
+        'trackList': !exists(json, 'track_list') ? undefined : (json['track_list'] === null ? null : (json['track_list'] as Array<any>).map(GroupGoalModelTrackReferenceFromJSON)),
+        'percentListenedLatest': !exists(json, 'percent_listened_latest') ? undefined : json['percent_listened_latest'],
+        'collectiveEpisodes': !exists(json, 'collective_episodes') ? undefined : json['collective_episodes'],
     };
 }
 
@@ -150,19 +150,19 @@ export function GroupGoalModelToJSON(value?: GroupGoalModel | null): any {
     }
     return {
         
-        'ownerName': value.ownerName,
+        'owner_name': value.ownerName,
         'name': value.name,
         'participants': value.participants,
         'tracks': value.tracks,
         'start': value.start === undefined ? undefined : (value.start.toISOString()),
         'end': value.end === undefined ? undefined : (value.end.toISOString()),
         'joined': value.joined,
-        'percentOnTrack': value.percentOnTrack,
-        'percentCaughtUp': value.percentCaughtUp,
-        'currentTrackTitle': value.currentTrackTitle,
-        'trackList': value.trackList === undefined ? undefined : (value.trackList === null ? null : (value.trackList as Array<any>).map(GroupGoalModelTrackReferenceToJSON)),
-        'percentListenedLatest': value.percentListenedLatest,
-        'collectiveEpisodes': value.collectiveEpisodes,
+        'percent_on_track': value.percentOnTrack,
+        'percent_caught_up': value.percentCaughtUp,
+        'current_track_title': value.currentTrackTitle,
+        'track_list': value.trackList === undefined ? undefined : (value.trackList === null ? null : (value.trackList as Array<any>).map(GroupGoalModelTrackReferenceToJSON)),
+        'percent_listened_latest': value.percentListenedLatest,
+        'collective_episodes': value.collectiveEpisodes,
     };
 }
 

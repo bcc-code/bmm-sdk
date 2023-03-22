@@ -125,15 +125,15 @@ export function TrackModelParentFromJSONTyped(json: any, ignoreDiscriminator: bo
     }
     return {
         
-        'meta': !exists(json, 'meta') ? undefined : TrackModelParentMetaFromJSON(json['meta']),
+        'meta': !exists(json, '_meta') ? undefined : TrackModelParentMetaFromJSON(json['_meta']),
         'id': !exists(json, 'id') ? undefined : json['id'],
-        'parentId': !exists(json, 'parentId') ? undefined : json['parentId'],
+        'parentId': !exists(json, 'parent_id') ? undefined : json['parent_id'],
         'type': !exists(json, 'type') ? undefined : json['type'],
-        'bmmId': !exists(json, 'bmmId') ? undefined : json['bmmId'],
+        'bmmId': !exists(json, 'bmm_id') ? undefined : json['bmm_id'],
         'cover': !exists(json, 'cover') ? undefined : json['cover'],
         'language': !exists(json, 'language') ? undefined : LanguageEnumFromJSON(json['language']),
         'languages': !exists(json, 'languages') ? undefined : (json['languages'] === null ? null : (json['languages'] as Array<any>).map(LanguageEnumFromJSON)),
-        'publishedAt': !exists(json, 'publishedAt') ? undefined : (new Date(json['publishedAt'])),
+        'publishedAt': !exists(json, 'published_at') ? undefined : (new Date(json['published_at'])),
         'tags': !exists(json, 'tags') ? undefined : json['tags'],
         'title': !exists(json, 'title') ? undefined : json['title'],
         'description': !exists(json, 'description') ? undefined : json['description'],
@@ -149,15 +149,15 @@ export function TrackModelParentToJSON(value?: TrackModelParent | null): any {
     }
     return {
         
-        'meta': TrackModelParentMetaToJSON(value.meta),
+        '_meta': TrackModelParentMetaToJSON(value.meta),
         'id': value.id,
-        'parentId': value.parentId,
+        'parent_id': value.parentId,
         'type': value.type,
-        'bmmId': value.bmmId,
+        'bmm_id': value.bmmId,
         'cover': value.cover,
         'language': LanguageEnumToJSON(value.language),
         'languages': value.languages === undefined ? undefined : (value.languages === null ? null : (value.languages as Array<any>).map(LanguageEnumToJSON)),
-        'publishedAt': value.publishedAt === undefined ? undefined : (value.publishedAt.toISOString()),
+        'published_at': value.publishedAt === undefined ? undefined : (value.publishedAt.toISOString()),
         'tags': value.tags,
         'title': value.title,
         'description': value.description,

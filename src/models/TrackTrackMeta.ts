@@ -64,10 +64,10 @@ export function TrackTrackMetaFromJSONTyped(json: any, ignoreDiscriminator: bool
     }
     return {
         
-        'isVisible': !exists(json, 'isVisible') ? undefined : json['isVisible'],
-        'modifiedAt': !exists(json, 'modifiedAt') ? undefined : (new Date(json['modifiedAt'])),
-        'modifiedBy': !exists(json, 'modifiedBy') ? undefined : json['modifiedBy'],
-        'rootParentId': !exists(json, 'rootParentId') ? undefined : json['rootParentId'],
+        'isVisible': !exists(json, 'is_visible') ? undefined : json['is_visible'],
+        'modifiedAt': !exists(json, 'modified_at') ? undefined : (new Date(json['modified_at'])),
+        'modifiedBy': !exists(json, 'modified_by') ? undefined : json['modified_by'],
+        'rootParentId': !exists(json, 'root_parent_id') ? undefined : json['root_parent_id'],
     };
 }
 
@@ -80,10 +80,10 @@ export function TrackTrackMetaToJSON(value?: TrackTrackMeta | null): any {
     }
     return {
         
-        'isVisible': value.isVisible,
-        'modifiedAt': value.modifiedAt === undefined ? undefined : (value.modifiedAt.toISOString()),
-        'modifiedBy': value.modifiedBy,
-        'rootParentId': value.rootParentId,
+        'is_visible': value.isVisible,
+        'modified_at': value.modifiedAt === undefined ? undefined : (value.modifiedAt.toISOString()),
+        'modified_by': value.modifiedBy,
+        'root_parent_id': value.rootParentId,
     };
 }
 

@@ -64,7 +64,7 @@ export function TrackModelMediumFileFromJSONTyped(json: any, ignoreDiscriminator
     }
     return {
         
-        'mimeType': !exists(json, 'mimeType') ? undefined : json['mimeType'],
+        'mimeType': !exists(json, 'mime_type') ? undefined : json['mime_type'],
         'size': !exists(json, 'size') ? undefined : json['size'],
         'duration': !exists(json, 'duration') ? undefined : json['duration'],
         'url': !exists(json, 'url') ? undefined : json['url'],
@@ -80,7 +80,7 @@ export function TrackModelMediumFileToJSON(value?: TrackModelMediumFile | null):
     }
     return {
         
-        'mimeType': value.mimeType,
+        'mime_type': value.mimeType,
         'size': value.size,
         'duration': value.duration,
         'url': value.url,

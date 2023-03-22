@@ -28,6 +28,18 @@ import {
 export interface TestResponse {
     /**
      * 
+     * @type {Array<string>}
+     * @memberof TestResponse
+     */
+    content?: Array<string> | null;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof TestResponse
+     */
+    contentType?: Array<string> | null;
+    /**
+     * 
      * @type {number}
      * @memberof TestResponse
      */
@@ -65,6 +77,8 @@ export function TestResponseFromJSONTyped(json: any, ignoreDiscriminator: boolea
     }
     return {
         
+        'content': !exists(json, 'content') ? undefined : json['content'],
+        'contentType': !exists(json, 'content_type') ? undefined : json['content_type'],
         'from': !exists(json, 'from') ? undefined : json['from'],
         'variable': !exists(json, 'variable') ? undefined : json['variable'],
         'subtype': !exists(json, 'subtype') ? undefined : (json['subtype'] === null ? null : (json['subtype'] as Array<any>).map(TrackSubtypeFromJSON)),
@@ -80,6 +94,8 @@ export function TestResponseToJSON(value?: TestResponse | null): any {
     }
     return {
         
+        'content': value.content,
+        'content_type': value.contentType,
         'from': value.from,
         'variable': value.variable,
         'subtype': value.subtype === undefined ? undefined : (value.subtype === null ? null : (value.subtype as Array<any>).map(TrackSubtypeToJSON)),

@@ -28,6 +28,12 @@ import {
 export interface PlaylistCollection {
     /**
      * 
+     * @type {string}
+     * @memberof PlaylistCollection
+     */
+    type?: string | null;
+    /**
+     * 
      * @type {Array<TrackListReference>}
      * @memberof PlaylistCollection
      */
@@ -53,6 +59,7 @@ export function PlaylistCollectionFromJSONTyped(json: any, ignoreDiscriminator: 
     }
     return {
         
+        'type': !exists(json, 'type') ? undefined : json['type'],
         'references': !exists(json, 'references') ? undefined : (json['references'] === null ? null : (json['references'] as Array<any>).map(TrackListReferenceFromJSON)),
     };
 }
@@ -66,6 +73,7 @@ export function PlaylistCollectionToJSON(value?: PlaylistCollection | null): any
     }
     return {
         
+        'type': value.type,
         'references': value.references === undefined ? undefined : (value.references === null ? null : (value.references as Array<any>).map(TrackListReferenceToJSON)),
     };
 }

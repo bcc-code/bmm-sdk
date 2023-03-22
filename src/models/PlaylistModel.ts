@@ -62,18 +62,6 @@ export interface PlaylistModel {
      * @memberof PlaylistModel
      */
     title?: string | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof PlaylistModel
-     */
-    createdAt?: Date;
-    /**
-     * 
-     * @type {number}
-     * @memberof PlaylistModel
-     */
-    readonly year?: number;
 }
 
 /**
@@ -101,8 +89,6 @@ export function PlaylistModelFromJSONTyped(json: any, ignoreDiscriminator: boole
         'languages': !exists(json, 'languages') ? undefined : (json['languages'] === null ? null : (json['languages'] as Array<any>).map(LanguageEnumFromJSON)),
         'language': !exists(json, 'language') ? undefined : LanguageEnumFromJSON(json['language']),
         'title': !exists(json, 'title') ? undefined : json['title'],
-        'createdAt': !exists(json, 'createdAt') ? undefined : (new Date(json['createdAt'])),
-        'year': !exists(json, 'year') ? undefined : json['year'],
     };
 }
 
@@ -120,7 +106,6 @@ export function PlaylistModelToJSON(value?: PlaylistModel | null): any {
         'languages': value.languages === undefined ? undefined : (value.languages === null ? null : (value.languages as Array<any>).map(LanguageEnumToJSON)),
         'language': LanguageEnumToJSON(value.language),
         'title': value.title,
-        'createdAt': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
     };
 }
 

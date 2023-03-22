@@ -18,10 +18,10 @@
  * @export
  */
 export const ListenedStatus = {
-    NUMBER_0: 0,
-    NUMBER_1: 1,
-    NUMBER_2: 2,
-    NUMBER_3: 3
+    PartialFromBeginning: 'PartialFromBeginning',
+    Jumped: 'Jumped',
+    SkippedBeginning: 'SkippedBeginning',
+    Complete: 'Complete'
 } as const;
 export type ListenedStatus = typeof ListenedStatus[keyof typeof ListenedStatus];
 

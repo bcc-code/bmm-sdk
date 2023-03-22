@@ -61,7 +61,7 @@ export function SubscriptionModelFromJSONTyped(json: any, ignoreDiscriminator: b
     return {
         
         'token': json['token'],
-        'podcastReferences': !exists(json, 'podcastReferences') ? undefined : (json['podcastReferences'] === null ? null : (json['podcastReferences'] as Array<any>).map(TrackListReferenceFromJSON)),
+        'podcastReferences': !exists(json, 'podcast_references') ? undefined : (json['podcast_references'] === null ? null : (json['podcast_references'] as Array<any>).map(TrackListReferenceFromJSON)),
     };
 }
 
@@ -75,7 +75,7 @@ export function SubscriptionModelToJSON(value?: SubscriptionModel | null): any {
     return {
         
         'token': value.token,
-        'podcastReferences': value.podcastReferences === undefined ? undefined : (value.podcastReferences === null ? null : (value.podcastReferences as Array<any>).map(TrackListReferenceToJSON)),
+        'podcast_references': value.podcastReferences === undefined ? undefined : (value.podcastReferences === null ? null : (value.podcastReferences as Array<any>).map(TrackListReferenceToJSON)),
     };
 }
 

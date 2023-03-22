@@ -52,12 +52,6 @@ export interface Podcast {
     id?: number;
     /**
      * 
-     * @type {string}
-     * @memberof Podcast
-     */
-    readonly idString?: string | null;
-    /**
-     * 
      * @type {Date}
      * @memberof Podcast
      */
@@ -104,9 +98,8 @@ export function PodcastFromJSONTyped(json: any, ignoreDiscriminator: boolean): P
         'type': !exists(json, 'type') ? undefined : json['type'],
         'cover': !exists(json, 'cover') ? undefined : json['cover'],
         'id': !exists(json, 'id') ? undefined : json['id'],
-        'idString': !exists(json, 'idString') ? undefined : json['idString'],
-        'modifiedAt': !exists(json, 'modifiedAt') ? undefined : (new Date(json['modifiedAt'])),
-        'createdAt': !exists(json, 'createdAt') ? undefined : (new Date(json['createdAt'])),
+        'modifiedAt': !exists(json, 'modified_at') ? undefined : (new Date(json['modified_at'])),
+        'createdAt': !exists(json, 'created_at') ? undefined : (new Date(json['created_at'])),
         'query': !exists(json, 'query') ? undefined : PodcastPQueryFromJSON(json['query']),
         'translations': !exists(json, 'translations') ? undefined : (json['translations'] === null ? null : (json['translations'] as Array<any>).map(PodcastPodcastTranslationFromJSON)),
     };
@@ -123,8 +116,8 @@ export function PodcastToJSON(value?: Podcast | null): any {
         
         'cover': value.cover,
         'id': value.id,
-        'modifiedAt': value.modifiedAt === undefined ? undefined : (value.modifiedAt.toISOString()),
-        'createdAt': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
+        'modified_at': value.modifiedAt === undefined ? undefined : (value.modifiedAt.toISOString()),
+        'created_at': value.createdAt === undefined ? undefined : (value.createdAt.toISOString()),
         'query': PodcastPQueryToJSON(value.query),
         'translations': value.translations === undefined ? undefined : (value.translations === null ? null : (value.translations as Array<any>).map(PodcastPodcastTranslationToJSON)),
     };

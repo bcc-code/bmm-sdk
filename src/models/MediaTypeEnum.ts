@@ -18,8 +18,8 @@
  * @export
  */
 export const MediaTypeEnum = {
-    NUMBER_0: 0,
-    NUMBER_1: 1
+    Audio: 'audio',
+    Video: 'video'
 } as const;
 export type MediaTypeEnum = typeof MediaTypeEnum[keyof typeof MediaTypeEnum];
 

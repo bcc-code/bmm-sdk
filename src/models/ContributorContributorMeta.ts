@@ -52,8 +52,8 @@ export function ContributorContributorMetaFromJSONTyped(json: any, ignoreDiscrim
     }
     return {
         
-        'modifiedBy': !exists(json, 'modifiedBy') ? undefined : json['modifiedBy'],
-        'modifiedAt': !exists(json, 'modifiedAt') ? undefined : (new Date(json['modifiedAt'])),
+        'modifiedBy': !exists(json, 'modified_by') ? undefined : json['modified_by'],
+        'modifiedAt': !exists(json, 'modified_at') ? undefined : (new Date(json['modified_at'])),
     };
 }
 
@@ -66,8 +66,8 @@ export function ContributorContributorMetaToJSON(value?: ContributorContributorM
     }
     return {
         
-        'modifiedBy': value.modifiedBy,
-        'modifiedAt': value.modifiedAt === undefined ? undefined : (value.modifiedAt.toISOString()),
+        'modified_by': value.modifiedBy,
+        'modified_at': value.modifiedAt === undefined ? undefined : (value.modifiedAt.toISOString()),
     };
 }
 

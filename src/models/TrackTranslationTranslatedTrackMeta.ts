@@ -137,7 +137,7 @@ export function TrackTranslationTranslatedTrackMetaFromJSONTyped(json: any, igno
     }
     return {
         
-        'isVisible': !exists(json, 'isVisible') ? undefined : json['isVisible'],
+        'isVisible': !exists(json, 'is_visible') ? undefined : json['is_visible'],
         'title': !exists(json, 'title') ? undefined : json['title'],
         'language': !exists(json, 'language') ? undefined : json['language'],
         'album': !exists(json, 'album') ? undefined : json['album'],
@@ -147,12 +147,12 @@ export function TrackTranslationTranslatedTrackMetaFromJSONTyped(json: any, igno
         'composer': !exists(json, 'composer') ? undefined : json['composer'],
         'publisher': !exists(json, 'publisher') ? undefined : json['publisher'],
         'itunescompilation': !exists(json, 'itunescompilation') ? undefined : json['itunescompilation'],
-        'attachedPicture': !exists(json, 'attachedPicture') ? undefined : json['attachedPicture'],
+        'attachedPicture': !exists(json, 'attached_picture') ? undefined : json['attached_picture'],
         'time': !exists(json, 'time') ? undefined : json['time'],
         'date': !exists(json, 'date') ? undefined : json['date'],
         'year': !exists(json, 'year') ? undefined : json['year'],
         'copyright': !exists(json, 'copyright') ? undefined : json['copyright'],
-        'bibleReferences': !exists(json, 'bibleReferences') ? undefined : json['bibleReferences'],
+        'bibleReferences': !exists(json, 'bible_references') ? undefined : json['bible_references'],
     };
 }
 
@@ -165,7 +165,7 @@ export function TrackTranslationTranslatedTrackMetaToJSON(value?: TrackTranslati
     }
     return {
         
-        'isVisible': value.isVisible,
+        'is_visible': value.isVisible,
         'title': value.title,
         'language': value.language,
         'album': value.album,
@@ -175,12 +175,12 @@ export function TrackTranslationTranslatedTrackMetaToJSON(value?: TrackTranslati
         'composer': value.composer,
         'publisher': value.publisher,
         'itunescompilation': value.itunescompilation,
-        'attachedPicture': value.attachedPicture,
+        'attached_picture': value.attachedPicture,
         'time': value.time,
         'date': value.date,
         'year': value.year,
         'copyright': value.copyright,
-        'bibleReferences': value.bibleReferences,
+        'bible_references': value.bibleReferences,
     };
 }
 

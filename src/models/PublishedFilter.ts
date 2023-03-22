@@ -18,9 +18,9 @@
  * @export
  */
 export const PublishedFilter = {
-    NUMBER_0: 0,
-    NUMBER_1: 1,
-    NUMBER_2: 2
+    Hide: 'hide',
+    Only: 'only',
+    Show: 'show'
 } as const;
 export type PublishedFilter = typeof PublishedFilter[keyof typeof PublishedFilter];
 

@@ -128,12 +128,6 @@ export interface AlbumModel {
      * @memberof AlbumModel
      */
     latestTrackPosition?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof AlbumModel
-     */
-    readonly year?: number;
 }
 
 /**
@@ -155,22 +149,21 @@ export function AlbumModelFromJSONTyped(json: any, ignoreDiscriminator: boolean)
     }
     return {
         
-        'meta': !exists(json, 'meta') ? undefined : AlbumModelAlbumMetaFromJSON(json['meta']),
-        'bmmId': !exists(json, 'bmmId') ? undefined : json['bmmId'],
+        'meta': !exists(json, '_meta') ? undefined : AlbumModelAlbumMetaFromJSON(json['_meta']),
+        'bmmId': !exists(json, 'bmm_id') ? undefined : json['bmm_id'],
         'cover': !exists(json, 'cover') ? undefined : json['cover'],
         'id': !exists(json, 'id') ? undefined : json['id'],
         'languages': !exists(json, 'languages') ? undefined : (json['languages'] === null ? null : (json['languages'] as Array<any>).map(LanguageEnumFromJSON)),
-        'parentId': !exists(json, 'parentId') ? undefined : json['parentId'],
-        'publishedAt': !exists(json, 'publishedAt') ? undefined : (new Date(json['publishedAt'])),
+        'parentId': !exists(json, 'parent_id') ? undefined : json['parent_id'],
+        'publishedAt': !exists(json, 'published_at') ? undefined : (new Date(json['published_at'])),
         'tags': !exists(json, 'tags') ? undefined : json['tags'],
         'language': !exists(json, 'language') ? undefined : LanguageEnumFromJSON(json['language']),
         'title': !exists(json, 'title') ? undefined : json['title'],
         'description': !exists(json, 'description') ? undefined : json['description'],
         'type': !exists(json, 'type') ? undefined : json['type'],
         'children': !exists(json, 'children') ? undefined : (json['children'] === null ? null : (json['children'] as Array<any>).map(IDocumentModelFromJSON)),
-        'latestTrackId': !exists(json, 'latestTrackId') ? undefined : json['latestTrackId'],
-        'latestTrackPosition': !exists(json, 'latestTrackPosition') ? undefined : json['latestTrackPosition'],
-        'year': !exists(json, 'year') ? undefined : json['year'],
+        'latestTrackId': !exists(json, 'latest_track_id') ? undefined : json['latest_track_id'],
+        'latestTrackPosition': !exists(json, 'latest_track_position') ? undefined : json['latest_track_position'],
     };
 }
 
@@ -183,20 +176,20 @@ export function AlbumModelToJSON(value?: AlbumModel | null): any {
     }
     return {
         
-        'meta': AlbumModelAlbumMetaToJSON(value.meta),
-        'bmmId': value.bmmId,
+        '_meta': AlbumModelAlbumMetaToJSON(value.meta),
+        'bmm_id': value.bmmId,
         'cover': value.cover,
         'id': value.id,
         'languages': value.languages === undefined ? undefined : (value.languages === null ? null : (value.languages as Array<any>).map(LanguageEnumToJSON)),
-        'parentId': value.parentId,
-        'publishedAt': value.publishedAt === undefined ? undefined : (value.publishedAt.toISOString()),
+        'parent_id': value.parentId,
+        'published_at': value.publishedAt === undefined ? undefined : (value.publishedAt.toISOString()),
         'tags': value.tags,
         'language': LanguageEnumToJSON(value.language),
         'title': value.title,
         'description': value.description,
         'children': value.children === undefined ? undefined : (value.children === null ? null : (value.children as Array<any>).map(IDocumentModelToJSON)),
-        'latestTrackId': value.latestTrackId,
-        'latestTrackPosition': value.latestTrackPosition,
+        'latest_track_id': value.latestTrackId,
+        'latest_track_position': value.latestTrackPosition,
     };
 }
 

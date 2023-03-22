@@ -18,13 +18,13 @@
  * @export
  */
 export const SearchFilter = {
-    NUMBER_0: 0,
-    NUMBER_1: 1,
-    NUMBER_2: 2,
-    NUMBER_3: 3,
-    NUMBER_4: 4,
-    NUMBER_5: 5,
-    NUMBER_6: 6
+    All: 'All',
+    Speeches: 'Speeches',
+    Music: 'Music',
+    Albums: 'Albums',
+    Contributors: 'Contributors',
+    Podcasts: 'Podcasts',
+    Playlists: 'Playlists'
 } as const;
 export type SearchFilter = typeof SearchFilter[keyof typeof SearchFilter];
 

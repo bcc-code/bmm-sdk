@@ -72,7 +72,7 @@ export function CreateOrUpdateContributorCommandFromJSONTyped(json: any, ignoreD
         
         'id': !exists(json, 'id') ? undefined : json['id'],
         'name': !exists(json, 'name') ? undefined : json['name'],
-        'isVisible': !exists(json, 'isVisible') ? undefined : json['isVisible'],
+        'isVisible': !exists(json, 'is_visible') ? undefined : json['is_visible'],
         'cover': !exists(json, 'cover') ? undefined : json['cover'],
         'type': !exists(json, 'type') ? undefined : json['type'],
     };
@@ -89,7 +89,7 @@ export function CreateOrUpdateContributorCommandToJSON(value?: CreateOrUpdateCon
         
         'id': value.id,
         'name': value.name,
-        'isVisible': value.isVisible,
+        'is_visible': value.isVisible,
         'cover': value.cover,
         'type': value.type,
     };

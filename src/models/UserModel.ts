@@ -72,7 +72,7 @@ export function UserModelFromJSONTyped(json: any, ignoreDiscriminator: boolean):
     return {
         
         'username': !exists(json, 'username') ? undefined : json['username'],
-        'personId': !exists(json, 'personId') ? undefined : json['personId'],
+        'personId': !exists(json, 'person_id') ? undefined : json['person_id'],
         'token': !exists(json, 'token') ? undefined : json['token'],
         'roles': !exists(json, 'roles') ? undefined : (json['roles'] === null ? null : (json['roles'] as Array<any>).map(RoleFromJSON)),
     };
@@ -88,7 +88,7 @@ export function UserModelToJSON(value?: UserModel | null): any {
     return {
         
         'username': value.username,
-        'personId': value.personId,
+        'person_id': value.personId,
         'token': value.token,
         'roles': value.roles === undefined ? undefined : (value.roles === null ? null : (value.roles as Array<any>).map(RoleToJSON)),
     };

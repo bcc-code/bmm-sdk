@@ -94,15 +94,15 @@ export function TrackTranslationMediumFileFromJSONTyped(json: any, ignoreDiscrim
     }
     return {
         
-        'mimeType': !exists(json, 'mimeType') ? undefined : json['mimeType'],
+        'mimeType': !exists(json, 'mime_type') ? undefined : json['mime_type'],
         'size': !exists(json, 'size') ? undefined : json['size'],
         'duration': !exists(json, 'duration') ? undefined : json['duration'],
         'path': !exists(json, 'path') ? undefined : json['path'],
         'lufs': !exists(json, 'lufs') ? undefined : json['lufs'],
-        'dynamicRange': !exists(json, 'dynamicRange') ? undefined : json['dynamicRange'],
-        'channelCount': !exists(json, 'channelCount') ? undefined : json['channelCount'],
+        'dynamicRange': !exists(json, 'dynamic_range') ? undefined : json['dynamic_range'],
+        'channelCount': !exists(json, 'channel_count') ? undefined : json['channel_count'],
         'bitrate': !exists(json, 'bitrate') ? undefined : json['bitrate'],
-        'variableBitrate': !exists(json, 'variableBitrate') ? undefined : json['variableBitrate'],
+        'variableBitrate': !exists(json, 'variable_bitrate') ? undefined : json['variable_bitrate'],
     };
 }
 
@@ -115,15 +115,15 @@ export function TrackTranslationMediumFileToJSON(value?: TrackTranslationMediumF
     }
     return {
         
-        'mimeType': value.mimeType,
+        'mime_type': value.mimeType,
         'size': value.size,
         'duration': value.duration,
         'path': value.path,
         'lufs': value.lufs,
-        'dynamicRange': value.dynamicRange,
-        'channelCount': value.channelCount,
+        'dynamic_range': value.dynamicRange,
+        'channel_count': value.channelCount,
         'bitrate': value.bitrate,
-        'variableBitrate': value.variableBitrate,
+        'variable_bitrate': value.variableBitrate,
     };
 }
 

@@ -60,7 +60,7 @@ export function LiveModelFromJSONTyped(json: any, ignoreDiscriminator: boolean):
     return {
         
         'track': !exists(json, 'track') ? undefined : TrackModelFromJSON(json['track']),
-        'serverTime': !exists(json, 'serverTime') ? undefined : (new Date(json['serverTime'])),
+        'serverTime': !exists(json, 'server_time') ? undefined : (new Date(json['server_time'])),
     };
 }
 
@@ -74,7 +74,7 @@ export function LiveModelToJSON(value?: LiveModel | null): any {
     return {
         
         'track': TrackModelToJSON(value.track),
-        'serverTime': value.serverTime === undefined ? undefined : (value.serverTime.toISOString()),
+        'server_time': value.serverTime === undefined ? undefined : (value.serverTime.toISOString()),
     };
 }
 

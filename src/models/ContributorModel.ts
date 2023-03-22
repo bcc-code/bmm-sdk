@@ -97,12 +97,12 @@ export function ContributorModelFromJSONTyped(json: any, ignoreDiscriminator: bo
         
         'id': !exists(json, 'id') ? undefined : json['id'],
         'type': !exists(json, 'type') ? undefined : json['type'],
-        'isVisible': !exists(json, 'isVisible') ? undefined : json['isVisible'],
+        'isVisible': !exists(json, 'is_visible') ? undefined : json['is_visible'],
         'name': !exists(json, 'name') ? undefined : json['name'],
         'cover': !exists(json, 'cover') ? undefined : json['cover'],
         'meta': !exists(json, 'meta') ? undefined : ContributorContributorMetaFromJSON(json['meta']),
-        'interpretReferences': !exists(json, 'interpretReferences') ? undefined : json['interpretReferences'],
-        'otherReferences': !exists(json, 'otherReferences') ? undefined : json['otherReferences'],
+        'interpretReferences': !exists(json, 'interpret_references') ? undefined : json['interpret_references'],
+        'otherReferences': !exists(json, 'other_references') ? undefined : json['other_references'],
     };
 }
 
@@ -116,12 +116,12 @@ export function ContributorModelToJSON(value?: ContributorModel | null): any {
     return {
         
         'id': value.id,
-        'isVisible': value.isVisible,
+        'is_visible': value.isVisible,
         'name': value.name,
         'cover': value.cover,
         'meta': ContributorContributorMetaToJSON(value.meta),
-        'interpretReferences': value.interpretReferences,
-        'otherReferences': value.otherReferences,
+        'interpret_references': value.interpretReferences,
+        'other_references': value.otherReferences,
     };
 }
 

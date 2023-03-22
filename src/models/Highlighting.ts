@@ -60,7 +60,7 @@ export function HighlightingFromJSONTyped(json: any, ignoreDiscriminator: boolea
         
         'id': !exists(json, 'id') ? undefined : json['id'],
         'text': !exists(json, 'text') ? undefined : json['text'],
-        'startPositionInSeconds': !exists(json, 'startPositionInSeconds') ? undefined : json['startPositionInSeconds'],
+        'startPositionInSeconds': !exists(json, 'start_position_in_seconds') ? undefined : json['start_position_in_seconds'],
     };
 }
 
@@ -75,7 +75,7 @@ export function HighlightingToJSON(value?: Highlighting | null): any {
         
         'id': value.id,
         'text': value.text,
-        'startPositionInSeconds': value.startPositionInSeconds,
+        'start_position_in_seconds': value.startPositionInSeconds,
     };
 }
 

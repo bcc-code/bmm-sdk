@@ -78,10 +78,10 @@ export function TrackCollectionDetailsFromJSONTyped(json: any, ignoreDiscriminat
         
         'id': !exists(json, 'id') ? undefined : json['id'],
         'name': !exists(json, 'name') ? undefined : json['name'],
-        'trackCount': !exists(json, 'trackCount') ? undefined : json['trackCount'],
-        'followerCount': !exists(json, 'followerCount') ? undefined : json['followerCount'],
-        'authorName': !exists(json, 'authorName') ? undefined : json['authorName'],
-        'canEdit': !exists(json, 'canEdit') ? undefined : json['canEdit'],
+        'trackCount': !exists(json, 'track_count') ? undefined : json['track_count'],
+        'followerCount': !exists(json, 'follower_count') ? undefined : json['follower_count'],
+        'authorName': !exists(json, 'author_name') ? undefined : json['author_name'],
+        'canEdit': !exists(json, 'can_edit') ? undefined : json['can_edit'],
     };
 }
 
@@ -96,10 +96,10 @@ export function TrackCollectionDetailsToJSON(value?: TrackCollectionDetails | nu
         
         'id': value.id,
         'name': value.name,
-        'trackCount': value.trackCount,
-        'followerCount': value.followerCount,
-        'authorName': value.authorName,
-        'canEdit': value.canEdit,
+        'track_count': value.trackCount,
+        'follower_count': value.followerCount,
+        'author_name': value.authorName,
+        'can_edit': value.canEdit,
     };
 }
 

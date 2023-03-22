@@ -77,9 +77,9 @@ export function SearchResultsFromJSONTyped(json: any, ignoreDiscriminator: boole
     }
     return {
         
-        'nextPageFromPosition': !exists(json, 'nextPageFromPosition') ? undefined : json['nextPageFromPosition'],
+        'nextPageFromPosition': !exists(json, 'next_page_from_position') ? undefined : json['next_page_from_position'],
         'items': !exists(json, 'items') ? undefined : (json['items'] === null ? null : (json['items'] as Array<any>).map(IDocumentModelFromJSON)),
-        'isFullyLoaded': !exists(json, 'isFullyLoaded') ? undefined : json['isFullyLoaded'],
+        'isFullyLoaded': !exists(json, 'is_fully_loaded') ? undefined : json['is_fully_loaded'],
         'highlightings': !exists(json, 'highlightings') ? undefined : (json['highlightings'] === null ? null : (json['highlightings'] as Array<any>).map(HighlightingFromJSON)),
     };
 }
@@ -93,9 +93,9 @@ export function SearchResultsToJSON(value?: SearchResults | null): any {
     }
     return {
         
-        'nextPageFromPosition': value.nextPageFromPosition,
+        'next_page_from_position': value.nextPageFromPosition,
         'items': value.items === undefined ? undefined : (value.items === null ? null : (value.items as Array<any>).map(IDocumentModelToJSON)),
-        'isFullyLoaded': value.isFullyLoaded,
+        'is_fully_loaded': value.isFullyLoaded,
         'highlightings': value.highlightings === undefined ? undefined : (value.highlightings === null ? null : (value.highlightings as Array<any>).map(HighlightingToJSON)),
     };
 }

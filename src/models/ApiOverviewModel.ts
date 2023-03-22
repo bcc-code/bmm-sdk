@@ -91,9 +91,9 @@ export function ApiOverviewModelFromJSONTyped(json: any, ignoreDiscriminator: bo
         
         'name': !exists(json, 'name') ? undefined : json['name'],
         'documentation': !exists(json, 'documentation') ? undefined : json['documentation'],
-        'systemStatus': !exists(json, 'systemStatus') ? undefined : ApiOverviewModelStatusFromJSON(json['systemStatus']),
+        'systemStatus': !exists(json, 'system_status') ? undefined : ApiOverviewModelStatusFromJSON(json['system_status']),
         'languages': !exists(json, 'languages') ? undefined : (json['languages'] === null ? null : (json['languages'] as Array<any>).map(LanguageEnumFromJSON)),
-        'updateIndexes': !exists(json, 'updateIndexes') ? undefined : json['updateIndexes'],
+        'updateIndexes': !exists(json, 'update_indexes') ? undefined : json['update_indexes'],
         'environment': !exists(json, 'environment') ? undefined : json['environment'],
     };
 }
@@ -108,9 +108,9 @@ export function ApiOverviewModelToJSON(value?: ApiOverviewModel | null): any {
     return {
         
         'documentation': value.documentation,
-        'systemStatus': ApiOverviewModelStatusToJSON(value.systemStatus),
+        'system_status': ApiOverviewModelStatusToJSON(value.systemStatus),
         'languages': value.languages === undefined ? undefined : (value.languages === null ? null : (value.languages as Array<any>).map(LanguageEnumToJSON)),
-        'updateIndexes': value.updateIndexes,
+        'update_indexes': value.updateIndexes,
         'environment': value.environment,
     };
 }

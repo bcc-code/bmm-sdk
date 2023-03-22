@@ -83,8 +83,8 @@ export function AlbumAlbumTranslationFromJSONTyped(json: any, ignoreDiscriminato
     }
     return {
         
-        'meta': !exists(json, 'meta') ? undefined : AlbumTranslationMetaFromJSON(json['meta']),
-        'isVisible': !exists(json, 'isVisible') ? undefined : json['isVisible'],
+        'meta': !exists(json, '_meta') ? undefined : AlbumTranslationMetaFromJSON(json['_meta']),
+        'isVisible': !exists(json, 'is_visible') ? undefined : json['is_visible'],
         'language': !exists(json, 'language') ? undefined : LanguageEnumFromJSON(json['language']),
         'title': !exists(json, 'title') ? undefined : json['title'],
         'description': !exists(json, 'description') ? undefined : json['description'],
@@ -100,8 +100,8 @@ export function AlbumAlbumTranslationToJSON(value?: AlbumAlbumTranslation | null
     }
     return {
         
-        'meta': AlbumTranslationMetaToJSON(value.meta),
-        'isVisible': value.isVisible,
+        '_meta': AlbumTranslationMetaToJSON(value.meta),
+        'is_visible': value.isVisible,
         'language': LanguageEnumToJSON(value.language),
         'title': value.title,
         'description': value.description,

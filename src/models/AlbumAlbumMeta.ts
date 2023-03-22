@@ -64,10 +64,10 @@ export function AlbumAlbumMetaFromJSONTyped(json: any, ignoreDiscriminator: bool
     }
     return {
         
-        'containedTypes': !exists(json, 'containedTypes') ? undefined : json['containedTypes'],
-        'isVisible': !exists(json, 'isVisible') ? undefined : json['isVisible'],
-        'modifiedAt': !exists(json, 'modifiedAt') ? undefined : (new Date(json['modifiedAt'])),
-        'modifiedBy': !exists(json, 'modifiedBy') ? undefined : json['modifiedBy'],
+        'containedTypes': !exists(json, 'contained_types') ? undefined : json['contained_types'],
+        'isVisible': !exists(json, 'is_visible') ? undefined : json['is_visible'],
+        'modifiedAt': !exists(json, 'modified_at') ? undefined : (new Date(json['modified_at'])),
+        'modifiedBy': !exists(json, 'modified_by') ? undefined : json['modified_by'],
     };
 }
 
@@ -80,10 +80,10 @@ export function AlbumAlbumMetaToJSON(value?: AlbumAlbumMeta | null): any {
     }
     return {
         
-        'containedTypes': value.containedTypes,
-        'isVisible': value.isVisible,
-        'modifiedAt': value.modifiedAt === undefined ? undefined : (value.modifiedAt.toISOString()),
-        'modifiedBy': value.modifiedBy,
+        'contained_types': value.containedTypes,
+        'is_visible': value.isVisible,
+        'modified_at': value.modifiedAt === undefined ? undefined : (value.modifiedAt.toISOString()),
+        'modified_by': value.modifiedBy,
     };
 }
 

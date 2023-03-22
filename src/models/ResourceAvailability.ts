@@ -18,8 +18,8 @@
  * @export
  */
 export const ResourceAvailability = {
-    NUMBER_0: 0,
-    NUMBER_1: 1
+    Remote: 'Remote',
+    Local: 'Local'
 } as const;
 export type ResourceAvailability = typeof ResourceAvailability[keyof typeof ResourceAvailability];
 

@@ -28,16 +28,16 @@ import {
 export interface PodcastCollection {
     /**
      * 
-     * @type {Array<TrackListReference>}
+     * @type {string}
      * @memberof PodcastCollection
      */
-    podcastReferences?: Array<TrackListReference> | null;
+    type?: string | null;
     /**
      * 
      * @type {Array<TrackListReference>}
      * @memberof PodcastCollection
      */
-    readonly references?: Array<TrackListReference> | null;
+    podcastReferences?: Array<TrackListReference> | null;
 }
 
 /**
@@ -59,8 +59,8 @@ export function PodcastCollectionFromJSONTyped(json: any, ignoreDiscriminator: b
     }
     return {
         
-        'podcastReferences': !exists(json, 'podcastReferences') ? undefined : (json['podcastReferences'] === null ? null : (json['podcastReferences'] as Array<any>).map(TrackListReferenceFromJSON)),
-        'references': !exists(json, 'references') ? undefined : (json['references'] === null ? null : (json['references'] as Array<any>).map(TrackListReferenceFromJSON)),
+        'type': !exists(json, 'type') ? undefined : json['type'],
+        'podcastReferences': !exists(json, 'podcast_references') ? undefined : (json['podcast_references'] === null ? null : (json['podcast_references'] as Array<any>).map(TrackListReferenceFromJSON)),
     };
 }
 
@@ -73,7 +73,8 @@ export function PodcastCollectionToJSON(value?: PodcastCollection | null): any {
     }
     return {
         
-        'podcastReferences': value.podcastReferences === undefined ? undefined : (value.podcastReferences === null ? null : (value.podcastReferences as Array<any>).map(TrackListReferenceToJSON)),
+        'type': value.type,
+        'podcast_references': value.podcastReferences === undefined ? undefined : (value.podcastReferences === null ? null : (value.podcastReferences as Array<any>).map(TrackListReferenceToJSON)),
     };
 }
 

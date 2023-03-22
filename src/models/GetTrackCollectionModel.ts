@@ -105,10 +105,10 @@ export function GetTrackCollectionModelFromJSONTyped(json: any, ignoreDiscrimina
         'id': !exists(json, 'id') ? undefined : json['id'],
         'name': !exists(json, 'name') ? undefined : json['name'],
         'description': !exists(json, 'description') ? undefined : json['description'],
-        'followerCount': !exists(json, 'followerCount') ? undefined : json['followerCount'],
-        'shareLink': !exists(json, 'shareLink') ? undefined : json['shareLink'],
-        'authorName': !exists(json, 'authorName') ? undefined : json['authorName'],
-        'canEdit': !exists(json, 'canEdit') ? undefined : json['canEdit'],
+        'followerCount': !exists(json, 'follower_count') ? undefined : json['follower_count'],
+        'shareLink': !exists(json, 'share_link') ? undefined : json['share_link'],
+        'authorName': !exists(json, 'author_name') ? undefined : json['author_name'],
+        'canEdit': !exists(json, 'can_edit') ? undefined : json['can_edit'],
         'tracks': !exists(json, 'tracks') ? undefined : (json['tracks'] === null ? null : (json['tracks'] as Array<any>).map(TrackModelFromJSON)),
     };
 }
@@ -125,10 +125,10 @@ export function GetTrackCollectionModelToJSON(value?: GetTrackCollectionModel | 
         'id': value.id,
         'name': value.name,
         'description': value.description,
-        'followerCount': value.followerCount,
-        'shareLink': value.shareLink,
-        'authorName': value.authorName,
-        'canEdit': value.canEdit,
+        'follower_count': value.followerCount,
+        'share_link': value.shareLink,
+        'author_name': value.authorName,
+        'can_edit': value.canEdit,
         'tracks': value.tracks === undefined ? undefined : (value.tracks === null ? null : (value.tracks as Array<any>).map(TrackModelToJSON)),
     };
 }

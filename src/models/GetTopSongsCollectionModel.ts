@@ -79,7 +79,7 @@ export function GetTopSongsCollectionModelFromJSONTyped(json: any, ignoreDiscrim
         
         'type': !exists(json, 'type') ? undefined : json['type'],
         'id': !exists(json, 'id') ? undefined : json['id'],
-        'pageTitle': !exists(json, 'pageTitle') ? undefined : json['pageTitle'],
+        'pageTitle': !exists(json, 'page_title') ? undefined : json['page_title'],
         'name': !exists(json, 'name') ? undefined : json['name'],
         'tracks': !exists(json, 'tracks') ? undefined : (json['tracks'] === null ? null : (json['tracks'] as Array<any>).map(GetTopSongsCollectionModelTrackAndCountFromJSON)),
     };
@@ -95,7 +95,7 @@ export function GetTopSongsCollectionModelToJSON(value?: GetTopSongsCollectionMo
     return {
         
         'id': value.id,
-        'pageTitle': value.pageTitle,
+        'page_title': value.pageTitle,
         'name': value.name,
         'tracks': value.tracks === undefined ? undefined : (value.tracks === null ? null : (value.tracks as Array<any>).map(GetTopSongsCollectionModelTrackAndCountToJSON)),
     };

@@ -46,7 +46,7 @@ export function AlbumTranslationMetaFromJSONTyped(json: any, ignoreDiscriminator
     }
     return {
         
-        'isVisible': !exists(json, 'isVisible') ? undefined : json['isVisible'],
+        'isVisible': !exists(json, 'is_visible') ? undefined : json['is_visible'],
     };
 }
 
@@ -59,7 +59,7 @@ export function AlbumTranslationMetaToJSON(value?: AlbumTranslationMeta | null):
     }
     return {
         
-        'isVisible': value.isVisible,
+        'is_visible': value.isVisible,
     };
 }
 

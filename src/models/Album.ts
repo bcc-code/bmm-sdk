@@ -64,12 +64,6 @@ export interface Album {
     id?: number;
     /**
      * 
-     * @type {string}
-     * @memberof Album
-     */
-    readonly idString?: string | null;
-    /**
-     * 
      * @type {LanguageEnum}
      * @memberof Album
      */
@@ -104,18 +98,6 @@ export interface Album {
      * @memberof Album
      */
     readonly type?: string | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof Album
-     */
-    readonly isDocumentPublished?: boolean;
-    /**
-     * 
-     * @type {Date}
-     * @memberof Album
-     */
-    readonly modifiedAt?: Date;
 }
 
 /**
@@ -137,19 +119,16 @@ export function AlbumFromJSONTyped(json: any, ignoreDiscriminator: boolean): Alb
     }
     return {
         
-        'meta': !exists(json, 'meta') ? undefined : AlbumAlbumMetaFromJSON(json['meta']),
-        'bmmId': !exists(json, 'bmmId') ? undefined : json['bmmId'],
+        'meta': !exists(json, '_meta') ? undefined : AlbumAlbumMetaFromJSON(json['_meta']),
+        'bmmId': !exists(json, 'bmm_id') ? undefined : json['bmm_id'],
         'cover': !exists(json, 'cover') ? undefined : json['cover'],
         'id': !exists(json, 'id') ? undefined : json['id'],
-        'idString': !exists(json, 'idString') ? undefined : json['idString'],
-        'originalLanguage': !exists(json, 'originalLanguage') ? undefined : LanguageEnumFromJSON(json['originalLanguage']),
-        'parentId': !exists(json, 'parentId') ? undefined : json['parentId'],
-        'publishedAt': !exists(json, 'publishedAt') ? undefined : (new Date(json['publishedAt'])),
+        'originalLanguage': !exists(json, 'original_language') ? undefined : LanguageEnumFromJSON(json['original_language']),
+        'parentId': !exists(json, 'parent_id') ? undefined : json['parent_id'],
+        'publishedAt': !exists(json, 'published_at') ? undefined : (new Date(json['published_at'])),
         'tags': !exists(json, 'tags') ? undefined : json['tags'],
         'translations': !exists(json, 'translations') ? undefined : (json['translations'] === null ? null : (json['translations'] as Array<any>).map(AlbumAlbumTranslationFromJSON)),
         'type': !exists(json, 'type') ? undefined : json['type'],
-        'isDocumentPublished': !exists(json, 'isDocumentPublished') ? undefined : json['isDocumentPublished'],
-        'modifiedAt': !exists(json, 'modifiedAt') ? undefined : (new Date(json['modifiedAt'])),
     };
 }
 
@@ -162,13 +141,13 @@ export function AlbumToJSON(value?: Album | null): any {
     }
     return {
         
-        'meta': AlbumAlbumMetaToJSON(value.meta),
-        'bmmId': value.bmmId,
+        '_meta': AlbumAlbumMetaToJSON(value.meta),
+        'bmm_id': value.bmmId,
         'cover': value.cover,
         'id': value.id,
-        'originalLanguage': LanguageEnumToJSON(value.originalLanguage),
-        'parentId': value.parentId,
-        'publishedAt': value.publishedAt === undefined ? undefined : (value.publishedAt.toISOString()),
+        'original_language': LanguageEnumToJSON(value.originalLanguage),
+        'parent_id': value.parentId,
+        'published_at': value.publishedAt === undefined ? undefined : (value.publishedAt.toISOString()),
         'tags': value.tags,
         'translations': value.translations === undefined ? undefined : (value.translations === null ? null : (value.translations as Array<any>).map(AlbumAlbumTranslationToJSON)),
     };

@@ -37,12 +37,6 @@ export interface User {
      * @type {string}
      * @memberof User
      */
-    readonly idString?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof User
-     */
     token?: string | null;
     /**
      * 
@@ -96,13 +90,12 @@ export function UserFromJSONTyped(json: any, ignoreDiscriminator: boolean): User
     return {
         
         'id': !exists(json, 'id') ? undefined : json['id'],
-        'idString': !exists(json, 'idString') ? undefined : json['idString'],
         'token': !exists(json, 'token') ? undefined : json['token'],
         'roles': !exists(json, 'roles') ? undefined : (json['roles'] === null ? null : (json['roles'] as Array<any>).map(RoleFromJSON)),
         'type': !exists(json, 'type') ? undefined : json['type'],
-        'meta': !exists(json, 'meta') ? undefined : json['meta'],
-        'personId': !exists(json, 'personId') ? undefined : json['personId'],
-        'dateCreated': !exists(json, 'dateCreated') ? undefined : (json['dateCreated'] === null ? null : new Date(json['dateCreated'])),
+        'meta': !exists(json, '_meta') ? undefined : json['_meta'],
+        'personId': !exists(json, 'person_id') ? undefined : json['person_id'],
+        'dateCreated': !exists(json, 'date_created') ? undefined : (json['date_created'] === null ? null : new Date(json['date_created'])),
     };
 }
 
@@ -118,9 +111,9 @@ export function UserToJSON(value?: User | null): any {
         'id': value.id,
         'token': value.token,
         'roles': value.roles === undefined ? undefined : (value.roles === null ? null : (value.roles as Array<any>).map(RoleToJSON)),
-        'meta': value.meta,
-        'personId': value.personId,
-        'dateCreated': value.dateCreated === undefined ? undefined : (value.dateCreated === null ? null : value.dateCreated.toISOString()),
+        '_meta': value.meta,
+        'person_id': value.personId,
+        'date_created': value.dateCreated === undefined ? undefined : (value.dateCreated === null ? null : value.dateCreated.toISOString()),
     };
 }
 

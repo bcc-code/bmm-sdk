@@ -76,12 +76,6 @@ export interface Track {
     id?: number;
     /**
      * 
-     * @type {string}
-     * @memberof Track
-     */
-    readonly idString?: string | null;
-    /**
-     * 
      * @type {boolean}
      * @memberof Track
      */
@@ -124,12 +118,6 @@ export interface Track {
     rel?: Array<TrackRelation> | null;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof Track
-     */
-    readonly songBooks?: Array<string> | null;
-    /**
-     * 
      * @type {TrackSubtype}
      * @memberof Track
      */
@@ -148,18 +136,6 @@ export interface Track {
     translations?: Array<TrackTranslation> | null;
     /**
      * 
-     * @type {Array<TrackTranslation>}
-     * @memberof Track
-     */
-    readonly translationsWithMedia?: Array<TrackTranslation> | null;
-    /**
-     * 
-     * @type {Array<TrackTranslation>}
-     * @memberof Track
-     */
-    readonly translationsWithPublishedMedia?: Array<TrackTranslation> | null;
-    /**
-     * 
      * @type {string}
      * @memberof Track
      */
@@ -170,18 +146,6 @@ export interface Track {
      * @memberof Track
      */
     meta?: TrackTrackMeta;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof Track
-     */
-    readonly isDocumentPublished?: boolean;
-    /**
-     * 
-     * @type {Date}
-     * @memberof Track
-     */
-    readonly modifiedAt?: Date;
 }
 
 /**
@@ -204,27 +168,21 @@ export function TrackFromJSONTyped(json: any, ignoreDiscriminator: boolean): Tra
     return {
         
         'comment': !exists(json, 'comment') ? undefined : json['comment'],
-        'mediabankenId': !exists(json, 'mediabankenId') ? undefined : json['mediabankenId'],
+        'mediabankenId': !exists(json, 'mediabanken_id') ? undefined : json['mediabanken_id'],
         'cover': !exists(json, 'cover') ? undefined : json['cover'],
         'id': !exists(json, 'id') ? undefined : json['id'],
-        'idString': !exists(json, 'idString') ? undefined : json['idString'],
-        'isVisible': !exists(json, 'isVisible') ? undefined : json['isVisible'],
+        'isVisible': !exists(json, 'is_visible') ? undefined : json['is_visible'],
         'order': !exists(json, 'order') ? undefined : json['order'],
-        'originalLanguage': !exists(json, 'originalLanguage') ? undefined : LanguageEnumFromJSON(json['originalLanguage']),
-        'parentId': !exists(json, 'parentId') ? undefined : json['parentId'],
-        'publishedAt': !exists(json, 'publishedAt') ? undefined : (new Date(json['publishedAt'])),
-        'recordedAt': !exists(json, 'recordedAt') ? undefined : (new Date(json['recordedAt'])),
+        'originalLanguage': !exists(json, 'original_language') ? undefined : LanguageEnumFromJSON(json['original_language']),
+        'parentId': !exists(json, 'parent_id') ? undefined : json['parent_id'],
+        'publishedAt': !exists(json, 'published_at') ? undefined : (new Date(json['published_at'])),
+        'recordedAt': !exists(json, 'recorded_at') ? undefined : (new Date(json['recorded_at'])),
         'rel': !exists(json, 'rel') ? undefined : (json['rel'] === null ? null : (json['rel'] as Array<any>).map(TrackRelationFromJSON)),
-        'songBooks': !exists(json, 'songBooks') ? undefined : json['songBooks'],
         'subtype': !exists(json, 'subtype') ? undefined : TrackSubtypeFromJSON(json['subtype']),
         'tags': !exists(json, 'tags') ? undefined : json['tags'],
         'translations': !exists(json, 'translations') ? undefined : (json['translations'] === null ? null : (json['translations'] as Array<any>).map(TrackTranslationFromJSON)),
-        'translationsWithMedia': !exists(json, 'translationsWithMedia') ? undefined : (json['translationsWithMedia'] === null ? null : (json['translationsWithMedia'] as Array<any>).map(TrackTranslationFromJSON)),
-        'translationsWithPublishedMedia': !exists(json, 'translationsWithPublishedMedia') ? undefined : (json['translationsWithPublishedMedia'] === null ? null : (json['translationsWithPublishedMedia'] as Array<any>).map(TrackTranslationFromJSON)),
         'type': !exists(json, 'type') ? undefined : json['type'],
-        'meta': !exists(json, 'meta') ? undefined : TrackTrackMetaFromJSON(json['meta']),
-        'isDocumentPublished': !exists(json, 'isDocumentPublished') ? undefined : json['isDocumentPublished'],
-        'modifiedAt': !exists(json, 'modifiedAt') ? undefined : (new Date(json['modifiedAt'])),
+        'meta': !exists(json, '_meta') ? undefined : TrackTrackMetaFromJSON(json['_meta']),
     };
 }
 
@@ -238,20 +196,20 @@ export function TrackToJSON(value?: Track | null): any {
     return {
         
         'comment': value.comment,
-        'mediabankenId': value.mediabankenId,
+        'mediabanken_id': value.mediabankenId,
         'cover': value.cover,
         'id': value.id,
-        'isVisible': value.isVisible,
+        'is_visible': value.isVisible,
         'order': value.order,
-        'originalLanguage': LanguageEnumToJSON(value.originalLanguage),
-        'parentId': value.parentId,
-        'publishedAt': value.publishedAt === undefined ? undefined : (value.publishedAt.toISOString()),
-        'recordedAt': value.recordedAt === undefined ? undefined : (value.recordedAt.toISOString()),
+        'original_language': LanguageEnumToJSON(value.originalLanguage),
+        'parent_id': value.parentId,
+        'published_at': value.publishedAt === undefined ? undefined : (value.publishedAt.toISOString()),
+        'recorded_at': value.recordedAt === undefined ? undefined : (value.recordedAt.toISOString()),
         'rel': value.rel === undefined ? undefined : (value.rel === null ? null : (value.rel as Array<any>).map(TrackRelationToJSON)),
         'subtype': TrackSubtypeToJSON(value.subtype),
         'tags': value.tags,
         'translations': value.translations === undefined ? undefined : (value.translations === null ? null : (value.translations as Array<any>).map(TrackTranslationToJSON)),
-        'meta': TrackTrackMetaToJSON(value.meta),
+        '_meta': TrackTrackMetaToJSON(value.meta),
     };
 }
 

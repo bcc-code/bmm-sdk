@@ -78,9 +78,9 @@ export function DocumentListFromJSONTyped(json: any, ignoreDiscriminator: boolea
     return {
         
         'title': !exists(json, 'title') ? undefined : json['title'],
-        'translationParent': !exists(json, 'translationParent') ? undefined : json['translationParent'],
-        'translationId': !exists(json, 'translationId') ? undefined : json['translationId'],
-        'supportsPaging': !exists(json, 'supportsPaging') ? undefined : json['supportsPaging'],
+        'translationParent': !exists(json, 'translation_parent') ? undefined : json['translation_parent'],
+        'translationId': !exists(json, 'translation_id') ? undefined : json['translation_id'],
+        'supportsPaging': !exists(json, 'supports_paging') ? undefined : json['supports_paging'],
         'items': !exists(json, 'items') ? undefined : (json['items'] === null ? null : (json['items'] as Array<any>).map(IDocumentModelFromJSON)),
     };
 }
@@ -95,9 +95,9 @@ export function DocumentListToJSON(value?: DocumentList | null): any {
     return {
         
         'title': value.title,
-        'translationParent': value.translationParent,
-        'translationId': value.translationId,
-        'supportsPaging': value.supportsPaging,
+        'translation_parent': value.translationParent,
+        'translation_id': value.translationId,
+        'supports_paging': value.supportsPaging,
         'items': value.items === undefined ? undefined : (value.items === null ? null : (value.items as Array<any>).map(IDocumentModelToJSON)),
     };
 }
