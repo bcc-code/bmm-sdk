@@ -17,11 +17,8 @@ import * as runtime from '../runtime';
 import type {
   DocumentList,
   LanguageEnum,
-  Playlist,
-  PlaylistCollection,
   PlaylistModel,
   PublishedFilter,
-  TrackListOverviewVmPlaylist,
   TrackModel,
 } from '../models';
 import {
@@ -29,23 +26,13 @@ import {
     DocumentListToJSON,
     LanguageEnumFromJSON,
     LanguageEnumToJSON,
-    PlaylistFromJSON,
-    PlaylistToJSON,
-    PlaylistCollectionFromJSON,
-    PlaylistCollectionToJSON,
     PlaylistModelFromJSON,
     PlaylistModelToJSON,
     PublishedFilterFromJSON,
     PublishedFilterToJSON,
-    TrackListOverviewVmPlaylistFromJSON,
-    TrackListOverviewVmPlaylistToJSON,
     TrackModelFromJSON,
     TrackModelToJSON,
 } from '../models';
-
-export interface PlaylistCollectionPutRequest {
-    playlistCollection?: PlaylistCollection;
-}
 
 export interface PlaylistDocumentsGetRequest {
     lang?: LanguageEnum;
@@ -56,32 +43,7 @@ export interface PlaylistIdCoverGetRequest {
     id: number;
 }
 
-export interface PlaylistIdCoverPostRequest {
-    id: number;
-    playlistId?: number;
-    file?: Blob;
-}
-
-export interface PlaylistIdCoverPutRequest {
-    id: number;
-    playlistId?: number;
-    file?: Blob;
-}
-
-export interface PlaylistIdDeleteRequest {
-    id: number;
-}
-
 export interface PlaylistIdGetRequest {
-    id: number;
-}
-
-export interface PlaylistIdPutRequest {
-    id: number;
-    playlist?: Playlist;
-}
-
-export interface PlaylistIdRawGetRequest {
     id: number;
 }
 
@@ -90,40 +52,10 @@ export interface PlaylistIdTrackGetRequest {
     unpublished?: PublishedFilter;
 }
 
-export interface PlaylistPostRequest {
-    playlist?: Playlist;
-}
-
 /**
  * 
  */
 export class PlaylistApi extends runtime.BaseAPI {
-
-    /**
-     */
-    async playlistCollectionPutRaw(requestParameters: PlaylistCollectionPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json-patch+json';
-
-        const response = await this.request({
-            path: `/playlist/collection`,
-            method: 'PUT',
-            headers: headerParameters,
-            query: queryParameters,
-            body: PlaylistCollectionToJSON(requestParameters.playlistCollection),
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async playlistCollectionPut(requestParameters: PlaylistCollectionPutRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.playlistCollectionPutRaw(requestParameters, initOverrides);
-    }
 
     /**
      */
@@ -212,137 +144,6 @@ export class PlaylistApi extends runtime.BaseAPI {
 
     /**
      */
-    async playlistIdCoverPostRaw(requestParameters: PlaylistIdCoverPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling playlistIdCoverPost.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const consumes: runtime.Consume[] = [
-            { contentType: 'multipart/form-data' },
-        ];
-        // @ts-ignore: canConsumeForm may be unused
-        const canConsumeForm = runtime.canConsumeForm(consumes);
-
-        let formParams: { append(param: string, value: any): any };
-        let useForm = false;
-        // use FormData to transmit files using content-type "multipart/form-data"
-        useForm = canConsumeForm;
-        if (useForm) {
-            formParams = new FormData();
-        } else {
-            formParams = new URLSearchParams();
-        }
-
-        if (requestParameters.playlistId !== undefined) {
-            formParams.append('PlaylistId', requestParameters.playlistId as any);
-        }
-
-        if (requestParameters.file !== undefined) {
-            formParams.append('File', requestParameters.file as any);
-        }
-
-        const response = await this.request({
-            path: `/playlist/{id}/cover`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: formParams,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async playlistIdCoverPost(requestParameters: PlaylistIdCoverPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.playlistIdCoverPostRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async playlistIdCoverPutRaw(requestParameters: PlaylistIdCoverPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling playlistIdCoverPut.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const consumes: runtime.Consume[] = [
-            { contentType: 'multipart/form-data' },
-        ];
-        // @ts-ignore: canConsumeForm may be unused
-        const canConsumeForm = runtime.canConsumeForm(consumes);
-
-        let formParams: { append(param: string, value: any): any };
-        let useForm = false;
-        // use FormData to transmit files using content-type "multipart/form-data"
-        useForm = canConsumeForm;
-        if (useForm) {
-            formParams = new FormData();
-        } else {
-            formParams = new URLSearchParams();
-        }
-
-        if (requestParameters.playlistId !== undefined) {
-            formParams.append('PlaylistId', requestParameters.playlistId as any);
-        }
-
-        if (requestParameters.file !== undefined) {
-            formParams.append('File', requestParameters.file as any);
-        }
-
-        const response = await this.request({
-            path: `/playlist/{id}/cover`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'PUT',
-            headers: headerParameters,
-            query: queryParameters,
-            body: formParams,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async playlistIdCoverPut(requestParameters: PlaylistIdCoverPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.playlistIdCoverPutRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async playlistIdDeleteRaw(requestParameters: PlaylistIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling playlistIdDelete.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/playlist/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async playlistIdDelete(requestParameters: PlaylistIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.playlistIdDeleteRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
     async playlistIdGetRaw(requestParameters: PlaylistIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PlaylistModel>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling playlistIdGet.');
@@ -366,64 +167,6 @@ export class PlaylistApi extends runtime.BaseAPI {
      */
     async playlistIdGet(requestParameters: PlaylistIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PlaylistModel> {
         const response = await this.playlistIdGetRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     */
-    async playlistIdPutRaw(requestParameters: PlaylistIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling playlistIdPut.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json-patch+json';
-
-        const response = await this.request({
-            path: `/playlist/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'PUT',
-            headers: headerParameters,
-            query: queryParameters,
-            body: PlaylistToJSON(requestParameters.playlist),
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async playlistIdPut(requestParameters: PlaylistIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.playlistIdPutRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async playlistIdRawGetRaw(requestParameters: PlaylistIdRawGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Playlist>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling playlistIdRawGet.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/playlist/{id}/raw`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => PlaylistFromJSON(jsonValue));
-    }
-
-    /**
-     */
-    async playlistIdRawGet(requestParameters: PlaylistIdRawGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Playlist> {
-        const response = await this.playlistIdRawGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -457,56 +200,6 @@ export class PlaylistApi extends runtime.BaseAPI {
     async playlistIdTrackGet(requestParameters: PlaylistIdTrackGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<TrackModel>> {
         const response = await this.playlistIdTrackGetRaw(requestParameters, initOverrides);
         return await response.value();
-    }
-
-    /**
-     */
-    async playlistOverviewGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TrackListOverviewVmPlaylist>> {
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/playlist/overview`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => TrackListOverviewVmPlaylistFromJSON(jsonValue));
-    }
-
-    /**
-     */
-    async playlistOverviewGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TrackListOverviewVmPlaylist> {
-        const response = await this.playlistOverviewGetRaw(initOverrides);
-        return await response.value();
-    }
-
-    /**
-     */
-    async playlistPostRaw(requestParameters: PlaylistPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json-patch+json';
-
-        const response = await this.request({
-            path: `/playlist`,
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: PlaylistToJSON(requestParameters.playlist),
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async playlistPost(requestParameters: PlaylistPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.playlistPostRaw(requestParameters, initOverrides);
     }
 
 }

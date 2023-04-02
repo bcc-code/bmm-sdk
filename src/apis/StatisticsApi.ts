@@ -15,31 +15,15 @@
 
 import * as runtime from '../runtime';
 import type {
-  Album,
   CreateTrackPlayedEventsCommandEvent,
   GetYearInReviewOverviewSlide,
-  Track,
 } from '../models';
 import {
-    AlbumFromJSON,
-    AlbumToJSON,
     CreateTrackPlayedEventsCommandEventFromJSON,
     CreateTrackPlayedEventsCommandEventToJSON,
     GetYearInReviewOverviewSlideFromJSON,
     GetYearInReviewOverviewSlideToJSON,
-    TrackFromJSON,
-    TrackToJSON,
 } from '../models';
-
-export interface StatisticsGlobalAlbumDownloadedMostGetRequest {
-    size?: number;
-    from?: number;
-}
-
-export interface StatisticsGlobalTrackDownloadedMostGetRequest {
-    size?: number;
-    from?: number;
-}
 
 export interface StatisticsTrackPlayedPostRequest {
     createTrackPlayedEventsCommandEvent?: Array<CreateTrackPlayedEventsCommandEvent>;
@@ -49,70 +33,6 @@ export interface StatisticsTrackPlayedPostRequest {
  * 
  */
 export class StatisticsApi extends runtime.BaseAPI {
-
-    /**
-     */
-    async statisticsGlobalAlbumDownloadedMostGetRaw(requestParameters: StatisticsGlobalAlbumDownloadedMostGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Album>>> {
-        const queryParameters: any = {};
-
-        if (requestParameters.size !== undefined) {
-            queryParameters['size'] = requestParameters.size;
-        }
-
-        if (requestParameters.from !== undefined) {
-            queryParameters['from'] = requestParameters.from;
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/Statistics/global/album/downloaded/most`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(AlbumFromJSON));
-    }
-
-    /**
-     */
-    async statisticsGlobalAlbumDownloadedMostGet(requestParameters: StatisticsGlobalAlbumDownloadedMostGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Album>> {
-        const response = await this.statisticsGlobalAlbumDownloadedMostGetRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     */
-    async statisticsGlobalTrackDownloadedMostGetRaw(requestParameters: StatisticsGlobalTrackDownloadedMostGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Track>>> {
-        const queryParameters: any = {};
-
-        if (requestParameters.size !== undefined) {
-            queryParameters['size'] = requestParameters.size;
-        }
-
-        if (requestParameters.from !== undefined) {
-            queryParameters['from'] = requestParameters.from;
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/Statistics/global/track/downloaded/most`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(TrackFromJSON));
-    }
-
-    /**
-     */
-    async statisticsGlobalTrackDownloadedMostGet(requestParameters: StatisticsGlobalTrackDownloadedMostGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Track>> {
-        const response = await this.statisticsGlobalTrackDownloadedMostGetRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
 
     /**
      */
@@ -138,30 +58,6 @@ export class StatisticsApi extends runtime.BaseAPI {
      */
     async statisticsTrackPlayedPost(requestParameters: StatisticsTrackPlayedPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.statisticsTrackPlayedPostRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async statisticsWrappedGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<string>> {
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/Statistics/wrapped`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.TextApiResponse(response) as any;
-    }
-
-    /**
-     */
-    async statisticsWrappedGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<string> {
-        const response = await this.statisticsWrappedGetRaw(initOverrides);
-        return await response.value();
     }
 
     /**

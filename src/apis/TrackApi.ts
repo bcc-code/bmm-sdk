@@ -17,7 +17,6 @@ import * as runtime from '../runtime';
 import type {
   LanguageEnum,
   PublishedFilter,
-  Track,
   TrackModel,
   TrackSubtype,
 } from '../models';
@@ -26,8 +25,6 @@ import {
     LanguageEnumToJSON,
     PublishedFilterFromJSON,
     PublishedFilterToJSON,
-    TrackFromJSON,
-    TrackToJSON,
     TrackModelFromJSON,
     TrackModelToJSON,
     TrackSubtypeFromJSON,
@@ -48,44 +45,9 @@ export interface TrackGetRequest {
     excludeTags2?: Array<string>;
 }
 
-export interface TrackIdCoverPostRequest {
-    id: number;
-    trackId?: number;
-    file?: Blob;
-}
-
-export interface TrackIdDeleteRequest {
-    id: number;
-}
-
-export interface TrackIdFilesPostRequest {
-    id: number;
-    trackId?: number;
-    file?: Blob;
-}
-
 export interface TrackIdGetRequest {
     id: number;
     unpublished?: PublishedFilter;
-}
-
-export interface TrackIdPutRequest {
-    id: number;
-    track?: Track;
-}
-
-export interface TrackIdRawGetRequest {
-    id: number;
-}
-
-export interface TrackIdSourceLanguageChangeToTargetLanguagePostRequest {
-    id: number;
-    sourceLanguage: LanguageEnum;
-    targetLanguage: LanguageEnum;
-}
-
-export interface TrackPostRequest {
-    track?: Track;
 }
 
 /**
@@ -163,139 +125,6 @@ export class TrackApi extends runtime.BaseAPI {
 
     /**
      */
-    async trackIdCoverPostRaw(requestParameters: TrackIdCoverPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling trackIdCoverPost.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const consumes: runtime.Consume[] = [
-            { contentType: 'multipart/form-data' },
-        ];
-        // @ts-ignore: canConsumeForm may be unused
-        const canConsumeForm = runtime.canConsumeForm(consumes);
-
-        let formParams: { append(param: string, value: any): any };
-        let useForm = false;
-        // use FormData to transmit files using content-type "multipart/form-data"
-        useForm = canConsumeForm;
-        if (useForm) {
-            formParams = new FormData();
-        } else {
-            formParams = new URLSearchParams();
-        }
-
-        if (requestParameters.trackId !== undefined) {
-            formParams.append('TrackId', requestParameters.trackId as any);
-        }
-
-        if (requestParameters.file !== undefined) {
-            formParams.append('File', requestParameters.file as any);
-        }
-
-        const response = await this.request({
-            path: `/track/{id}/cover`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: formParams,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async trackIdCoverPost(requestParameters: TrackIdCoverPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.trackIdCoverPostRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async trackIdDeleteRaw(requestParameters: TrackIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling trackIdDelete.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/track/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async trackIdDelete(requestParameters: TrackIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.trackIdDeleteRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     * Add a file to a track by sending it via POST.  If a file already is uploaded to this track for the same language and has the same file extension, you will overwrite that one.
-     */
-    async trackIdFilesPostRaw(requestParameters: TrackIdFilesPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling trackIdFilesPost.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const consumes: runtime.Consume[] = [
-            { contentType: 'multipart/form-data' },
-        ];
-        // @ts-ignore: canConsumeForm may be unused
-        const canConsumeForm = runtime.canConsumeForm(consumes);
-
-        let formParams: { append(param: string, value: any): any };
-        let useForm = false;
-        // use FormData to transmit files using content-type "multipart/form-data"
-        useForm = canConsumeForm;
-        if (useForm) {
-            formParams = new FormData();
-        } else {
-            formParams = new URLSearchParams();
-        }
-
-        if (requestParameters.trackId !== undefined) {
-            formParams.append('TrackId', requestParameters.trackId as any);
-        }
-
-        if (requestParameters.file !== undefined) {
-            formParams.append('File', requestParameters.file as any);
-        }
-
-        const response = await this.request({
-            path: `/track/{id}/files`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: formParams,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     * Add a file to a track by sending it via POST.  If a file already is uploaded to this track for the same language and has the same file extension, you will overwrite that one.
-     */
-    async trackIdFilesPost(requestParameters: TrackIdFilesPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.trackIdFilesPostRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
     async trackIdGetRaw(requestParameters: TrackIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TrackModel>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling trackIdGet.');
@@ -324,125 +153,6 @@ export class TrackApi extends runtime.BaseAPI {
     async trackIdGet(requestParameters: TrackIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TrackModel> {
         const response = await this.trackIdGetRaw(requestParameters, initOverrides);
         return await response.value();
-    }
-
-    /**
-     */
-    async trackIdPutRaw(requestParameters: TrackIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling trackIdPut.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json-patch+json';
-
-        const response = await this.request({
-            path: `/track/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'PUT',
-            headers: headerParameters,
-            query: queryParameters,
-            body: TrackToJSON(requestParameters.track),
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async trackIdPut(requestParameters: TrackIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.trackIdPutRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async trackIdRawGetRaw(requestParameters: TrackIdRawGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Track>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling trackIdRawGet.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/track/{id}/raw`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => TrackFromJSON(jsonValue));
-    }
-
-    /**
-     */
-    async trackIdRawGet(requestParameters: TrackIdRawGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Track> {
-        const response = await this.trackIdRawGetRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     */
-    async trackIdSourceLanguageChangeToTargetLanguagePostRaw(requestParameters: TrackIdSourceLanguageChangeToTargetLanguagePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling trackIdSourceLanguageChangeToTargetLanguagePost.');
-        }
-
-        if (requestParameters.sourceLanguage === null || requestParameters.sourceLanguage === undefined) {
-            throw new runtime.RequiredError('sourceLanguage','Required parameter requestParameters.sourceLanguage was null or undefined when calling trackIdSourceLanguageChangeToTargetLanguagePost.');
-        }
-
-        if (requestParameters.targetLanguage === null || requestParameters.targetLanguage === undefined) {
-            throw new runtime.RequiredError('targetLanguage','Required parameter requestParameters.targetLanguage was null or undefined when calling trackIdSourceLanguageChangeToTargetLanguagePost.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/track/{id}/{sourceLanguage}/changeTo/{targetLanguage}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))).replace(`{${"sourceLanguage"}}`, encodeURIComponent(String(requestParameters.sourceLanguage))).replace(`{${"targetLanguage"}}`, encodeURIComponent(String(requestParameters.targetLanguage))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async trackIdSourceLanguageChangeToTargetLanguagePost(requestParameters: TrackIdSourceLanguageChangeToTargetLanguagePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.trackIdSourceLanguageChangeToTargetLanguagePostRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async trackPostRaw(requestParameters: TrackPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json-patch+json';
-
-        const response = await this.request({
-            path: `/track`,
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: TrackToJSON(requestParameters.track),
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async trackPost(requestParameters: TrackPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.trackPostRaw(requestParameters, initOverrides);
     }
 
     /**

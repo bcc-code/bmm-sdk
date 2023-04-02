@@ -1,7 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
 export * from './AlbumApi';
-export * from './AppVersionApi';
 export * from './BrowseApi';
 export * from './ContributorApi';
 export * from './CurrentUserApi';
@@ -10,12 +9,7 @@ export * from './DiscoverApi';
 export * from './EventsApi';
 export * from './FacetsApi';
 export * from './FileApi';
-export * from './GroupGoalApi';
-export * from './IndexesApi';
 export * from './LinkMetadataApi';
-export * from './LiveApi';
-export * from './LoginApi';
-export * from './NotificationsApi';
 export * from './PlaylistApi';
 export * from './PodcastApi';
 export * from './SearchApi';
@@ -23,9 +17,5 @@ export * from './SharedPlaylistApi';
 export * from './StatisticsApi';
 export * from './SubscriptionApi';
 export * from './SuggestApi';
-export * from './TagsApi';
-export * from './TestApi';
 export * from './TrackApi';
 export * from './TrackCollectionApi';
-export * from './UserApi';
-export * from './ValuesApi';

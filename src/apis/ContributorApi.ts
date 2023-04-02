@@ -16,15 +16,12 @@
 import * as runtime from '../runtime';
 import type {
   ContributorModel,
-  CreateOrUpdateContributorCommand,
   PublishedFilter,
   TrackModel,
 } from '../models';
 import {
     ContributorModelFromJSON,
     ContributorModelToJSON,
-    CreateOrUpdateContributorCommandFromJSON,
-    CreateOrUpdateContributorCommandToJSON,
     PublishedFilterFromJSON,
     PublishedFilterToJSON,
     TrackModelFromJSON,
@@ -35,30 +32,9 @@ export interface ContributorIdCoverGetRequest {
     id: number;
 }
 
-export interface ContributorIdCoverPostRequest {
-    id: number;
-    contributorId?: number;
-    file?: Blob;
-}
-
-export interface ContributorIdCoverPutRequest {
-    id: number;
-    contributorId?: number;
-    file?: Blob;
-}
-
-export interface ContributorIdDeleteRequest {
-    id: number;
-}
-
 export interface ContributorIdGetRequest {
     id: number;
     unpublished?: PublishedFilter;
-}
-
-export interface ContributorIdPutRequest {
-    id: number;
-    createOrUpdateContributorCommand?: CreateOrUpdateContributorCommand;
 }
 
 export interface ContributorIdRandomGetRequest {
@@ -73,16 +49,7 @@ export interface ContributorIdTrackGetRequest {
     size?: number;
 }
 
-export interface ContributorPostRequest {
-    createOrUpdateContributorCommand?: CreateOrUpdateContributorCommand;
-}
-
 export interface ContributorSearchTermGetRequest {
-    term: string;
-    size?: number;
-}
-
-export interface ContributorSearchUnpublishedTermGetRequest {
     term: string;
     size?: number;
 }
@@ -150,137 +117,6 @@ export class ContributorApi extends runtime.BaseAPI {
 
     /**
      */
-    async contributorIdCoverPostRaw(requestParameters: ContributorIdCoverPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling contributorIdCoverPost.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const consumes: runtime.Consume[] = [
-            { contentType: 'multipart/form-data' },
-        ];
-        // @ts-ignore: canConsumeForm may be unused
-        const canConsumeForm = runtime.canConsumeForm(consumes);
-
-        let formParams: { append(param: string, value: any): any };
-        let useForm = false;
-        // use FormData to transmit files using content-type "multipart/form-data"
-        useForm = canConsumeForm;
-        if (useForm) {
-            formParams = new FormData();
-        } else {
-            formParams = new URLSearchParams();
-        }
-
-        if (requestParameters.contributorId !== undefined) {
-            formParams.append('ContributorId', requestParameters.contributorId as any);
-        }
-
-        if (requestParameters.file !== undefined) {
-            formParams.append('File', requestParameters.file as any);
-        }
-
-        const response = await this.request({
-            path: `/contributor/{id}/cover`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: formParams,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async contributorIdCoverPost(requestParameters: ContributorIdCoverPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.contributorIdCoverPostRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async contributorIdCoverPutRaw(requestParameters: ContributorIdCoverPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling contributorIdCoverPut.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const consumes: runtime.Consume[] = [
-            { contentType: 'multipart/form-data' },
-        ];
-        // @ts-ignore: canConsumeForm may be unused
-        const canConsumeForm = runtime.canConsumeForm(consumes);
-
-        let formParams: { append(param: string, value: any): any };
-        let useForm = false;
-        // use FormData to transmit files using content-type "multipart/form-data"
-        useForm = canConsumeForm;
-        if (useForm) {
-            formParams = new FormData();
-        } else {
-            formParams = new URLSearchParams();
-        }
-
-        if (requestParameters.contributorId !== undefined) {
-            formParams.append('ContributorId', requestParameters.contributorId as any);
-        }
-
-        if (requestParameters.file !== undefined) {
-            formParams.append('File', requestParameters.file as any);
-        }
-
-        const response = await this.request({
-            path: `/contributor/{id}/cover`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'PUT',
-            headers: headerParameters,
-            query: queryParameters,
-            body: formParams,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async contributorIdCoverPut(requestParameters: ContributorIdCoverPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.contributorIdCoverPutRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async contributorIdDeleteRaw(requestParameters: ContributorIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling contributorIdDelete.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/contributor/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async contributorIdDelete(requestParameters: ContributorIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.contributorIdDeleteRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
     async contributorIdGetRaw(requestParameters: ContributorIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ContributorModel>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling contributorIdGet.');
@@ -309,36 +145,6 @@ export class ContributorApi extends runtime.BaseAPI {
     async contributorIdGet(requestParameters: ContributorIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ContributorModel> {
         const response = await this.contributorIdGetRaw(requestParameters, initOverrides);
         return await response.value();
-    }
-
-    /**
-     */
-    async contributorIdPutRaw(requestParameters: ContributorIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling contributorIdPut.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json-patch+json';
-
-        const response = await this.request({
-            path: `/contributor/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'PUT',
-            headers: headerParameters,
-            query: queryParameters,
-            body: CreateOrUpdateContributorCommandToJSON(requestParameters.createOrUpdateContributorCommand),
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async contributorIdPut(requestParameters: ContributorIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.contributorIdPutRaw(requestParameters, initOverrides);
     }
 
     /**
@@ -415,32 +221,6 @@ export class ContributorApi extends runtime.BaseAPI {
 
     /**
      */
-    async contributorPostRaw(requestParameters: ContributorPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json-patch+json';
-
-        const response = await this.request({
-            path: `/contributor`,
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: CreateOrUpdateContributorCommandToJSON(requestParameters.createOrUpdateContributorCommand),
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async contributorPost(requestParameters: ContributorPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.contributorPostRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
     async contributorSearchTermGetRaw(requestParameters: ContributorSearchTermGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<ContributorModel>>> {
         if (requestParameters.term === null || requestParameters.term === undefined) {
             throw new runtime.RequiredError('term','Required parameter requestParameters.term was null or undefined when calling contributorSearchTermGet.');
@@ -468,38 +248,6 @@ export class ContributorApi extends runtime.BaseAPI {
      */
     async contributorSearchTermGet(requestParameters: ContributorSearchTermGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<ContributorModel>> {
         const response = await this.contributorSearchTermGetRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     */
-    async contributorSearchUnpublishedTermGetRaw(requestParameters: ContributorSearchUnpublishedTermGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<ContributorModel>>> {
-        if (requestParameters.term === null || requestParameters.term === undefined) {
-            throw new runtime.RequiredError('term','Required parameter requestParameters.term was null or undefined when calling contributorSearchUnpublishedTermGet.');
-        }
-
-        const queryParameters: any = {};
-
-        if (requestParameters.size !== undefined) {
-            queryParameters['size'] = requestParameters.size;
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/contributor/search_unpublished/{term}`.replace(`{${"term"}}`, encodeURIComponent(String(requestParameters.term))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(ContributorModelFromJSON));
-    }
-
-    /**
-     */
-    async contributorSearchUnpublishedTermGet(requestParameters: ContributorSearchUnpublishedTermGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<ContributorModel>> {
-        const response = await this.contributorSearchUnpublishedTermGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

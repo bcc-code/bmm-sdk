@@ -15,19 +15,13 @@
 
 import * as runtime from '../runtime';
 import type {
-  Album,
   AlbumModel,
-  LanguageEnum,
   PublishedFilter,
   TrackSubtype,
 } from '../models';
 import {
-    AlbumFromJSON,
-    AlbumToJSON,
     AlbumModelFromJSON,
     AlbumModelToJSON,
-    LanguageEnumFromJSON,
-    LanguageEnumToJSON,
     PublishedFilterFromJSON,
     PublishedFilterToJSON,
     TrackSubtypeFromJSON,
@@ -51,43 +45,9 @@ export interface AlbumIdCoverGetRequest {
     id: number;
 }
 
-export interface AlbumIdCoverPostRequest {
-    id: number;
-    albumId?: number;
-    file?: Blob;
-}
-
-export interface AlbumIdCoverPutRequest {
-    id: number;
-    albumId?: number;
-    file?: Blob;
-}
-
-export interface AlbumIdDeleteRequest {
-    id: number;
-}
-
-export interface AlbumIdDownloadGetRequest {
-    id: number;
-    languages?: Array<LanguageEnum>;
-}
-
 export interface AlbumIdGetRequest {
     id: number;
     unpublished?: PublishedFilter;
-}
-
-export interface AlbumIdPutRequest {
-    id: number;
-    album?: Album;
-}
-
-export interface AlbumIdRawGetRequest {
-    id: number;
-}
-
-export interface AlbumPostRequest {
-    album?: Album;
 }
 
 export interface AlbumPublishedYearGetRequest {
@@ -193,168 +153,6 @@ export class AlbumApi extends runtime.BaseAPI {
 
     /**
      */
-    async albumIdCoverPostRaw(requestParameters: AlbumIdCoverPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling albumIdCoverPost.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const consumes: runtime.Consume[] = [
-            { contentType: 'multipart/form-data' },
-        ];
-        // @ts-ignore: canConsumeForm may be unused
-        const canConsumeForm = runtime.canConsumeForm(consumes);
-
-        let formParams: { append(param: string, value: any): any };
-        let useForm = false;
-        // use FormData to transmit files using content-type "multipart/form-data"
-        useForm = canConsumeForm;
-        if (useForm) {
-            formParams = new FormData();
-        } else {
-            formParams = new URLSearchParams();
-        }
-
-        if (requestParameters.albumId !== undefined) {
-            formParams.append('AlbumId', requestParameters.albumId as any);
-        }
-
-        if (requestParameters.file !== undefined) {
-            formParams.append('File', requestParameters.file as any);
-        }
-
-        const response = await this.request({
-            path: `/album/{id}/cover`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: formParams,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async albumIdCoverPost(requestParameters: AlbumIdCoverPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.albumIdCoverPostRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async albumIdCoverPutRaw(requestParameters: AlbumIdCoverPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling albumIdCoverPut.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const consumes: runtime.Consume[] = [
-            { contentType: 'multipart/form-data' },
-        ];
-        // @ts-ignore: canConsumeForm may be unused
-        const canConsumeForm = runtime.canConsumeForm(consumes);
-
-        let formParams: { append(param: string, value: any): any };
-        let useForm = false;
-        // use FormData to transmit files using content-type "multipart/form-data"
-        useForm = canConsumeForm;
-        if (useForm) {
-            formParams = new FormData();
-        } else {
-            formParams = new URLSearchParams();
-        }
-
-        if (requestParameters.albumId !== undefined) {
-            formParams.append('AlbumId', requestParameters.albumId as any);
-        }
-
-        if (requestParameters.file !== undefined) {
-            formParams.append('File', requestParameters.file as any);
-        }
-
-        const response = await this.request({
-            path: `/album/{id}/cover`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'PUT',
-            headers: headerParameters,
-            query: queryParameters,
-            body: formParams,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async albumIdCoverPut(requestParameters: AlbumIdCoverPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.albumIdCoverPutRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async albumIdDeleteRaw(requestParameters: AlbumIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling albumIdDelete.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/album/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'DELETE',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async albumIdDelete(requestParameters: AlbumIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.albumIdDeleteRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async albumIdDownloadGetRaw(requestParameters: AlbumIdDownloadGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling albumIdDownloadGet.');
-        }
-
-        const queryParameters: any = {};
-
-        if (requestParameters.languages) {
-            queryParameters['languages'] = requestParameters.languages;
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/album/{id}/download`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async albumIdDownloadGet(requestParameters: AlbumIdDownloadGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.albumIdDownloadGetRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
     async albumIdGetRaw(requestParameters: AlbumIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AlbumModel>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling albumIdGet.');
@@ -383,90 +181,6 @@ export class AlbumApi extends runtime.BaseAPI {
     async albumIdGet(requestParameters: AlbumIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AlbumModel> {
         const response = await this.albumIdGetRaw(requestParameters, initOverrides);
         return await response.value();
-    }
-
-    /**
-     */
-    async albumIdPutRaw(requestParameters: AlbumIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling albumIdPut.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json-patch+json';
-
-        const response = await this.request({
-            path: `/album/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'PUT',
-            headers: headerParameters,
-            query: queryParameters,
-            body: AlbumToJSON(requestParameters.album),
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async albumIdPut(requestParameters: AlbumIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.albumIdPutRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async albumIdRawGetRaw(requestParameters: AlbumIdRawGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Album>> {
-        if (requestParameters.id === null || requestParameters.id === undefined) {
-            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling albumIdRawGet.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/album/{id}/raw`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => AlbumFromJSON(jsonValue));
-    }
-
-    /**
-     */
-    async albumIdRawGet(requestParameters: AlbumIdRawGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Album> {
-        const response = await this.albumIdRawGetRaw(requestParameters, initOverrides);
-        return await response.value();
-    }
-
-    /**
-     */
-    async albumPostRaw(requestParameters: AlbumPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        headerParameters['Content-Type'] = 'application/json-patch+json';
-
-        const response = await this.request({
-            path: `/album`,
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-            body: AlbumToJSON(requestParameters.album),
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async albumPost(requestParameters: AlbumPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.albumPostRaw(requestParameters, initOverrides);
     }
 
     /**

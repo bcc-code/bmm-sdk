@@ -14,13 +14,6 @@
 
 
 import * as runtime from '../runtime';
-import type {
-  GuessTracksQueryResult,
-} from '../models';
-import {
-    GuessTracksQueryResultFromJSON,
-    GuessTracksQueryResultToJSON,
-} from '../models';
 
 export interface FileProtectedTrackIdNameGetRequest {
     id: number;
@@ -34,27 +27,6 @@ export interface FileProtectedTypeIdNameGetRequest {
     id: number;
     name: string;
     lastChanged?: number;
-}
-
-export interface FileUploadedPath1Path2Path3PostRequest {
-    path1: string;
-    path2: string;
-    path3: string;
-    link?: Array<string>;
-}
-
-export interface FileUploadedPath1Path2PostRequest {
-    path1: string;
-    path2: string;
-    path3?: string;
-    link?: Array<string>;
-}
-
-export interface FileUploadedPath1PostRequest {
-    path1: string;
-    path2?: string;
-    path3?: string;
-    link?: Array<string>;
 }
 
 /**
@@ -161,147 +133,6 @@ export class FileApi extends runtime.BaseAPI {
      */
     async fileProtectedTypeIdNameGet(requestParameters: FileProtectedTypeIdNameGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.fileProtectedTypeIdNameGetRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async fileUploadedGuessTracksGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GuessTracksQueryResult>> {
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/File/uploaded/guess_tracks`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.JSONApiResponse(response, (jsonValue) => GuessTracksQueryResultFromJSON(jsonValue));
-    }
-
-    /**
-     */
-    async fileUploadedGuessTracksGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GuessTracksQueryResult> {
-        const response = await this.fileUploadedGuessTracksGetRaw(initOverrides);
-        return await response.value();
-    }
-
-    /**
-     */
-    async fileUploadedPath1Path2Path3PostRaw(requestParameters: FileUploadedPath1Path2Path3PostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.path1 === null || requestParameters.path1 === undefined) {
-            throw new runtime.RequiredError('path1','Required parameter requestParameters.path1 was null or undefined when calling fileUploadedPath1Path2Path3Post.');
-        }
-
-        if (requestParameters.path2 === null || requestParameters.path2 === undefined) {
-            throw new runtime.RequiredError('path2','Required parameter requestParameters.path2 was null or undefined when calling fileUploadedPath1Path2Path3Post.');
-        }
-
-        if (requestParameters.path3 === null || requestParameters.path3 === undefined) {
-            throw new runtime.RequiredError('path3','Required parameter requestParameters.path3 was null or undefined when calling fileUploadedPath1Path2Path3Post.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters.link) {
-            headerParameters['link'] = requestParameters.link.join(runtime.COLLECTION_FORMATS["csv"]);
-        }
-
-        const response = await this.request({
-            path: `/File/uploaded/{path1}/{path2}/{path3}`.replace(`{${"path1"}}`, encodeURIComponent(String(requestParameters.path1))).replace(`{${"path2"}}`, encodeURIComponent(String(requestParameters.path2))).replace(`{${"path3"}}`, encodeURIComponent(String(requestParameters.path3))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async fileUploadedPath1Path2Path3Post(requestParameters: FileUploadedPath1Path2Path3PostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.fileUploadedPath1Path2Path3PostRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async fileUploadedPath1Path2PostRaw(requestParameters: FileUploadedPath1Path2PostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.path1 === null || requestParameters.path1 === undefined) {
-            throw new runtime.RequiredError('path1','Required parameter requestParameters.path1 was null or undefined when calling fileUploadedPath1Path2Post.');
-        }
-
-        if (requestParameters.path2 === null || requestParameters.path2 === undefined) {
-            throw new runtime.RequiredError('path2','Required parameter requestParameters.path2 was null or undefined when calling fileUploadedPath1Path2Post.');
-        }
-
-        const queryParameters: any = {};
-
-        if (requestParameters.path3 !== undefined) {
-            queryParameters['path3'] = requestParameters.path3;
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters.link) {
-            headerParameters['link'] = requestParameters.link.join(runtime.COLLECTION_FORMATS["csv"]);
-        }
-
-        const response = await this.request({
-            path: `/File/uploaded/{path1}/{path2}`.replace(`{${"path1"}}`, encodeURIComponent(String(requestParameters.path1))).replace(`{${"path2"}}`, encodeURIComponent(String(requestParameters.path2))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async fileUploadedPath1Path2Post(requestParameters: FileUploadedPath1Path2PostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.fileUploadedPath1Path2PostRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
-    async fileUploadedPath1PostRaw(requestParameters: FileUploadedPath1PostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.path1 === null || requestParameters.path1 === undefined) {
-            throw new runtime.RequiredError('path1','Required parameter requestParameters.path1 was null or undefined when calling fileUploadedPath1Post.');
-        }
-
-        const queryParameters: any = {};
-
-        if (requestParameters.path2 !== undefined) {
-            queryParameters['path2'] = requestParameters.path2;
-        }
-
-        if (requestParameters.path3 !== undefined) {
-            queryParameters['path3'] = requestParameters.path3;
-        }
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        if (requestParameters.link) {
-            headerParameters['link'] = requestParameters.link.join(runtime.COLLECTION_FORMATS["csv"]);
-        }
-
-        const response = await this.request({
-            path: `/File/uploaded/{path1}`.replace(`{${"path1"}}`, encodeURIComponent(String(requestParameters.path1))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async fileUploadedPath1Post(requestParameters: FileUploadedPath1PostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.fileUploadedPath1PostRaw(requestParameters, initOverrides);
     }
 
 }
