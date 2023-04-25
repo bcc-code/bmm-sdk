@@ -15,14 +15,14 @@
 
 import * as runtime from '../runtime';
 import type {
+  BrowseGet200ResponseInner,
   DocumentList,
-  IDocumentModel,
 } from '../models';
 import {
+    BrowseGet200ResponseInnerFromJSON,
+    BrowseGet200ResponseInnerToJSON,
     DocumentListFromJSON,
     DocumentListToJSON,
-    IDocumentModelFromJSON,
-    IDocumentModelToJSON,
 } from '../models';
 
 export interface BrowseAudiobooksGetRequest {
@@ -106,7 +106,7 @@ export class BrowseApi extends runtime.BaseAPI {
 
     /**
      */
-    async browseGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<IDocumentModel>>> {
+    async browseGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<BrowseGet200ResponseInner>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -118,12 +118,12 @@ export class BrowseApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(IDocumentModelFromJSON));
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(BrowseGet200ResponseInnerFromJSON));
     }
 
     /**
      */
-    async browseGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<IDocumentModel>> {
+    async browseGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<BrowseGet200ResponseInner>> {
         const response = await this.browseGetRaw(initOverrides);
         return await response.value();
     }

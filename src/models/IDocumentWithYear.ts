@@ -16,41 +16,48 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface IDocumentModel
+ * @interface IDocumentWithYear
  */
-export interface IDocumentModel {
+export interface IDocumentWithYear {
     /**
      * 
      * @type {number}
-     * @memberof IDocumentModel
+     * @memberof IDocumentWithYear
+     */
+    readonly year?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof IDocumentWithYear
      */
     id?: number;
 }
 
 /**
- * Check if a given object implements the IDocumentModel interface.
+ * Check if a given object implements the IDocumentWithYear interface.
  */
-export function instanceOfIDocumentModel(value: object): boolean {
+export function instanceOfIDocumentWithYear(value: object): boolean {
     let isInstance = true;
 
     return isInstance;
 }
 
-export function IDocumentModelFromJSON(json: any): IDocumentModel {
-    return IDocumentModelFromJSONTyped(json, false);
+export function IDocumentWithYearFromJSON(json: any): IDocumentWithYear {
+    return IDocumentWithYearFromJSONTyped(json, false);
 }
 
-export function IDocumentModelFromJSONTyped(json: any, ignoreDiscriminator: boolean): IDocumentModel {
+export function IDocumentWithYearFromJSONTyped(json: any, ignoreDiscriminator: boolean): IDocumentWithYear {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
+        'year': !exists(json, 'year') ? undefined : json['year'],
         'id': !exists(json, 'id') ? undefined : json['id'],
     };
 }
 
-export function IDocumentModelToJSON(value?: IDocumentModel | null): any {
+export function IDocumentWithYearToJSON(value?: IDocumentWithYear | null): any {
     if (value === undefined) {
         return undefined;
     }

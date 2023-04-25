@@ -16,41 +16,55 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface IDocumentModel
+ * @interface ChapterHeader
  */
-export interface IDocumentModel {
+export interface ChapterHeader {
     /**
      * 
      * @type {number}
-     * @memberof IDocumentModel
+     * @memberof ChapterHeader
      */
     id?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ChapterHeader
+     */
+    readonly type?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof ChapterHeader
+     */
+    title?: string | null;
 }
 
 /**
- * Check if a given object implements the IDocumentModel interface.
+ * Check if a given object implements the ChapterHeader interface.
  */
-export function instanceOfIDocumentModel(value: object): boolean {
+export function instanceOfChapterHeader(value: object): boolean {
     let isInstance = true;
 
     return isInstance;
 }
 
-export function IDocumentModelFromJSON(json: any): IDocumentModel {
-    return IDocumentModelFromJSONTyped(json, false);
+export function ChapterHeaderFromJSON(json: any): ChapterHeader {
+    return ChapterHeaderFromJSONTyped(json, false);
 }
 
-export function IDocumentModelFromJSONTyped(json: any, ignoreDiscriminator: boolean): IDocumentModel {
+export function ChapterHeaderFromJSONTyped(json: any, ignoreDiscriminator: boolean): ChapterHeader {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
         'id': !exists(json, 'id') ? undefined : json['id'],
+        'type': !exists(json, 'type') ? undefined : json['type'],
+        'title': !exists(json, 'title') ? undefined : json['title'],
     };
 }
 
-export function IDocumentModelToJSON(value?: IDocumentModel | null): any {
+export function ChapterHeaderToJSON(value?: ChapterHeader | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -60,6 +74,7 @@ export function IDocumentModelToJSON(value?: IDocumentModel | null): any {
     return {
         
         'id': value.id,
+        'title': value.title,
     };
 }
 

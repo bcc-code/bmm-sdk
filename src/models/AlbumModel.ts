@@ -13,18 +13,18 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { AlbumModel | ContributorModel | PlaylistModel | PodcastModel | TrackCollectionModel | CurrentWeeksStreakVm | ChapterHeader | IDocumentWithYear | InfoMessageModel | SectionHeaderModel | ITileModel | TileMessageModel | TileVideoModel | TileModel | TrackModel | YearInReviewModel } from './AlbumModel | ContributorModel | PlaylistModel | PodcastModel | TrackCollectionModel | CurrentWeeksStreakVm | ChapterHeader | IDocumentWithYear | InfoMessageModel | SectionHeaderModel | ITileModel | TileMessageModel | TileVideoModel | TileModel | TrackModel | YearInReviewModel';
+import {
+    AlbumModel | ContributorModel | PlaylistModel | PodcastModel | TrackCollectionModel | CurrentWeeksStreakVm | ChapterHeader | IDocumentWithYear | InfoMessageModel | SectionHeaderModel | ITileModel | TileMessageModel | TileVideoModel | TileModel | TrackModel | YearInReviewModelFromJSON,
+    AlbumModel | ContributorModel | PlaylistModel | PodcastModel | TrackCollectionModel | CurrentWeeksStreakVm | ChapterHeader | IDocumentWithYear | InfoMessageModel | SectionHeaderModel | ITileModel | TileMessageModel | TileVideoModel | TileModel | TrackModel | YearInReviewModelFromJSONTyped,
+    AlbumModel | ContributorModel | PlaylistModel | PodcastModel | TrackCollectionModel | CurrentWeeksStreakVm | ChapterHeader | IDocumentWithYear | InfoMessageModel | SectionHeaderModel | ITileModel | TileMessageModel | TileVideoModel | TileModel | TrackModel | YearInReviewModelToJSON,
+} from './AlbumModel | ContributorModel | PlaylistModel | PodcastModel | TrackCollectionModel | CurrentWeeksStreakVm | ChapterHeader | IDocumentWithYear | InfoMessageModel | SectionHeaderModel | ITileModel | TileMessageModel | TileVideoModel | TileModel | TrackModel | YearInReviewModel';
 import type { AlbumModelAlbumMeta } from './AlbumModelAlbumMeta';
 import {
     AlbumModelAlbumMetaFromJSON,
     AlbumModelAlbumMetaFromJSONTyped,
     AlbumModelAlbumMetaToJSON,
 } from './AlbumModelAlbumMeta';
-import type { IDocumentModel } from './IDocumentModel';
-import {
-    IDocumentModelFromJSON,
-    IDocumentModelFromJSONTyped,
-    IDocumentModelToJSON,
-} from './IDocumentModel';
 import type { LanguageEnum } from './LanguageEnum';
 import {
     LanguageEnumFromJSON,
@@ -112,10 +112,10 @@ export interface AlbumModel {
     readonly type?: string | null;
     /**
      * 
-     * @type {Array<IDocumentModel>}
+     * @type {Array<AlbumModel | ContributorModel | PlaylistModel | PodcastModel | TrackCollectionModel | CurrentWeeksStreakVm | ChapterHeader | IDocumentWithYear | InfoMessageModel | SectionHeaderModel | ITileModel | TileMessageModel | TileVideoModel | TileModel | TrackModel | YearInReviewModel>}
      * @memberof AlbumModel
      */
-    children?: Array<IDocumentModel> | null;
+    children?: Array<AlbumModel | ContributorModel | PlaylistModel | PodcastModel | TrackCollectionModel | CurrentWeeksStreakVm | ChapterHeader | IDocumentWithYear | InfoMessageModel | SectionHeaderModel | ITileModel | TileMessageModel | TileVideoModel | TileModel | TrackModel | YearInReviewModel> | null;
     /**
      * 
      * @type {number}
@@ -161,7 +161,7 @@ export function AlbumModelFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'title': !exists(json, 'title') ? undefined : json['title'],
         'description': !exists(json, 'description') ? undefined : json['description'],
         'type': !exists(json, 'type') ? undefined : json['type'],
-        'children': !exists(json, 'children') ? undefined : (json['children'] === null ? null : (json['children'] as Array<any>).map(IDocumentModelFromJSON)),
+        'children': !exists(json, 'children') ? undefined : (json['children'] === null ? null : (json['children'] as Array<any>).map(AlbumModel | ContributorModel | PlaylistModel | PodcastModel | TrackCollectionModel | CurrentWeeksStreakVm | ChapterHeader | IDocumentWithYear | InfoMessageModel | SectionHeaderModel | ITileModel | TileMessageModel | TileVideoModel | TileModel | TrackModel | YearInReviewModelFromJSON)),
         'latestTrackId': !exists(json, 'latest_track_id') ? undefined : json['latest_track_id'],
         'latestTrackPosition': !exists(json, 'latest_track_position') ? undefined : json['latest_track_position'],
     };
@@ -187,7 +187,7 @@ export function AlbumModelToJSON(value?: AlbumModel | null): any {
         'language': LanguageEnumToJSON(value.language),
         'title': value.title,
         'description': value.description,
-        'children': value.children === undefined ? undefined : (value.children === null ? null : (value.children as Array<any>).map(IDocumentModelToJSON)),
+        'children': value.children === undefined ? undefined : (value.children === null ? null : (value.children as Array<any>).map(AlbumModel | ContributorModel | PlaylistModel | PodcastModel | TrackCollectionModel | CurrentWeeksStreakVm | ChapterHeader | IDocumentWithYear | InfoMessageModel | SectionHeaderModel | ITileModel | TileMessageModel | TileVideoModel | TileModel | TrackModel | YearInReviewModelToJSON)),
         'latest_track_id': value.latestTrackId,
         'latest_track_position': value.latestTrackPosition,
     };

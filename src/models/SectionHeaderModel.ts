@@ -13,65 +13,70 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { BrowseGet200ResponseInner } from './BrowseGet200ResponseInner';
-import {
-    BrowseGet200ResponseInnerFromJSON,
-    BrowseGet200ResponseInnerFromJSONTyped,
-    BrowseGet200ResponseInnerToJSON,
-} from './BrowseGet200ResponseInner';
-
 /**
  * 
  * @export
- * @interface DocumentList
+ * @interface SectionHeaderModel
  */
-export interface DocumentList {
+export interface SectionHeaderModel {
     /**
      * 
      * @type {string}
-     * @memberof DocumentList
+     * @memberof SectionHeaderModel
      */
     title?: string | null;
     /**
      * 
      * @type {string}
-     * @memberof DocumentList
+     * @memberof SectionHeaderModel
      */
     translationParent?: string | null;
     /**
      * 
      * @type {string}
-     * @memberof DocumentList
+     * @memberof SectionHeaderModel
      */
     translationId?: string | null;
     /**
      * 
-     * @type {boolean}
-     * @memberof DocumentList
+     * @type {string}
+     * @memberof SectionHeaderModel
      */
-    supportsPaging?: boolean;
+    link?: string | null;
     /**
      * 
-     * @type {Array<BrowseGet200ResponseInner>}
-     * @memberof DocumentList
+     * @type {number}
+     * @memberof SectionHeaderModel
      */
-    items?: Array<BrowseGet200ResponseInner> | null;
+    id?: number;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SectionHeaderModel
+     */
+    useCoverCarousel?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof SectionHeaderModel
+     */
+    readonly type?: string | null;
 }
 
 /**
- * Check if a given object implements the DocumentList interface.
+ * Check if a given object implements the SectionHeaderModel interface.
  */
-export function instanceOfDocumentList(value: object): boolean {
+export function instanceOfSectionHeaderModel(value: object): boolean {
     let isInstance = true;
 
     return isInstance;
 }
 
-export function DocumentListFromJSON(json: any): DocumentList {
-    return DocumentListFromJSONTyped(json, false);
+export function SectionHeaderModelFromJSON(json: any): SectionHeaderModel {
+    return SectionHeaderModelFromJSONTyped(json, false);
 }
 
-export function DocumentListFromJSONTyped(json: any, ignoreDiscriminator: boolean): DocumentList {
+export function SectionHeaderModelFromJSONTyped(json: any, ignoreDiscriminator: boolean): SectionHeaderModel {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -80,12 +85,14 @@ export function DocumentListFromJSONTyped(json: any, ignoreDiscriminator: boolea
         'title': !exists(json, 'title') ? undefined : json['title'],
         'translationParent': !exists(json, 'translation_parent') ? undefined : json['translation_parent'],
         'translationId': !exists(json, 'translation_id') ? undefined : json['translation_id'],
-        'supportsPaging': !exists(json, 'supports_paging') ? undefined : json['supports_paging'],
-        'items': !exists(json, 'items') ? undefined : (json['items'] === null ? null : (json['items'] as Array<any>).map(BrowseGet200ResponseInnerFromJSON)),
+        'link': !exists(json, 'link') ? undefined : json['link'],
+        'id': !exists(json, 'id') ? undefined : json['id'],
+        'useCoverCarousel': !exists(json, 'use_cover_carousel') ? undefined : json['use_cover_carousel'],
+        'type': !exists(json, 'type') ? undefined : json['type'],
     };
 }
 
-export function DocumentListToJSON(value?: DocumentList | null): any {
+export function SectionHeaderModelToJSON(value?: SectionHeaderModel | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -97,8 +104,9 @@ export function DocumentListToJSON(value?: DocumentList | null): any {
         'title': value.title,
         'translation_parent': value.translationParent,
         'translation_id': value.translationId,
-        'supports_paging': value.supportsPaging,
-        'items': value.items === undefined ? undefined : (value.items === null ? null : (value.items as Array<any>).map(BrowseGet200ResponseInnerToJSON)),
+        'link': value.link,
+        'id': value.id,
+        'use_cover_carousel': value.useCoverCarousel,
     };
 }
 
