@@ -26,7 +26,7 @@ import {
 } from '../models';
 
 export interface StatisticsTrackPlayedPostRequest {
-    createTrackPlayedEventsCommandEvent?: Array<CreateTrackPlayedEventsCommandEvent>;
+    createTrackPlayedEventsCommandEvent: Array<CreateTrackPlayedEventsCommandEvent>;
 }
 
 /**
@@ -37,6 +37,10 @@ export class StatisticsApi extends runtime.BaseAPI {
     /**
      */
     async statisticsTrackPlayedPostRaw(requestParameters: StatisticsTrackPlayedPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.createTrackPlayedEventsCommandEvent === null || requestParameters.createTrackPlayedEventsCommandEvent === undefined) {
+            throw new runtime.RequiredError('createTrackPlayedEventsCommandEvent','Required parameter requestParameters.createTrackPlayedEventsCommandEvent was null or undefined when calling statisticsTrackPlayedPost.');
+        }
+
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -48,7 +52,7 @@ export class StatisticsApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters.createTrackPlayedEventsCommandEvent?.map(CreateTrackPlayedEventsCommandEventToJSON),
+            body: requestParameters.createTrackPlayedEventsCommandEvent.map(CreateTrackPlayedEventsCommandEventToJSON),
         }, initOverrides);
 
         return new runtime.VoidApiResponse(response);
@@ -56,7 +60,7 @@ export class StatisticsApi extends runtime.BaseAPI {
 
     /**
      */
-    async statisticsTrackPlayedPost(requestParameters: StatisticsTrackPlayedPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+    async statisticsTrackPlayedPost(requestParameters: StatisticsTrackPlayedPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.statisticsTrackPlayedPostRaw(requestParameters, initOverrides);
     }
 
