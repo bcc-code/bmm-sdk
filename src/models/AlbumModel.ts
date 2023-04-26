@@ -13,12 +13,12 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { AlbumModel | ContributorModel | PlaylistModel | PodcastModel | TrackCollectionModel | CurrentWeeksStreakVm | ChapterHeader | IDocumentWithYear | InfoMessageModel | SectionHeaderModel | ITileModel | TileMessageModel | TileVideoModel | TileModel | TrackModel | YearInReviewModel } from './AlbumModel | ContributorModel | PlaylistModel | PodcastModel | TrackCollectionModel | CurrentWeeksStreakVm | ChapterHeader | IDocumentWithYear | InfoMessageModel | SectionHeaderModel | ITileModel | TileMessageModel | TileVideoModel | TileModel | TrackModel | YearInReviewModel';
+import type { BrowseGet200ResponseInner } from './BrowseGet200ResponseInner';
 import {
-    AlbumModel | ContributorModel | PlaylistModel | PodcastModel | TrackCollectionModel | CurrentWeeksStreakVm | ChapterHeader | IDocumentWithYear | InfoMessageModel | SectionHeaderModel | ITileModel | TileMessageModel | TileVideoModel | TileModel | TrackModel | YearInReviewModelFromJSON,
-    AlbumModel | ContributorModel | PlaylistModel | PodcastModel | TrackCollectionModel | CurrentWeeksStreakVm | ChapterHeader | IDocumentWithYear | InfoMessageModel | SectionHeaderModel | ITileModel | TileMessageModel | TileVideoModel | TileModel | TrackModel | YearInReviewModelFromJSONTyped,
-    AlbumModel | ContributorModel | PlaylistModel | PodcastModel | TrackCollectionModel | CurrentWeeksStreakVm | ChapterHeader | IDocumentWithYear | InfoMessageModel | SectionHeaderModel | ITileModel | TileMessageModel | TileVideoModel | TileModel | TrackModel | YearInReviewModelToJSON,
-} from './AlbumModel | ContributorModel | PlaylistModel | PodcastModel | TrackCollectionModel | CurrentWeeksStreakVm | ChapterHeader | IDocumentWithYear | InfoMessageModel | SectionHeaderModel | ITileModel | TileMessageModel | TileVideoModel | TileModel | TrackModel | YearInReviewModel';
+    BrowseGet200ResponseInnerFromJSON,
+    BrowseGet200ResponseInnerFromJSONTyped,
+    BrowseGet200ResponseInnerToJSON,
+} from './BrowseGet200ResponseInner';
 import type { AlbumModelAlbumMeta } from './AlbumModelAlbumMeta';
 import {
     AlbumModelAlbumMetaFromJSON,
@@ -112,10 +112,10 @@ export interface AlbumModel {
     readonly type?: string | null;
     /**
      * 
-     * @type {Array<AlbumModel | ContributorModel | PlaylistModel | PodcastModel | TrackCollectionModel | CurrentWeeksStreakVm | ChapterHeader | IDocumentWithYear | InfoMessageModel | SectionHeaderModel | ITileModel | TileMessageModel | TileVideoModel | TileModel | TrackModel | YearInReviewModel>}
+     * @type {Array<BrowseGet200ResponseInner>}
      * @memberof AlbumModel
      */
-    children?: Array<AlbumModel | ContributorModel | PlaylistModel | PodcastModel | TrackCollectionModel | CurrentWeeksStreakVm | ChapterHeader | IDocumentWithYear | InfoMessageModel | SectionHeaderModel | ITileModel | TileMessageModel | TileVideoModel | TileModel | TrackModel | YearInReviewModel> | null;
+    children?: Array<BrowseGet200ResponseInner> | null;
     /**
      * 
      * @type {number}
@@ -161,7 +161,7 @@ export function AlbumModelFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'title': !exists(json, 'title') ? undefined : json['title'],
         'description': !exists(json, 'description') ? undefined : json['description'],
         'type': !exists(json, 'type') ? undefined : json['type'],
-        'children': !exists(json, 'children') ? undefined : (json['children'] === null ? null : (json['children'] as Array<any>).map(AlbumModel | ContributorModel | PlaylistModel | PodcastModel | TrackCollectionModel | CurrentWeeksStreakVm | ChapterHeader | IDocumentWithYear | InfoMessageModel | SectionHeaderModel | ITileModel | TileMessageModel | TileVideoModel | TileModel | TrackModel | YearInReviewModelFromJSON)),
+        'children': !exists(json, 'children') ? undefined : (json['children'] === null ? null : (json['children'] as Array<any>).map(BrowseGet200ResponseInnerFromJSON)),
         'latestTrackId': !exists(json, 'latest_track_id') ? undefined : json['latest_track_id'],
         'latestTrackPosition': !exists(json, 'latest_track_position') ? undefined : json['latest_track_position'],
     };
@@ -187,7 +187,7 @@ export function AlbumModelToJSON(value?: AlbumModel | null): any {
         'language': LanguageEnumToJSON(value.language),
         'title': value.title,
         'description': value.description,
-        'children': value.children === undefined ? undefined : (value.children === null ? null : (value.children as Array<any>).map(AlbumModel | ContributorModel | PlaylistModel | PodcastModel | TrackCollectionModel | CurrentWeeksStreakVm | ChapterHeader | IDocumentWithYear | InfoMessageModel | SectionHeaderModel | ITileModel | TileMessageModel | TileVideoModel | TileModel | TrackModel | YearInReviewModelToJSON)),
+        'children': value.children === undefined ? undefined : (value.children === null ? null : (value.children as Array<any>).map(BrowseGet200ResponseInnerToJSON)),
         'latest_track_id': value.latestTrackId,
         'latest_track_position': value.latestTrackPosition,
     };
