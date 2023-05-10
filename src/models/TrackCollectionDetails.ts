@@ -24,7 +24,7 @@ export interface TrackCollectionDetails {
      * @type {number}
      * @memberof TrackCollectionDetails
      */
-    id?: number;
+    id: number;
     /**
      * 
      * @type {string}
@@ -42,7 +42,7 @@ export interface TrackCollectionDetails {
      * @type {number}
      * @memberof TrackCollectionDetails
      */
-    followerCount?: number;
+    followerCount: number;
     /**
      * 
      * @type {string}
@@ -54,7 +54,7 @@ export interface TrackCollectionDetails {
      * @type {boolean}
      * @memberof TrackCollectionDetails
      */
-    canEdit?: boolean;
+    canEdit: boolean;
 }
 
 /**
@@ -62,6 +62,9 @@ export interface TrackCollectionDetails {
  */
 export function instanceOfTrackCollectionDetails(value: object): boolean {
     let isInstance = true;
+    isInstance = isInstance && "id" in value;
+    isInstance = isInstance && "followerCount" in value;
+    isInstance = isInstance && "canEdit" in value;
 
     return isInstance;
 }
@@ -76,12 +79,12 @@ export function TrackCollectionDetailsFromJSONTyped(json: any, ignoreDiscriminat
     }
     return {
         
-        'id': !exists(json, 'id') ? undefined : json['id'],
+        'id': json['id'],
         'name': !exists(json, 'name') ? undefined : json['name'],
         'trackCount': !exists(json, 'track_count') ? undefined : json['track_count'],
-        'followerCount': !exists(json, 'follower_count') ? undefined : json['follower_count'],
+        'followerCount': json['follower_count'],
         'authorName': !exists(json, 'author_name') ? undefined : json['author_name'],
-        'canEdit': !exists(json, 'can_edit') ? undefined : json['can_edit'],
+        'canEdit': json['can_edit'],
     };
 }
 

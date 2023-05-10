@@ -4740,6 +4740,11 @@
           "additionalProperties": false
         },
         "TrackCollectionDetails": {
+          "required": [
+            "id",
+            "follower_count",
+            "can_edit"
+          ],
           "type": "object",
           "properties": {
             "id": {
