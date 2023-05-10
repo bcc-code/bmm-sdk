@@ -13,12 +13,12 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { BrowseGet200ResponseInner } from './BrowseGet200ResponseInner';
+import type { AlbumModel | TrackModel } from './AlbumModel | TrackModel';
 import {
-    BrowseGet200ResponseInnerFromJSON,
-    BrowseGet200ResponseInnerFromJSONTyped,
-    BrowseGet200ResponseInnerToJSON,
-} from './BrowseGet200ResponseInner';
+    AlbumModel | TrackModelFromJSON,
+    AlbumModel | TrackModelFromJSONTyped,
+    AlbumModel | TrackModelToJSON,
+} from './AlbumModel | TrackModel';
 import type { AlbumModelAlbumMeta } from './AlbumModelAlbumMeta';
 import {
     AlbumModelAlbumMetaFromJSON,
@@ -61,7 +61,7 @@ export interface AlbumModel {
      * @type {number}
      * @memberof AlbumModel
      */
-    id?: number;
+    id: number;
     /**
      * 
      * @type {Array<LanguageEnum>}
@@ -109,13 +109,13 @@ export interface AlbumModel {
      * @type {string}
      * @memberof AlbumModel
      */
-    readonly type?: string | null;
+    readonly type: AlbumModelTypeEnum;
     /**
      * 
-     * @type {Array<BrowseGet200ResponseInner>}
+     * @type {Array<AlbumModel | TrackModel>}
      * @memberof AlbumModel
      */
-    children?: Array<BrowseGet200ResponseInner> | null;
+    children?: Array<AlbumModel | TrackModel> | null;
     /**
      * 
      * @type {number}
@@ -130,11 +130,23 @@ export interface AlbumModel {
     latestTrackPosition?: number | null;
 }
 
+
+/**
+ * @export
+ */
+export const AlbumModelTypeEnum = {
+    Album: 'album'
+} as const;
+export type AlbumModelTypeEnum = typeof AlbumModelTypeEnum[keyof typeof AlbumModelTypeEnum];
+
+
 /**
  * Check if a given object implements the AlbumModel interface.
  */
 export function instanceOfAlbumModel(value: object): boolean {
     let isInstance = true;
+    isInstance = isInstance && "id" in value;
+    isInstance = isInstance && "type" in value;
 
     return isInstance;
 }
@@ -152,7 +164,7 @@ export function AlbumModelFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'meta': !exists(json, '_meta') ? undefined : AlbumModelAlbumMetaFromJSON(json['_meta']),
         'bmmId': !exists(json, 'bmm_id') ? undefined : json['bmm_id'],
         'cover': !exists(json, 'cover') ? undefined : json['cover'],
-        'id': !exists(json, 'id') ? undefined : json['id'],
+        'id': json['id'],
         'languages': !exists(json, 'languages') ? undefined : (json['languages'] === null ? null : (json['languages'] as Array<any>).map(LanguageEnumFromJSON)),
         'parentId': !exists(json, 'parent_id') ? undefined : json['parent_id'],
         'publishedAt': !exists(json, 'published_at') ? undefined : (new Date(json['published_at'])),
@@ -160,8 +172,8 @@ export function AlbumModelFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'language': !exists(json, 'language') ? undefined : LanguageEnumFromJSON(json['language']),
         'title': !exists(json, 'title') ? undefined : json['title'],
         'description': !exists(json, 'description') ? undefined : json['description'],
-        'type': !exists(json, 'type') ? undefined : json['type'],
-        'children': !exists(json, 'children') ? undefined : (json['children'] === null ? null : (json['children'] as Array<any>).map(BrowseGet200ResponseInnerFromJSON)),
+        'type': json['type'],
+        'children': !exists(json, 'children') ? undefined : (json['children'] === null ? null : (json['children'] as Array<any>).map(AlbumModel | TrackModelFromJSON)),
         'latestTrackId': !exists(json, 'latest_track_id') ? undefined : json['latest_track_id'],
         'latestTrackPosition': !exists(json, 'latest_track_position') ? undefined : json['latest_track_position'],
     };
@@ -187,7 +199,7 @@ export function AlbumModelToJSON(value?: AlbumModel | null): any {
         'language': LanguageEnumToJSON(value.language),
         'title': value.title,
         'description': value.description,
-        'children': value.children === undefined ? undefined : (value.children === null ? null : (value.children as Array<any>).map(BrowseGet200ResponseInnerToJSON)),
+        'children': value.children === undefined ? undefined : (value.children === null ? null : (value.children as Array<any>).map(AlbumModel | TrackModelToJSON)),
         'latest_track_id': value.latestTrackId,
         'latest_track_position': value.latestTrackPosition,
     };

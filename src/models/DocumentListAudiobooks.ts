@@ -13,65 +13,65 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { BrowseGet200ResponseInner } from './BrowseGet200ResponseInner';
+import type { DocumentListAudiobooksItemsInner } from './DocumentListAudiobooksItemsInner';
 import {
-    BrowseGet200ResponseInnerFromJSON,
-    BrowseGet200ResponseInnerFromJSONTyped,
-    BrowseGet200ResponseInnerToJSON,
-} from './BrowseGet200ResponseInner';
+    DocumentListAudiobooksItemsInnerFromJSON,
+    DocumentListAudiobooksItemsInnerFromJSONTyped,
+    DocumentListAudiobooksItemsInnerToJSON,
+} from './DocumentListAudiobooksItemsInner';
 
 /**
  * 
  * @export
- * @interface DocumentList
+ * @interface DocumentListAudiobooks
  */
-export interface DocumentList {
+export interface DocumentListAudiobooks {
     /**
      * 
      * @type {string}
-     * @memberof DocumentList
+     * @memberof DocumentListAudiobooks
      */
     title?: string | null;
     /**
      * 
      * @type {string}
-     * @memberof DocumentList
+     * @memberof DocumentListAudiobooks
      */
     translationParent?: string | null;
     /**
      * 
      * @type {string}
-     * @memberof DocumentList
+     * @memberof DocumentListAudiobooks
      */
     translationId?: string | null;
     /**
      * 
      * @type {boolean}
-     * @memberof DocumentList
+     * @memberof DocumentListAudiobooks
      */
     supportsPaging?: boolean;
     /**
      * 
-     * @type {Array<BrowseGet200ResponseInner>}
-     * @memberof DocumentList
+     * @type {Array<DocumentListAudiobooksItemsInner>}
+     * @memberof DocumentListAudiobooks
      */
-    items?: Array<BrowseGet200ResponseInner> | null;
+    items?: Array<DocumentListAudiobooksItemsInner> | null;
 }
 
 /**
- * Check if a given object implements the DocumentList interface.
+ * Check if a given object implements the DocumentListAudiobooks interface.
  */
-export function instanceOfDocumentList(value: object): boolean {
+export function instanceOfDocumentListAudiobooks(value: object): boolean {
     let isInstance = true;
 
     return isInstance;
 }
 
-export function DocumentListFromJSON(json: any): DocumentList {
-    return DocumentListFromJSONTyped(json, false);
+export function DocumentListAudiobooksFromJSON(json: any): DocumentListAudiobooks {
+    return DocumentListAudiobooksFromJSONTyped(json, false);
 }
 
-export function DocumentListFromJSONTyped(json: any, ignoreDiscriminator: boolean): DocumentList {
+export function DocumentListAudiobooksFromJSONTyped(json: any, ignoreDiscriminator: boolean): DocumentListAudiobooks {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -81,11 +81,11 @@ export function DocumentListFromJSONTyped(json: any, ignoreDiscriminator: boolea
         'translationParent': !exists(json, 'translation_parent') ? undefined : json['translation_parent'],
         'translationId': !exists(json, 'translation_id') ? undefined : json['translation_id'],
         'supportsPaging': !exists(json, 'supports_paging') ? undefined : json['supports_paging'],
-        'items': !exists(json, 'items') ? undefined : (json['items'] === null ? null : (json['items'] as Array<any>).map(BrowseGet200ResponseInnerFromJSON)),
+        'items': !exists(json, 'items') ? undefined : (json['items'] === null ? null : (json['items'] as Array<any>).map(DocumentListAudiobooksItemsInnerFromJSON)),
     };
 }
 
-export function DocumentListToJSON(value?: DocumentList | null): any {
+export function DocumentListAudiobooksToJSON(value?: DocumentListAudiobooks | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -98,7 +98,7 @@ export function DocumentListToJSON(value?: DocumentList | null): any {
         'translation_parent': value.translationParent,
         'translation_id': value.translationId,
         'supports_paging': value.supportsPaging,
-        'items': value.items === undefined ? undefined : (value.items === null ? null : (value.items as Array<any>).map(BrowseGet200ResponseInnerToJSON)),
+        'items': value.items === undefined ? undefined : (value.items === null ? null : (value.items as Array<any>).map(DocumentListAudiobooksItemsInnerToJSON)),
     };
 }
 

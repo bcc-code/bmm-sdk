@@ -15,12 +15,12 @@
 
 import * as runtime from '../runtime';
 import type {
-  BrowseGet200ResponseInner,
+  DiscoverResponse,
   LanguageEnum,
 } from '../models';
 import {
-    BrowseGet200ResponseInnerFromJSON,
-    BrowseGet200ResponseInnerToJSON,
+    DiscoverResponseFromJSON,
+    DiscoverResponseToJSON,
     LanguageEnumFromJSON,
     LanguageEnumToJSON,
 } from '../models';
@@ -37,7 +37,7 @@ export class DiscoverApi extends runtime.BaseAPI {
 
     /**
      */
-    async discoverGetRaw(requestParameters: DiscoverGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<BrowseGet200ResponseInner>>> {
+    async discoverGetRaw(requestParameters: DiscoverGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<DiscoverResponse>>> {
         const queryParameters: any = {};
 
         if (requestParameters.lang !== undefined) {
@@ -57,12 +57,12 @@ export class DiscoverApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(BrowseGet200ResponseInnerFromJSON));
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(DiscoverResponseFromJSON));
     }
 
     /**
      */
-    async discoverGet(requestParameters: DiscoverGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<BrowseGet200ResponseInner>> {
+    async discoverGet(requestParameters: DiscoverGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<DiscoverResponse>> {
         const response = await this.discoverGetRaw(requestParameters, initOverrides);
         return await response.value();
     }

@@ -26,7 +26,7 @@ models/AlbumYearFacetsQueryResult.ts
 models/ApiOverviewModel.ts
 models/ApiOverviewModelStatus.ts
 models/BibleBookEnum.ts
-models/BrowseGet200ResponseInner.ts
+models/BrowseResponse.ts
 models/ChapterHeader.ts
 models/ContributorContributorMeta.ts
 models/ContributorModel.ts
@@ -35,7 +35,12 @@ models/CreateTrackPlayedEventsCommandEvent.ts
 models/CurrentWeeksStreakVm.ts
 models/CurrentWeeksStreakVmHomeScreenTextOptions.ts
 models/DayOfWeek.ts
-models/DocumentList.ts
+models/DiscoverResponse.ts
+models/DocumentListAudiobooks.ts
+models/DocumentListAudiobooksItemsInner.ts
+models/DocumentListEvents.ts
+models/DocumentListPlaylist.ts
+models/DocumentListPodcasts.ts
 models/GetTopSongsCollectionModel.ts
 models/GetTopSongsCollectionModelTrackAndCount.ts
 models/GetTrackCollectionModel.ts
@@ -59,8 +64,11 @@ models/ResourceType.ts
 models/Role.ts
 models/SearchFilter.ts
 models/SearchResults.ts
+models/SearchResultsItemsInner.ts
+models/SearchTermResponse.ts
 models/SectionHeaderModel.ts
 models/SubscriptionModel.ts
+models/TextsearchTermResults.ts
 models/TileMessageModel.ts
 models/TileModel.ts
 models/TileVideoModel.ts

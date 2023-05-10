@@ -31,13 +31,13 @@ export interface GetTrackCollectionModel {
      * @type {string}
      * @memberof GetTrackCollectionModel
      */
-    readonly type?: string | null;
+    readonly type: GetTrackCollectionModelTypeEnum;
     /**
      * 
      * @type {number}
      * @memberof GetTrackCollectionModel
      */
-    id?: number;
+    id: number;
     /**
      * 
      * @type {string}
@@ -82,11 +82,23 @@ export interface GetTrackCollectionModel {
     tracks?: Array<TrackModel> | null;
 }
 
+
+/**
+ * @export
+ */
+export const GetTrackCollectionModelTypeEnum = {
+    TrackCollection: 'track_collection'
+} as const;
+export type GetTrackCollectionModelTypeEnum = typeof GetTrackCollectionModelTypeEnum[keyof typeof GetTrackCollectionModelTypeEnum];
+
+
 /**
  * Check if a given object implements the GetTrackCollectionModel interface.
  */
 export function instanceOfGetTrackCollectionModel(value: object): boolean {
     let isInstance = true;
+    isInstance = isInstance && "type" in value;
+    isInstance = isInstance && "id" in value;
 
     return isInstance;
 }
@@ -101,8 +113,8 @@ export function GetTrackCollectionModelFromJSONTyped(json: any, ignoreDiscrimina
     }
     return {
         
-        'type': !exists(json, 'type') ? undefined : json['type'],
-        'id': !exists(json, 'id') ? undefined : json['id'],
+        'type': json['type'],
+        'id': json['id'],
         'name': !exists(json, 'name') ? undefined : json['name'],
         'description': !exists(json, 'description') ? undefined : json['description'],
         'followerCount': !exists(json, 'follower_count') ? undefined : json['follower_count'],

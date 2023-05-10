@@ -31,13 +31,13 @@ export interface GetTopSongsCollectionModel {
      * @type {string}
      * @memberof GetTopSongsCollectionModel
      */
-    readonly type?: string | null;
+    readonly type: GetTopSongsCollectionModelTypeEnum;
     /**
      * 
      * @type {number}
      * @memberof GetTopSongsCollectionModel
      */
-    id?: number;
+    id: number;
     /**
      * 
      * @type {string}
@@ -58,11 +58,23 @@ export interface GetTopSongsCollectionModel {
     tracks?: Array<GetTopSongsCollectionModelTrackAndCount> | null;
 }
 
+
+/**
+ * @export
+ */
+export const GetTopSongsCollectionModelTypeEnum = {
+    TopSongsCollection: 'top_songs_collection'
+} as const;
+export type GetTopSongsCollectionModelTypeEnum = typeof GetTopSongsCollectionModelTypeEnum[keyof typeof GetTopSongsCollectionModelTypeEnum];
+
+
 /**
  * Check if a given object implements the GetTopSongsCollectionModel interface.
  */
 export function instanceOfGetTopSongsCollectionModel(value: object): boolean {
     let isInstance = true;
+    isInstance = isInstance && "type" in value;
+    isInstance = isInstance && "id" in value;
 
     return isInstance;
 }
@@ -77,8 +89,8 @@ export function GetTopSongsCollectionModelFromJSONTyped(json: any, ignoreDiscrim
     }
     return {
         
-        'type': !exists(json, 'type') ? undefined : json['type'],
-        'id': !exists(json, 'id') ? undefined : json['id'],
+        'type': json['type'],
+        'id': json['id'],
         'pageTitle': !exists(json, 'page_title') ? undefined : json['page_title'],
         'name': !exists(json, 'name') ? undefined : json['name'],
         'tracks': !exists(json, 'tracks') ? undefined : (json['tracks'] === null ? null : (json['tracks'] as Array<any>).map(GetTopSongsCollectionModelTrackAndCountFromJSON)),

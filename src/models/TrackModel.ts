@@ -67,7 +67,7 @@ export interface TrackModel {
      * @type {number}
      * @memberof TrackModel
      */
-    id?: number;
+    id: number;
     /**
      * 
      * @type {boolean}
@@ -127,7 +127,7 @@ export interface TrackModel {
      * @type {string}
      * @memberof TrackModel
      */
-    type?: string | null;
+    type: TrackModelTypeEnum;
     /**
      * 
      * @type {Array<LanguageEnum>}
@@ -166,11 +166,23 @@ export interface TrackModel {
     media?: Array<TrackModelMedium> | null;
 }
 
+
+/**
+ * @export
+ */
+export const TrackModelTypeEnum = {
+    Track: 'track'
+} as const;
+export type TrackModelTypeEnum = typeof TrackModelTypeEnum[keyof typeof TrackModelTypeEnum];
+
+
 /**
  * Check if a given object implements the TrackModel interface.
  */
 export function instanceOfTrackModel(value: object): boolean {
     let isInstance = true;
+    isInstance = isInstance && "id" in value;
+    isInstance = isInstance && "type" in value;
 
     return isInstance;
 }
@@ -187,7 +199,7 @@ export function TrackModelFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         
         'comment': !exists(json, 'comment') ? undefined : json['comment'],
         'cover': !exists(json, 'cover') ? undefined : json['cover'],
-        'id': !exists(json, 'id') ? undefined : json['id'],
+        'id': json['id'],
         'isVisible': !exists(json, 'is_visible') ? undefined : json['is_visible'],
         'order': !exists(json, 'order') ? undefined : json['order'],
         'parentId': !exists(json, 'parent_id') ? undefined : json['parent_id'],
@@ -197,7 +209,7 @@ export function TrackModelFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'subtype': !exists(json, 'subtype') ? undefined : TrackSubtypeFromJSON(json['subtype']),
         'tags': !exists(json, 'tags') ? undefined : json['tags'],
         'meta': !exists(json, '_meta') ? undefined : TrackModelTrackMetaFromJSON(json['_meta']),
-        'type': !exists(json, 'type') ? undefined : json['type'],
+        'type': json['type'],
         'languages': !exists(json, 'languages') ? undefined : (json['languages'] === null ? null : (json['languages'] as Array<any>).map(LanguageEnumFromJSON)),
         'language': !exists(json, 'language') ? undefined : LanguageEnumFromJSON(json['language']),
         'title': !exists(json, 'title') ? undefined : json['title'],

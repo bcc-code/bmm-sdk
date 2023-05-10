@@ -13,18 +13,18 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { BrowseGet200ResponseInner } from './BrowseGet200ResponseInner';
-import {
-    BrowseGet200ResponseInnerFromJSON,
-    BrowseGet200ResponseInnerFromJSONTyped,
-    BrowseGet200ResponseInnerToJSON,
-} from './BrowseGet200ResponseInner';
 import type { Highlighting } from './Highlighting';
 import {
     HighlightingFromJSON,
     HighlightingFromJSONTyped,
     HighlightingToJSON,
 } from './Highlighting';
+import type { SearchResultsItemsInner } from './SearchResultsItemsInner';
+import {
+    SearchResultsItemsInnerFromJSON,
+    SearchResultsItemsInnerFromJSONTyped,
+    SearchResultsItemsInnerToJSON,
+} from './SearchResultsItemsInner';
 
 /**
  * 
@@ -40,10 +40,10 @@ export interface SearchResults {
     nextPageFromPosition?: number;
     /**
      * 
-     * @type {Array<BrowseGet200ResponseInner>}
+     * @type {Array<SearchResultsItemsInner>}
      * @memberof SearchResults
      */
-    items?: Array<BrowseGet200ResponseInner> | null;
+    items?: Array<SearchResultsItemsInner> | null;
     /**
      * 
      * @type {boolean}
@@ -78,7 +78,7 @@ export function SearchResultsFromJSONTyped(json: any, ignoreDiscriminator: boole
     return {
         
         'nextPageFromPosition': !exists(json, 'next_page_from_position') ? undefined : json['next_page_from_position'],
-        'items': !exists(json, 'items') ? undefined : (json['items'] === null ? null : (json['items'] as Array<any>).map(BrowseGet200ResponseInnerFromJSON)),
+        'items': !exists(json, 'items') ? undefined : (json['items'] === null ? null : (json['items'] as Array<any>).map(SearchResultsItemsInnerFromJSON)),
         'isFullyLoaded': !exists(json, 'is_fully_loaded') ? undefined : json['is_fully_loaded'],
         'highlightings': !exists(json, 'highlightings') ? undefined : (json['highlightings'] === null ? null : (json['highlightings'] as Array<any>).map(HighlightingFromJSON)),
     };
@@ -94,7 +94,7 @@ export function SearchResultsToJSON(value?: SearchResults | null): any {
     return {
         
         'next_page_from_position': value.nextPageFromPosition,
-        'items': value.items === undefined ? undefined : (value.items === null ? null : (value.items as Array<any>).map(BrowseGet200ResponseInnerToJSON)),
+        'items': value.items === undefined ? undefined : (value.items === null ? null : (value.items as Array<any>).map(SearchResultsItemsInnerToJSON)),
         'is_fully_loaded': value.isFullyLoaded,
         'highlightings': value.highlightings === undefined ? undefined : (value.highlightings === null ? null : (value.highlightings as Array<any>).map(HighlightingToJSON)),
     };

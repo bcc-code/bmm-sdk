@@ -37,13 +37,13 @@ export interface PodcastModel {
      * @type {number}
      * @memberof PodcastModel
      */
-    id?: number;
+    id: number;
     /**
      * 
      * @type {string}
      * @memberof PodcastModel
      */
-    readonly type?: string | null;
+    readonly type: PodcastModelTypeEnum;
     /**
      * 
      * @type {Array<LanguageEnum>}
@@ -64,11 +64,23 @@ export interface PodcastModel {
     title?: string | null;
 }
 
+
+/**
+ * @export
+ */
+export const PodcastModelTypeEnum = {
+    Podcast: 'podcast'
+} as const;
+export type PodcastModelTypeEnum = typeof PodcastModelTypeEnum[keyof typeof PodcastModelTypeEnum];
+
+
 /**
  * Check if a given object implements the PodcastModel interface.
  */
 export function instanceOfPodcastModel(value: object): boolean {
     let isInstance = true;
+    isInstance = isInstance && "id" in value;
+    isInstance = isInstance && "type" in value;
 
     return isInstance;
 }
@@ -84,8 +96,8 @@ export function PodcastModelFromJSONTyped(json: any, ignoreDiscriminator: boolea
     return {
         
         'cover': !exists(json, 'cover') ? undefined : json['cover'],
-        'id': !exists(json, 'id') ? undefined : json['id'],
-        'type': !exists(json, 'type') ? undefined : json['type'],
+        'id': json['id'],
+        'type': json['type'],
         'languages': !exists(json, 'languages') ? undefined : (json['languages'] === null ? null : (json['languages'] as Array<any>).map(LanguageEnumFromJSON)),
         'language': !exists(json, 'language') ? undefined : LanguageEnumFromJSON(json['language']),
         'title': !exists(json, 'title') ? undefined : json['title'],

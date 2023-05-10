@@ -24,13 +24,13 @@ export interface TileVideoModel {
      * @type {number}
      * @memberof TileVideoModel
      */
-    id?: number;
+    id: number;
     /**
      * 
      * @type {string}
      * @memberof TileVideoModel
      */
-    readonly type?: string | null;
+    readonly type: TileVideoModelTypeEnum;
     /**
      * 
      * @type {string}
@@ -69,11 +69,23 @@ export interface TileVideoModel {
     videoFileName?: string | null;
 }
 
+
+/**
+ * @export
+ */
+export const TileVideoModelTypeEnum = {
+    TileVideo: 'tile_video'
+} as const;
+export type TileVideoModelTypeEnum = typeof TileVideoModelTypeEnum[keyof typeof TileVideoModelTypeEnum];
+
+
 /**
  * Check if a given object implements the TileVideoModel interface.
  */
 export function instanceOfTileVideoModel(value: object): boolean {
     let isInstance = true;
+    isInstance = isInstance && "id" in value;
+    isInstance = isInstance && "type" in value;
 
     return isInstance;
 }
@@ -88,8 +100,8 @@ export function TileVideoModelFromJSONTyped(json: any, ignoreDiscriminator: bool
     }
     return {
         
-        'id': !exists(json, 'id') ? undefined : json['id'],
-        'type': !exists(json, 'type') ? undefined : json['type'],
+        'id': json['id'],
+        'type': json['type'],
         'header': !exists(json, 'header') ? undefined : json['header'],
         'buttonText': !exists(json, 'button_text') ? undefined : json['button_text'],
         'buttonUrl': !exists(json, 'button_url') ? undefined : json['button_url'],

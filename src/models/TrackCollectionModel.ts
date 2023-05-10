@@ -31,13 +31,13 @@ export interface TrackCollectionModel {
      * @type {string}
      * @memberof TrackCollectionModel
      */
-    readonly type?: string | null;
+    readonly type: TrackCollectionModelTypeEnum;
     /**
      * 
      * @type {number}
      * @memberof TrackCollectionModel
      */
-    id?: number;
+    id: number;
     /**
      * 
      * @type {string}
@@ -58,11 +58,23 @@ export interface TrackCollectionModel {
     trackReferences?: Array<TrackReference> | null;
 }
 
+
+/**
+ * @export
+ */
+export const TrackCollectionModelTypeEnum = {
+    TrackCollection: 'track_collection'
+} as const;
+export type TrackCollectionModelTypeEnum = typeof TrackCollectionModelTypeEnum[keyof typeof TrackCollectionModelTypeEnum];
+
+
 /**
  * Check if a given object implements the TrackCollectionModel interface.
  */
 export function instanceOfTrackCollectionModel(value: object): boolean {
     let isInstance = true;
+    isInstance = isInstance && "type" in value;
+    isInstance = isInstance && "id" in value;
     isInstance = isInstance && "name" in value;
 
     return isInstance;
@@ -78,8 +90,8 @@ export function TrackCollectionModelFromJSONTyped(json: any, ignoreDiscriminator
     }
     return {
         
-        'type': !exists(json, 'type') ? undefined : json['type'],
-        'id': !exists(json, 'id') ? undefined : json['id'],
+        'type': json['type'],
+        'id': json['id'],
         'name': json['name'],
         'access': !exists(json, 'access') ? undefined : json['access'],
         'trackReferences': !exists(json, 'track_references') ? undefined : (json['track_references'] === null ? null : (json['track_references'] as Array<any>).map(TrackReferenceFromJSON)),

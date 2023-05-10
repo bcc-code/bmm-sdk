@@ -31,13 +31,13 @@ export interface TileModel {
      * @type {number}
      * @memberof TileModel
      */
-    id?: number;
+    id: number;
     /**
      * 
      * @type {string}
      * @memberof TileModel
      */
-    readonly type?: string | null;
+    readonly type: TileModelTypeEnum;
     /**
      * 
      * @type {string}
@@ -106,11 +106,23 @@ export interface TileModel {
     track?: TrackModel;
 }
 
+
+/**
+ * @export
+ */
+export const TileModelTypeEnum = {
+    Tile: 'Tile'
+} as const;
+export type TileModelTypeEnum = typeof TileModelTypeEnum[keyof typeof TileModelTypeEnum];
+
+
 /**
  * Check if a given object implements the TileModel interface.
  */
 export function instanceOfTileModel(value: object): boolean {
     let isInstance = true;
+    isInstance = isInstance && "id" in value;
+    isInstance = isInstance && "type" in value;
 
     return isInstance;
 }
@@ -125,8 +137,8 @@ export function TileModelFromJSONTyped(json: any, ignoreDiscriminator: boolean):
     }
     return {
         
-        'id': !exists(json, 'id') ? undefined : json['id'],
-        'type': !exists(json, 'type') ? undefined : json['type'],
+        'id': json['id'],
+        'type': json['type'],
         'backgroundColor': !exists(json, 'background_color') ? undefined : json['background_color'],
         'coverUrl': !exists(json, 'cover_url') ? undefined : json['cover_url'],
         'title': !exists(json, 'title') ? undefined : json['title'],

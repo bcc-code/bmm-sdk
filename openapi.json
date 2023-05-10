@@ -274,56 +274,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "oneOf": [
-                        {
-                          "$ref": "#/components/schemas/AlbumModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/ContributorModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/PlaylistModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/PodcastModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TrackCollectionModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/CurrentWeeksStreakVm"
-                        },
-                        {
-                          "$ref": "#/components/schemas/ChapterHeader"
-                        },
-                        {
-                          "$ref": "#/components/schemas/IDocumentWithYear"
-                        },
-                        {
-                          "$ref": "#/components/schemas/InfoMessageModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/SectionHeaderModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/ITileModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TileMessageModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TileVideoModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TileModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TrackModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/YearInReviewModel"
-                        }
-                      ]
+                      "$ref": "#/components/schemas/BrowseResponse"
                     }
                   }
                 },
@@ -331,56 +282,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "oneOf": [
-                        {
-                          "$ref": "#/components/schemas/AlbumModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/ContributorModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/PlaylistModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/PodcastModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TrackCollectionModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/CurrentWeeksStreakVm"
-                        },
-                        {
-                          "$ref": "#/components/schemas/ChapterHeader"
-                        },
-                        {
-                          "$ref": "#/components/schemas/IDocumentWithYear"
-                        },
-                        {
-                          "$ref": "#/components/schemas/InfoMessageModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/SectionHeaderModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/ITileModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TileMessageModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TileVideoModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TileModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TrackModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/YearInReviewModel"
-                        }
-                      ]
+                      "$ref": "#/components/schemas/BrowseResponse"
                     }
                   }
                 },
@@ -388,56 +290,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "oneOf": [
-                        {
-                          "$ref": "#/components/schemas/AlbumModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/ContributorModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/PlaylistModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/PodcastModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TrackCollectionModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/CurrentWeeksStreakVm"
-                        },
-                        {
-                          "$ref": "#/components/schemas/ChapterHeader"
-                        },
-                        {
-                          "$ref": "#/components/schemas/IDocumentWithYear"
-                        },
-                        {
-                          "$ref": "#/components/schemas/InfoMessageModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/SectionHeaderModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/ITileModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TileMessageModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TileVideoModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TileModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TrackModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/YearInReviewModel"
-                        }
-                      ]
+                      "$ref": "#/components/schemas/BrowseResponse"
                     }
                   }
                 }
@@ -475,17 +328,17 @@
               "content": {
                 "text/plain": {
                   "schema": {
-                    "$ref": "#/components/schemas/DocumentList"
+                    "$ref": "#/components/schemas/DocumentListEvents"
                   }
                 },
                 "application/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/DocumentList"
+                    "$ref": "#/components/schemas/DocumentListEvents"
                   }
                 },
                 "text/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/DocumentList"
+                    "$ref": "#/components/schemas/DocumentListEvents"
                   }
                 }
               }
@@ -522,17 +375,17 @@
               "content": {
                 "text/plain": {
                   "schema": {
-                    "$ref": "#/components/schemas/DocumentList"
+                    "$ref": "#/components/schemas/DocumentListAudiobooks"
                   }
                 },
                 "application/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/DocumentList"
+                    "$ref": "#/components/schemas/DocumentListAudiobooks"
                   }
                 },
                 "text/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/DocumentList"
+                    "$ref": "#/components/schemas/DocumentListAudiobooks"
                   }
                 }
               }
@@ -551,17 +404,17 @@
               "content": {
                 "text/plain": {
                   "schema": {
-                    "$ref": "#/components/schemas/DocumentList"
+                    "$ref": "#/components/schemas/DocumentListPodcasts"
                   }
                 },
                 "application/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/DocumentList"
+                    "$ref": "#/components/schemas/DocumentListPodcasts"
                   }
                 },
                 "text/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/DocumentList"
+                    "$ref": "#/components/schemas/DocumentListPodcasts"
                   }
                 }
               }
@@ -580,17 +433,17 @@
               "content": {
                 "text/plain": {
                   "schema": {
-                    "$ref": "#/components/schemas/DocumentList"
+                    "$ref": "#/components/schemas/DocumentListPodcasts"
                   }
                 },
                 "application/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/DocumentList"
+                    "$ref": "#/components/schemas/DocumentListPodcasts"
                   }
                 },
                 "text/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/DocumentList"
+                    "$ref": "#/components/schemas/DocumentListPodcasts"
                   }
                 }
               }
@@ -1084,56 +937,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "oneOf": [
-                        {
-                          "$ref": "#/components/schemas/AlbumModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/ContributorModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/PlaylistModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/PodcastModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TrackCollectionModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/CurrentWeeksStreakVm"
-                        },
-                        {
-                          "$ref": "#/components/schemas/ChapterHeader"
-                        },
-                        {
-                          "$ref": "#/components/schemas/IDocumentWithYear"
-                        },
-                        {
-                          "$ref": "#/components/schemas/InfoMessageModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/SectionHeaderModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/ITileModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TileMessageModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TileVideoModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TileModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TrackModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/YearInReviewModel"
-                        }
-                      ]
+                      "$ref": "#/components/schemas/DiscoverResponse"
                     }
                   }
                 },
@@ -1141,56 +945,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "oneOf": [
-                        {
-                          "$ref": "#/components/schemas/AlbumModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/ContributorModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/PlaylistModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/PodcastModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TrackCollectionModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/CurrentWeeksStreakVm"
-                        },
-                        {
-                          "$ref": "#/components/schemas/ChapterHeader"
-                        },
-                        {
-                          "$ref": "#/components/schemas/IDocumentWithYear"
-                        },
-                        {
-                          "$ref": "#/components/schemas/InfoMessageModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/SectionHeaderModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/ITileModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TileMessageModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TileVideoModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TileModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TrackModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/YearInReviewModel"
-                        }
-                      ]
+                      "$ref": "#/components/schemas/DiscoverResponse"
                     }
                   }
                 },
@@ -1198,56 +953,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "oneOf": [
-                        {
-                          "$ref": "#/components/schemas/AlbumModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/ContributorModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/PlaylistModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/PodcastModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TrackCollectionModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/CurrentWeeksStreakVm"
-                        },
-                        {
-                          "$ref": "#/components/schemas/ChapterHeader"
-                        },
-                        {
-                          "$ref": "#/components/schemas/IDocumentWithYear"
-                        },
-                        {
-                          "$ref": "#/components/schemas/InfoMessageModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/SectionHeaderModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/ITileModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TileMessageModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TileVideoModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TileModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TrackModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/YearInReviewModel"
-                        }
-                      ]
+                      "$ref": "#/components/schemas/DiscoverResponse"
                     }
                   }
                 }
@@ -1637,17 +1343,17 @@
               "content": {
                 "text/plain": {
                   "schema": {
-                    "$ref": "#/components/schemas/DocumentList"
+                    "$ref": "#/components/schemas/DocumentListPlaylist"
                   }
                 },
                 "application/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/DocumentList"
+                    "$ref": "#/components/schemas/DocumentListPlaylist"
                   }
                 },
                 "text/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/DocumentList"
+                    "$ref": "#/components/schemas/DocumentListPlaylist"
                   }
                 }
               }
@@ -2105,56 +1811,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "oneOf": [
-                        {
-                          "$ref": "#/components/schemas/AlbumModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/ContributorModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/PlaylistModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/PodcastModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TrackCollectionModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/CurrentWeeksStreakVm"
-                        },
-                        {
-                          "$ref": "#/components/schemas/ChapterHeader"
-                        },
-                        {
-                          "$ref": "#/components/schemas/IDocumentWithYear"
-                        },
-                        {
-                          "$ref": "#/components/schemas/InfoMessageModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/SectionHeaderModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/ITileModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TileMessageModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TileVideoModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TileModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TrackModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/YearInReviewModel"
-                        }
-                      ]
+                      "$ref": "#/components/schemas/SearchTermResponse"
                     }
                   }
                 },
@@ -2162,56 +1819,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "oneOf": [
-                        {
-                          "$ref": "#/components/schemas/AlbumModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/ContributorModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/PlaylistModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/PodcastModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TrackCollectionModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/CurrentWeeksStreakVm"
-                        },
-                        {
-                          "$ref": "#/components/schemas/ChapterHeader"
-                        },
-                        {
-                          "$ref": "#/components/schemas/IDocumentWithYear"
-                        },
-                        {
-                          "$ref": "#/components/schemas/InfoMessageModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/SectionHeaderModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/ITileModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TileMessageModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TileVideoModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TileModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TrackModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/YearInReviewModel"
-                        }
-                      ]
+                      "$ref": "#/components/schemas/SearchTermResponse"
                     }
                   }
                 },
@@ -2219,56 +1827,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "oneOf": [
-                        {
-                          "$ref": "#/components/schemas/AlbumModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/ContributorModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/PlaylistModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/PodcastModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TrackCollectionModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/CurrentWeeksStreakVm"
-                        },
-                        {
-                          "$ref": "#/components/schemas/ChapterHeader"
-                        },
-                        {
-                          "$ref": "#/components/schemas/IDocumentWithYear"
-                        },
-                        {
-                          "$ref": "#/components/schemas/InfoMessageModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/SectionHeaderModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/ITileModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TileMessageModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TileVideoModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TileModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TrackModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/YearInReviewModel"
-                        }
-                      ]
+                      "$ref": "#/components/schemas/SearchTermResponse"
                     }
                   }
                 }
@@ -2335,56 +1894,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "oneOf": [
-                        {
-                          "$ref": "#/components/schemas/AlbumModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/ContributorModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/PlaylistModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/PodcastModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TrackCollectionModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/CurrentWeeksStreakVm"
-                        },
-                        {
-                          "$ref": "#/components/schemas/ChapterHeader"
-                        },
-                        {
-                          "$ref": "#/components/schemas/IDocumentWithYear"
-                        },
-                        {
-                          "$ref": "#/components/schemas/InfoMessageModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/SectionHeaderModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/ITileModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TileMessageModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TileVideoModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TileModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TrackModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/YearInReviewModel"
-                        }
-                      ]
+                      "$ref": "#/components/schemas/TextsearchTermResults"
                     }
                   }
                 },
@@ -2392,56 +1902,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "oneOf": [
-                        {
-                          "$ref": "#/components/schemas/AlbumModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/ContributorModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/PlaylistModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/PodcastModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TrackCollectionModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/CurrentWeeksStreakVm"
-                        },
-                        {
-                          "$ref": "#/components/schemas/ChapterHeader"
-                        },
-                        {
-                          "$ref": "#/components/schemas/IDocumentWithYear"
-                        },
-                        {
-                          "$ref": "#/components/schemas/InfoMessageModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/SectionHeaderModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/ITileModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TileMessageModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TileVideoModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TileModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TrackModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/YearInReviewModel"
-                        }
-                      ]
+                      "$ref": "#/components/schemas/TextsearchTermResults"
                     }
                   }
                 },
@@ -2449,56 +1910,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "oneOf": [
-                        {
-                          "$ref": "#/components/schemas/AlbumModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/ContributorModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/PlaylistModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/PodcastModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TrackCollectionModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/CurrentWeeksStreakVm"
-                        },
-                        {
-                          "$ref": "#/components/schemas/ChapterHeader"
-                        },
-                        {
-                          "$ref": "#/components/schemas/IDocumentWithYear"
-                        },
-                        {
-                          "$ref": "#/components/schemas/InfoMessageModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/SectionHeaderModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/ITileModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TileMessageModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TileVideoModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TileModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/TrackModel"
-                        },
-                        {
-                          "$ref": "#/components/schemas/YearInReviewModel"
-                        }
-                      ]
+                      "$ref": "#/components/schemas/TextsearchTermResults"
                     }
                   }
                 }
@@ -3666,6 +3078,10 @@
     "components": {
       "schemas": {
         "AlbumModel": {
+          "required": [
+            "id",
+            "type"
+          ],
           "type": "object",
           "allOf": [
             {
@@ -3735,51 +3151,16 @@
                     "$ref": "#/components/schemas/AlbumModel"
                   },
                   {
-                    "$ref": "#/components/schemas/ContributorModel"
-                  },
-                  {
-                    "$ref": "#/components/schemas/PlaylistModel"
-                  },
-                  {
-                    "$ref": "#/components/schemas/PodcastModel"
-                  },
-                  {
-                    "$ref": "#/components/schemas/TrackCollectionModel"
-                  },
-                  {
-                    "$ref": "#/components/schemas/CurrentWeeksStreakVm"
-                  },
-                  {
-                    "$ref": "#/components/schemas/ChapterHeader"
-                  },
-                  {
-                    "$ref": "#/components/schemas/IDocumentWithYear"
-                  },
-                  {
-                    "$ref": "#/components/schemas/InfoMessageModel"
-                  },
-                  {
-                    "$ref": "#/components/schemas/SectionHeaderModel"
-                  },
-                  {
-                    "$ref": "#/components/schemas/ITileModel"
-                  },
-                  {
-                    "$ref": "#/components/schemas/TileMessageModel"
-                  },
-                  {
-                    "$ref": "#/components/schemas/TileVideoModel"
-                  },
-                  {
-                    "$ref": "#/components/schemas/TileModel"
-                  },
-                  {
                     "$ref": "#/components/schemas/TrackModel"
-                  },
-                  {
-                    "$ref": "#/components/schemas/YearInReviewModel"
                   }
-                ]
+                ],
+                "discriminator": {
+                  "propertyName": "type",
+                  "mapping": {
+                    "album": "#/components/schemas/AlbumModel",
+                    "track": "#/components/schemas/TrackModel"
+                  }
+                }      
               },
               "nullable": true
             },
@@ -3956,7 +3337,36 @@
           ],
           "type": "string"
         },
+        "BrowseResponse": {
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/AlbumModel"
+            },
+            {
+              "$ref": "#/components/schemas/PlaylistModel"
+            },
+            {
+              "$ref": "#/components/schemas/PodcastModel"
+            },
+            {
+              "$ref": "#/components/schemas/SectionHeaderModel"
+            }
+          ],
+          "discriminator": {
+            "propertyName": "type",
+            "mapping": {
+              "album": "#/components/schemas/AlbumModel",
+              "playlist": "#/components/schemas/PlaylistModel",
+              "podcast": "#/components/schemas/PodcastModel",
+              "section_header": "#/components/schemas/SectionHeaderModel"
+            }
+          }
+        },
         "ChapterHeader": {
+          "required": [
+            "id",
+            "type"
+          ],
           "type": "object",
           "allOf": [
             {
@@ -3970,7 +3380,7 @@
             },
             "type": {
               "type": "string",
-              "nullable": true,
+              "enum": ["chapter_header"],
               "readOnly": true
             },
             "title": {
@@ -3995,6 +3405,10 @@
           "additionalProperties": false
         },
         "ContributorModel": {
+          "required": [
+            "id",
+            "type"
+          ],
           "type": "object",
           "allOf": [
             {
@@ -4008,7 +3422,7 @@
             },
             "type": {
               "type": "string",
-              "nullable": true,
+              "enum": ["contributor"],
               "readOnly": true
             },
             "is_visible": {
@@ -4256,7 +3670,68 @@
           ],
           "type": "string"
         },
-        "DocumentList": {
+        "DiscoverResponse": {
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/AlbumModel"
+            },
+            {
+              "$ref": "#/components/schemas/ContributorModel"
+            },
+            {
+              "$ref": "#/components/schemas/PlaylistModel"
+            },
+            {
+              "$ref": "#/components/schemas/PodcastModel"
+            },
+            {
+              "$ref": "#/components/schemas/TrackCollectionModel"
+            },
+            {
+              "$ref": "#/components/schemas/CurrentWeeksStreakVm"
+            },
+            {
+              "$ref": "#/components/schemas/InfoMessageModel"
+            },
+            {
+              "$ref": "#/components/schemas/SectionHeaderModel"
+            },
+            {
+              "$ref": "#/components/schemas/TileMessageModel"
+            },
+            {
+              "$ref": "#/components/schemas/TileVideoModel"
+            },
+            {
+              "$ref": "#/components/schemas/TileModel"
+            },
+            {
+              "$ref": "#/components/schemas/TrackModel"
+            },
+            {
+              "$ref": "#/components/schemas/YearInReviewModel"
+            }
+          ],
+          "discriminator": {
+            "propertyName": "type",
+            "mapping": {
+              "album": "#/components/schemas/AlbumModel",
+              "contributor": "#/components/schemas/ContributorModel",
+              "playlist": "#/components/schemas/PlaylistModel",
+              "podcast": "#/components/schemas/PodcastModel",
+              "track_collection": "#/components/schemas/TrackCollectionModel",
+              "": "#/components/schemas/CurrentWeeksStreakVm",
+              "InfoMessage": "#/components/schemas/InfoMessageModel",
+              "section_header": "#/components/schemas/SectionHeaderModel",
+              "tile_message": "#/components/schemas/TileMessageModel",
+              "tile_video": "#/components/schemas/TileVideoModel",
+              "Tile": "#/components/schemas/TileModel",
+              "track": "#/components/schemas/TrackModel",
+              "year_in_review": "#/components/schemas/YearInReviewModel"
+            }
+          }
+        },
+        "DocumentListAudiobooks": {
           "type": "object",
           "properties": {
             "title": {
@@ -4282,51 +3757,100 @@
                     "$ref": "#/components/schemas/AlbumModel"
                   },
                   {
-                    "$ref": "#/components/schemas/ContributorModel"
-                  },
-                  {
                     "$ref": "#/components/schemas/PlaylistModel"
-                  },
-                  {
-                    "$ref": "#/components/schemas/PodcastModel"
-                  },
-                  {
-                    "$ref": "#/components/schemas/TrackCollectionModel"
-                  },
-                  {
-                    "$ref": "#/components/schemas/CurrentWeeksStreakVm"
-                  },
-                  {
-                    "$ref": "#/components/schemas/ChapterHeader"
-                  },
-                  {
-                    "$ref": "#/components/schemas/IDocumentWithYear"
-                  },
-                  {
-                    "$ref": "#/components/schemas/InfoMessageModel"
-                  },
-                  {
-                    "$ref": "#/components/schemas/SectionHeaderModel"
-                  },
-                  {
-                    "$ref": "#/components/schemas/ITileModel"
-                  },
-                  {
-                    "$ref": "#/components/schemas/TileMessageModel"
-                  },
-                  {
-                    "$ref": "#/components/schemas/TileVideoModel"
-                  },
-                  {
-                    "$ref": "#/components/schemas/TileModel"
-                  },
-                  {
-                    "$ref": "#/components/schemas/TrackModel"
-                  },
-                  {
-                    "$ref": "#/components/schemas/YearInReviewModel"
                   }
-                ]
+                ],
+                "discriminator": {
+                  "propertyName": "type",
+                  "mapping": {
+                    "album": "#/components/schemas/AlbumModel",
+                    "playlist": "#/components/schemas/PlaylistModel"
+                  }
+                }
+              },
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "DocumentListEvents": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "nullable": true
+            },
+            "translation_parent": {
+              "type": "string",
+              "nullable": true
+            },
+            "translation_id": {
+              "type": "string",
+              "nullable": true
+            },
+            "supports_paging": {
+              "type": "boolean"
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/AlbumModel"
+              },
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "DocumentListPlaylist": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "nullable": true
+            },
+            "translation_parent": {
+              "type": "string",
+              "nullable": true
+            },
+            "translation_id": {
+              "type": "string",
+              "nullable": true
+            },
+            "supports_paging": {
+              "type": "boolean"
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/DiscoverResponse"
+              },
+              "nullable": true
+            }
+          },
+          "additionalProperties": false
+        },
+        "DocumentListPodcasts": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "nullable": true
+            },
+            "translation_parent": {
+              "type": "string",
+              "nullable": true
+            },
+            "translation_id": {
+              "type": "string",
+              "nullable": true
+            },
+            "supports_paging": {
+              "type": "boolean"
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/PodcastModel"
               },
               "nullable": true
             }
@@ -4334,11 +3858,15 @@
           "additionalProperties": false
         },
         "GetTopSongsCollectionModel": {
+          "required": [
+            "id",
+            "type"
+          ],
           "type": "object",
           "properties": {
             "type": {
               "type": "string",
-              "nullable": true,
+              "enum": ["top_songs_collection"],
               "readOnly": true
             },
             "id": {
@@ -4377,11 +3905,15 @@
           "additionalProperties": false
         },
         "GetTrackCollectionModel": {
+          "required": [
+            "id",
+            "type"
+          ],
           "type": "object",
           "properties": {
             "type": {
               "type": "string",
-              "nullable": true,
+              "enum": ["track_collection"],
               "readOnly": true
             },
             "id": {
@@ -4530,6 +4062,10 @@
           "additionalProperties": false
         },
         "InfoMessageModel": {
+          "required": [
+            "id",
+            "type"
+          ],
           "type": "object",
           "allOf": [
             {
@@ -4543,7 +4079,7 @@
             },
             "type": {
               "type": "string",
-              "nullable": true,
+              "enum": ["InfoMessage"],
               "readOnly": true
             },
             "translated_message": {
@@ -4640,6 +4176,10 @@
           "additionalProperties": false
         },
         "PlaylistModel": {
+          "required": [
+            "id",
+            "type"
+          ],
           "type": "object",
           "allOf": [
             {
@@ -4657,7 +4197,7 @@
             },
             "type": {
               "type": "string",
-              "nullable": true,
+              "enum": ["playlist"],
               "readOnly": true
             },
             "languages": {
@@ -4678,6 +4218,10 @@
           "additionalProperties": false
         },
         "PodcastModel": {
+          "required": [
+            "id",
+            "type"
+          ],
           "type": "object",
           "allOf": [
             {
@@ -4695,7 +4239,7 @@
             },
             "type": {
               "type": "string",
-              "nullable": true,
+              "enum": ["podcast"],
               "readOnly": true
             },
             "languages": {
@@ -4791,6 +4335,71 @@
           ],
           "type": "string"
         },
+        "SearchTermResponse": {
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/AlbumModel"
+            },
+            {
+              "$ref": "#/components/schemas/ContributorModel"
+            },
+            {
+              "$ref": "#/components/schemas/PlaylistModel"
+            },
+            {
+              "$ref": "#/components/schemas/PodcastModel"
+            },
+            {
+              "$ref": "#/components/schemas/TrackCollectionModel"
+            },
+            {
+              "$ref": "#/components/schemas/CurrentWeeksStreakVm"
+            },
+            {
+              "$ref": "#/components/schemas/ChapterHeader"
+            },
+            {
+              "$ref": "#/components/schemas/InfoMessageModel"
+            },
+            {
+              "$ref": "#/components/schemas/SectionHeaderModel"
+            },
+            {
+              "$ref": "#/components/schemas/TileMessageModel"
+            },
+            {
+              "$ref": "#/components/schemas/TileVideoModel"
+            },
+            {
+              "$ref": "#/components/schemas/TileModel"
+            },
+            {
+              "$ref": "#/components/schemas/TrackModel"
+            },
+            {
+              "$ref": "#/components/schemas/YearInReviewModel"
+            }
+          ],
+          "discriminator": {
+            "propertyName": "type",
+            "mapping": {
+              "album": "#/components/schemas/AlbumModel",
+              "contributor": "#/components/schemas/ContributorModel",
+              "playlist": "#/components/schemas/PlaylistModel",
+              "podcast": "#/components/schemas/PodcastModel",
+              "track_collection": "#/components/schemas/TrackCollectionModel",
+              "": "#/components/schemas/CurrentWeeksStreakVm",
+              "chapter_header": "#/components/schemas/ChapterHeader",
+              "InfoMessage": "#/components/schemas/InfoMessageModel",
+              "section_header": "#/components/schemas/SectionHeaderModel",
+              "tile_message": "#/components/schemas/TileMessageModel",
+              "tile_video": "#/components/schemas/TileVideoModel",
+              "Tile": "#/components/schemas/TileModel",
+              "track": "#/components/schemas/TrackModel",
+              "year_in_review": "#/components/schemas/YearInReviewModel"
+            }
+          }
+        },
         "SearchResults": {
           "type": "object",
           "properties": {
@@ -4817,7 +4426,17 @@
                   {
                     "$ref": "#/components/schemas/TrackModel"
                   }
-                ]
+                ],
+                "discriminator": {
+                  "propertyName": "type",
+                  "mapping": {
+                    "album": "#/components/schemas/AlbumModel",
+                    "contributor": "#/components/schemas/ContributorModel",
+                    "playlist": "#/components/schemas/PlaylistModel",
+                    "podcast": "#/components/schemas/PodcastModel",
+                    "track": "#/components/schemas/TrackModel"
+                  }
+                }
               },
               "nullable": true
             },
@@ -4835,6 +4454,10 @@
           "additionalProperties": false
         },
         "SectionHeaderModel": {
+          "required": [
+            "id",
+            "type"
+          ],
           "type": "object",
           "allOf": [
             {
@@ -4867,7 +4490,7 @@
             },
             "type": {
               "type": "string",
-              "nullable": true,
+              "enum": ["section_header"],
               "readOnly": true
             }
           },
@@ -4893,7 +4516,76 @@
           },
           "additionalProperties": false
         },
+        "TextsearchTermResults": {
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/AlbumModel"
+            },
+            {
+              "$ref": "#/components/schemas/ContributorModel"
+            },
+            {
+              "$ref": "#/components/schemas/PlaylistModel"
+            },
+            {
+              "$ref": "#/components/schemas/PodcastModel"
+            },
+            {
+              "$ref": "#/components/schemas/TrackCollectionModel"
+            },
+            {
+              "$ref": "#/components/schemas/CurrentWeeksStreakVm"
+            },
+            {
+              "$ref": "#/components/schemas/ChapterHeader"
+            },
+            {
+              "$ref": "#/components/schemas/InfoMessageModel"
+            },
+            {
+              "$ref": "#/components/schemas/SectionHeaderModel"
+            },
+            {
+              "$ref": "#/components/schemas/TileMessageModel"
+            },
+            {
+              "$ref": "#/components/schemas/TileVideoModel"
+            },
+            {
+              "$ref": "#/components/schemas/TileModel"
+            },
+            {
+              "$ref": "#/components/schemas/TrackModel"
+            },
+            {
+              "$ref": "#/components/schemas/YearInReviewModel"
+            }
+          ],
+          "discriminator": {
+            "propertyName": "type",
+            "mapping": {
+              "album": "#/components/schemas/AlbumModel",
+              "contributor": "#/components/schemas/ContributorModel",
+              "playlist": "#/components/schemas/PlaylistModel",
+              "podcast": "#/components/schemas/PodcastModel",
+              "track_collection": "#/components/schemas/TrackCollectionModel",
+              "": "#/components/schemas/CurrentWeeksStreakVm",
+              "chapter_header": "#/components/schemas/ChapterHeader",
+              "InfoMessage": "#/components/schemas/InfoMessageModel",
+              "section_header": "#/components/schemas/SectionHeaderModel",
+              "tile_message": "#/components/schemas/TileMessageModel",
+              "tile_video": "#/components/schemas/TileVideoModel",
+              "Tile": "#/components/schemas/TileModel",
+              "track": "#/components/schemas/TrackModel",
+              "year_in_review": "#/components/schemas/YearInReviewModel"
+            }
+          }
+        },
         "TileMessageModel": {
+          "required": [
+            "id",
+            "type"
+          ],
           "type": "object",
           "allOf": [
             {
@@ -4907,7 +4599,7 @@
             },
             "type": {
               "type": "string",
-              "nullable": true,
+              "enum": ["tile_message"],
               "readOnly": true
             },
             "header": {
@@ -4934,6 +4626,10 @@
           "additionalProperties": false
         },
         "TileModel": {
+          "required": [
+            "id",
+            "type"
+          ],
           "type": "object",
           "allOf": [
             {
@@ -4947,7 +4643,7 @@
             },
             "type": {
               "type": "string",
-              "nullable": true,
+              "enum": ["Tile"],
               "readOnly": true
             },
             "background_color": {
@@ -5001,6 +4697,10 @@
           "additionalProperties": false
         },
         "TileVideoModel": {
+          "required": [
+            "id",
+            "type"
+          ],
           "type": "object",
           "allOf": [
             {
@@ -5014,7 +4714,7 @@
             },
             "type": {
               "type": "string",
-              "nullable": true,
+              "enum": ["tile_video"],
               "readOnly": true
             },
             "header": {
@@ -5075,7 +4775,9 @@
         },
         "TrackCollectionModel": {
           "required": [
-            "name"
+            "name",
+            "id",
+            "type"
           ],
           "type": "object",
           "allOf": [
@@ -5086,7 +4788,7 @@
           "properties": {
             "type": {
               "type": "string",
-              "nullable": true,
+              "enum": ["track_collection"],
               "readOnly": true
             },
             "id": {
@@ -5125,6 +4827,10 @@
           "additionalProperties": false
         },
         "TrackModel": {
+          "required": [
+            "id",
+            "type"
+          ],
           "type": "object",
           "allOf": [
             {
@@ -5185,7 +4891,7 @@
             },
             "type": {
               "type": "string",
-              "nullable": true
+              "enum": ["track"]
             },
             "languages": {
               "type": "array",
@@ -5551,6 +5257,10 @@
           "additionalProperties": false
         },
         "YearInReviewModel": {
+          "required": [
+            "id",
+            "type"
+          ],
           "type": "object",
           "allOf": [
             {
@@ -5564,7 +5274,7 @@
             },
             "type": {
               "type": "string",
-              "nullable": true,
+              "enum": ["year_in_review"],
               "readOnly": true
             },
             "title": {

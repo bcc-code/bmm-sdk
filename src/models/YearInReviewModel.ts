@@ -24,13 +24,13 @@ export interface YearInReviewModel {
      * @type {number}
      * @memberof YearInReviewModel
      */
-    id?: number;
+    id: number;
     /**
      * 
      * @type {string}
      * @memberof YearInReviewModel
      */
-    readonly type?: string | null;
+    readonly type: YearInReviewModelTypeEnum;
     /**
      * 
      * @type {string}
@@ -63,11 +63,23 @@ export interface YearInReviewModel {
     playlistName?: string | null;
 }
 
+
+/**
+ * @export
+ */
+export const YearInReviewModelTypeEnum = {
+    YearInReview: 'year_in_review'
+} as const;
+export type YearInReviewModelTypeEnum = typeof YearInReviewModelTypeEnum[keyof typeof YearInReviewModelTypeEnum];
+
+
 /**
  * Check if a given object implements the YearInReviewModel interface.
  */
 export function instanceOfYearInReviewModel(value: object): boolean {
     let isInstance = true;
+    isInstance = isInstance && "id" in value;
+    isInstance = isInstance && "type" in value;
 
     return isInstance;
 }
@@ -82,8 +94,8 @@ export function YearInReviewModelFromJSONTyped(json: any, ignoreDiscriminator: b
     }
     return {
         
-        'id': !exists(json, 'id') ? undefined : json['id'],
-        'type': !exists(json, 'type') ? undefined : json['type'],
+        'id': json['id'],
+        'type': json['type'],
         'title': !exists(json, 'title') ? undefined : json['title'],
         'description': !exists(json, 'description') ? undefined : json['description'],
         'buttonTitle': !exists(json, 'button_title') ? undefined : json['button_title'],

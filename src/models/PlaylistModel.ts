@@ -37,13 +37,13 @@ export interface PlaylistModel {
      * @type {number}
      * @memberof PlaylistModel
      */
-    id?: number;
+    id: number;
     /**
      * 
      * @type {string}
      * @memberof PlaylistModel
      */
-    readonly type?: string | null;
+    readonly type: PlaylistModelTypeEnum;
     /**
      * 
      * @type {Array<LanguageEnum>}
@@ -64,11 +64,23 @@ export interface PlaylistModel {
     title?: string | null;
 }
 
+
+/**
+ * @export
+ */
+export const PlaylistModelTypeEnum = {
+    Playlist: 'playlist'
+} as const;
+export type PlaylistModelTypeEnum = typeof PlaylistModelTypeEnum[keyof typeof PlaylistModelTypeEnum];
+
+
 /**
  * Check if a given object implements the PlaylistModel interface.
  */
 export function instanceOfPlaylistModel(value: object): boolean {
     let isInstance = true;
+    isInstance = isInstance && "id" in value;
+    isInstance = isInstance && "type" in value;
 
     return isInstance;
 }
@@ -84,8 +96,8 @@ export function PlaylistModelFromJSONTyped(json: any, ignoreDiscriminator: boole
     return {
         
         'cover': !exists(json, 'cover') ? undefined : json['cover'],
-        'id': !exists(json, 'id') ? undefined : json['id'],
-        'type': !exists(json, 'type') ? undefined : json['type'],
+        'id': json['id'],
+        'type': json['type'],
         'languages': !exists(json, 'languages') ? undefined : (json['languages'] === null ? null : (json['languages'] as Array<any>).map(LanguageEnumFromJSON)),
         'language': !exists(json, 'language') ? undefined : LanguageEnumFromJSON(json['language']),
         'title': !exists(json, 'title') ? undefined : json['title'],

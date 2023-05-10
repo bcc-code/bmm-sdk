@@ -15,14 +15,20 @@
 
 import * as runtime from '../runtime';
 import type {
-  BrowseGet200ResponseInner,
-  DocumentList,
+  BrowseResponse,
+  DocumentListAudiobooks,
+  DocumentListEvents,
+  DocumentListPodcasts,
 } from '../models';
 import {
-    BrowseGet200ResponseInnerFromJSON,
-    BrowseGet200ResponseInnerToJSON,
-    DocumentListFromJSON,
-    DocumentListToJSON,
+    BrowseResponseFromJSON,
+    BrowseResponseToJSON,
+    DocumentListAudiobooksFromJSON,
+    DocumentListAudiobooksToJSON,
+    DocumentListEventsFromJSON,
+    DocumentListEventsToJSON,
+    DocumentListPodcastsFromJSON,
+    DocumentListPodcastsToJSON,
 } from '../models';
 
 export interface BrowseAudiobooksGetRequest {
@@ -42,7 +48,7 @@ export class BrowseApi extends runtime.BaseAPI {
 
     /**
      */
-    async browseAudiobooksGetRaw(requestParameters: BrowseAudiobooksGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DocumentList>> {
+    async browseAudiobooksGetRaw(requestParameters: BrowseAudiobooksGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DocumentListAudiobooks>> {
         const queryParameters: any = {};
 
         if (requestParameters.skip !== undefined) {
@@ -62,19 +68,19 @@ export class BrowseApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => DocumentListFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => DocumentListAudiobooksFromJSON(jsonValue));
     }
 
     /**
      */
-    async browseAudiobooksGet(requestParameters: BrowseAudiobooksGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DocumentList> {
+    async browseAudiobooksGet(requestParameters: BrowseAudiobooksGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DocumentListAudiobooks> {
         const response = await this.browseAudiobooksGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async browseEventsGetRaw(requestParameters: BrowseEventsGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DocumentList>> {
+    async browseEventsGetRaw(requestParameters: BrowseEventsGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DocumentListEvents>> {
         const queryParameters: any = {};
 
         if (requestParameters.skip !== undefined) {
@@ -94,19 +100,19 @@ export class BrowseApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => DocumentListFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => DocumentListEventsFromJSON(jsonValue));
     }
 
     /**
      */
-    async browseEventsGet(requestParameters: BrowseEventsGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DocumentList> {
+    async browseEventsGet(requestParameters: BrowseEventsGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DocumentListEvents> {
         const response = await this.browseEventsGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async browseGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<BrowseGet200ResponseInner>>> {
+    async browseGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<BrowseResponse>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -118,19 +124,19 @@ export class BrowseApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(BrowseGet200ResponseInnerFromJSON));
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(BrowseResponseFromJSON));
     }
 
     /**
      */
-    async browseGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<BrowseGet200ResponseInner>> {
+    async browseGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<BrowseResponse>> {
         const response = await this.browseGetRaw(initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async browseMusicGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DocumentList>> {
+    async browseMusicGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DocumentListPodcasts>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -142,19 +148,19 @@ export class BrowseApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => DocumentListFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => DocumentListPodcastsFromJSON(jsonValue));
     }
 
     /**
      */
-    async browseMusicGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DocumentList> {
+    async browseMusicGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DocumentListPodcasts> {
         const response = await this.browseMusicGetRaw(initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async browsePodcastsGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DocumentList>> {
+    async browsePodcastsGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DocumentListPodcasts>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -166,12 +172,12 @@ export class BrowseApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => DocumentListFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => DocumentListPodcastsFromJSON(jsonValue));
     }
 
     /**
      */
-    async browsePodcastsGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DocumentList> {
+    async browsePodcastsGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DocumentListPodcasts> {
         const response = await this.browsePodcastsGetRaw(initOverrides);
         return await response.value();
     }

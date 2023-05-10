@@ -24,13 +24,13 @@ export interface InfoMessageModel {
      * @type {number}
      * @memberof InfoMessageModel
      */
-    id?: number;
+    id: number;
     /**
      * 
      * @type {string}
      * @memberof InfoMessageModel
      */
-    readonly type?: string | null;
+    readonly type: InfoMessageModelTypeEnum;
     /**
      * 
      * @type {string}
@@ -51,11 +51,23 @@ export interface InfoMessageModel {
     translationId?: string | null;
 }
 
+
+/**
+ * @export
+ */
+export const InfoMessageModelTypeEnum = {
+    InfoMessage: 'InfoMessage'
+} as const;
+export type InfoMessageModelTypeEnum = typeof InfoMessageModelTypeEnum[keyof typeof InfoMessageModelTypeEnum];
+
+
 /**
  * Check if a given object implements the InfoMessageModel interface.
  */
 export function instanceOfInfoMessageModel(value: object): boolean {
     let isInstance = true;
+    isInstance = isInstance && "id" in value;
+    isInstance = isInstance && "type" in value;
 
     return isInstance;
 }
@@ -70,8 +82,8 @@ export function InfoMessageModelFromJSONTyped(json: any, ignoreDiscriminator: bo
     }
     return {
         
-        'id': !exists(json, 'id') ? undefined : json['id'],
-        'type': !exists(json, 'type') ? undefined : json['type'],
+        'id': json['id'],
+        'type': json['type'],
         'translatedMessage': !exists(json, 'translated_message') ? undefined : json['translated_message'],
         'translationParent': !exists(json, 'translation_parent') ? undefined : json['translation_parent'],
         'translationId': !exists(json, 'translation_id') ? undefined : json['translation_id'],

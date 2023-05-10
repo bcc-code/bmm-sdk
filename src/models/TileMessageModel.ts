@@ -24,13 +24,13 @@ export interface TileMessageModel {
      * @type {number}
      * @memberof TileMessageModel
      */
-    id?: number;
+    id: number;
     /**
      * 
      * @type {string}
      * @memberof TileMessageModel
      */
-    readonly type?: string | null;
+    readonly type: TileMessageModelTypeEnum;
     /**
      * 
      * @type {string}
@@ -63,11 +63,23 @@ export interface TileMessageModel {
     buttonUrl?: string | null;
 }
 
+
+/**
+ * @export
+ */
+export const TileMessageModelTypeEnum = {
+    TileMessage: 'tile_message'
+} as const;
+export type TileMessageModelTypeEnum = typeof TileMessageModelTypeEnum[keyof typeof TileMessageModelTypeEnum];
+
+
 /**
  * Check if a given object implements the TileMessageModel interface.
  */
 export function instanceOfTileMessageModel(value: object): boolean {
     let isInstance = true;
+    isInstance = isInstance && "id" in value;
+    isInstance = isInstance && "type" in value;
 
     return isInstance;
 }
@@ -82,8 +94,8 @@ export function TileMessageModelFromJSONTyped(json: any, ignoreDiscriminator: bo
     }
     return {
         
-        'id': !exists(json, 'id') ? undefined : json['id'],
-        'type': !exists(json, 'type') ? undefined : json['type'],
+        'id': json['id'],
+        'type': json['type'],
         'header': !exists(json, 'header') ? undefined : json['header'],
         'title': !exists(json, 'title') ? undefined : json['title'],
         'subtitle': !exists(json, 'subtitle') ? undefined : json['subtitle'],

@@ -24,13 +24,13 @@ export interface ChapterHeader {
      * @type {number}
      * @memberof ChapterHeader
      */
-    id?: number;
+    id: number;
     /**
      * 
      * @type {string}
      * @memberof ChapterHeader
      */
-    readonly type?: string | null;
+    readonly type: ChapterHeaderTypeEnum;
     /**
      * 
      * @type {string}
@@ -39,11 +39,23 @@ export interface ChapterHeader {
     title?: string | null;
 }
 
+
+/**
+ * @export
+ */
+export const ChapterHeaderTypeEnum = {
+    ChapterHeader: 'chapter_header'
+} as const;
+export type ChapterHeaderTypeEnum = typeof ChapterHeaderTypeEnum[keyof typeof ChapterHeaderTypeEnum];
+
+
 /**
  * Check if a given object implements the ChapterHeader interface.
  */
 export function instanceOfChapterHeader(value: object): boolean {
     let isInstance = true;
+    isInstance = isInstance && "id" in value;
+    isInstance = isInstance && "type" in value;
 
     return isInstance;
 }
@@ -58,8 +70,8 @@ export function ChapterHeaderFromJSONTyped(json: any, ignoreDiscriminator: boole
     }
     return {
         
-        'id': !exists(json, 'id') ? undefined : json['id'],
-        'type': !exists(json, 'type') ? undefined : json['type'],
+        'id': json['id'],
+        'type': json['type'],
         'title': !exists(json, 'title') ? undefined : json['title'],
     };
 }

@@ -15,15 +15,14 @@
 
 import * as runtime from '../runtime';
 import type {
-  BrowseGet200ResponseInner,
   PublishedFilter,
   ResourceType,
   SearchFilter,
   SearchResults,
+  SearchTermResponse,
+  TextsearchTermResults,
 } from '../models';
 import {
-    BrowseGet200ResponseInnerFromJSON,
-    BrowseGet200ResponseInnerToJSON,
     PublishedFilterFromJSON,
     PublishedFilterToJSON,
     ResourceTypeFromJSON,
@@ -32,6 +31,10 @@ import {
     SearchFilterToJSON,
     SearchResultsFromJSON,
     SearchResultsToJSON,
+    SearchTermResponseFromJSON,
+    SearchTermResponseToJSON,
+    TextsearchTermResultsFromJSON,
+    TextsearchTermResultsToJSON,
 } from '../models';
 
 export interface SearchTermGetRequest {
@@ -73,7 +76,7 @@ export class SearchApi extends runtime.BaseAPI {
 
     /**
      */
-    async searchTermGetRaw(requestParameters: SearchTermGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<BrowseGet200ResponseInner>>> {
+    async searchTermGetRaw(requestParameters: SearchTermGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<SearchTermResponse>>> {
         if (requestParameters.term === null || requestParameters.term === undefined) {
             throw new runtime.RequiredError('term','Required parameter requestParameters.term was null or undefined when calling searchTermGet.');
         }
@@ -105,12 +108,12 @@ export class SearchApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(BrowseGet200ResponseInnerFromJSON));
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(SearchTermResponseFromJSON));
     }
 
     /**
      */
-    async searchTermGet(requestParameters: SearchTermGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<BrowseGet200ResponseInner>> {
+    async searchTermGet(requestParameters: SearchTermGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<SearchTermResponse>> {
         const response = await this.searchTermGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -161,7 +164,7 @@ export class SearchApi extends runtime.BaseAPI {
 
     /**
      */
-    async textsearchTermGetRaw(requestParameters: TextsearchTermGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<BrowseGet200ResponseInner>>> {
+    async textsearchTermGetRaw(requestParameters: TextsearchTermGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<TextsearchTermResults>>> {
         if (requestParameters.term === null || requestParameters.term === undefined) {
             throw new runtime.RequiredError('term','Required parameter requestParameters.term was null or undefined when calling textsearchTermGet.');
         }
@@ -193,12 +196,12 @@ export class SearchApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(BrowseGet200ResponseInnerFromJSON));
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(TextsearchTermResultsFromJSON));
     }
 
     /**
      */
-    async textsearchTermGet(requestParameters: TextsearchTermGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<BrowseGet200ResponseInner>> {
+    async textsearchTermGet(requestParameters: TextsearchTermGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<TextsearchTermResults>> {
         const response = await this.textsearchTermGetRaw(requestParameters, initOverrides);
         return await response.value();
     }

@@ -48,7 +48,7 @@ export interface SectionHeaderModel {
      * @type {number}
      * @memberof SectionHeaderModel
      */
-    id?: number;
+    id: number;
     /**
      * 
      * @type {boolean}
@@ -60,14 +60,26 @@ export interface SectionHeaderModel {
      * @type {string}
      * @memberof SectionHeaderModel
      */
-    readonly type?: string | null;
+    readonly type: SectionHeaderModelTypeEnum;
 }
+
+
+/**
+ * @export
+ */
+export const SectionHeaderModelTypeEnum = {
+    SectionHeader: 'section_header'
+} as const;
+export type SectionHeaderModelTypeEnum = typeof SectionHeaderModelTypeEnum[keyof typeof SectionHeaderModelTypeEnum];
+
 
 /**
  * Check if a given object implements the SectionHeaderModel interface.
  */
 export function instanceOfSectionHeaderModel(value: object): boolean {
     let isInstance = true;
+    isInstance = isInstance && "id" in value;
+    isInstance = isInstance && "type" in value;
 
     return isInstance;
 }
@@ -86,9 +98,9 @@ export function SectionHeaderModelFromJSONTyped(json: any, ignoreDiscriminator: 
         'translationParent': !exists(json, 'translation_parent') ? undefined : json['translation_parent'],
         'translationId': !exists(json, 'translation_id') ? undefined : json['translation_id'],
         'link': !exists(json, 'link') ? undefined : json['link'],
-        'id': !exists(json, 'id') ? undefined : json['id'],
+        'id': json['id'],
         'useCoverCarousel': !exists(json, 'use_cover_carousel') ? undefined : json['use_cover_carousel'],
-        'type': !exists(json, 'type') ? undefined : json['type'],
+        'type': json['type'],
     };
 }
 

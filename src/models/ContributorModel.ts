@@ -31,13 +31,13 @@ export interface ContributorModel {
      * @type {number}
      * @memberof ContributorModel
      */
-    id?: number;
+    id: number;
     /**
      * 
      * @type {string}
      * @memberof ContributorModel
      */
-    readonly type?: string | null;
+    readonly type: ContributorModelTypeEnum;
     /**
      * 
      * @type {boolean}
@@ -76,11 +76,23 @@ export interface ContributorModel {
     otherReferences?: number | null;
 }
 
+
+/**
+ * @export
+ */
+export const ContributorModelTypeEnum = {
+    Contributor: 'contributor'
+} as const;
+export type ContributorModelTypeEnum = typeof ContributorModelTypeEnum[keyof typeof ContributorModelTypeEnum];
+
+
 /**
  * Check if a given object implements the ContributorModel interface.
  */
 export function instanceOfContributorModel(value: object): boolean {
     let isInstance = true;
+    isInstance = isInstance && "id" in value;
+    isInstance = isInstance && "type" in value;
 
     return isInstance;
 }
@@ -95,8 +107,8 @@ export function ContributorModelFromJSONTyped(json: any, ignoreDiscriminator: bo
     }
     return {
         
-        'id': !exists(json, 'id') ? undefined : json['id'],
-        'type': !exists(json, 'type') ? undefined : json['type'],
+        'id': json['id'],
+        'type': json['type'],
         'isVisible': !exists(json, 'is_visible') ? undefined : json['is_visible'],
         'name': !exists(json, 'name') ? undefined : json['name'],
         'cover': !exists(json, 'cover') ? undefined : json['cover'],
