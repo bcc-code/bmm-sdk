@@ -1,7 +1,7 @@
 {
   "name": "@bcc-code/bmm-sdk-fetch",
   "description": "An SDK for the BMM API using the OpenAPI generator for typescript-fetch.",
-  "version": "5.0.0",
+  "version": "6.0.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
