@@ -3083,11 +3083,6 @@
             "type"
           ],
           "type": "object",
-          "allOf": [
-            {
-              "$ref": "#/components/schemas/IDocumentWithYear"
-            }
-          ],
           "properties": {
             "_meta": {
               "$ref": "#/components/schemas/AlbumModel-AlbumMeta"

@@ -13,18 +13,18 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { AlbumModel | TrackModel } from './AlbumModel | TrackModel';
-import {
-    AlbumModel | TrackModelFromJSON,
-    AlbumModel | TrackModelFromJSONTyped,
-    AlbumModel | TrackModelToJSON,
-} from './AlbumModel | TrackModel';
 import type { AlbumModelAlbumMeta } from './AlbumModelAlbumMeta';
 import {
     AlbumModelAlbumMetaFromJSON,
     AlbumModelAlbumMetaFromJSONTyped,
     AlbumModelAlbumMetaToJSON,
 } from './AlbumModelAlbumMeta';
+import type { AlbumModelChildrenInner } from './AlbumModelChildrenInner';
+import {
+    AlbumModelChildrenInnerFromJSON,
+    AlbumModelChildrenInnerFromJSONTyped,
+    AlbumModelChildrenInnerToJSON,
+} from './AlbumModelChildrenInner';
 import type { LanguageEnum } from './LanguageEnum';
 import {
     LanguageEnumFromJSON,
@@ -112,10 +112,10 @@ export interface AlbumModel {
     readonly type: AlbumModelTypeEnum;
     /**
      * 
-     * @type {Array<AlbumModel | TrackModel>}
+     * @type {Array<AlbumModelChildrenInner>}
      * @memberof AlbumModel
      */
-    children?: Array<AlbumModel | TrackModel> | null;
+    children?: Array<AlbumModelChildrenInner> | null;
     /**
      * 
      * @type {number}
@@ -173,7 +173,7 @@ export function AlbumModelFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'title': !exists(json, 'title') ? undefined : json['title'],
         'description': !exists(json, 'description') ? undefined : json['description'],
         'type': json['type'],
-        'children': !exists(json, 'children') ? undefined : (json['children'] === null ? null : (json['children'] as Array<any>).map(AlbumModel | TrackModelFromJSON)),
+        'children': !exists(json, 'children') ? undefined : (json['children'] === null ? null : (json['children'] as Array<any>).map(AlbumModelChildrenInnerFromJSON)),
         'latestTrackId': !exists(json, 'latest_track_id') ? undefined : json['latest_track_id'],
         'latestTrackPosition': !exists(json, 'latest_track_position') ? undefined : json['latest_track_position'],
     };
@@ -199,7 +199,7 @@ export function AlbumModelToJSON(value?: AlbumModel | null): any {
         'language': LanguageEnumToJSON(value.language),
         'title': value.title,
         'description': value.description,
-        'children': value.children === undefined ? undefined : (value.children === null ? null : (value.children as Array<any>).map(AlbumModel | TrackModelToJSON)),
+        'children': value.children === undefined ? undefined : (value.children === null ? null : (value.children as Array<any>).map(AlbumModelChildrenInnerToJSON)),
         'latest_track_id': value.latestTrackId,
         'latest_track_position': value.latestTrackPosition,
     };

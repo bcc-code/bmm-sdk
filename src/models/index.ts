@@ -2,6 +2,7 @@
 /* eslint-disable */
 export * from './AlbumModel';
 export * from './AlbumModelAlbumMeta';
+export * from './AlbumModelChildrenInner';
 export * from './AlbumYearFacetsQueryResult';
 export * from './ApiOverviewModel';
 export * from './ApiOverviewModelStatus';

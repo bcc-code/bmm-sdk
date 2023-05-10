@@ -22,6 +22,7 @@ apis/index.ts
 index.ts
 models/AlbumModel.ts
 models/AlbumModelAlbumMeta.ts
+models/AlbumModelChildrenInner.ts
 models/AlbumYearFacetsQueryResult.ts
 models/ApiOverviewModel.ts
 models/ApiOverviewModelStatus.ts
