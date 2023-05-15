@@ -3134,8 +3134,10 @@
               "nullable": true
             },
             "type": {
+              "enum": [
+                "album"
+              ],
               "type": "string",
-              "enum": ["album"],
               "readOnly": true
             },
             "children": {
@@ -3374,8 +3376,10 @@
               "format": "int32"
             },
             "type": {
+              "enum": [
+                "chapter_header"
+              ],
               "type": "string",
-              "enum": ["chapter_header"],
               "readOnly": true
             },
             "title": {
@@ -3416,8 +3420,10 @@
               "format": "int32"
             },
             "type": {
+              "enum": [
+                "contributor"
+              ],
               "type": "string",
-              "enum": ["contributor"],
               "readOnly": true
             },
             "is_visible": {
@@ -3622,8 +3628,11 @@
               "format": "int32"
             },
             "type": {
+              "enum": [
+                "listening_streak"
+              ],
               "type": "string",
-              "nullable": true
+              "readOnly": true
             },
             "day_of_the_week": {
               "$ref": "#/components/schemas/DayOfWeek"
@@ -4073,8 +4082,10 @@
               "format": "int32"
             },
             "type": {
+              "enum": [
+                "InfoMessage"
+              ],
               "type": "string",
-              "enum": ["InfoMessage"],
               "readOnly": true
             },
             "translated_message": {
@@ -4191,8 +4202,10 @@
               "format": "int32"
             },
             "type": {
+              "enum": [
+                "playlist"
+              ],
               "type": "string",
-              "enum": ["playlist"],
               "readOnly": true
             },
             "languages": {
@@ -4233,8 +4246,10 @@
               "format": "int32"
             },
             "type": {
+              "enum": [
+                "podcast"
+              ],
               "type": "string",
-              "enum": ["podcast"],
               "readOnly": true
             },
             "languages": {
@@ -4460,6 +4475,13 @@
             }
           ],
           "properties": {
+            "type": {
+              "enum": [
+                "section_header"
+              ],
+              "type": "string",
+              "readOnly": true
+            },
             "title": {
               "type": "string",
               "nullable": true
@@ -4482,11 +4504,6 @@
             },
             "use_cover_carousel": {
               "type": "boolean"
-            },
-            "type": {
-              "type": "string",
-              "enum": ["section_header"],
-              "readOnly": true
             }
           },
           "additionalProperties": false
@@ -4593,8 +4610,10 @@
               "format": "int32"
             },
             "type": {
+              "enum": [
+                "tile_message"
+              ],
               "type": "string",
-              "enum": ["tile_message"],
               "readOnly": true
             },
             "header": {
@@ -4637,8 +4656,10 @@
               "format": "int32"
             },
             "type": {
+              "enum": [
+                "Tile"
+              ],
               "type": "string",
-              "enum": ["Tile"],
               "readOnly": true
             },
             "background_color": {
@@ -4708,8 +4729,10 @@
               "format": "int32"
             },
             "type": {
+              "enum": [
+                "tile_video"
+              ],
               "type": "string",
-              "enum": ["tile_video"],
               "readOnly": true
             },
             "header": {
@@ -4787,8 +4810,10 @@
           ],
           "properties": {
             "type": {
+              "enum": [
+                "track_collection"
+              ],
               "type": "string",
-              "enum": ["track_collection"],
               "readOnly": true
             },
             "id": {
@@ -4890,8 +4915,11 @@
               "$ref": "#/components/schemas/TrackModel-TrackMeta"
             },
             "type": {
+              "enum": [
+                "track"
+              ],
               "type": "string",
-              "enum": ["track"]
+              "readOnly": true
             },
             "languages": {
               "type": "array",
@@ -5273,8 +5301,10 @@
               "format": "int32"
             },
             "type": {
+              "enum": [
+                "year_in_review"
+              ],
               "type": "string",
-              "enum": ["year_in_review"],
               "readOnly": true
             },
             "title": {
