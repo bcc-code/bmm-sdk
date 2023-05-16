@@ -274,7 +274,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/BrowseResponse"
+                      "$ref": "#/components/schemas/IAlbumPodcastPlaylistOrSectionHeader"
                     }
                   }
                 },
@@ -282,7 +282,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/BrowseResponse"
+                      "$ref": "#/components/schemas/IAlbumPodcastPlaylistOrSectionHeader"
                     }
                   }
                 },
@@ -290,7 +290,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/BrowseResponse"
+                      "$ref": "#/components/schemas/IAlbumPodcastPlaylistOrSectionHeader"
                     }
                   }
                 }
@@ -328,17 +328,17 @@
               "content": {
                 "text/plain": {
                   "schema": {
-                    "$ref": "#/components/schemas/DocumentListEvents"
+                    "$ref": "#/components/schemas/DocumentListIAlbumOrChapterHeader"
                   }
                 },
                 "application/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/DocumentListEvents"
+                    "$ref": "#/components/schemas/DocumentListIAlbumOrChapterHeader"
                   }
                 },
                 "text/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/DocumentListEvents"
+                    "$ref": "#/components/schemas/DocumentListIAlbumOrChapterHeader"
                   }
                 }
               }
@@ -375,17 +375,17 @@
               "content": {
                 "text/plain": {
                   "schema": {
-                    "$ref": "#/components/schemas/DocumentListAudiobooks"
+                    "$ref": "#/components/schemas/DocumentListIAlbumPlaylistOrChapterHeader"
                   }
                 },
                 "application/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/DocumentListAudiobooks"
+                    "$ref": "#/components/schemas/DocumentListIAlbumPlaylistOrChapterHeader"
                   }
                 },
                 "text/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/DocumentListAudiobooks"
+                    "$ref": "#/components/schemas/DocumentListIAlbumPlaylistOrChapterHeader"
                   }
                 }
               }
@@ -404,17 +404,17 @@
               "content": {
                 "text/plain": {
                   "schema": {
-                    "$ref": "#/components/schemas/DocumentListPodcasts"
+                    "$ref": "#/components/schemas/DocumentListPodcastModel"
                   }
                 },
                 "application/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/DocumentListPodcasts"
+                    "$ref": "#/components/schemas/DocumentListPodcastModel"
                   }
                 },
                 "text/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/DocumentListPodcasts"
+                    "$ref": "#/components/schemas/DocumentListPodcastModel"
                   }
                 }
               }
@@ -433,17 +433,17 @@
               "content": {
                 "text/plain": {
                   "schema": {
-                    "$ref": "#/components/schemas/DocumentListPodcasts"
+                    "$ref": "#/components/schemas/DocumentListPodcastModel"
                   }
                 },
                 "application/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/DocumentListPodcasts"
+                    "$ref": "#/components/schemas/DocumentListPodcastModel"
                   }
                 },
                 "text/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/DocumentListPodcasts"
+                    "$ref": "#/components/schemas/DocumentListPodcastModel"
                   }
                 }
               }
@@ -937,7 +937,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/DiscoverResponse"
+                      "$ref": "#/components/schemas/IDiscoverable"
                     }
                   }
                 },
@@ -945,7 +945,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/DiscoverResponse"
+                      "$ref": "#/components/schemas/IDiscoverable"
                     }
                   }
                 },
@@ -953,7 +953,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/DiscoverResponse"
+                      "$ref": "#/components/schemas/IDiscoverable"
                     }
                   }
                 }
@@ -1343,17 +1343,17 @@
               "content": {
                 "text/plain": {
                   "schema": {
-                    "$ref": "#/components/schemas/DocumentListPlaylist"
+                    "$ref": "#/components/schemas/DocumentListIDiscoverable"
                   }
                 },
                 "application/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/DocumentListPlaylist"
+                    "$ref": "#/components/schemas/DocumentListIDiscoverable"
                   }
                 },
                 "text/json": {
                   "schema": {
-                    "$ref": "#/components/schemas/DocumentListPlaylist"
+                    "$ref": "#/components/schemas/DocumentListIDiscoverable"
                   }
                 }
               }
@@ -1811,7 +1811,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/SearchTermResponse"
+                      "$ref": "#/components/schemas/IAlbumContributorPodcastPlaylistOrTrack"
                     }
                   }
                 },
@@ -1819,7 +1819,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/SearchTermResponse"
+                      "$ref": "#/components/schemas/IAlbumContributorPodcastPlaylistOrTrack"
                     }
                   }
                 },
@@ -1827,7 +1827,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/SearchTermResponse"
+                      "$ref": "#/components/schemas/IAlbumContributorPodcastPlaylistOrTrack"
                     }
                   }
                 }
@@ -1894,7 +1894,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/TextsearchTermResults"
+                      "$ref": "#/components/schemas/IAlbumContributorPodcastPlaylistOrTrack"
                     }
                   }
                 },
@@ -1902,7 +1902,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/TextsearchTermResults"
+                      "$ref": "#/components/schemas/IAlbumContributorPodcastPlaylistOrTrack"
                     }
                   }
                 },
@@ -1910,7 +1910,7 @@
                   "schema": {
                     "type": "array",
                     "items": {
-                      "$ref": "#/components/schemas/TextsearchTermResults"
+                      "$ref": "#/components/schemas/IAlbumContributorPodcastPlaylistOrTrack"
                     }
                   }
                 }
@@ -2952,38 +2952,17 @@
               "content": {
                 "text/plain": {
                   "schema": {
-                    "oneOf": [
-                      {
-                        "$ref": "#/components/schemas/ProblemDetails"
-                      },
-                      {
-                        "$ref": "#/components/schemas/HttpValidationProblemDetails"
-                      }
-                    ]
+                    "$ref": "#/components/schemas/ProblemDetails"
                   }
                 },
                 "application/json": {
                   "schema": {
-                    "oneOf": [
-                      {
-                        "$ref": "#/components/schemas/ProblemDetails"
-                      },
-                      {
-                        "$ref": "#/components/schemas/HttpValidationProblemDetails"
-                      }
-                    ]
+                    "$ref": "#/components/schemas/ProblemDetails"
                   }
                 },
                 "text/json": {
                   "schema": {
-                    "oneOf": [
-                      {
-                        "$ref": "#/components/schemas/ProblemDetails"
-                      },
-                      {
-                        "$ref": "#/components/schemas/HttpValidationProblemDetails"
-                      }
-                    ]
+                    "$ref": "#/components/schemas/ProblemDetails"
                   }
                 }
               }
@@ -2993,38 +2972,17 @@
               "content": {
                 "text/plain": {
                   "schema": {
-                    "oneOf": [
-                      {
-                        "$ref": "#/components/schemas/ProblemDetails"
-                      },
-                      {
-                        "$ref": "#/components/schemas/HttpValidationProblemDetails"
-                      }
-                    ]
+                    "$ref": "#/components/schemas/ProblemDetails"
                   }
                 },
                 "application/json": {
                   "schema": {
-                    "oneOf": [
-                      {
-                        "$ref": "#/components/schemas/ProblemDetails"
-                      },
-                      {
-                        "$ref": "#/components/schemas/HttpValidationProblemDetails"
-                      }
-                    ]
+                    "$ref": "#/components/schemas/ProblemDetails"
                   }
                 },
                 "text/json": {
                   "schema": {
-                    "oneOf": [
-                      {
-                        "$ref": "#/components/schemas/ProblemDetails"
-                      },
-                      {
-                        "$ref": "#/components/schemas/HttpValidationProblemDetails"
-                      }
-                    ]
+                    "$ref": "#/components/schemas/ProblemDetails"
                   }
                 }
               }
@@ -3143,21 +3101,7 @@
             "children": {
               "type": "array",
               "items": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/AlbumModel"
-                  },
-                  {
-                    "$ref": "#/components/schemas/TrackModel"
-                  }
-                ],
-                "discriminator": {
-                  "propertyName": "type",
-                  "mapping": {
-                    "album": "#/components/schemas/AlbumModel",
-                    "track": "#/components/schemas/TrackModel"
-                  }
-                }      
+                "$ref": "#/components/schemas/IAlbumOrTrack"
               },
               "nullable": true
             },
@@ -3173,6 +3117,23 @@
             }
           },
           "additionalProperties": false
+        },
+        "IAlbumOrTrack": {
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/AlbumModel"
+            },
+            {
+              "$ref": "#/components/schemas/TrackModel"
+            }
+          ],
+          "discriminator": {
+            "propertyName": "type",
+            "mapping": {
+              "album": "#/components/schemas/AlbumModel",
+              "track": "#/components/schemas/TrackModel"
+            }
+          }
         },
         "AlbumModel-AlbumMeta": {
           "type": "object",
@@ -3334,7 +3295,7 @@
           ],
           "type": "string"
         },
-        "BrowseResponse": {
+        "IAlbumPodcastPlaylistOrSectionHeader": {
           "oneOf": [
             {
               "$ref": "#/components/schemas/AlbumModel"
@@ -3365,22 +3326,17 @@
             "type"
           ],
           "type": "object",
-          "allOf": [
-            {
-              "$ref": "#/components/schemas/IDocumentModel"
-            }
-          ],
           "properties": {
-            "id": {
-              "type": "integer",
-              "format": "int32"
-            },
             "type": {
               "enum": [
                 "chapter_header"
               ],
               "type": "string",
               "readOnly": true
+            },
+            "id": {
+              "type": "integer",
+              "format": "int32"
             },
             "title": {
               "type": "string",
@@ -3409,11 +3365,6 @@
             "type"
           ],
           "type": "object",
-          "allOf": [
-            {
-              "$ref": "#/components/schemas/IDocumentModel"
-            }
-          ],
           "properties": {
             "id": {
               "type": "integer",
@@ -3571,12 +3522,11 @@
           "additionalProperties": false
         },
         "CurrentWeeksStreakVm": {
-          "type": "object",
-          "allOf": [
-            {
-              "$ref": "#/components/schemas/IDocumentModel"
-            }
+          "required": [
+            "id",
+            "type"
           ],
+          "type": "object",
           "properties": {
             "year": {
               "type": "integer",
@@ -3674,7 +3624,7 @@
           ],
           "type": "string"
         },
-        "DiscoverResponse": {
+        "IDiscoverable": {
           "oneOf": [
             {
               "$ref": "#/components/schemas/AlbumModel"
@@ -3735,7 +3685,7 @@
             }
           }
         },
-        "DocumentListAudiobooks": {
+        "DocumentListIAlbumPlaylistOrChapterHeader": {
           "type": "object",
           "properties": {
             "title": {
@@ -3756,28 +3706,35 @@
             "items": {
               "type": "array",
               "items": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/AlbumModel"
-                  },
-                  {
-                    "$ref": "#/components/schemas/PlaylistModel"
-                  }
-                ],
-                "discriminator": {
-                  "propertyName": "type",
-                  "mapping": {
-                    "album": "#/components/schemas/AlbumModel",
-                    "playlist": "#/components/schemas/PlaylistModel"
-                  }
-                }
+                "$ref": "#/components/schemas/IAlbumPlaylistOrChapterHeader"
               },
               "nullable": true
             }
           },
           "additionalProperties": false
         },
-        "DocumentListEvents": {
+        "IAlbumPlaylistOrChapterHeader": {
+          "discriminator": {
+            "propertyName": "type",
+            "mapping": {
+              "album": "#/components/schemas/AlbumModel",
+              "playlist": "#/components/schemas/PlaylistModel",
+              "chapter_header": "#/components/schemas/ChapterHeader"
+            }
+          },
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/AlbumModel"
+            },
+            {
+              "$ref": "#/components/schemas/PlaylistModel"
+            },
+            {
+              "$ref": "#/components/schemas/ChapterHeader"
+            }
+          ]
+        },
+        "DocumentListIAlbumOrChapterHeader": {
           "type": "object",
           "properties": {
             "title": {
@@ -3798,14 +3755,31 @@
             "items": {
               "type": "array",
               "items": {
-                "$ref": "#/components/schemas/AlbumModel"
+                "$ref": "#/components/schemas/IAlbumOrChapterHeader"
               },
               "nullable": true
             }
           },
           "additionalProperties": false
         },
-        "DocumentListPlaylist": {
+        "IAlbumOrChapterHeader": {
+          "discriminator": {
+            "propertyName": "type",
+            "mapping": {
+              "album": "#/components/schemas/AlbumModel",
+              "chapter_header": "#/components/schemas/ChapterHeader"
+            }
+          },
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/AlbumModel"
+            },
+            {
+              "$ref": "#/components/schemas/ChapterHeader"
+            }
+          ]
+        },
+        "DocumentListIDiscoverable": {
           "type": "object",
           "properties": {
             "title": {
@@ -3826,14 +3800,14 @@
             "items": {
               "type": "array",
               "items": {
-                "$ref": "#/components/schemas/DiscoverResponse"
+                "$ref": "#/components/schemas/IDiscoverable"
               },
               "nullable": true
             }
           },
           "additionalProperties": false
         },
-        "DocumentListPodcasts": {
+        "DocumentListPodcastModel": {
           "type": "object",
           "properties": {
             "title": {
@@ -3870,7 +3844,6 @@
           "properties": {
             "type": {
               "type": "string",
-              "enum": ["top_songs_collection"],
               "readOnly": true
             },
             "id": {
@@ -3917,7 +3890,6 @@
           "properties": {
             "type": {
               "type": "string",
-              "enum": ["track_collection"],
               "readOnly": true
             },
             "id": {
@@ -3998,95 +3970,23 @@
           },
           "additionalProperties": false
         },
-        "HttpValidationProblemDetails": {
-          "type": "object",
-          "allOf": [
-            {
-              "$ref": "#/components/schemas/ProblemDetails"
-            }
-          ],
-          "properties": {
-            "errors": {
-              "type": "object",
-              "additionalProperties": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "nullable": true
-            }
-          },
-          "additionalProperties": { }
-        },
-        "IDocumentModel": {
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          "additionalProperties": false
-        },
-        "IDocumentWithYear": {
-          "type": "object",
-          "allOf": [
-            {
-              "$ref": "#/components/schemas/IDocumentModel"
-            }
-          ],
-          "properties": {
-            "year": {
-              "type": "integer",
-              "format": "int32",
-              "readOnly": true
-            }
-          },
-          "additionalProperties": false
-        },
-        "ITileModel": {
-          "type": "object",
-          "allOf": [
-            {
-              "$ref": "#/components/schemas/IDocumentModel"
-            }
-          ],
-          "properties": {
-            "order": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "order_date": {
-              "type": "string",
-              "format": "date-time",
-              "nullable": true
-            }
-          },
-          "additionalProperties": false
-        },
         "InfoMessageModel": {
           "required": [
             "id",
             "type"
           ],
           "type": "object",
-          "allOf": [
-            {
-              "$ref": "#/components/schemas/IDocumentModel"
-            }
-          ],
           "properties": {
-            "id": {
-              "type": "integer",
-              "format": "int32"
-            },
             "type": {
               "enum": [
                 "InfoMessage"
               ],
               "type": "string",
               "readOnly": true
+            },
+            "id": {
+              "type": "integer",
+              "format": "int32"
             },
             "translated_message": {
               "type": "string",
@@ -4187,11 +4087,6 @@
             "type"
           ],
           "type": "object",
-          "allOf": [
-            {
-              "$ref": "#/components/schemas/IDocumentWithYear"
-            }
-          ],
           "properties": {
             "cover": {
               "type": "string",
@@ -4231,11 +4126,6 @@
             "type"
           ],
           "type": "object",
-          "allOf": [
-            {
-              "$ref": "#/components/schemas/IDocumentModel"
-            }
-          ],
           "properties": {
             "cover": {
               "type": "string",
@@ -4345,7 +4235,7 @@
           ],
           "type": "string"
         },
-        "SearchTermResponse": {
+        "IAlbumContributorPodcastPlaylistOrTrack": {
           "oneOf": [
             {
               "$ref": "#/components/schemas/AlbumModel"
@@ -4360,34 +4250,7 @@
               "$ref": "#/components/schemas/PodcastModel"
             },
             {
-              "$ref": "#/components/schemas/TrackCollectionModel"
-            },
-            {
-              "$ref": "#/components/schemas/CurrentWeeksStreakVm"
-            },
-            {
-              "$ref": "#/components/schemas/ChapterHeader"
-            },
-            {
-              "$ref": "#/components/schemas/InfoMessageModel"
-            },
-            {
-              "$ref": "#/components/schemas/SectionHeaderModel"
-            },
-            {
-              "$ref": "#/components/schemas/TileMessageModel"
-            },
-            {
-              "$ref": "#/components/schemas/TileVideoModel"
-            },
-            {
-              "$ref": "#/components/schemas/TileModel"
-            },
-            {
               "$ref": "#/components/schemas/TrackModel"
-            },
-            {
-              "$ref": "#/components/schemas/YearInReviewModel"
             }
           ],
           "discriminator": {
@@ -4397,16 +4260,7 @@
               "contributor": "#/components/schemas/ContributorModel",
               "playlist": "#/components/schemas/PlaylistModel",
               "podcast": "#/components/schemas/PodcastModel",
-              "track_collection": "#/components/schemas/TrackCollectionModel",
-              "listening_streak": "#/components/schemas/CurrentWeeksStreakVm",
-              "chapter_header": "#/components/schemas/ChapterHeader",
-              "InfoMessage": "#/components/schemas/InfoMessageModel",
-              "section_header": "#/components/schemas/SectionHeaderModel",
-              "tile_message": "#/components/schemas/TileMessageModel",
-              "tile_video": "#/components/schemas/TileVideoModel",
-              "Tile": "#/components/schemas/TileModel",
-              "track": "#/components/schemas/TrackModel",
-              "year_in_review": "#/components/schemas/YearInReviewModel"
+              "track": "#/components/schemas/TrackModel"
             }
           }
         },
@@ -4420,33 +4274,7 @@
             "items": {
               "type": "array",
               "items": {
-                "oneOf": [
-                  {
-                    "$ref": "#/components/schemas/AlbumModel"
-                  },
-                  {
-                    "$ref": "#/components/schemas/ContributorModel"
-                  },
-                  {
-                    "$ref": "#/components/schemas/PlaylistModel"
-                  },
-                  {
-                    "$ref": "#/components/schemas/PodcastModel"
-                  },
-                  {
-                    "$ref": "#/components/schemas/TrackModel"
-                  }
-                ],
-                "discriminator": {
-                  "propertyName": "type",
-                  "mapping": {
-                    "album": "#/components/schemas/AlbumModel",
-                    "contributor": "#/components/schemas/ContributorModel",
-                    "playlist": "#/components/schemas/PlaylistModel",
-                    "podcast": "#/components/schemas/PodcastModel",
-                    "track": "#/components/schemas/TrackModel"
-                  }
-                }
+                "$ref": "#/components/schemas/IAlbumContributorPodcastPlaylistOrTrack"
               },
               "nullable": true
             },
@@ -4469,11 +4297,6 @@
             "type"
           ],
           "type": "object",
-          "allOf": [
-            {
-              "$ref": "#/components/schemas/IDocumentModel"
-            }
-          ],
           "properties": {
             "type": {
               "enum": [
@@ -4528,93 +4351,23 @@
           },
           "additionalProperties": false
         },
-        "TextsearchTermResults": {
-          "oneOf": [
-            {
-              "$ref": "#/components/schemas/AlbumModel"
-            },
-            {
-              "$ref": "#/components/schemas/ContributorModel"
-            },
-            {
-              "$ref": "#/components/schemas/PlaylistModel"
-            },
-            {
-              "$ref": "#/components/schemas/PodcastModel"
-            },
-            {
-              "$ref": "#/components/schemas/TrackCollectionModel"
-            },
-            {
-              "$ref": "#/components/schemas/CurrentWeeksStreakVm"
-            },
-            {
-              "$ref": "#/components/schemas/ChapterHeader"
-            },
-            {
-              "$ref": "#/components/schemas/InfoMessageModel"
-            },
-            {
-              "$ref": "#/components/schemas/SectionHeaderModel"
-            },
-            {
-              "$ref": "#/components/schemas/TileMessageModel"
-            },
-            {
-              "$ref": "#/components/schemas/TileVideoModel"
-            },
-            {
-              "$ref": "#/components/schemas/TileModel"
-            },
-            {
-              "$ref": "#/components/schemas/TrackModel"
-            },
-            {
-              "$ref": "#/components/schemas/YearInReviewModel"
-            }
-          ],
-          "discriminator": {
-            "propertyName": "type",
-            "mapping": {
-              "album": "#/components/schemas/AlbumModel",
-              "contributor": "#/components/schemas/ContributorModel",
-              "playlist": "#/components/schemas/PlaylistModel",
-              "podcast": "#/components/schemas/PodcastModel",
-              "track_collection": "#/components/schemas/TrackCollectionModel",
-              "listening_streak": "#/components/schemas/CurrentWeeksStreakVm",
-              "chapter_header": "#/components/schemas/ChapterHeader",
-              "InfoMessage": "#/components/schemas/InfoMessageModel",
-              "section_header": "#/components/schemas/SectionHeaderModel",
-              "tile_message": "#/components/schemas/TileMessageModel",
-              "tile_video": "#/components/schemas/TileVideoModel",
-              "Tile": "#/components/schemas/TileModel",
-              "track": "#/components/schemas/TrackModel",
-              "year_in_review": "#/components/schemas/YearInReviewModel"
-            }
-          }
-        },
         "TileMessageModel": {
           "required": [
             "id",
             "type"
           ],
           "type": "object",
-          "allOf": [
-            {
-              "$ref": "#/components/schemas/ITileModel"
-            }
-          ],
           "properties": {
-            "id": {
-              "type": "integer",
-              "format": "int32"
-            },
             "type": {
               "enum": [
                 "tile_message"
               ],
               "type": "string",
               "readOnly": true
+            },
+            "id": {
+              "type": "integer",
+              "format": "int32"
             },
             "header": {
               "type": "string",
@@ -4645,22 +4398,17 @@
             "type"
           ],
           "type": "object",
-          "allOf": [
-            {
-              "$ref": "#/components/schemas/ITileModel"
-            }
-          ],
           "properties": {
-            "id": {
-              "type": "integer",
-              "format": "int32"
-            },
             "type": {
               "enum": [
                 "Tile"
               ],
               "type": "string",
               "readOnly": true
+            },
+            "id": {
+              "type": "integer",
+              "format": "int32"
             },
             "background_color": {
               "type": "string",
@@ -4718,22 +4466,17 @@
             "type"
           ],
           "type": "object",
-          "allOf": [
-            {
-              "$ref": "#/components/schemas/ITileModel"
-            }
-          ],
           "properties": {
-            "id": {
-              "type": "integer",
-              "format": "int32"
-            },
             "type": {
               "enum": [
                 "tile_video"
               ],
               "type": "string",
               "readOnly": true
+            },
+            "id": {
+              "type": "integer",
+              "format": "int32"
             },
             "header": {
               "type": "string",
@@ -4764,9 +4507,9 @@
         },
         "TrackCollectionDetails": {
           "required": [
-            "id",
+            "can_edit",
             "follower_count",
-            "can_edit"
+            "id"
           ],
           "type": "object",
           "properties": {
@@ -4798,16 +4541,11 @@
         },
         "TrackCollectionModel": {
           "required": [
-            "name",
             "id",
+            "name",
             "type"
           ],
           "type": "object",
-          "allOf": [
-            {
-              "$ref": "#/components/schemas/IDocumentModel"
-            }
-          ],
           "properties": {
             "type": {
               "enum": [
@@ -4857,11 +4595,6 @@
             "type"
           ],
           "type": "object",
-          "allOf": [
-            {
-              "$ref": "#/components/schemas/IDocumentModel"
-            }
-          ],
           "properties": {
             "comment": {
               "type": "string",
@@ -5290,22 +5023,17 @@
             "type"
           ],
           "type": "object",
-          "allOf": [
-            {
-              "$ref": "#/components/schemas/IDocumentModel"
-            }
-          ],
           "properties": {
-            "id": {
-              "type": "integer",
-              "format": "int32"
-            },
             "type": {
               "enum": [
                 "year_in_review"
               ],
               "type": "string",
               "readOnly": true
+            },
+            "id": {
+              "type": "integer",
+              "format": "int32"
             },
             "title": {
               "type": "string",
