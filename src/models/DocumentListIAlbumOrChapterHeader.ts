@@ -13,65 +13,65 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { DiscoverResponse } from './DiscoverResponse';
+import type { IAlbumOrChapterHeader } from './IAlbumOrChapterHeader';
 import {
-    DiscoverResponseFromJSON,
-    DiscoverResponseFromJSONTyped,
-    DiscoverResponseToJSON,
-} from './DiscoverResponse';
+    IAlbumOrChapterHeaderFromJSON,
+    IAlbumOrChapterHeaderFromJSONTyped,
+    IAlbumOrChapterHeaderToJSON,
+} from './IAlbumOrChapterHeader';
 
 /**
  * 
  * @export
- * @interface DocumentListPlaylist
+ * @interface DocumentListIAlbumOrChapterHeader
  */
-export interface DocumentListPlaylist {
+export interface DocumentListIAlbumOrChapterHeader {
     /**
      * 
      * @type {string}
-     * @memberof DocumentListPlaylist
+     * @memberof DocumentListIAlbumOrChapterHeader
      */
     title?: string | null;
     /**
      * 
      * @type {string}
-     * @memberof DocumentListPlaylist
+     * @memberof DocumentListIAlbumOrChapterHeader
      */
     translationParent?: string | null;
     /**
      * 
      * @type {string}
-     * @memberof DocumentListPlaylist
+     * @memberof DocumentListIAlbumOrChapterHeader
      */
     translationId?: string | null;
     /**
      * 
      * @type {boolean}
-     * @memberof DocumentListPlaylist
+     * @memberof DocumentListIAlbumOrChapterHeader
      */
     supportsPaging?: boolean;
     /**
      * 
-     * @type {Array<DiscoverResponse>}
-     * @memberof DocumentListPlaylist
+     * @type {Array<IAlbumOrChapterHeader>}
+     * @memberof DocumentListIAlbumOrChapterHeader
      */
-    items?: Array<DiscoverResponse> | null;
+    items?: Array<IAlbumOrChapterHeader> | null;
 }
 
 /**
- * Check if a given object implements the DocumentListPlaylist interface.
+ * Check if a given object implements the DocumentListIAlbumOrChapterHeader interface.
  */
-export function instanceOfDocumentListPlaylist(value: object): boolean {
+export function instanceOfDocumentListIAlbumOrChapterHeader(value: object): boolean {
     let isInstance = true;
 
     return isInstance;
 }
 
-export function DocumentListPlaylistFromJSON(json: any): DocumentListPlaylist {
-    return DocumentListPlaylistFromJSONTyped(json, false);
+export function DocumentListIAlbumOrChapterHeaderFromJSON(json: any): DocumentListIAlbumOrChapterHeader {
+    return DocumentListIAlbumOrChapterHeaderFromJSONTyped(json, false);
 }
 
-export function DocumentListPlaylistFromJSONTyped(json: any, ignoreDiscriminator: boolean): DocumentListPlaylist {
+export function DocumentListIAlbumOrChapterHeaderFromJSONTyped(json: any, ignoreDiscriminator: boolean): DocumentListIAlbumOrChapterHeader {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -81,11 +81,11 @@ export function DocumentListPlaylistFromJSONTyped(json: any, ignoreDiscriminator
         'translationParent': !exists(json, 'translation_parent') ? undefined : json['translation_parent'],
         'translationId': !exists(json, 'translation_id') ? undefined : json['translation_id'],
         'supportsPaging': !exists(json, 'supports_paging') ? undefined : json['supports_paging'],
-        'items': !exists(json, 'items') ? undefined : (json['items'] === null ? null : (json['items'] as Array<any>).map(DiscoverResponseFromJSON)),
+        'items': !exists(json, 'items') ? undefined : (json['items'] === null ? null : (json['items'] as Array<any>).map(IAlbumOrChapterHeaderFromJSON)),
     };
 }
 
-export function DocumentListPlaylistToJSON(value?: DocumentListPlaylist | null): any {
+export function DocumentListIAlbumOrChapterHeaderToJSON(value?: DocumentListIAlbumOrChapterHeader | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -98,7 +98,7 @@ export function DocumentListPlaylistToJSON(value?: DocumentListPlaylist | null):
         'translation_parent': value.translationParent,
         'translation_id': value.translationId,
         'supports_paging': value.supportsPaging,
-        'items': value.items === undefined ? undefined : (value.items === null ? null : (value.items as Array<any>).map(DiscoverResponseToJSON)),
+        'items': value.items === undefined ? undefined : (value.items === null ? null : (value.items as Array<any>).map(IAlbumOrChapterHeaderToJSON)),
     };
 }
 

@@ -15,20 +15,20 @@
 
 import * as runtime from '../runtime';
 import type {
-  BrowseResponse,
-  DocumentListAudiobooks,
-  DocumentListEvents,
-  DocumentListPodcasts,
+  DocumentListIAlbumOrChapterHeader,
+  DocumentListIAlbumPlaylistOrChapterHeader,
+  DocumentListPodcastModel,
+  IAlbumPodcastPlaylistOrSectionHeader,
 } from '../models';
 import {
-    BrowseResponseFromJSON,
-    BrowseResponseToJSON,
-    DocumentListAudiobooksFromJSON,
-    DocumentListAudiobooksToJSON,
-    DocumentListEventsFromJSON,
-    DocumentListEventsToJSON,
-    DocumentListPodcastsFromJSON,
-    DocumentListPodcastsToJSON,
+    DocumentListIAlbumOrChapterHeaderFromJSON,
+    DocumentListIAlbumOrChapterHeaderToJSON,
+    DocumentListIAlbumPlaylistOrChapterHeaderFromJSON,
+    DocumentListIAlbumPlaylistOrChapterHeaderToJSON,
+    DocumentListPodcastModelFromJSON,
+    DocumentListPodcastModelToJSON,
+    IAlbumPodcastPlaylistOrSectionHeaderFromJSON,
+    IAlbumPodcastPlaylistOrSectionHeaderToJSON,
 } from '../models';
 
 export interface BrowseAudiobooksGetRequest {
@@ -48,7 +48,7 @@ export class BrowseApi extends runtime.BaseAPI {
 
     /**
      */
-    async browseAudiobooksGetRaw(requestParameters: BrowseAudiobooksGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DocumentListAudiobooks>> {
+    async browseAudiobooksGetRaw(requestParameters: BrowseAudiobooksGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DocumentListIAlbumPlaylistOrChapterHeader>> {
         const queryParameters: any = {};
 
         if (requestParameters.skip !== undefined) {
@@ -68,19 +68,19 @@ export class BrowseApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => DocumentListAudiobooksFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => DocumentListIAlbumPlaylistOrChapterHeaderFromJSON(jsonValue));
     }
 
     /**
      */
-    async browseAudiobooksGet(requestParameters: BrowseAudiobooksGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DocumentListAudiobooks> {
+    async browseAudiobooksGet(requestParameters: BrowseAudiobooksGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DocumentListIAlbumPlaylistOrChapterHeader> {
         const response = await this.browseAudiobooksGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async browseEventsGetRaw(requestParameters: BrowseEventsGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DocumentListEvents>> {
+    async browseEventsGetRaw(requestParameters: BrowseEventsGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DocumentListIAlbumOrChapterHeader>> {
         const queryParameters: any = {};
 
         if (requestParameters.skip !== undefined) {
@@ -100,19 +100,19 @@ export class BrowseApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => DocumentListEventsFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => DocumentListIAlbumOrChapterHeaderFromJSON(jsonValue));
     }
 
     /**
      */
-    async browseEventsGet(requestParameters: BrowseEventsGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DocumentListEvents> {
+    async browseEventsGet(requestParameters: BrowseEventsGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DocumentListIAlbumOrChapterHeader> {
         const response = await this.browseEventsGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async browseGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<BrowseResponse>>> {
+    async browseGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<IAlbumPodcastPlaylistOrSectionHeader>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -124,19 +124,19 @@ export class BrowseApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(BrowseResponseFromJSON));
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(IAlbumPodcastPlaylistOrSectionHeaderFromJSON));
     }
 
     /**
      */
-    async browseGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<BrowseResponse>> {
+    async browseGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<IAlbumPodcastPlaylistOrSectionHeader>> {
         const response = await this.browseGetRaw(initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async browseMusicGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DocumentListPodcasts>> {
+    async browseMusicGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DocumentListPodcastModel>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -148,19 +148,19 @@ export class BrowseApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => DocumentListPodcastsFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => DocumentListPodcastModelFromJSON(jsonValue));
     }
 
     /**
      */
-    async browseMusicGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DocumentListPodcasts> {
+    async browseMusicGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DocumentListPodcastModel> {
         const response = await this.browseMusicGetRaw(initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async browsePodcastsGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DocumentListPodcasts>> {
+    async browsePodcastsGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DocumentListPodcastModel>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -172,12 +172,12 @@ export class BrowseApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => DocumentListPodcastsFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => DocumentListPodcastModelFromJSON(jsonValue));
     }
 
     /**
      */
-    async browsePodcastsGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DocumentListPodcasts> {
+    async browsePodcastsGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DocumentListPodcastModel> {
         const response = await this.browsePodcastsGetRaw(initOverrides);
         return await response.value();
     }

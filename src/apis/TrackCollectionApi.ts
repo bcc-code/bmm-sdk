@@ -18,8 +18,8 @@ import type {
   CreateTrackCollectionCommand,
   GetTopSongsCollectionModel,
   GetTrackCollectionModel,
+  ProblemDetails,
   TrackCollectionDetails,
-  TrackCollectionIdUnfollowPost404Response,
   UpdateTrackCollectionCommand,
 } from '../models';
 import {
@@ -29,10 +29,10 @@ import {
     GetTopSongsCollectionModelToJSON,
     GetTrackCollectionModelFromJSON,
     GetTrackCollectionModelToJSON,
+    ProblemDetailsFromJSON,
+    ProblemDetailsToJSON,
     TrackCollectionDetailsFromJSON,
     TrackCollectionDetailsToJSON,
-    TrackCollectionIdUnfollowPost404ResponseFromJSON,
-    TrackCollectionIdUnfollowPost404ResponseToJSON,
     UpdateTrackCollectionCommandFromJSON,
     UpdateTrackCollectionCommandToJSON,
 } from '../models';

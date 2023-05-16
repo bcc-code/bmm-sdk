@@ -13,65 +13,65 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { AlbumModel } from './AlbumModel';
+import type { IDiscoverable } from './IDiscoverable';
 import {
-    AlbumModelFromJSON,
-    AlbumModelFromJSONTyped,
-    AlbumModelToJSON,
-} from './AlbumModel';
+    IDiscoverableFromJSON,
+    IDiscoverableFromJSONTyped,
+    IDiscoverableToJSON,
+} from './IDiscoverable';
 
 /**
  * 
  * @export
- * @interface DocumentListEvents
+ * @interface DocumentListIDiscoverable
  */
-export interface DocumentListEvents {
+export interface DocumentListIDiscoverable {
     /**
      * 
      * @type {string}
-     * @memberof DocumentListEvents
+     * @memberof DocumentListIDiscoverable
      */
     title?: string | null;
     /**
      * 
      * @type {string}
-     * @memberof DocumentListEvents
+     * @memberof DocumentListIDiscoverable
      */
     translationParent?: string | null;
     /**
      * 
      * @type {string}
-     * @memberof DocumentListEvents
+     * @memberof DocumentListIDiscoverable
      */
     translationId?: string | null;
     /**
      * 
      * @type {boolean}
-     * @memberof DocumentListEvents
+     * @memberof DocumentListIDiscoverable
      */
     supportsPaging?: boolean;
     /**
      * 
-     * @type {Array<AlbumModel>}
-     * @memberof DocumentListEvents
+     * @type {Array<IDiscoverable>}
+     * @memberof DocumentListIDiscoverable
      */
-    items?: Array<AlbumModel> | null;
+    items?: Array<IDiscoverable> | null;
 }
 
 /**
- * Check if a given object implements the DocumentListEvents interface.
+ * Check if a given object implements the DocumentListIDiscoverable interface.
  */
-export function instanceOfDocumentListEvents(value: object): boolean {
+export function instanceOfDocumentListIDiscoverable(value: object): boolean {
     let isInstance = true;
 
     return isInstance;
 }
 
-export function DocumentListEventsFromJSON(json: any): DocumentListEvents {
-    return DocumentListEventsFromJSONTyped(json, false);
+export function DocumentListIDiscoverableFromJSON(json: any): DocumentListIDiscoverable {
+    return DocumentListIDiscoverableFromJSONTyped(json, false);
 }
 
-export function DocumentListEventsFromJSONTyped(json: any, ignoreDiscriminator: boolean): DocumentListEvents {
+export function DocumentListIDiscoverableFromJSONTyped(json: any, ignoreDiscriminator: boolean): DocumentListIDiscoverable {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -81,11 +81,11 @@ export function DocumentListEventsFromJSONTyped(json: any, ignoreDiscriminator: 
         'translationParent': !exists(json, 'translation_parent') ? undefined : json['translation_parent'],
         'translationId': !exists(json, 'translation_id') ? undefined : json['translation_id'],
         'supportsPaging': !exists(json, 'supports_paging') ? undefined : json['supports_paging'],
-        'items': !exists(json, 'items') ? undefined : (json['items'] === null ? null : (json['items'] as Array<any>).map(AlbumModelFromJSON)),
+        'items': !exists(json, 'items') ? undefined : (json['items'] === null ? null : (json['items'] as Array<any>).map(IDiscoverableFromJSON)),
     };
 }
 
-export function DocumentListEventsToJSON(value?: DocumentListEvents | null): any {
+export function DocumentListIDiscoverableToJSON(value?: DocumentListIDiscoverable | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -98,7 +98,7 @@ export function DocumentListEventsToJSON(value?: DocumentListEvents | null): any
         'translation_parent': value.translationParent,
         'translation_id': value.translationId,
         'supports_paging': value.supportsPaging,
-        'items': value.items === undefined ? undefined : (value.items === null ? null : (value.items as Array<any>).map(AlbumModelToJSON)),
+        'items': value.items === undefined ? undefined : (value.items === null ? null : (value.items as Array<any>).map(IDiscoverableToJSON)),
     };
 }
 

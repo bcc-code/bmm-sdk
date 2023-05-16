@@ -28,17 +28,17 @@ import {
 } from './TrackModel';
 
 /**
- * @type AlbumModelChildrenInner
+ * @type IAlbumOrTrack
  * 
  * @export
  */
-export type AlbumModelChildrenInner = { type: 'album' } & AlbumModel | { type: 'track' } & TrackModel;
+export type IAlbumOrTrack = { type: 'album' } & AlbumModel | { type: 'track' } & TrackModel;
 
-export function AlbumModelChildrenInnerFromJSON(json: any): AlbumModelChildrenInner {
-    return AlbumModelChildrenInnerFromJSONTyped(json, false);
+export function IAlbumOrTrackFromJSON(json: any): IAlbumOrTrack {
+    return IAlbumOrTrackFromJSONTyped(json, false);
 }
 
-export function AlbumModelChildrenInnerFromJSONTyped(json: any, ignoreDiscriminator: boolean): AlbumModelChildrenInner {
+export function IAlbumOrTrackFromJSONTyped(json: any, ignoreDiscriminator: boolean): IAlbumOrTrack {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -48,11 +48,11 @@ export function AlbumModelChildrenInnerFromJSONTyped(json: any, ignoreDiscrimina
         case 'track':
             return {...TrackModelFromJSONTyped(json, true), type: 'track'};
         default:
-            throw new Error(`No variant of AlbumModelChildrenInner exists with 'type=${json['type']}'`);
+            throw new Error(`No variant of IAlbumOrTrack exists with 'type=${json['type']}'`);
     }
 }
 
-export function AlbumModelChildrenInnerToJSON(value?: AlbumModelChildrenInner | null): any {
+export function IAlbumOrTrackToJSON(value?: IAlbumOrTrack | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -65,7 +65,7 @@ export function AlbumModelChildrenInnerToJSON(value?: AlbumModelChildrenInner | 
         case 'track':
             return TrackModelToJSON(value);
         default:
-            throw new Error(`No variant of AlbumModelChildrenInner exists with 'type=${value['type']}'`);
+            throw new Error(`No variant of IAlbumOrTrack exists with 'type=${value['type']}'`);
     }
 
 }

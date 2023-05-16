@@ -103,13 +103,13 @@ export interface CurrentWeeksStreakVm {
      * @type {number}
      * @memberof CurrentWeeksStreakVm
      */
-    id?: number;
+    id: number;
     /**
      * 
      * @type {string}
      * @memberof CurrentWeeksStreakVm
      */
-    type?: string | null;
+    readonly type: CurrentWeeksStreakVmTypeEnum;
     /**
      * 
      * @type {DayOfWeek}
@@ -142,11 +142,23 @@ export interface CurrentWeeksStreakVm {
     homeScreenText?: CurrentWeeksStreakVmHomeScreenTextOptions;
 }
 
+
+/**
+ * @export
+ */
+export const CurrentWeeksStreakVmTypeEnum = {
+    ListeningStreak: 'listening_streak'
+} as const;
+export type CurrentWeeksStreakVmTypeEnum = typeof CurrentWeeksStreakVmTypeEnum[keyof typeof CurrentWeeksStreakVmTypeEnum];
+
+
 /**
  * Check if a given object implements the CurrentWeeksStreakVm interface.
  */
 export function instanceOfCurrentWeeksStreakVm(value: object): boolean {
     let isInstance = true;
+    isInstance = isInstance && "id" in value;
+    isInstance = isInstance && "type" in value;
 
     return isInstance;
 }
@@ -172,8 +184,8 @@ export function CurrentWeeksStreakVmFromJSONTyped(json: any, ignoreDiscriminator
         'wednesday': !exists(json, 'wednesday') ? undefined : json['wednesday'],
         'thursday': !exists(json, 'thursday') ? undefined : json['thursday'],
         'friday': !exists(json, 'friday') ? undefined : json['friday'],
-        'id': !exists(json, 'id') ? undefined : json['id'],
-        'type': !exists(json, 'type') ? undefined : json['type'],
+        'id': json['id'],
+        'type': json['type'],
         'dayOfTheWeek': !exists(json, 'day_of_the_week') ? undefined : DayOfWeekFromJSON(json['day_of_the_week']),
         'eligibleUntil': !exists(json, 'eligible_until') ? undefined : (new Date(json['eligible_until'])),
         'lastChanged': !exists(json, 'last_changed') ? undefined : (new Date(json['last_changed'])),
@@ -201,7 +213,6 @@ export function CurrentWeeksStreakVmToJSON(value?: CurrentWeeksStreakVm | null):
         'thursday': value.thursday,
         'friday': value.friday,
         'id': value.id,
-        'type': value.type,
         'day_of_the_week': DayOfWeekToJSON(value.dayOfTheWeek),
         'eligible_until': value.eligibleUntil === undefined ? undefined : (value.eligibleUntil.toISOString()),
         'last_changed': value.lastChanged === undefined ? undefined : (value.lastChanged.toISOString()),

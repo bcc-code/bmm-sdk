@@ -15,12 +15,12 @@
 
 import * as runtime from '../runtime';
 import type {
-  DiscoverResponse,
+  IDiscoverable,
   LanguageEnum,
 } from '../models';
 import {
-    DiscoverResponseFromJSON,
-    DiscoverResponseToJSON,
+    IDiscoverableFromJSON,
+    IDiscoverableToJSON,
     LanguageEnumFromJSON,
     LanguageEnumToJSON,
 } from '../models';
@@ -37,7 +37,7 @@ export class DiscoverApi extends runtime.BaseAPI {
 
     /**
      */
-    async discoverGetRaw(requestParameters: DiscoverGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<DiscoverResponse>>> {
+    async discoverGetRaw(requestParameters: DiscoverGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<IDiscoverable>>> {
         const queryParameters: any = {};
 
         if (requestParameters.lang !== undefined) {
@@ -57,12 +57,12 @@ export class DiscoverApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(DiscoverResponseFromJSON));
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(IDiscoverableFromJSON));
     }
 
     /**
      */
-    async discoverGet(requestParameters: DiscoverGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<DiscoverResponse>> {
+    async discoverGet(requestParameters: DiscoverGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<IDiscoverable>> {
         const response = await this.discoverGetRaw(requestParameters, initOverrides);
         return await response.value();
     }

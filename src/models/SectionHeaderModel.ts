@@ -24,6 +24,12 @@ export interface SectionHeaderModel {
      * @type {string}
      * @memberof SectionHeaderModel
      */
+    readonly type: SectionHeaderModelTypeEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof SectionHeaderModel
+     */
     title?: string | null;
     /**
      * 
@@ -55,12 +61,6 @@ export interface SectionHeaderModel {
      * @memberof SectionHeaderModel
      */
     useCoverCarousel?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof SectionHeaderModel
-     */
-    readonly type: SectionHeaderModelTypeEnum;
 }
 
 
@@ -78,8 +78,8 @@ export type SectionHeaderModelTypeEnum = typeof SectionHeaderModelTypeEnum[keyof
  */
 export function instanceOfSectionHeaderModel(value: object): boolean {
     let isInstance = true;
-    isInstance = isInstance && "id" in value;
     isInstance = isInstance && "type" in value;
+    isInstance = isInstance && "id" in value;
 
     return isInstance;
 }
@@ -94,13 +94,13 @@ export function SectionHeaderModelFromJSONTyped(json: any, ignoreDiscriminator: 
     }
     return {
         
+        'type': json['type'],
         'title': !exists(json, 'title') ? undefined : json['title'],
         'translationParent': !exists(json, 'translation_parent') ? undefined : json['translation_parent'],
         'translationId': !exists(json, 'translation_id') ? undefined : json['translation_id'],
         'link': !exists(json, 'link') ? undefined : json['link'],
         'id': json['id'],
         'useCoverCarousel': !exists(json, 'use_cover_carousel') ? undefined : json['use_cover_carousel'],
-        'type': json['type'],
     };
 }
 

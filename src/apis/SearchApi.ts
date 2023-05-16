@@ -15,14 +15,15 @@
 
 import * as runtime from '../runtime';
 import type {
+  IAlbumContributorPodcastPlaylistOrTrack,
   PublishedFilter,
   ResourceType,
   SearchFilter,
   SearchResults,
-  SearchTermResponse,
-  TextsearchTermResults,
 } from '../models';
 import {
+    IAlbumContributorPodcastPlaylistOrTrackFromJSON,
+    IAlbumContributorPodcastPlaylistOrTrackToJSON,
     PublishedFilterFromJSON,
     PublishedFilterToJSON,
     ResourceTypeFromJSON,
@@ -31,10 +32,6 @@ import {
     SearchFilterToJSON,
     SearchResultsFromJSON,
     SearchResultsToJSON,
-    SearchTermResponseFromJSON,
-    SearchTermResponseToJSON,
-    TextsearchTermResultsFromJSON,
-    TextsearchTermResultsToJSON,
 } from '../models';
 
 export interface SearchTermGetRequest {
@@ -76,7 +73,7 @@ export class SearchApi extends runtime.BaseAPI {
 
     /**
      */
-    async searchTermGetRaw(requestParameters: SearchTermGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<SearchTermResponse>>> {
+    async searchTermGetRaw(requestParameters: SearchTermGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<IAlbumContributorPodcastPlaylistOrTrack>>> {
         if (requestParameters.term === null || requestParameters.term === undefined) {
             throw new runtime.RequiredError('term','Required parameter requestParameters.term was null or undefined when calling searchTermGet.');
         }
@@ -108,12 +105,12 @@ export class SearchApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(SearchTermResponseFromJSON));
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(IAlbumContributorPodcastPlaylistOrTrackFromJSON));
     }
 
     /**
      */
-    async searchTermGet(requestParameters: SearchTermGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<SearchTermResponse>> {
+    async searchTermGet(requestParameters: SearchTermGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<IAlbumContributorPodcastPlaylistOrTrack>> {
         const response = await this.searchTermGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -164,7 +161,7 @@ export class SearchApi extends runtime.BaseAPI {
 
     /**
      */
-    async textsearchTermGetRaw(requestParameters: TextsearchTermGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<TextsearchTermResults>>> {
+    async textsearchTermGetRaw(requestParameters: TextsearchTermGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<IAlbumContributorPodcastPlaylistOrTrack>>> {
         if (requestParameters.term === null || requestParameters.term === undefined) {
             throw new runtime.RequiredError('term','Required parameter requestParameters.term was null or undefined when calling textsearchTermGet.');
         }
@@ -196,12 +193,12 @@ export class SearchApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(TextsearchTermResultsFromJSON));
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(IAlbumContributorPodcastPlaylistOrTrackFromJSON));
     }
 
     /**
      */
-    async textsearchTermGet(requestParameters: TextsearchTermGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<TextsearchTermResults>> {
+    async textsearchTermGet(requestParameters: TextsearchTermGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<IAlbumContributorPodcastPlaylistOrTrack>> {
         const response = await this.textsearchTermGetRaw(requestParameters, initOverrides);
         return await response.value();
     }

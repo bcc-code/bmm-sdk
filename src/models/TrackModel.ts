@@ -127,7 +127,7 @@ export interface TrackModel {
      * @type {string}
      * @memberof TrackModel
      */
-    type: TrackModelTypeEnum;
+    readonly type: TrackModelTypeEnum;
     /**
      * 
      * @type {Array<LanguageEnum>}
@@ -240,7 +240,6 @@ export function TrackModelToJSON(value?: TrackModel | null): any {
         'subtype': TrackSubtypeToJSON(value.subtype),
         'tags': value.tags,
         '_meta': TrackModelTrackMetaToJSON(value.meta),
-        'type': value.type,
         'languages': value.languages === undefined ? undefined : (value.languages === null ? null : (value.languages as Array<any>).map(LanguageEnumToJSON)),
         'language': LanguageEnumToJSON(value.language),
         'title': value.title,

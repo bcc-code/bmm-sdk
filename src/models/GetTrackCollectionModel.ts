@@ -31,7 +31,7 @@ export interface GetTrackCollectionModel {
      * @type {string}
      * @memberof GetTrackCollectionModel
      */
-    readonly type: GetTrackCollectionModelTypeEnum;
+    readonly type: string;
     /**
      * 
      * @type {number}
@@ -81,16 +81,6 @@ export interface GetTrackCollectionModel {
      */
     tracks?: Array<TrackModel> | null;
 }
-
-
-/**
- * @export
- */
-export const GetTrackCollectionModelTypeEnum = {
-    TrackCollection: 'track_collection'
-} as const;
-export type GetTrackCollectionModelTypeEnum = typeof GetTrackCollectionModelTypeEnum[keyof typeof GetTrackCollectionModelTypeEnum];
-
 
 /**
  * Check if a given object implements the GetTrackCollectionModel interface.

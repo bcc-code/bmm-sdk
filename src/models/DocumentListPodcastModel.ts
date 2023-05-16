@@ -13,65 +13,65 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { DocumentListAudiobooksItemsInner } from './DocumentListAudiobooksItemsInner';
+import type { PodcastModel } from './PodcastModel';
 import {
-    DocumentListAudiobooksItemsInnerFromJSON,
-    DocumentListAudiobooksItemsInnerFromJSONTyped,
-    DocumentListAudiobooksItemsInnerToJSON,
-} from './DocumentListAudiobooksItemsInner';
+    PodcastModelFromJSON,
+    PodcastModelFromJSONTyped,
+    PodcastModelToJSON,
+} from './PodcastModel';
 
 /**
  * 
  * @export
- * @interface DocumentListAudiobooks
+ * @interface DocumentListPodcastModel
  */
-export interface DocumentListAudiobooks {
+export interface DocumentListPodcastModel {
     /**
      * 
      * @type {string}
-     * @memberof DocumentListAudiobooks
+     * @memberof DocumentListPodcastModel
      */
     title?: string | null;
     /**
      * 
      * @type {string}
-     * @memberof DocumentListAudiobooks
+     * @memberof DocumentListPodcastModel
      */
     translationParent?: string | null;
     /**
      * 
      * @type {string}
-     * @memberof DocumentListAudiobooks
+     * @memberof DocumentListPodcastModel
      */
     translationId?: string | null;
     /**
      * 
      * @type {boolean}
-     * @memberof DocumentListAudiobooks
+     * @memberof DocumentListPodcastModel
      */
     supportsPaging?: boolean;
     /**
      * 
-     * @type {Array<DocumentListAudiobooksItemsInner>}
-     * @memberof DocumentListAudiobooks
+     * @type {Array<PodcastModel>}
+     * @memberof DocumentListPodcastModel
      */
-    items?: Array<DocumentListAudiobooksItemsInner> | null;
+    items?: Array<PodcastModel> | null;
 }
 
 /**
- * Check if a given object implements the DocumentListAudiobooks interface.
+ * Check if a given object implements the DocumentListPodcastModel interface.
  */
-export function instanceOfDocumentListAudiobooks(value: object): boolean {
+export function instanceOfDocumentListPodcastModel(value: object): boolean {
     let isInstance = true;
 
     return isInstance;
 }
 
-export function DocumentListAudiobooksFromJSON(json: any): DocumentListAudiobooks {
-    return DocumentListAudiobooksFromJSONTyped(json, false);
+export function DocumentListPodcastModelFromJSON(json: any): DocumentListPodcastModel {
+    return DocumentListPodcastModelFromJSONTyped(json, false);
 }
 
-export function DocumentListAudiobooksFromJSONTyped(json: any, ignoreDiscriminator: boolean): DocumentListAudiobooks {
+export function DocumentListPodcastModelFromJSONTyped(json: any, ignoreDiscriminator: boolean): DocumentListPodcastModel {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -81,11 +81,11 @@ export function DocumentListAudiobooksFromJSONTyped(json: any, ignoreDiscriminat
         'translationParent': !exists(json, 'translation_parent') ? undefined : json['translation_parent'],
         'translationId': !exists(json, 'translation_id') ? undefined : json['translation_id'],
         'supportsPaging': !exists(json, 'supports_paging') ? undefined : json['supports_paging'],
-        'items': !exists(json, 'items') ? undefined : (json['items'] === null ? null : (json['items'] as Array<any>).map(DocumentListAudiobooksItemsInnerFromJSON)),
+        'items': !exists(json, 'items') ? undefined : (json['items'] === null ? null : (json['items'] as Array<any>).map(PodcastModelFromJSON)),
     };
 }
 
-export function DocumentListAudiobooksToJSON(value?: DocumentListAudiobooks | null): any {
+export function DocumentListPodcastModelToJSON(value?: DocumentListPodcastModel | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -98,7 +98,7 @@ export function DocumentListAudiobooksToJSON(value?: DocumentListAudiobooks | nu
         'translation_parent': value.translationParent,
         'translation_id': value.translationId,
         'supports_paging': value.supportsPaging,
-        'items': value.items === undefined ? undefined : (value.items === null ? null : (value.items as Array<any>).map(DocumentListAudiobooksItemsInnerToJSON)),
+        'items': value.items === undefined ? undefined : (value.items === null ? null : (value.items as Array<any>).map(PodcastModelToJSON)),
     };
 }
 

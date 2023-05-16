@@ -20,6 +20,13 @@ import {
     AlbumModelToJSON,
 } from './AlbumModel';
 import {
+    ChapterHeader,
+    instanceOfChapterHeader,
+    ChapterHeaderFromJSON,
+    ChapterHeaderFromJSONTyped,
+    ChapterHeaderToJSON,
+} from './ChapterHeader';
+import {
     PlaylistModel,
     instanceOfPlaylistModel,
     PlaylistModelFromJSON,
@@ -28,31 +35,33 @@ import {
 } from './PlaylistModel';
 
 /**
- * @type DocumentListAudiobooksItemsInner
+ * @type IAlbumPlaylistOrChapterHeader
  * 
  * @export
  */
-export type DocumentListAudiobooksItemsInner = { type: 'album' } & AlbumModel | { type: 'playlist' } & PlaylistModel;
+export type IAlbumPlaylistOrChapterHeader = { type: 'album' } & AlbumModel | { type: 'chapter_header' } & ChapterHeader | { type: 'playlist' } & PlaylistModel;
 
-export function DocumentListAudiobooksItemsInnerFromJSON(json: any): DocumentListAudiobooksItemsInner {
-    return DocumentListAudiobooksItemsInnerFromJSONTyped(json, false);
+export function IAlbumPlaylistOrChapterHeaderFromJSON(json: any): IAlbumPlaylistOrChapterHeader {
+    return IAlbumPlaylistOrChapterHeaderFromJSONTyped(json, false);
 }
 
-export function DocumentListAudiobooksItemsInnerFromJSONTyped(json: any, ignoreDiscriminator: boolean): DocumentListAudiobooksItemsInner {
+export function IAlbumPlaylistOrChapterHeaderFromJSONTyped(json: any, ignoreDiscriminator: boolean): IAlbumPlaylistOrChapterHeader {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     switch (json['type']) {
         case 'album':
             return {...AlbumModelFromJSONTyped(json, true), type: 'album'};
+        case 'chapter_header':
+            return {...ChapterHeaderFromJSONTyped(json, true), type: 'chapter_header'};
         case 'playlist':
             return {...PlaylistModelFromJSONTyped(json, true), type: 'playlist'};
         default:
-            throw new Error(`No variant of DocumentListAudiobooksItemsInner exists with 'type=${json['type']}'`);
+            throw new Error(`No variant of IAlbumPlaylistOrChapterHeader exists with 'type=${json['type']}'`);
     }
 }
 
-export function DocumentListAudiobooksItemsInnerToJSON(value?: DocumentListAudiobooksItemsInner | null): any {
+export function IAlbumPlaylistOrChapterHeaderToJSON(value?: IAlbumPlaylistOrChapterHeader | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -62,10 +71,12 @@ export function DocumentListAudiobooksItemsInnerToJSON(value?: DocumentListAudio
     switch (value['type']) {
         case 'album':
             return AlbumModelToJSON(value);
+        case 'chapter_header':
+            return ChapterHeaderToJSON(value);
         case 'playlist':
             return PlaylistModelToJSON(value);
         default:
-            throw new Error(`No variant of DocumentListAudiobooksItemsInner exists with 'type=${value['type']}'`);
+            throw new Error(`No variant of IAlbumPlaylistOrChapterHeader exists with 'type=${value['type']}'`);
     }
 
 }

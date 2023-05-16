@@ -31,7 +31,7 @@ export interface GetTopSongsCollectionModel {
      * @type {string}
      * @memberof GetTopSongsCollectionModel
      */
-    readonly type: GetTopSongsCollectionModelTypeEnum;
+    readonly type: string;
     /**
      * 
      * @type {number}
@@ -57,16 +57,6 @@ export interface GetTopSongsCollectionModel {
      */
     tracks?: Array<GetTopSongsCollectionModelTrackAndCount> | null;
 }
-
-
-/**
- * @export
- */
-export const GetTopSongsCollectionModelTypeEnum = {
-    TopSongsCollection: 'top_songs_collection'
-} as const;
-export type GetTopSongsCollectionModelTypeEnum = typeof GetTopSongsCollectionModelTypeEnum[keyof typeof GetTopSongsCollectionModelTypeEnum];
-
 
 /**
  * Check if a given object implements the GetTopSongsCollectionModel interface.

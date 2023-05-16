@@ -19,12 +19,12 @@ import {
     HighlightingFromJSONTyped,
     HighlightingToJSON,
 } from './Highlighting';
-import type { SearchResultsItemsInner } from './SearchResultsItemsInner';
+import type { IAlbumContributorPodcastPlaylistOrTrack } from './IAlbumContributorPodcastPlaylistOrTrack';
 import {
-    SearchResultsItemsInnerFromJSON,
-    SearchResultsItemsInnerFromJSONTyped,
-    SearchResultsItemsInnerToJSON,
-} from './SearchResultsItemsInner';
+    IAlbumContributorPodcastPlaylistOrTrackFromJSON,
+    IAlbumContributorPodcastPlaylistOrTrackFromJSONTyped,
+    IAlbumContributorPodcastPlaylistOrTrackToJSON,
+} from './IAlbumContributorPodcastPlaylistOrTrack';
 
 /**
  * 
@@ -40,10 +40,10 @@ export interface SearchResults {
     nextPageFromPosition?: number;
     /**
      * 
-     * @type {Array<SearchResultsItemsInner>}
+     * @type {Array<IAlbumContributorPodcastPlaylistOrTrack>}
      * @memberof SearchResults
      */
-    items?: Array<SearchResultsItemsInner> | null;
+    items?: Array<IAlbumContributorPodcastPlaylistOrTrack> | null;
     /**
      * 
      * @type {boolean}
@@ -78,7 +78,7 @@ export function SearchResultsFromJSONTyped(json: any, ignoreDiscriminator: boole
     return {
         
         'nextPageFromPosition': !exists(json, 'next_page_from_position') ? undefined : json['next_page_from_position'],
-        'items': !exists(json, 'items') ? undefined : (json['items'] === null ? null : (json['items'] as Array<any>).map(SearchResultsItemsInnerFromJSON)),
+        'items': !exists(json, 'items') ? undefined : (json['items'] === null ? null : (json['items'] as Array<any>).map(IAlbumContributorPodcastPlaylistOrTrackFromJSON)),
         'isFullyLoaded': !exists(json, 'is_fully_loaded') ? undefined : json['is_fully_loaded'],
         'highlightings': !exists(json, 'highlightings') ? undefined : (json['highlightings'] === null ? null : (json['highlightings'] as Array<any>).map(HighlightingFromJSON)),
     };
@@ -94,7 +94,7 @@ export function SearchResultsToJSON(value?: SearchResults | null): any {
     return {
         
         'next_page_from_position': value.nextPageFromPosition,
-        'items': value.items === undefined ? undefined : (value.items === null ? null : (value.items as Array<any>).map(SearchResultsItemsInnerToJSON)),
+        'items': value.items === undefined ? undefined : (value.items === null ? null : (value.items as Array<any>).map(IAlbumContributorPodcastPlaylistOrTrackToJSON)),
         'is_fully_loaded': value.isFullyLoaded,
         'highlightings': value.highlightings === undefined ? undefined : (value.highlightings === null ? null : (value.highlightings as Array<any>).map(HighlightingToJSON)),
     };

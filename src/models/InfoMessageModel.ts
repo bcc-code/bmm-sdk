@@ -21,16 +21,16 @@ import { exists, mapValues } from '../runtime';
 export interface InfoMessageModel {
     /**
      * 
-     * @type {number}
-     * @memberof InfoMessageModel
-     */
-    id: number;
-    /**
-     * 
      * @type {string}
      * @memberof InfoMessageModel
      */
     readonly type: InfoMessageModelTypeEnum;
+    /**
+     * 
+     * @type {number}
+     * @memberof InfoMessageModel
+     */
+    id: number;
     /**
      * 
      * @type {string}
@@ -66,8 +66,8 @@ export type InfoMessageModelTypeEnum = typeof InfoMessageModelTypeEnum[keyof typ
  */
 export function instanceOfInfoMessageModel(value: object): boolean {
     let isInstance = true;
-    isInstance = isInstance && "id" in value;
     isInstance = isInstance && "type" in value;
+    isInstance = isInstance && "id" in value;
 
     return isInstance;
 }
@@ -82,8 +82,8 @@ export function InfoMessageModelFromJSONTyped(json: any, ignoreDiscriminator: bo
     }
     return {
         
-        'id': json['id'],
         'type': json['type'],
+        'id': json['id'],
         'translatedMessage': !exists(json, 'translated_message') ? undefined : json['translated_message'],
         'translationParent': !exists(json, 'translation_parent') ? undefined : json['translation_parent'],
         'translationId': !exists(json, 'translation_id') ? undefined : json['translation_id'],

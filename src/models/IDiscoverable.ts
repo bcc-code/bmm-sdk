@@ -105,23 +105,21 @@ import {
 } from './YearInReviewModel';
 
 /**
- * @type DiscoverResponse
+ * @type IDiscoverable
  * 
  * @export
  */
-export type DiscoverResponse = { type: '' } & CurrentWeeksStreakVm | { type: 'InfoMessage' } & InfoMessageModel | { type: 'Tile' } & TileModel | { type: 'album' } & AlbumModel | { type: 'contributor' } & ContributorModel | { type: 'playlist' } & PlaylistModel | { type: 'podcast' } & PodcastModel | { type: 'section_header' } & SectionHeaderModel | { type: 'tile_message' } & TileMessageModel | { type: 'tile_video' } & TileVideoModel | { type: 'track' } & TrackModel | { type: 'track_collection' } & TrackCollectionModel | { type: 'year_in_review' } & YearInReviewModel;
+export type IDiscoverable = { type: 'InfoMessage' } & InfoMessageModel | { type: 'Tile' } & TileModel | { type: 'album' } & AlbumModel | { type: 'contributor' } & ContributorModel | { type: 'listening_streak' } & CurrentWeeksStreakVm | { type: 'playlist' } & PlaylistModel | { type: 'podcast' } & PodcastModel | { type: 'section_header' } & SectionHeaderModel | { type: 'tile_message' } & TileMessageModel | { type: 'tile_video' } & TileVideoModel | { type: 'track' } & TrackModel | { type: 'track_collection' } & TrackCollectionModel | { type: 'year_in_review' } & YearInReviewModel;
 
-export function DiscoverResponseFromJSON(json: any): DiscoverResponse {
-    return DiscoverResponseFromJSONTyped(json, false);
+export function IDiscoverableFromJSON(json: any): IDiscoverable {
+    return IDiscoverableFromJSONTyped(json, false);
 }
 
-export function DiscoverResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): DiscoverResponse {
+export function IDiscoverableFromJSONTyped(json: any, ignoreDiscriminator: boolean): IDiscoverable {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     switch (json['type']) {
-        case '':
-            return {...CurrentWeeksStreakVmFromJSONTyped(json, true), type: ''};
         case 'InfoMessage':
             return {...InfoMessageModelFromJSONTyped(json, true), type: 'InfoMessage'};
         case 'Tile':
@@ -130,6 +128,8 @@ export function DiscoverResponseFromJSONTyped(json: any, ignoreDiscriminator: bo
             return {...AlbumModelFromJSONTyped(json, true), type: 'album'};
         case 'contributor':
             return {...ContributorModelFromJSONTyped(json, true), type: 'contributor'};
+        case 'listening_streak':
+            return {...CurrentWeeksStreakVmFromJSONTyped(json, true), type: 'listening_streak'};
         case 'playlist':
             return {...PlaylistModelFromJSONTyped(json, true), type: 'playlist'};
         case 'podcast':
@@ -147,11 +147,11 @@ export function DiscoverResponseFromJSONTyped(json: any, ignoreDiscriminator: bo
         case 'year_in_review':
             return {...YearInReviewModelFromJSONTyped(json, true), type: 'year_in_review'};
         default:
-            throw new Error(`No variant of DiscoverResponse exists with 'type=${json['type']}'`);
+            throw new Error(`No variant of IDiscoverable exists with 'type=${json['type']}'`);
     }
 }
 
-export function DiscoverResponseToJSON(value?: DiscoverResponse | null): any {
+export function IDiscoverableToJSON(value?: IDiscoverable | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -159,8 +159,6 @@ export function DiscoverResponseToJSON(value?: DiscoverResponse | null): any {
         return null;
     }
     switch (value['type']) {
-        case '':
-            return CurrentWeeksStreakVmToJSON(value);
         case 'InfoMessage':
             return InfoMessageModelToJSON(value);
         case 'Tile':
@@ -169,6 +167,8 @@ export function DiscoverResponseToJSON(value?: DiscoverResponse | null): any {
             return AlbumModelToJSON(value);
         case 'contributor':
             return ContributorModelToJSON(value);
+        case 'listening_streak':
+            return CurrentWeeksStreakVmToJSON(value);
         case 'playlist':
             return PlaylistModelToJSON(value);
         case 'podcast':
@@ -186,7 +186,7 @@ export function DiscoverResponseToJSON(value?: DiscoverResponse | null): any {
         case 'year_in_review':
             return YearInReviewModelToJSON(value);
         default:
-            throw new Error(`No variant of DiscoverResponse exists with 'type=${value['type']}'`);
+            throw new Error(`No variant of IDiscoverable exists with 'type=${value['type']}'`);
     }
 
 }
