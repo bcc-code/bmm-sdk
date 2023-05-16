@@ -3118,23 +3118,6 @@
           },
           "additionalProperties": false
         },
-        "IAlbumOrTrack": {
-          "oneOf": [
-            {
-              "$ref": "#/components/schemas/AlbumModel"
-            },
-            {
-              "$ref": "#/components/schemas/TrackModel"
-            }
-          ],
-          "discriminator": {
-            "propertyName": "type",
-            "mapping": {
-              "album": "#/components/schemas/AlbumModel",
-              "track": "#/components/schemas/TrackModel"
-            }
-          }
-        },
         "AlbumModel-AlbumMeta": {
           "type": "object",
           "properties": {
@@ -3294,31 +3277,6 @@
             "rev"
           ],
           "type": "string"
-        },
-        "IAlbumPodcastPlaylistOrSectionHeader": {
-          "oneOf": [
-            {
-              "$ref": "#/components/schemas/AlbumModel"
-            },
-            {
-              "$ref": "#/components/schemas/PlaylistModel"
-            },
-            {
-              "$ref": "#/components/schemas/PodcastModel"
-            },
-            {
-              "$ref": "#/components/schemas/SectionHeaderModel"
-            }
-          ],
-          "discriminator": {
-            "propertyName": "type",
-            "mapping": {
-              "album": "#/components/schemas/AlbumModel",
-              "playlist": "#/components/schemas/PlaylistModel",
-              "podcast": "#/components/schemas/PodcastModel",
-              "section_header": "#/components/schemas/SectionHeaderModel"
-            }
-          }
         },
         "ChapterHeader": {
           "required": [
@@ -3624,116 +3582,6 @@
           ],
           "type": "string"
         },
-        "IDiscoverable": {
-          "oneOf": [
-            {
-              "$ref": "#/components/schemas/AlbumModel"
-            },
-            {
-              "$ref": "#/components/schemas/ContributorModel"
-            },
-            {
-              "$ref": "#/components/schemas/PlaylistModel"
-            },
-            {
-              "$ref": "#/components/schemas/PodcastModel"
-            },
-            {
-              "$ref": "#/components/schemas/TrackCollectionModel"
-            },
-            {
-              "$ref": "#/components/schemas/CurrentWeeksStreakVm"
-            },
-            {
-              "$ref": "#/components/schemas/InfoMessageModel"
-            },
-            {
-              "$ref": "#/components/schemas/SectionHeaderModel"
-            },
-            {
-              "$ref": "#/components/schemas/TileMessageModel"
-            },
-            {
-              "$ref": "#/components/schemas/TileVideoModel"
-            },
-            {
-              "$ref": "#/components/schemas/TileModel"
-            },
-            {
-              "$ref": "#/components/schemas/TrackModel"
-            },
-            {
-              "$ref": "#/components/schemas/YearInReviewModel"
-            }
-          ],
-          "discriminator": {
-            "propertyName": "type",
-            "mapping": {
-              "album": "#/components/schemas/AlbumModel",
-              "contributor": "#/components/schemas/ContributorModel",
-              "playlist": "#/components/schemas/PlaylistModel",
-              "podcast": "#/components/schemas/PodcastModel",
-              "track_collection": "#/components/schemas/TrackCollectionModel",
-              "listening_streak": "#/components/schemas/CurrentWeeksStreakVm",
-              "InfoMessage": "#/components/schemas/InfoMessageModel",
-              "section_header": "#/components/schemas/SectionHeaderModel",
-              "tile_message": "#/components/schemas/TileMessageModel",
-              "tile_video": "#/components/schemas/TileVideoModel",
-              "Tile": "#/components/schemas/TileModel",
-              "track": "#/components/schemas/TrackModel",
-              "year_in_review": "#/components/schemas/YearInReviewModel"
-            }
-          }
-        },
-        "DocumentListIAlbumPlaylistOrChapterHeader": {
-          "type": "object",
-          "properties": {
-            "title": {
-              "type": "string",
-              "nullable": true
-            },
-            "translation_parent": {
-              "type": "string",
-              "nullable": true
-            },
-            "translation_id": {
-              "type": "string",
-              "nullable": true
-            },
-            "supports_paging": {
-              "type": "boolean"
-            },
-            "items": {
-              "type": "array",
-              "items": {
-                "$ref": "#/components/schemas/IAlbumPlaylistOrChapterHeader"
-              },
-              "nullable": true
-            }
-          },
-          "additionalProperties": false
-        },
-        "IAlbumPlaylistOrChapterHeader": {
-          "discriminator": {
-            "propertyName": "type",
-            "mapping": {
-              "album": "#/components/schemas/AlbumModel",
-              "playlist": "#/components/schemas/PlaylistModel",
-              "chapter_header": "#/components/schemas/ChapterHeader"
-            }
-          },
-          "oneOf": [
-            {
-              "$ref": "#/components/schemas/AlbumModel"
-            },
-            {
-              "$ref": "#/components/schemas/PlaylistModel"
-            },
-            {
-              "$ref": "#/components/schemas/ChapterHeader"
-            }
-          ]
-        },
         "DocumentListIAlbumOrChapterHeader": {
           "type": "object",
           "properties": {
@@ -3762,22 +3610,33 @@
           },
           "additionalProperties": false
         },
-        "IAlbumOrChapterHeader": {
-          "discriminator": {
-            "propertyName": "type",
-            "mapping": {
-              "album": "#/components/schemas/AlbumModel",
-              "chapter_header": "#/components/schemas/ChapterHeader"
+        "DocumentListIAlbumPlaylistOrChapterHeader": {
+          "type": "object",
+          "properties": {
+            "title": {
+              "type": "string",
+              "nullable": true
+            },
+            "translation_parent": {
+              "type": "string",
+              "nullable": true
+            },
+            "translation_id": {
+              "type": "string",
+              "nullable": true
+            },
+            "supports_paging": {
+              "type": "boolean"
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/IAlbumPlaylistOrChapterHeader"
+              },
+              "nullable": true
             }
           },
-          "oneOf": [
-            {
-              "$ref": "#/components/schemas/AlbumModel"
-            },
-            {
-              "$ref": "#/components/schemas/ChapterHeader"
-            }
-          ]
+          "additionalProperties": false
         },
         "DocumentListIDiscoverable": {
           "type": "object",
@@ -3969,6 +3828,176 @@
             }
           },
           "additionalProperties": false
+        },
+        "IAlbumContributorPodcastPlaylistOrTrack": {
+          "discriminator": {
+            "propertyName": "type",
+            "mapping": {
+              "album": "#/components/schemas/AlbumModel",
+              "contributor": "#/components/schemas/ContributorModel",
+              "playlist": "#/components/schemas/PlaylistModel",
+              "podcast": "#/components/schemas/PodcastModel",
+              "track": "#/components/schemas/TrackModel"
+            }
+          },
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/AlbumModel"
+            },
+            {
+              "$ref": "#/components/schemas/ContributorModel"
+            },
+            {
+              "$ref": "#/components/schemas/PlaylistModel"
+            },
+            {
+              "$ref": "#/components/schemas/PodcastModel"
+            },
+            {
+              "$ref": "#/components/schemas/TrackModel"
+            }
+          ]
+        },
+        "IAlbumOrChapterHeader": {
+          "discriminator": {
+            "propertyName": "type",
+            "mapping": {
+              "album": "#/components/schemas/AlbumModel",
+              "chapter_header": "#/components/schemas/ChapterHeader"
+            }
+          },
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/AlbumModel"
+            },
+            {
+              "$ref": "#/components/schemas/ChapterHeader"
+            }
+          ]
+        },
+        "IAlbumOrTrack": {
+          "discriminator": {
+            "propertyName": "type",
+            "mapping": {
+              "album": "#/components/schemas/AlbumModel",
+              "track": "#/components/schemas/TrackModel"
+            }
+          },
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/AlbumModel"
+            },
+            {
+              "$ref": "#/components/schemas/TrackModel"
+            }
+          ]
+        },
+        "IAlbumPlaylistOrChapterHeader": {
+          "discriminator": {
+            "propertyName": "type",
+            "mapping": {
+              "album": "#/components/schemas/AlbumModel",
+              "playlist": "#/components/schemas/PlaylistModel",
+              "chapter_header": "#/components/schemas/ChapterHeader"
+            }
+          },
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/AlbumModel"
+            },
+            {
+              "$ref": "#/components/schemas/PlaylistModel"
+            },
+            {
+              "$ref": "#/components/schemas/ChapterHeader"
+            }
+          ]
+        },
+        "IAlbumPodcastPlaylistOrSectionHeader": {
+          "discriminator": {
+            "propertyName": "type",
+            "mapping": {
+              "album": "#/components/schemas/AlbumModel",
+              "playlist": "#/components/schemas/PlaylistModel",
+              "podcast": "#/components/schemas/PodcastModel",
+              "section_header": "#/components/schemas/SectionHeaderModel"
+            }
+          },
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/AlbumModel"
+            },
+            {
+              "$ref": "#/components/schemas/PlaylistModel"
+            },
+            {
+              "$ref": "#/components/schemas/PodcastModel"
+            },
+            {
+              "$ref": "#/components/schemas/SectionHeaderModel"
+            }
+          ]
+        },
+        "IDiscoverable": {
+          "discriminator": {
+            "propertyName": "type",
+            "mapping": {
+              "album": "#/components/schemas/AlbumModel",
+              "contributor": "#/components/schemas/ContributorModel",
+              "playlist": "#/components/schemas/PlaylistModel",
+              "podcast": "#/components/schemas/PodcastModel",
+              "track_collection": "#/components/schemas/TrackCollectionModel",
+              "listening_streak": "#/components/schemas/CurrentWeeksStreakVm",
+              "InfoMessage": "#/components/schemas/InfoMessageModel",
+              "section_header": "#/components/schemas/SectionHeaderModel",
+              "tile_message": "#/components/schemas/TileMessageModel",
+              "tile_video": "#/components/schemas/TileVideoModel",
+              "Tile": "#/components/schemas/TileModel",
+              "track": "#/components/schemas/TrackModel",
+              "year_in_review": "#/components/schemas/YearInReviewModel"
+            }
+          },
+          "oneOf": [
+            {
+              "$ref": "#/components/schemas/AlbumModel"
+            },
+            {
+              "$ref": "#/components/schemas/ContributorModel"
+            },
+            {
+              "$ref": "#/components/schemas/PlaylistModel"
+            },
+            {
+              "$ref": "#/components/schemas/PodcastModel"
+            },
+            {
+              "$ref": "#/components/schemas/TrackCollectionModel"
+            },
+            {
+              "$ref": "#/components/schemas/CurrentWeeksStreakVm"
+            },
+            {
+              "$ref": "#/components/schemas/InfoMessageModel"
+            },
+            {
+              "$ref": "#/components/schemas/SectionHeaderModel"
+            },
+            {
+              "$ref": "#/components/schemas/TileMessageModel"
+            },
+            {
+              "$ref": "#/components/schemas/TileVideoModel"
+            },
+            {
+              "$ref": "#/components/schemas/TileModel"
+            },
+            {
+              "$ref": "#/components/schemas/TrackModel"
+            },
+            {
+              "$ref": "#/components/schemas/YearInReviewModel"
+            }
+          ]
         },
         "InfoMessageModel": {
           "required": [
@@ -4234,35 +4263,6 @@
             "Playlists"
           ],
           "type": "string"
-        },
-        "IAlbumContributorPodcastPlaylistOrTrack": {
-          "oneOf": [
-            {
-              "$ref": "#/components/schemas/AlbumModel"
-            },
-            {
-              "$ref": "#/components/schemas/ContributorModel"
-            },
-            {
-              "$ref": "#/components/schemas/PlaylistModel"
-            },
-            {
-              "$ref": "#/components/schemas/PodcastModel"
-            },
-            {
-              "$ref": "#/components/schemas/TrackModel"
-            }
-          ],
-          "discriminator": {
-            "propertyName": "type",
-            "mapping": {
-              "album": "#/components/schemas/AlbumModel",
-              "contributor": "#/components/schemas/ContributorModel",
-              "playlist": "#/components/schemas/PlaylistModel",
-              "podcast": "#/components/schemas/PodcastModel",
-              "track": "#/components/schemas/TrackModel"
-            }
-          }
         },
         "SearchResults": {
           "type": "object",
