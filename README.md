@@ -9,6 +9,5 @@ Currently only `typescript-fetch` is used. If more are needed, the structure of 
 ```sh
 pnpm i
 pnpm generate
-# You might have to do some code changes - currently https://github.com/OpenAPITools/openapi-generator/issues/14792
 pnpm publish --access public
 ```
