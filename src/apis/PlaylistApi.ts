@@ -15,15 +15,15 @@
 
 import * as runtime from '../runtime';
 import type {
-  DocumentListIDiscoverable,
+  DocumentListIAllDocumentModels,
   LanguageEnum,
   PlaylistModel,
   PublishedFilter,
   TrackModel,
 } from '../models';
 import {
-    DocumentListIDiscoverableFromJSON,
-    DocumentListIDiscoverableToJSON,
+    DocumentListIAllDocumentModelsFromJSON,
+    DocumentListIAllDocumentModelsToJSON,
     LanguageEnumFromJSON,
     LanguageEnumToJSON,
     PlaylistModelFromJSON,
@@ -59,7 +59,7 @@ export class PlaylistApi extends runtime.BaseAPI {
 
     /**
      */
-    async playlistDocumentsGetRaw(requestParameters: PlaylistDocumentsGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DocumentListIDiscoverable>> {
+    async playlistDocumentsGetRaw(requestParameters: PlaylistDocumentsGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DocumentListIAllDocumentModels>> {
         const queryParameters: any = {};
 
         if (requestParameters.lang !== undefined) {
@@ -79,12 +79,12 @@ export class PlaylistApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => DocumentListIDiscoverableFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => DocumentListIAllDocumentModelsFromJSON(jsonValue));
     }
 
     /**
      */
-    async playlistDocumentsGet(requestParameters: PlaylistDocumentsGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DocumentListIDiscoverable> {
+    async playlistDocumentsGet(requestParameters: PlaylistDocumentsGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DocumentListIAllDocumentModels> {
         const response = await this.playlistDocumentsGetRaw(requestParameters, initOverrides);
         return await response.value();
     }

@@ -19,3 +19,4 @@ export * from './SubscriptionApi';
 export * from './SuggestApi';
 export * from './TrackApi';
 export * from './TrackCollectionApi';
+export * from './TranscriptionApi';

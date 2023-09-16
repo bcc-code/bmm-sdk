@@ -136,6 +136,12 @@ export interface CurrentWeeksStreakVm {
     daysInARow?: number;
     /**
      * 
+     * @type {string}
+     * @memberof CurrentWeeksStreakVm
+     */
+    pointColor?: string | null;
+    /**
+     * 
      * @type {CurrentWeeksStreakVmHomeScreenTextOptions}
      * @memberof CurrentWeeksStreakVm
      */
@@ -190,6 +196,7 @@ export function CurrentWeeksStreakVmFromJSONTyped(json: any, ignoreDiscriminator
         'eligibleUntil': !exists(json, 'eligible_until') ? undefined : (new Date(json['eligible_until'])),
         'lastChanged': !exists(json, 'last_changed') ? undefined : (new Date(json['last_changed'])),
         'daysInARow': !exists(json, 'days_in_a_row') ? undefined : json['days_in_a_row'],
+        'pointColor': !exists(json, 'point_color') ? undefined : json['point_color'],
         'homeScreenText': !exists(json, 'home_screen_text') ? undefined : CurrentWeeksStreakVmHomeScreenTextOptionsFromJSON(json['home_screen_text']),
     };
 }
@@ -217,6 +224,7 @@ export function CurrentWeeksStreakVmToJSON(value?: CurrentWeeksStreakVm | null):
         'eligible_until': value.eligibleUntil === undefined ? undefined : (value.eligibleUntil.toISOString()),
         'last_changed': value.lastChanged === undefined ? undefined : (value.lastChanged.toISOString()),
         'days_in_a_row': value.daysInARow,
+        'point_color': value.pointColor,
         'home_screen_text': CurrentWeeksStreakVmHomeScreenTextOptionsToJSON(value.homeScreenText),
     };
 }

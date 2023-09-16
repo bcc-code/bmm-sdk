@@ -16,14 +16,51 @@
 import * as runtime from '../runtime';
 import type {
   CreateTrackPlayedEventsCommandEvent,
+  ForbildePoints,
+  ForbildeRulesQueryRules,
   GetYearInReviewOverviewSlide,
+  LanguageEnum,
+  ListeningEvent,
+  StreakPoint,
 } from '../models';
 import {
     CreateTrackPlayedEventsCommandEventFromJSON,
     CreateTrackPlayedEventsCommandEventToJSON,
+    ForbildePointsFromJSON,
+    ForbildePointsToJSON,
+    ForbildeRulesQueryRulesFromJSON,
+    ForbildeRulesQueryRulesToJSON,
     GetYearInReviewOverviewSlideFromJSON,
     GetYearInReviewOverviewSlideToJSON,
+    LanguageEnumFromJSON,
+    LanguageEnumToJSON,
+    ListeningEventFromJSON,
+    ListeningEventToJSON,
+    StreakPointFromJSON,
+    StreakPointToJSON,
 } from '../models';
+
+export interface StatisticsAchievementNameAcknowledgePutRequest {
+    name: string;
+}
+
+export interface StatisticsListeningPostRequest {
+    listeningEvent: Array<ListeningEvent>;
+}
+
+export interface StatisticsProjectProgressGetRequest {
+    lang?: LanguageEnum;
+    os?: string;
+    theme?: string;
+}
+
+export interface StatisticsProjectRulesGetRequest {
+    lang?: LanguageEnum;
+}
+
+export interface StatisticsStreakpointPostRequest {
+    streakPoint: Array<StreakPoint>;
+}
 
 export interface StatisticsTrackPlayedPostRequest {
     createTrackPlayedEventsCommandEvent: Array<CreateTrackPlayedEventsCommandEvent>;
@@ -33,6 +70,180 @@ export interface StatisticsTrackPlayedPostRequest {
  * 
  */
 export class StatisticsApi extends runtime.BaseAPI {
+
+    /**
+     */
+    async statisticsAchievementDeleteRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/Statistics/achievement`,
+            method: 'DELETE',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async statisticsAchievementDelete(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.statisticsAchievementDeleteRaw(initOverrides);
+    }
+
+    /**
+     */
+    async statisticsAchievementNameAcknowledgePutRaw(requestParameters: StatisticsAchievementNameAcknowledgePutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.name === null || requestParameters.name === undefined) {
+            throw new runtime.RequiredError('name','Required parameter requestParameters.name was null or undefined when calling statisticsAchievementNameAcknowledgePut.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/Statistics/achievement/{name}/acknowledge`.replace(`{${"name"}}`, encodeURIComponent(String(requestParameters.name))),
+            method: 'PUT',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async statisticsAchievementNameAcknowledgePut(requestParameters: StatisticsAchievementNameAcknowledgePutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.statisticsAchievementNameAcknowledgePutRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async statisticsListeningPostRaw(requestParameters: StatisticsListeningPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.listeningEvent === null || requestParameters.listeningEvent === undefined) {
+            throw new runtime.RequiredError('listeningEvent','Required parameter requestParameters.listeningEvent was null or undefined when calling statisticsListeningPost.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json-patch+json';
+
+        const response = await this.request({
+            path: `/Statistics/listening`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: requestParameters.listeningEvent.map(ListeningEventToJSON),
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async statisticsListeningPost(requestParameters: StatisticsListeningPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.statisticsListeningPostRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async statisticsProjectProgressGetRaw(requestParameters: StatisticsProjectProgressGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ForbildePoints>> {
+        const queryParameters: any = {};
+
+        if (requestParameters.lang !== undefined) {
+            queryParameters['lang'] = requestParameters.lang;
+        }
+
+        if (requestParameters.os !== undefined) {
+            queryParameters['os'] = requestParameters.os;
+        }
+
+        if (requestParameters.theme !== undefined) {
+            queryParameters['theme'] = requestParameters.theme;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/Statistics/project/progress`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ForbildePointsFromJSON(jsonValue));
+    }
+
+    /**
+     */
+    async statisticsProjectProgressGet(requestParameters: StatisticsProjectProgressGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ForbildePoints> {
+        const response = await this.statisticsProjectProgressGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     */
+    async statisticsProjectRulesGetRaw(requestParameters: StatisticsProjectRulesGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ForbildeRulesQueryRules>> {
+        const queryParameters: any = {};
+
+        if (requestParameters.lang !== undefined) {
+            queryParameters['lang'] = requestParameters.lang;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/Statistics/project/rules`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ForbildeRulesQueryRulesFromJSON(jsonValue));
+    }
+
+    /**
+     */
+    async statisticsProjectRulesGet(requestParameters: StatisticsProjectRulesGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ForbildeRulesQueryRules> {
+        const response = await this.statisticsProjectRulesGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     */
+    async statisticsStreakpointPostRaw(requestParameters: StatisticsStreakpointPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.streakPoint === null || requestParameters.streakPoint === undefined) {
+            throw new runtime.RequiredError('streakPoint','Required parameter requestParameters.streakPoint was null or undefined when calling statisticsStreakpointPost.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json-patch+json';
+
+        const response = await this.request({
+            path: `/Statistics/streakpoint`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: requestParameters.streakPoint.map(StreakPointToJSON),
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async statisticsStreakpointPost(requestParameters: StatisticsStreakpointPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.statisticsStreakpointPostRaw(requestParameters, initOverrides);
+    }
 
     /**
      */

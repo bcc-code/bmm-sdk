@@ -13,6 +13,13 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { LanguageEnum } from './LanguageEnum';
+import {
+    LanguageEnumFromJSON,
+    LanguageEnumFromJSONTyped,
+    LanguageEnumToJSON,
+} from './LanguageEnum';
+
 /**
  * 
  * @export
@@ -37,6 +44,24 @@ export interface Highlighting {
      * @memberof Highlighting
      */
     startPositionInSeconds?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Highlighting
+     */
+    firstSegmentIndex?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof Highlighting
+     */
+    lastSegmentIndex?: number;
+    /**
+     * 
+     * @type {LanguageEnum}
+     * @memberof Highlighting
+     */
+    language?: LanguageEnum;
 }
 
 /**
@@ -61,6 +86,9 @@ export function HighlightingFromJSONTyped(json: any, ignoreDiscriminator: boolea
         'id': !exists(json, 'id') ? undefined : json['id'],
         'text': !exists(json, 'text') ? undefined : json['text'],
         'startPositionInSeconds': !exists(json, 'start_position_in_seconds') ? undefined : json['start_position_in_seconds'],
+        'firstSegmentIndex': !exists(json, 'first_segment_index') ? undefined : json['first_segment_index'],
+        'lastSegmentIndex': !exists(json, 'last_segment_index') ? undefined : json['last_segment_index'],
+        'language': !exists(json, 'language') ? undefined : LanguageEnumFromJSON(json['language']),
     };
 }
 
@@ -76,6 +104,9 @@ export function HighlightingToJSON(value?: Highlighting | null): any {
         'id': value.id,
         'text': value.text,
         'start_position_in_seconds': value.startPositionInSeconds,
+        'first_segment_index': value.firstSegmentIndex,
+        'last_segment_index': value.lastSegmentIndex,
+        'language': LanguageEnumToJSON(value.language),
     };
 }
 

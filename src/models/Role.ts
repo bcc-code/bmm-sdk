@@ -27,7 +27,8 @@ export const Role = {
     NotificationManager: 'ROLE_NOTIFICATION_MANAGER',
     FeaturePreview: 'ROLE_FEATURE_PREVIEW',
     LiveManager: 'ROLE_LIVE_MANAGER',
-    ServiceAdmin: 'ROLE_SERVICE_ADMIN'
+    ServiceAdmin: 'ROLE_SERVICE_ADMIN',
+    Downloader: 'ROLE_DOWNLOADER'
 } as const;
 export type Role = typeof Role[keyof typeof Role];
 

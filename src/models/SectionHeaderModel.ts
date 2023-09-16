@@ -36,18 +36,6 @@ export interface SectionHeaderModel {
      * @type {string}
      * @memberof SectionHeaderModel
      */
-    translationParent?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof SectionHeaderModel
-     */
-    translationId?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof SectionHeaderModel
-     */
     link?: string | null;
     /**
      * 
@@ -96,8 +84,6 @@ export function SectionHeaderModelFromJSONTyped(json: any, ignoreDiscriminator: 
         
         'type': json['type'],
         'title': !exists(json, 'title') ? undefined : json['title'],
-        'translationParent': !exists(json, 'translation_parent') ? undefined : json['translation_parent'],
-        'translationId': !exists(json, 'translation_id') ? undefined : json['translation_id'],
         'link': !exists(json, 'link') ? undefined : json['link'],
         'id': json['id'],
         'useCoverCarousel': !exists(json, 'use_cover_carousel') ? undefined : json['use_cover_carousel'],
@@ -114,8 +100,6 @@ export function SectionHeaderModelToJSON(value?: SectionHeaderModel | null): any
     return {
         
         'title': value.title,
-        'translation_parent': value.translationParent,
-        'translation_id': value.translationId,
         'link': value.link,
         'id': value.id,
         'use_cover_carousel': value.useCoverCarousel,

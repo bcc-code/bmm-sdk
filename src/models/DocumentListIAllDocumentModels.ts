@@ -13,65 +13,65 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { IDiscoverable } from './IDiscoverable';
+import type { IAllDocumentModels } from './IAllDocumentModels';
 import {
-    IDiscoverableFromJSON,
-    IDiscoverableFromJSONTyped,
-    IDiscoverableToJSON,
-} from './IDiscoverable';
+    IAllDocumentModelsFromJSON,
+    IAllDocumentModelsFromJSONTyped,
+    IAllDocumentModelsToJSON,
+} from './IAllDocumentModels';
 
 /**
  * 
  * @export
- * @interface DocumentListIDiscoverable
+ * @interface DocumentListIAllDocumentModels
  */
-export interface DocumentListIDiscoverable {
+export interface DocumentListIAllDocumentModels {
     /**
      * 
      * @type {string}
-     * @memberof DocumentListIDiscoverable
+     * @memberof DocumentListIAllDocumentModels
      */
     title?: string | null;
     /**
      * 
      * @type {string}
-     * @memberof DocumentListIDiscoverable
+     * @memberof DocumentListIAllDocumentModels
      */
     translationParent?: string | null;
     /**
      * 
      * @type {string}
-     * @memberof DocumentListIDiscoverable
+     * @memberof DocumentListIAllDocumentModels
      */
     translationId?: string | null;
     /**
      * 
      * @type {boolean}
-     * @memberof DocumentListIDiscoverable
+     * @memberof DocumentListIAllDocumentModels
      */
     supportsPaging?: boolean;
     /**
      * 
-     * @type {Array<IDiscoverable>}
-     * @memberof DocumentListIDiscoverable
+     * @type {Array<IAllDocumentModels>}
+     * @memberof DocumentListIAllDocumentModels
      */
-    items?: Array<IDiscoverable> | null;
+    items?: Array<IAllDocumentModels> | null;
 }
 
 /**
- * Check if a given object implements the DocumentListIDiscoverable interface.
+ * Check if a given object implements the DocumentListIAllDocumentModels interface.
  */
-export function instanceOfDocumentListIDiscoverable(value: object): boolean {
+export function instanceOfDocumentListIAllDocumentModels(value: object): boolean {
     let isInstance = true;
 
     return isInstance;
 }
 
-export function DocumentListIDiscoverableFromJSON(json: any): DocumentListIDiscoverable {
-    return DocumentListIDiscoverableFromJSONTyped(json, false);
+export function DocumentListIAllDocumentModelsFromJSON(json: any): DocumentListIAllDocumentModels {
+    return DocumentListIAllDocumentModelsFromJSONTyped(json, false);
 }
 
-export function DocumentListIDiscoverableFromJSONTyped(json: any, ignoreDiscriminator: boolean): DocumentListIDiscoverable {
+export function DocumentListIAllDocumentModelsFromJSONTyped(json: any, ignoreDiscriminator: boolean): DocumentListIAllDocumentModels {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -81,11 +81,11 @@ export function DocumentListIDiscoverableFromJSONTyped(json: any, ignoreDiscrimi
         'translationParent': !exists(json, 'translation_parent') ? undefined : json['translation_parent'],
         'translationId': !exists(json, 'translation_id') ? undefined : json['translation_id'],
         'supportsPaging': !exists(json, 'supports_paging') ? undefined : json['supports_paging'],
-        'items': !exists(json, 'items') ? undefined : (json['items'] === null ? null : (json['items'] as Array<any>).map(IDiscoverableFromJSON)),
+        'items': !exists(json, 'items') ? undefined : (json['items'] === null ? null : (json['items'] as Array<any>).map(IAllDocumentModelsFromJSON)),
     };
 }
 
-export function DocumentListIDiscoverableToJSON(value?: DocumentListIDiscoverable | null): any {
+export function DocumentListIAllDocumentModelsToJSON(value?: DocumentListIAllDocumentModels | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -98,7 +98,7 @@ export function DocumentListIDiscoverableToJSON(value?: DocumentListIDiscoverabl
         'translation_parent': value.translationParent,
         'translation_id': value.translationId,
         'supports_paging': value.supportsPaging,
-        'items': value.items === undefined ? undefined : (value.items === null ? null : (value.items as Array<any>).map(IDiscoverableToJSON)),
+        'items': value.items === undefined ? undefined : (value.items === null ? null : (value.items as Array<any>).map(IAllDocumentModelsToJSON)),
     };
 }
 

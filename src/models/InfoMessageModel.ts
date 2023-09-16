@@ -37,18 +37,6 @@ export interface InfoMessageModel {
      * @memberof InfoMessageModel
      */
     translatedMessage?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof InfoMessageModel
-     */
-    translationParent?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof InfoMessageModel
-     */
-    translationId?: string | null;
 }
 
 
@@ -85,8 +73,6 @@ export function InfoMessageModelFromJSONTyped(json: any, ignoreDiscriminator: bo
         'type': json['type'],
         'id': json['id'],
         'translatedMessage': !exists(json, 'translated_message') ? undefined : json['translated_message'],
-        'translationParent': !exists(json, 'translation_parent') ? undefined : json['translation_parent'],
-        'translationId': !exists(json, 'translation_id') ? undefined : json['translation_id'],
     };
 }
 
@@ -101,8 +87,6 @@ export function InfoMessageModelToJSON(value?: InfoMessageModel | null): any {
         
         'id': value.id,
         'translated_message': value.translatedMessage,
-        'translation_parent': value.translationParent,
-        'translation_id': value.translationId,
     };
 }
 

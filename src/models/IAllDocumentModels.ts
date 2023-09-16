@@ -55,6 +55,13 @@ import {
     PodcastModelToJSON,
 } from './PodcastModel';
 import {
+    RecommendationModel,
+    instanceOfRecommendationModel,
+    RecommendationModelFromJSON,
+    RecommendationModelFromJSONTyped,
+    RecommendationModelToJSON,
+} from './RecommendationModel';
+import {
     SectionHeaderModel,
     instanceOfSectionHeaderModel,
     SectionHeaderModelFromJSON,
@@ -105,17 +112,17 @@ import {
 } from './YearInReviewModel';
 
 /**
- * @type IDiscoverable
+ * @type IAllDocumentModels
  * 
  * @export
  */
-export type IDiscoverable = { type: 'InfoMessage' } & InfoMessageModel | { type: 'Tile' } & TileModel | { type: 'album' } & AlbumModel | { type: 'contributor' } & ContributorModel | { type: 'listening_streak' } & CurrentWeeksStreakVm | { type: 'playlist' } & PlaylistModel | { type: 'podcast' } & PodcastModel | { type: 'section_header' } & SectionHeaderModel | { type: 'tile_message' } & TileMessageModel | { type: 'tile_video' } & TileVideoModel | { type: 'track' } & TrackModel | { type: 'track_collection' } & TrackCollectionModel | { type: 'year_in_review' } & YearInReviewModel;
+export type IAllDocumentModels = { type: 'InfoMessage' } & InfoMessageModel | { type: 'Tile' } & TileModel | { type: 'album' } & AlbumModel | { type: 'contributor' } & ContributorModel | { type: 'listening_streak' } & CurrentWeeksStreakVm | { type: 'playlist' } & PlaylistModel | { type: 'podcast' } & PodcastModel | { type: 'recommendation' } & RecommendationModel | { type: 'section_header' } & SectionHeaderModel | { type: 'tile_message' } & TileMessageModel | { type: 'tile_video' } & TileVideoModel | { type: 'track' } & TrackModel | { type: 'track_collection' } & TrackCollectionModel | { type: 'year_in_review' } & YearInReviewModel;
 
-export function IDiscoverableFromJSON(json: any): IDiscoverable {
-    return IDiscoverableFromJSONTyped(json, false);
+export function IAllDocumentModelsFromJSON(json: any): IAllDocumentModels {
+    return IAllDocumentModelsFromJSONTyped(json, false);
 }
 
-export function IDiscoverableFromJSONTyped(json: any, ignoreDiscriminator: boolean): IDiscoverable {
+export function IAllDocumentModelsFromJSONTyped(json: any, ignoreDiscriminator: boolean): IAllDocumentModels {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -134,6 +141,8 @@ export function IDiscoverableFromJSONTyped(json: any, ignoreDiscriminator: boole
             return {...PlaylistModelFromJSONTyped(json, true), type: 'playlist'};
         case 'podcast':
             return {...PodcastModelFromJSONTyped(json, true), type: 'podcast'};
+        case 'recommendation':
+            return {...RecommendationModelFromJSONTyped(json, true), type: 'recommendation'};
         case 'section_header':
             return {...SectionHeaderModelFromJSONTyped(json, true), type: 'section_header'};
         case 'tile_message':
@@ -147,11 +156,11 @@ export function IDiscoverableFromJSONTyped(json: any, ignoreDiscriminator: boole
         case 'year_in_review':
             return {...YearInReviewModelFromJSONTyped(json, true), type: 'year_in_review'};
         default:
-            throw new Error(`No variant of IDiscoverable exists with 'type=${json['type']}'`);
+            throw new Error(`No variant of IAllDocumentModels exists with 'type=${json['type']}'`);
     }
 }
 
-export function IDiscoverableToJSON(value?: IDiscoverable | null): any {
+export function IAllDocumentModelsToJSON(value?: IAllDocumentModels | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -173,6 +182,8 @@ export function IDiscoverableToJSON(value?: IDiscoverable | null): any {
             return PlaylistModelToJSON(value);
         case 'podcast':
             return PodcastModelToJSON(value);
+        case 'recommendation':
+            return RecommendationModelToJSON(value);
         case 'section_header':
             return SectionHeaderModelToJSON(value);
         case 'tile_message':
@@ -186,7 +197,7 @@ export function IDiscoverableToJSON(value?: IDiscoverable | null): any {
         case 'year_in_review':
             return YearInReviewModelToJSON(value);
         default:
-            throw new Error(`No variant of IDiscoverable exists with 'type=${value['type']}'`);
+            throw new Error(`No variant of IAllDocumentModels exists with 'type=${value['type']}'`);
     }
 
 }
