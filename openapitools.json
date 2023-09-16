@@ -6,7 +6,7 @@
     "generators": {
       "v2.0": {
         "generatorName": "typescript-fetch",
-        "inputSpec": "./openapi.json",
+        "inputSpec": "https://int-bmm-api.brunstad.org/swagger/v1/swagger.json",
         "output": "./src"
       }
     }
