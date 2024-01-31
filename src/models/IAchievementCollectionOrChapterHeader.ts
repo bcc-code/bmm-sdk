@@ -12,15 +12,15 @@
  * Do not edit the class manually.
  */
 
+import type { AchievementCollection } from './AchievementCollection';
 import {
-    AchievementCollection,
     instanceOfAchievementCollection,
     AchievementCollectionFromJSON,
     AchievementCollectionFromJSONTyped,
     AchievementCollectionToJSON,
 } from './AchievementCollection';
+import type { ChapterHeader } from './ChapterHeader';
 import {
-    ChapterHeader,
     instanceOfChapterHeader,
     ChapterHeaderFromJSON,
     ChapterHeaderFromJSONTyped,

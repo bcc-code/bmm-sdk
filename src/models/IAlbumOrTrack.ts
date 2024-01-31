@@ -12,15 +12,15 @@
  * Do not edit the class manually.
  */
 
+import type { AlbumModel } from './AlbumModel';
 import {
-    AlbumModel,
     instanceOfAlbumModel,
     AlbumModelFromJSON,
     AlbumModelFromJSONTyped,
     AlbumModelToJSON,
 } from './AlbumModel';
+import type { TrackModel } from './TrackModel';
 import {
-    TrackModel,
     instanceOfTrackModel,
     TrackModelFromJSON,
     TrackModelFromJSONTyped,

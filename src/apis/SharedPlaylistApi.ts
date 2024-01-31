@@ -16,11 +16,11 @@
 import * as runtime from '../runtime';
 import type {
   GetTrackCollectionModel,
-} from '../models';
+} from '../models/index';
 import {
     GetTrackCollectionModelFromJSON,
     GetTrackCollectionModelToJSON,
-} from '../models';
+} from '../models/index';
 
 export interface SharedPlaylistSharingSecretFollowPostRequest {
     sharingSecret: string;

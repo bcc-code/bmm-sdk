@@ -20,7 +20,7 @@ import type {
   ResourceType,
   SearchFilter,
   SearchResults,
-} from '../models';
+} from '../models/index';
 import {
     IAlbumContributorPodcastPlaylistOrTrackFromJSON,
     IAlbumContributorPodcastPlaylistOrTrackToJSON,
@@ -32,7 +32,7 @@ import {
     SearchFilterToJSON,
     SearchResultsFromJSON,
     SearchResultsToJSON,
-} from '../models';
+} from '../models/index';
 
 export interface SearchTermGetRequest {
     term: string;

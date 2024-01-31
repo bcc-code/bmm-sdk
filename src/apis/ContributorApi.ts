@@ -18,7 +18,7 @@ import type {
   ContributorModel,
   PublishedFilter,
   TrackModel,
-} from '../models';
+} from '../models/index';
 import {
     ContributorModelFromJSON,
     ContributorModelToJSON,
@@ -26,7 +26,7 @@ import {
     PublishedFilterToJSON,
     TrackModelFromJSON,
     TrackModelToJSON,
-} from '../models';
+} from '../models/index';
 
 export interface ContributorIdCoverGetRequest {
     id: number;

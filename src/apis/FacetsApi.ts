@@ -17,13 +17,13 @@ import * as runtime from '../runtime';
 import type {
   AlbumYearFacetsQueryResult,
   PublishedFilter,
-} from '../models';
+} from '../models/index';
 import {
     AlbumYearFacetsQueryResultFromJSON,
     AlbumYearFacetsQueryResultToJSON,
     PublishedFilterFromJSON,
     PublishedFilterToJSON,
-} from '../models';
+} from '../models/index';
 
 export interface ControllerAlbumPublishedYearsGetRequest {
     controller: string;

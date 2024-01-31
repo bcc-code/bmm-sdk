@@ -21,7 +21,7 @@ import type {
   ProblemDetails,
   TrackCollectionDetails,
   UpdateTrackCollectionCommand,
-} from '../models';
+} from '../models/index';
 import {
     CreateTrackCollectionCommandFromJSON,
     CreateTrackCollectionCommandToJSON,
@@ -35,7 +35,7 @@ import {
     TrackCollectionDetailsToJSON,
     UpdateTrackCollectionCommandFromJSON,
     UpdateTrackCollectionCommandToJSON,
-} from '../models';
+} from '../models/index';
 
 export interface TrackCollectionIdAlbumAlbumIdPostRequest {
     id: number;

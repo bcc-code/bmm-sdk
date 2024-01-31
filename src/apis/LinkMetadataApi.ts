@@ -17,13 +17,13 @@ import * as runtime from '../runtime';
 import type {
   LanguageEnum,
   MetadataModel,
-} from '../models';
+} from '../models/index';
 import {
     LanguageEnumFromJSON,
     LanguageEnumToJSON,
     MetadataModelFromJSON,
     MetadataModelToJSON,
-} from '../models';
+} from '../models/index';
 
 export interface LinkMetadataTrackIdGetRequest {
     id: number;

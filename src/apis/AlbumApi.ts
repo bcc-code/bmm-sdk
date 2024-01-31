@@ -18,7 +18,7 @@ import type {
   AlbumModel,
   PublishedFilter,
   TrackSubtype,
-} from '../models';
+} from '../models/index';
 import {
     AlbumModelFromJSON,
     AlbumModelToJSON,
@@ -26,7 +26,7 @@ import {
     PublishedFilterToJSON,
     TrackSubtypeFromJSON,
     TrackSubtypeToJSON,
-} from '../models';
+} from '../models/index';
 
 export interface AlbumGetRequest {
     publishedFilter?: PublishedFilter;

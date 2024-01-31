@@ -17,13 +17,13 @@ import * as runtime from '../runtime';
 import type {
   IAllDocumentModels,
   LanguageEnum,
-} from '../models';
+} from '../models/index';
 import {
     IAllDocumentModelsFromJSON,
     IAllDocumentModelsToJSON,
     LanguageEnumFromJSON,
     LanguageEnumToJSON,
-} from '../models';
+} from '../models/index';
 
 export interface DiscoverGetRequest {
     lang?: LanguageEnum;

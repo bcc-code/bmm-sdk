@@ -20,7 +20,7 @@ import type {
   TrackModel,
   TrackSubtype,
   TrackTranslationTranscriptionSegment,
-} from '../models';
+} from '../models/index';
 import {
     LanguageEnumFromJSON,
     LanguageEnumToJSON,
@@ -32,7 +32,7 @@ import {
     TrackSubtypeToJSON,
     TrackTranslationTranscriptionSegmentFromJSON,
     TrackTranslationTranscriptionSegmentToJSON,
-} from '../models';
+} from '../models/index';
 
 export interface TrackGetRequest {
     size?: number;

@@ -20,7 +20,7 @@ import type {
   PlaylistModel,
   PublishedFilter,
   TrackModel,
-} from '../models';
+} from '../models/index';
 import {
     DocumentListIAllDocumentModelsFromJSON,
     DocumentListIAllDocumentModelsToJSON,
@@ -32,7 +32,7 @@ import {
     PublishedFilterToJSON,
     TrackModelFromJSON,
     TrackModelToJSON,
-} from '../models';
+} from '../models/index';
 
 export interface PlaylistDocumentsGetRequest {
     lang?: LanguageEnum;

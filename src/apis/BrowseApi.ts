@@ -19,7 +19,7 @@ import type {
   DocumentListIAlbumPlaylistOrChapterHeader,
   DocumentListPodcastModel,
   IAlbumPodcastPlaylistOrSectionHeader,
-} from '../models';
+} from '../models/index';
 import {
     DocumentListIAlbumOrChapterHeaderFromJSON,
     DocumentListIAlbumOrChapterHeaderToJSON,
@@ -29,7 +29,7 @@ import {
     DocumentListPodcastModelToJSON,
     IAlbumPodcastPlaylistOrSectionHeaderFromJSON,
     IAlbumPodcastPlaylistOrSectionHeaderToJSON,
-} from '../models';
+} from '../models/index';
 
 export interface BrowseAudiobooksGetRequest {
     skip?: number;

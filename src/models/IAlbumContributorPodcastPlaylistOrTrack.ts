@@ -12,36 +12,36 @@
  * Do not edit the class manually.
  */
 
+import type { AlbumModel } from './AlbumModel';
 import {
-    AlbumModel,
     instanceOfAlbumModel,
     AlbumModelFromJSON,
     AlbumModelFromJSONTyped,
     AlbumModelToJSON,
 } from './AlbumModel';
+import type { ContributorModel } from './ContributorModel';
 import {
-    ContributorModel,
     instanceOfContributorModel,
     ContributorModelFromJSON,
     ContributorModelFromJSONTyped,
     ContributorModelToJSON,
 } from './ContributorModel';
+import type { PlaylistModel } from './PlaylistModel';
 import {
-    PlaylistModel,
     instanceOfPlaylistModel,
     PlaylistModelFromJSON,
     PlaylistModelFromJSONTyped,
     PlaylistModelToJSON,
 } from './PlaylistModel';
+import type { PodcastModel } from './PodcastModel';
 import {
-    PodcastModel,
     instanceOfPodcastModel,
     PodcastModelFromJSON,
     PodcastModelFromJSONTyped,
     PodcastModelToJSON,
 } from './PodcastModel';
+import type { TrackModel } from './TrackModel';
 import {
-    TrackModel,
     instanceOfTrackModel,
     TrackModelFromJSON,
     TrackModelFromJSONTyped,

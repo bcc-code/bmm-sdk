@@ -18,7 +18,7 @@ import type {
   PodcastModel,
   PublishedFilter,
   TrackModel,
-} from '../models';
+} from '../models/index';
 import {
     PodcastModelFromJSON,
     PodcastModelToJSON,
@@ -26,7 +26,7 @@ import {
     PublishedFilterToJSON,
     TrackModelFromJSON,
     TrackModelToJSON,
-} from '../models';
+} from '../models/index';
 
 export interface PodcastIdCoverGetRequest {
     id: number;

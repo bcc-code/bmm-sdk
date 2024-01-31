@@ -12,120 +12,120 @@
  * Do not edit the class manually.
  */
 
+import type { AchievementCollection } from './AchievementCollection';
 import {
-    AchievementCollection,
     instanceOfAchievementCollection,
     AchievementCollectionFromJSON,
     AchievementCollectionFromJSONTyped,
     AchievementCollectionToJSON,
 } from './AchievementCollection';
+import type { AlbumModel } from './AlbumModel';
 import {
-    AlbumModel,
     instanceOfAlbumModel,
     AlbumModelFromJSON,
     AlbumModelFromJSONTyped,
     AlbumModelToJSON,
 } from './AlbumModel';
+import type { ChapterHeader } from './ChapterHeader';
 import {
-    ChapterHeader,
     instanceOfChapterHeader,
     ChapterHeaderFromJSON,
     ChapterHeaderFromJSONTyped,
     ChapterHeaderToJSON,
 } from './ChapterHeader';
+import type { ContributorModel } from './ContributorModel';
 import {
-    ContributorModel,
     instanceOfContributorModel,
     ContributorModelFromJSON,
     ContributorModelFromJSONTyped,
     ContributorModelToJSON,
 } from './ContributorModel';
+import type { CurrentWeeksStreakVm } from './CurrentWeeksStreakVm';
 import {
-    CurrentWeeksStreakVm,
     instanceOfCurrentWeeksStreakVm,
     CurrentWeeksStreakVmFromJSON,
     CurrentWeeksStreakVmFromJSONTyped,
     CurrentWeeksStreakVmToJSON,
 } from './CurrentWeeksStreakVm';
+import type { InfoMessageModel } from './InfoMessageModel';
 import {
-    InfoMessageModel,
     instanceOfInfoMessageModel,
     InfoMessageModelFromJSON,
     InfoMessageModelFromJSONTyped,
     InfoMessageModelToJSON,
 } from './InfoMessageModel';
+import type { PlaylistModel } from './PlaylistModel';
 import {
-    PlaylistModel,
     instanceOfPlaylistModel,
     PlaylistModelFromJSON,
     PlaylistModelFromJSONTyped,
     PlaylistModelToJSON,
 } from './PlaylistModel';
+import type { PodcastModel } from './PodcastModel';
 import {
-    PodcastModel,
     instanceOfPodcastModel,
     PodcastModelFromJSON,
     PodcastModelFromJSONTyped,
     PodcastModelToJSON,
 } from './PodcastModel';
+import type { ProjectBox } from './ProjectBox';
 import {
-    ProjectBox,
     instanceOfProjectBox,
     ProjectBoxFromJSON,
     ProjectBoxFromJSONTyped,
     ProjectBoxToJSON,
 } from './ProjectBox';
+import type { RecommendationModel } from './RecommendationModel';
 import {
-    RecommendationModel,
     instanceOfRecommendationModel,
     RecommendationModelFromJSON,
     RecommendationModelFromJSONTyped,
     RecommendationModelToJSON,
 } from './RecommendationModel';
+import type { SectionHeaderModel } from './SectionHeaderModel';
 import {
-    SectionHeaderModel,
     instanceOfSectionHeaderModel,
     SectionHeaderModelFromJSON,
     SectionHeaderModelFromJSONTyped,
     SectionHeaderModelToJSON,
 } from './SectionHeaderModel';
+import type { TileMessageModel } from './TileMessageModel';
 import {
-    TileMessageModel,
     instanceOfTileMessageModel,
     TileMessageModelFromJSON,
     TileMessageModelFromJSONTyped,
     TileMessageModelToJSON,
 } from './TileMessageModel';
+import type { TileModel } from './TileModel';
 import {
-    TileModel,
     instanceOfTileModel,
     TileModelFromJSON,
     TileModelFromJSONTyped,
     TileModelToJSON,
 } from './TileModel';
+import type { TileVideoModel } from './TileVideoModel';
 import {
-    TileVideoModel,
     instanceOfTileVideoModel,
     TileVideoModelFromJSON,
     TileVideoModelFromJSONTyped,
     TileVideoModelToJSON,
 } from './TileVideoModel';
+import type { TrackCollectionModel } from './TrackCollectionModel';
 import {
-    TrackCollectionModel,
     instanceOfTrackCollectionModel,
     TrackCollectionModelFromJSON,
     TrackCollectionModelFromJSONTyped,
     TrackCollectionModelToJSON,
 } from './TrackCollectionModel';
+import type { TrackModel } from './TrackModel';
 import {
-    TrackModel,
     instanceOfTrackModel,
     TrackModelFromJSON,
     TrackModelFromJSONTyped,
     TrackModelToJSON,
 } from './TrackModel';
+import type { YearInReviewModel } from './YearInReviewModel';
 import {
-    YearInReviewModel,
     instanceOfYearInReviewModel,
     YearInReviewModelFromJSON,
     YearInReviewModelFromJSONTyped,

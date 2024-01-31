@@ -16,11 +16,11 @@
 import * as runtime from '../runtime';
 import type {
   UserModel,
-} from '../models';
+} from '../models/index';
 import {
     UserModelFromJSON,
     UserModelToJSON,
-} from '../models';
+} from '../models/index';
 
 /**
  * 

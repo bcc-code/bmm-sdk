@@ -16,11 +16,11 @@
 import * as runtime from '../runtime';
 import type {
   SubscriptionModel,
-} from '../models';
+} from '../models/index';
 import {
     SubscriptionModelFromJSON,
     SubscriptionModelToJSON,
-} from '../models';
+} from '../models/index';
 
 export interface NotificationsDeviceIdDeleteRequest {
     deviceId: string;

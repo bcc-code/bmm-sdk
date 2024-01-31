@@ -12,22 +12,22 @@
  * Do not edit the class manually.
  */
 
+import type { AlbumModel } from './AlbumModel';
 import {
-    AlbumModel,
     instanceOfAlbumModel,
     AlbumModelFromJSON,
     AlbumModelFromJSONTyped,
     AlbumModelToJSON,
 } from './AlbumModel';
+import type { ChapterHeader } from './ChapterHeader';
 import {
-    ChapterHeader,
     instanceOfChapterHeader,
     ChapterHeaderFromJSON,
     ChapterHeaderFromJSONTyped,
     ChapterHeaderToJSON,
 } from './ChapterHeader';
+import type { PlaylistModel } from './PlaylistModel';
 import {
-    PlaylistModel,
     instanceOfPlaylistModel,
     PlaylistModelFromJSON,
     PlaylistModelFromJSONTyped,

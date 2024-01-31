@@ -18,7 +18,7 @@ import type {
   LanguageEnum,
   StoreTranscriptionEditSuggestionsSuggestion,
   TrackTranslationTranscriptionSegment,
-} from '../models';
+} from '../models/index';
 import {
     LanguageEnumFromJSON,
     LanguageEnumToJSON,
@@ -26,7 +26,7 @@ import {
     StoreTranscriptionEditSuggestionsSuggestionToJSON,
     TrackTranslationTranscriptionSegmentFromJSON,
     TrackTranslationTranscriptionSegmentToJSON,
-} from '../models';
+} from '../models/index';
 
 export interface TranscriptionTrackIdLanguageFirstLastGetRequest {
     trackId: number;

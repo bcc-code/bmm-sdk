@@ -24,7 +24,7 @@ import type {
   ListeningEvent,
   ProjectRulesQueryRules,
   StreakPoint,
-} from '../models';
+} from '../models/index';
 import {
     AchievementModelFromJSON,
     AchievementModelToJSON,
@@ -44,7 +44,7 @@ import {
     ProjectRulesQueryRulesToJSON,
     StreakPointFromJSON,
     StreakPointToJSON,
-} from '../models';
+} from '../models/index';
 
 export interface StatisticsAchievementNameAcknowledgePutRequest {
     name: string;

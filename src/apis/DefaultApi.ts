@@ -17,13 +17,13 @@ import * as runtime from '../runtime';
 import type {
   ApiOverviewModel,
   StoreProjectQuestionQuestionHolder,
-} from '../models';
+} from '../models/index';
 import {
     ApiOverviewModelFromJSON,
     ApiOverviewModelToJSON,
     StoreProjectQuestionQuestionHolderFromJSON,
     StoreProjectQuestionQuestionHolderToJSON,
-} from '../models';
+} from '../models/index';
 
 export interface QuestionPostRequest {
     storeProjectQuestionQuestionHolder: StoreProjectQuestionQuestionHolder;
