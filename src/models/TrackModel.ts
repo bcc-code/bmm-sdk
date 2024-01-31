@@ -19,6 +19,24 @@ import {
     LanguageEnumFromJSONTyped,
     LanguageEnumToJSON,
 } from './LanguageEnum';
+import type { TrackModelBibleRelation } from './TrackModelBibleRelation';
+import {
+    TrackModelBibleRelationFromJSON,
+    TrackModelBibleRelationFromJSONTyped,
+    TrackModelBibleRelationToJSON,
+} from './TrackModelBibleRelation';
+import type { TrackModelContributorRelation } from './TrackModelContributorRelation';
+import {
+    TrackModelContributorRelationFromJSON,
+    TrackModelContributorRelationFromJSONTyped,
+    TrackModelContributorRelationToJSON,
+} from './TrackModelContributorRelation';
+import type { TrackModelExternalRelation } from './TrackModelExternalRelation';
+import {
+    TrackModelExternalRelationFromJSON,
+    TrackModelExternalRelationFromJSONTyped,
+    TrackModelExternalRelationToJSON,
+} from './TrackModelExternalRelation';
 import type { TrackModelMedium } from './TrackModelMedium';
 import {
     TrackModelMediumFromJSON,
@@ -31,6 +49,12 @@ import {
     TrackModelRelationFromJSONTyped,
     TrackModelRelationToJSON,
 } from './TrackModelRelation';
+import type { TrackModelSongbookRelation } from './TrackModelSongbookRelation';
+import {
+    TrackModelSongbookRelationFromJSON,
+    TrackModelSongbookRelationFromJSONTyped,
+    TrackModelSongbookRelationToJSON,
+} from './TrackModelSongbookRelation';
 import type { TrackModelTrackMeta } from './TrackModelTrackMeta';
 import {
     TrackModelTrackMetaFromJSON,
@@ -104,6 +128,30 @@ export interface TrackModel {
      * @memberof TrackModel
      */
     rel?: Array<TrackModelRelation> | null;
+    /**
+     * 
+     * @type {Array<TrackModelBibleRelation>}
+     * @memberof TrackModel
+     */
+    readonly bibleRelations?: Array<TrackModelBibleRelation> | null;
+    /**
+     * 
+     * @type {Array<TrackModelExternalRelation>}
+     * @memberof TrackModel
+     */
+    readonly externalRelations?: Array<TrackModelExternalRelation> | null;
+    /**
+     * 
+     * @type {Array<TrackModelContributorRelation>}
+     * @memberof TrackModel
+     */
+    readonly contributors?: Array<TrackModelContributorRelation> | null;
+    /**
+     * 
+     * @type {Array<TrackModelSongbookRelation>}
+     * @memberof TrackModel
+     */
+    readonly songbookRelations?: Array<TrackModelSongbookRelation> | null;
     /**
      * 
      * @type {TrackSubtype}
@@ -218,6 +266,10 @@ export function TrackModelFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'publishedAt': !exists(json, 'published_at') ? undefined : (new Date(json['published_at'])),
         'recordedAt': !exists(json, 'recorded_at') ? undefined : (new Date(json['recorded_at'])),
         'rel': !exists(json, 'rel') ? undefined : (json['rel'] === null ? null : (json['rel'] as Array<any>).map(TrackModelRelationFromJSON)),
+        'bibleRelations': !exists(json, 'bible_relations') ? undefined : (json['bible_relations'] === null ? null : (json['bible_relations'] as Array<any>).map(TrackModelBibleRelationFromJSON)),
+        'externalRelations': !exists(json, 'external_relations') ? undefined : (json['external_relations'] === null ? null : (json['external_relations'] as Array<any>).map(TrackModelExternalRelationFromJSON)),
+        'contributors': !exists(json, 'contributors') ? undefined : (json['contributors'] === null ? null : (json['contributors'] as Array<any>).map(TrackModelContributorRelationFromJSON)),
+        'songbookRelations': !exists(json, 'songbook_relations') ? undefined : (json['songbook_relations'] === null ? null : (json['songbook_relations'] as Array<any>).map(TrackModelSongbookRelationFromJSON)),
         'subtype': !exists(json, 'subtype') ? undefined : TrackSubtypeFromJSON(json['subtype']),
         'tags': !exists(json, 'tags') ? undefined : json['tags'],
         'meta': !exists(json, '_meta') ? undefined : TrackModelTrackMetaFromJSON(json['_meta']),

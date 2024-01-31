@@ -86,11 +86,16 @@ models/TrackCollectionDetails.ts
 models/TrackCollectionModel.ts
 models/TrackListReference.ts
 models/TrackModel.ts
+models/TrackModelBibleRelation.ts
+models/TrackModelContributorRelation.ts
+models/TrackModelExternalRelation.ts
 models/TrackModelMedium.ts
 models/TrackModelMediumFile.ts
 models/TrackModelParent.ts
 models/TrackModelParentMeta.ts
 models/TrackModelRelation.ts
+models/TrackModelSongbookRelation.ts
+models/TrackModelTrackContributorType.ts
 models/TrackModelTrackMeta.ts
 models/TrackReference.ts
 models/TrackSubtype.ts

@@ -86,12 +86,6 @@ export interface TrackModelRelation {
      * @memberof TrackModelRelation
      */
     hasListened?: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof TrackModelRelation
-     */
-    hasTranscription?: boolean;
 }
 
 /**
@@ -123,7 +117,6 @@ export function TrackModelRelationFromJSONTyped(json: any, ignoreDiscriminator: 
         'chapter': !exists(json, 'chapter') ? undefined : json['chapter'],
         'verse': !exists(json, 'verse') ? undefined : json['verse'],
         'hasListened': !exists(json, 'has_listened') ? undefined : json['has_listened'],
-        'hasTranscription': !exists(json, 'has_transcription') ? undefined : json['has_transcription'],
     };
 }
 
@@ -146,7 +139,6 @@ export function TrackModelRelationToJSON(value?: TrackModelRelation | null): any
         'chapter': value.chapter,
         'verse': value.verse,
         'has_listened': value.hasListened,
-        'has_transcription': value.hasTranscription,
     };
 }
 
