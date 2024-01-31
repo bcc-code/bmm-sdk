@@ -28,6 +28,7 @@ import {
 export interface DiscoverGetRequest {
     lang?: LanguageEnum;
     age?: number;
+    theme?: string;
 }
 
 /**
@@ -46,6 +47,10 @@ export class DiscoverApi extends runtime.BaseAPI {
 
         if (requestParameters.age !== undefined) {
             queryParameters['age'] = requestParameters.age;
+        }
+
+        if (requestParameters.theme !== undefined) {
+            queryParameters['theme'] = requestParameters.theme;
         }
 
         const headerParameters: runtime.HTTPHeaders = {};

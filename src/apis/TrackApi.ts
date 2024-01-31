@@ -19,6 +19,7 @@ import type {
   PublishedFilter,
   TrackModel,
   TrackSubtype,
+  TrackTranslationTranscriptionSegment,
 } from '../models';
 import {
     LanguageEnumFromJSON,
@@ -29,6 +30,8 @@ import {
     TrackModelToJSON,
     TrackSubtypeFromJSON,
     TrackSubtypeToJSON,
+    TrackTranslationTranscriptionSegmentFromJSON,
+    TrackTranslationTranscriptionSegmentToJSON,
 } from '../models';
 
 export interface TrackGetRequest {
@@ -46,6 +49,11 @@ export interface TrackGetRequest {
 }
 
 export interface TrackIdGetRequest {
+    id: number;
+    unpublished?: PublishedFilter;
+}
+
+export interface TrackIdTranscriptionGetRequest {
     id: number;
     unpublished?: PublishedFilter;
 }
@@ -152,6 +160,38 @@ export class TrackApi extends runtime.BaseAPI {
      */
     async trackIdGet(requestParameters: TrackIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TrackModel> {
         const response = await this.trackIdGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     */
+    async trackIdTranscriptionGetRaw(requestParameters: TrackIdTranscriptionGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<TrackTranslationTranscriptionSegment>>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling trackIdTranscriptionGet.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.unpublished !== undefined) {
+            queryParameters['unpublished'] = requestParameters.unpublished;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/track/{id}/transcription`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(TrackTranslationTranscriptionSegmentFromJSON));
+    }
+
+    /**
+     */
+    async trackIdTranscriptionGet(requestParameters: TrackIdTranscriptionGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<TrackTranslationTranscriptionSegment>> {
+        const response = await this.trackIdTranscriptionGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

@@ -16,37 +16,37 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface ForbildeRulesQueryRulesSection
+ * @interface ProjectRulesQueryRulesSection
  */
-export interface ForbildeRulesQueryRulesSection {
+export interface ProjectRulesQueryRulesSection {
     /**
      * 
      * @type {string}
-     * @memberof ForbildeRulesQueryRulesSection
+     * @memberof ProjectRulesQueryRulesSection
      */
     title?: string | null;
     /**
      * 
      * @type {string}
-     * @memberof ForbildeRulesQueryRulesSection
+     * @memberof ProjectRulesQueryRulesSection
      */
     text?: string | null;
 }
 
 /**
- * Check if a given object implements the ForbildeRulesQueryRulesSection interface.
+ * Check if a given object implements the ProjectRulesQueryRulesSection interface.
  */
-export function instanceOfForbildeRulesQueryRulesSection(value: object): boolean {
+export function instanceOfProjectRulesQueryRulesSection(value: object): boolean {
     let isInstance = true;
 
     return isInstance;
 }
 
-export function ForbildeRulesQueryRulesSectionFromJSON(json: any): ForbildeRulesQueryRulesSection {
-    return ForbildeRulesQueryRulesSectionFromJSONTyped(json, false);
+export function ProjectRulesQueryRulesSectionFromJSON(json: any): ProjectRulesQueryRulesSection {
+    return ProjectRulesQueryRulesSectionFromJSONTyped(json, false);
 }
 
-export function ForbildeRulesQueryRulesSectionFromJSONTyped(json: any, ignoreDiscriminator: boolean): ForbildeRulesQueryRulesSection {
+export function ProjectRulesQueryRulesSectionFromJSONTyped(json: any, ignoreDiscriminator: boolean): ProjectRulesQueryRulesSection {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -57,7 +57,7 @@ export function ForbildeRulesQueryRulesSectionFromJSONTyped(json: any, ignoreDis
     };
 }
 
-export function ForbildeRulesQueryRulesSectionToJSON(value?: ForbildeRulesQueryRulesSection | null): any {
+export function ProjectRulesQueryRulesSectionToJSON(value?: ProjectRulesQueryRulesSection | null): any {
     if (value === undefined) {
         return undefined;
     }

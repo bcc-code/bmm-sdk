@@ -80,6 +80,18 @@ export interface TrackModelRelation {
      * @memberof TrackModelRelation
      */
     verse?: number | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof TrackModelRelation
+     */
+    hasListened?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof TrackModelRelation
+     */
+    hasTranscription?: boolean;
 }
 
 /**
@@ -110,6 +122,8 @@ export function TrackModelRelationFromJSONTyped(json: any, ignoreDiscriminator: 
         'book': !exists(json, 'book') ? undefined : BibleBookEnumFromJSON(json['book']),
         'chapter': !exists(json, 'chapter') ? undefined : json['chapter'],
         'verse': !exists(json, 'verse') ? undefined : json['verse'],
+        'hasListened': !exists(json, 'has_listened') ? undefined : json['has_listened'],
+        'hasTranscription': !exists(json, 'has_transcription') ? undefined : json['has_transcription'],
     };
 }
 
@@ -131,6 +145,8 @@ export function TrackModelRelationToJSON(value?: TrackModelRelation | null): any
         'book': BibleBookEnumToJSON(value.book),
         'chapter': value.chapter,
         'verse': value.verse,
+        'has_listened': value.hasListened,
+        'has_transcription': value.hasTranscription,
     };
 }
 

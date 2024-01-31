@@ -164,6 +164,18 @@ export interface TrackModel {
      * @memberof TrackModel
      */
     media?: Array<TrackModelMedium> | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof TrackModel
+     */
+    hasListened?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof TrackModel
+     */
+    hasTranscription?: boolean;
 }
 
 
@@ -216,6 +228,8 @@ export function TrackModelFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'publisher': !exists(json, 'publisher') ? undefined : json['publisher'],
         'copyright': !exists(json, 'copyright') ? undefined : json['copyright'],
         'media': !exists(json, 'media') ? undefined : (json['media'] === null ? null : (json['media'] as Array<any>).map(TrackModelMediumFromJSON)),
+        'hasListened': !exists(json, 'has_listened') ? undefined : json['has_listened'],
+        'hasTranscription': !exists(json, 'has_transcription') ? undefined : json['has_transcription'],
     };
 }
 
@@ -246,6 +260,8 @@ export function TrackModelToJSON(value?: TrackModel | null): any {
         'publisher': value.publisher,
         'copyright': value.copyright,
         'media': value.media === undefined ? undefined : (value.media === null ? null : (value.media as Array<any>).map(TrackModelMediumToJSON)),
+        'has_listened': value.hasListened,
+        'has_transcription': value.hasTranscription,
     };
 }
 

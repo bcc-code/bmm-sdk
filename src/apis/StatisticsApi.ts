@@ -15,33 +15,49 @@
 
 import * as runtime from '../runtime';
 import type {
+  AchievementModel,
   CreateTrackPlayedEventsCommandEvent,
+  DocumentListIAchievementCollectionOrChapterHeader,
   ForbildePoints,
-  ForbildeRulesQueryRules,
   GetYearInReviewOverviewSlide,
   LanguageEnum,
   ListeningEvent,
+  ProjectRulesQueryRules,
   StreakPoint,
 } from '../models';
 import {
+    AchievementModelFromJSON,
+    AchievementModelToJSON,
     CreateTrackPlayedEventsCommandEventFromJSON,
     CreateTrackPlayedEventsCommandEventToJSON,
+    DocumentListIAchievementCollectionOrChapterHeaderFromJSON,
+    DocumentListIAchievementCollectionOrChapterHeaderToJSON,
     ForbildePointsFromJSON,
     ForbildePointsToJSON,
-    ForbildeRulesQueryRulesFromJSON,
-    ForbildeRulesQueryRulesToJSON,
     GetYearInReviewOverviewSlideFromJSON,
     GetYearInReviewOverviewSlideToJSON,
     LanguageEnumFromJSON,
     LanguageEnumToJSON,
     ListeningEventFromJSON,
     ListeningEventToJSON,
+    ProjectRulesQueryRulesFromJSON,
+    ProjectRulesQueryRulesToJSON,
     StreakPointFromJSON,
     StreakPointToJSON,
 } from '../models';
 
 export interface StatisticsAchievementNameAcknowledgePutRequest {
     name: string;
+}
+
+export interface StatisticsAchievementsGetRequest {
+    lang?: LanguageEnum;
+    theme?: string;
+}
+
+export interface StatisticsAchievementsToAcknowledgeGetRequest {
+    lang?: LanguageEnum;
+    theme?: string;
 }
 
 export interface StatisticsListeningPostRequest {
@@ -54,8 +70,14 @@ export interface StatisticsProjectProgressGetRequest {
     theme?: string;
 }
 
+export interface StatisticsProjectProjectIdRulesGetRequest {
+    projectId: number;
+    lang?: LanguageEnum;
+}
+
 export interface StatisticsProjectRulesGetRequest {
     lang?: LanguageEnum;
+    projectId?: number;
 }
 
 export interface StatisticsStreakpointPostRequest {
@@ -119,6 +141,70 @@ export class StatisticsApi extends runtime.BaseAPI {
      */
     async statisticsAchievementNameAcknowledgePut(requestParameters: StatisticsAchievementNameAcknowledgePutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.statisticsAchievementNameAcknowledgePutRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async statisticsAchievementsGetRaw(requestParameters: StatisticsAchievementsGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DocumentListIAchievementCollectionOrChapterHeader>> {
+        const queryParameters: any = {};
+
+        if (requestParameters.lang !== undefined) {
+            queryParameters['lang'] = requestParameters.lang;
+        }
+
+        if (requestParameters.theme !== undefined) {
+            queryParameters['theme'] = requestParameters.theme;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/Statistics/achievements`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DocumentListIAchievementCollectionOrChapterHeaderFromJSON(jsonValue));
+    }
+
+    /**
+     */
+    async statisticsAchievementsGet(requestParameters: StatisticsAchievementsGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DocumentListIAchievementCollectionOrChapterHeader> {
+        const response = await this.statisticsAchievementsGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     */
+    async statisticsAchievementsToAcknowledgeGetRaw(requestParameters: StatisticsAchievementsToAcknowledgeGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<AchievementModel>>> {
+        const queryParameters: any = {};
+
+        if (requestParameters.lang !== undefined) {
+            queryParameters['lang'] = requestParameters.lang;
+        }
+
+        if (requestParameters.theme !== undefined) {
+            queryParameters['theme'] = requestParameters.theme;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/Statistics/achievements/to/acknowledge`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(AchievementModelFromJSON));
+    }
+
+    /**
+     */
+    async statisticsAchievementsToAcknowledgeGet(requestParameters: StatisticsAchievementsToAcknowledgeGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AchievementModel>> {
+        const response = await this.statisticsAchievementsToAcknowledgeGetRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
@@ -189,11 +275,47 @@ export class StatisticsApi extends runtime.BaseAPI {
 
     /**
      */
-    async statisticsProjectRulesGetRaw(requestParameters: StatisticsProjectRulesGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ForbildeRulesQueryRules>> {
+    async statisticsProjectProjectIdRulesGetRaw(requestParameters: StatisticsProjectProjectIdRulesGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectRulesQueryRules>> {
+        if (requestParameters.projectId === null || requestParameters.projectId === undefined) {
+            throw new runtime.RequiredError('projectId','Required parameter requestParameters.projectId was null or undefined when calling statisticsProjectProjectIdRulesGet.');
+        }
+
         const queryParameters: any = {};
 
         if (requestParameters.lang !== undefined) {
             queryParameters['lang'] = requestParameters.lang;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/Statistics/project/{projectId}/rules`.replace(`{${"projectId"}}`, encodeURIComponent(String(requestParameters.projectId))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectRulesQueryRulesFromJSON(jsonValue));
+    }
+
+    /**
+     */
+    async statisticsProjectProjectIdRulesGet(requestParameters: StatisticsProjectProjectIdRulesGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectRulesQueryRules> {
+        const response = await this.statisticsProjectProjectIdRulesGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     */
+    async statisticsProjectRulesGetRaw(requestParameters: StatisticsProjectRulesGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectRulesQueryRules>> {
+        const queryParameters: any = {};
+
+        if (requestParameters.lang !== undefined) {
+            queryParameters['lang'] = requestParameters.lang;
+        }
+
+        if (requestParameters.projectId !== undefined) {
+            queryParameters['projectId'] = requestParameters.projectId;
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -205,12 +327,12 @@ export class StatisticsApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => ForbildeRulesQueryRulesFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectRulesQueryRulesFromJSON(jsonValue));
     }
 
     /**
      */
-    async statisticsProjectRulesGet(requestParameters: StatisticsProjectRulesGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ForbildeRulesQueryRules> {
+    async statisticsProjectRulesGet(requestParameters: StatisticsProjectRulesGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectRulesQueryRules> {
         const response = await this.statisticsProjectRulesGetRaw(requestParameters, initOverrides);
         return await response.value();
     }

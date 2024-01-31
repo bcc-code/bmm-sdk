@@ -55,6 +55,18 @@ export interface AchievementModel {
      * @memberof AchievementModel
      */
     description?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof AchievementModel
+     */
+    trackId?: number | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof AchievementModel
+     */
+    reward?: string | null;
 }
 
 /**
@@ -82,6 +94,8 @@ export function AchievementModelFromJSONTyped(json: any, ignoreDiscriminator: bo
         'url': !exists(json, 'url') ? undefined : json['url'],
         'title': !exists(json, 'title') ? undefined : json['title'],
         'description': !exists(json, 'description') ? undefined : json['description'],
+        'trackId': !exists(json, 'track_id') ? undefined : json['track_id'],
+        'reward': !exists(json, 'reward') ? undefined : json['reward'],
     };
 }
 
@@ -100,6 +114,8 @@ export function AchievementModelToJSON(value?: AchievementModel | null): any {
         'url': value.url,
         'title': value.title,
         'description': value.description,
+        'track_id': value.trackId,
+        'reward': value.reward,
     };
 }
 

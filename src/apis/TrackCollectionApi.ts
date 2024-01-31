@@ -68,6 +68,10 @@ export interface TrackCollectionIdUnfollowPostRequest {
     id: number;
 }
 
+export interface TrackCollectionLikePostRequest {
+    link?: Array<string>;
+}
+
 export interface TrackCollectionPostRequest {
     createTrackCollectionCommand?: CreateTrackCollectionCommand;
 }
@@ -312,6 +316,33 @@ export class TrackCollectionApi extends runtime.BaseAPI {
      */
     async trackCollectionIdUnfollowPost(requestParameters: TrackCollectionIdUnfollowPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.trackCollectionIdUnfollowPostRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async trackCollectionLikePostRaw(requestParameters: TrackCollectionLikePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters.link) {
+            headerParameters['link'] = requestParameters.link.join(runtime.COLLECTION_FORMATS["csv"]);
+        }
+
+        const response = await this.request({
+            path: `/track_collection/like`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async trackCollectionLikePost(requestParameters: TrackCollectionLikePostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.trackCollectionLikePostRaw(requestParameters, initOverrides);
     }
 
     /**

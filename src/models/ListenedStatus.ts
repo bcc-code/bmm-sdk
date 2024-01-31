@@ -21,7 +21,8 @@ export const ListenedStatus = {
     PartialFromBeginning: 'PartialFromBeginning',
     Jumped: 'Jumped',
     SkippedBeginning: 'SkippedBeginning',
-    Complete: 'Complete'
+    Complete: 'Complete',
+    Skipped: 'Skipped'
 } as const;
 export type ListenedStatus = typeof ListenedStatus[keyof typeof ListenedStatus];
 

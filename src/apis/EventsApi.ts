@@ -15,12 +15,8 @@
 
 import * as runtime from '../runtime';
 
-export interface EventsMediabankenExportPathPostRequest {
-    path: string;
-}
-
 export interface EventsMediabankenExportPostRequest {
-    body?: string;
+    path?: string;
 }
 
 /**
@@ -30,46 +26,20 @@ export class EventsApi extends runtime.BaseAPI {
 
     /**
      */
-    async eventsMediabankenExportPathPostRaw(requestParameters: EventsMediabankenExportPathPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.path === null || requestParameters.path === undefined) {
-            throw new runtime.RequiredError('path','Required parameter requestParameters.path was null or undefined when calling eventsMediabankenExportPathPost.');
-        }
-
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/events/mediabanken-export/{path}`.replace(`{${"path"}}`, encodeURIComponent(String(requestParameters.path))),
-            method: 'POST',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async eventsMediabankenExportPathPost(requestParameters: EventsMediabankenExportPathPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.eventsMediabankenExportPathPostRaw(requestParameters, initOverrides);
-    }
-
-    /**
-     */
     async eventsMediabankenExportPostRaw(requestParameters: EventsMediabankenExportPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         const queryParameters: any = {};
 
-        const headerParameters: runtime.HTTPHeaders = {};
+        if (requestParameters.path !== undefined) {
+            queryParameters['path'] = requestParameters.path;
+        }
 
-        headerParameters['Content-Type'] = 'application/json-patch+json';
+        const headerParameters: runtime.HTTPHeaders = {};
 
         const response = await this.request({
             path: `/events/mediabanken-export`,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: requestParameters.body as any,
         }, initOverrides);
 
         return new runtime.VoidApiResponse(response);
