@@ -133,11 +133,7 @@ export class BaseAPI {
 
     protected async request(context: RequestOpts, initOverrides?: RequestInit | InitOverrideFunction): Promise<Response> {
         const { url, init } = await this.createFetchParams(context, initOverrides);
-        const response = await this.fetchApi(url, init);
-        if (response && (response.status >= 200 && response.status < 300)) {
-            return response;
-        }
-        throw new ResponseError(response, 'Response returned an error code');
+        return await this.fetchApi(url, init);
     }
 
     private async createFetchParams(context: RequestOpts, initOverrides?: RequestInit | InitOverrideFunction) {
@@ -204,6 +200,10 @@ export class BaseAPI {
         let response: Response | undefined = undefined;
         try {
             response = await (this.configuration.fetchApi || fetch)(fetchParams.url, fetchParams.init);
+            if (response && (response.status >= 200 && response.status < 300)) {
+                return response;
+            }
+            throw new ResponseError(response, 'Response returned an error code');
         } catch (e) {
             for (const middleware of this.middleware) {
                 if (middleware.onError) {
