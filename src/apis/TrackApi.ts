@@ -58,6 +58,12 @@ export interface TrackIdTranscriptionGetRequest {
     unpublished?: PublishedFilter;
 }
 
+export interface TrackIdTranscriptionLanguageGetRequest {
+    id: number;
+    language: LanguageEnum;
+    unpublished?: PublishedFilter;
+}
+
 /**
  * 
  */
@@ -192,6 +198,42 @@ export class TrackApi extends runtime.BaseAPI {
      */
     async trackIdTranscriptionGet(requestParameters: TrackIdTranscriptionGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<TrackTranslationTranscriptionSegment>> {
         const response = await this.trackIdTranscriptionGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     */
+    async trackIdTranscriptionLanguageGetRaw(requestParameters: TrackIdTranscriptionLanguageGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<TrackTranslationTranscriptionSegment>>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling trackIdTranscriptionLanguageGet.');
+        }
+
+        if (requestParameters.language === null || requestParameters.language === undefined) {
+            throw new runtime.RequiredError('language','Required parameter requestParameters.language was null or undefined when calling trackIdTranscriptionLanguageGet.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.unpublished !== undefined) {
+            queryParameters['unpublished'] = requestParameters.unpublished;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/track/{id}/transcription/{language}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))).replace(`{${"language"}}`, encodeURIComponent(String(requestParameters.language))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(TrackTranslationTranscriptionSegmentFromJSON));
+    }
+
+    /**
+     */
+    async trackIdTranscriptionLanguageGet(requestParameters: TrackIdTranscriptionLanguageGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<TrackTranslationTranscriptionSegment>> {
+        const response = await this.trackIdTranscriptionLanguageGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

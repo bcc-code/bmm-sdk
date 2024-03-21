@@ -6,6 +6,7 @@ export * from './ContributorApi';
 export * from './CurrentUserApi';
 export * from './DefaultApi';
 export * from './DiscoverApi';
+export * from './DownloadLinksApi';
 export * from './EventsApi';
 export * from './FacetsApi';
 export * from './FileApi';

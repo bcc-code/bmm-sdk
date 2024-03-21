@@ -36,12 +36,14 @@ export interface DocumentListIAllDocumentModels {
      * 
      * @type {string}
      * @memberof DocumentListIAllDocumentModels
+     * @deprecated
      */
     translationParent?: string | null;
     /**
      * 
      * @type {string}
      * @memberof DocumentListIAllDocumentModels
+     * @deprecated
      */
     translationId?: string | null;
     /**
@@ -56,6 +58,12 @@ export interface DocumentListIAllDocumentModels {
      * @memberof DocumentListIAllDocumentModels
      */
     items?: Array<IAllDocumentModels> | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof DocumentListIAllDocumentModels
+     */
+    totalItems?: number;
 }
 
 /**
@@ -82,6 +90,7 @@ export function DocumentListIAllDocumentModelsFromJSONTyped(json: any, ignoreDis
         'translationId': !exists(json, 'translation_id') ? undefined : json['translation_id'],
         'supportsPaging': !exists(json, 'supports_paging') ? undefined : json['supports_paging'],
         'items': !exists(json, 'items') ? undefined : (json['items'] === null ? null : (json['items'] as Array<any>).map(IAllDocumentModelsFromJSON)),
+        'totalItems': !exists(json, 'total_items') ? undefined : json['total_items'],
     };
 }
 
@@ -99,6 +108,7 @@ export function DocumentListIAllDocumentModelsToJSON(value?: DocumentListIAllDoc
         'translation_id': value.translationId,
         'supports_paging': value.supportsPaging,
         'items': value.items === undefined ? undefined : (value.items === null ? null : (value.items as Array<any>).map(IAllDocumentModelsToJSON)),
+        'total_items': value.totalItems,
     };
 }
 

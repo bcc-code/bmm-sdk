@@ -36,12 +36,14 @@ export interface DocumentListPodcastModel {
      * 
      * @type {string}
      * @memberof DocumentListPodcastModel
+     * @deprecated
      */
     translationParent?: string | null;
     /**
      * 
      * @type {string}
      * @memberof DocumentListPodcastModel
+     * @deprecated
      */
     translationId?: string | null;
     /**
@@ -56,6 +58,12 @@ export interface DocumentListPodcastModel {
      * @memberof DocumentListPodcastModel
      */
     items?: Array<PodcastModel> | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof DocumentListPodcastModel
+     */
+    totalItems?: number;
 }
 
 /**
@@ -82,6 +90,7 @@ export function DocumentListPodcastModelFromJSONTyped(json: any, ignoreDiscrimin
         'translationId': !exists(json, 'translation_id') ? undefined : json['translation_id'],
         'supportsPaging': !exists(json, 'supports_paging') ? undefined : json['supports_paging'],
         'items': !exists(json, 'items') ? undefined : (json['items'] === null ? null : (json['items'] as Array<any>).map(PodcastModelFromJSON)),
+        'totalItems': !exists(json, 'total_items') ? undefined : json['total_items'],
     };
 }
 
@@ -99,6 +108,7 @@ export function DocumentListPodcastModelToJSON(value?: DocumentListPodcastModel 
         'translation_id': value.translationId,
         'supports_paging': value.supportsPaging,
         'items': value.items === undefined ? undefined : (value.items === null ? null : (value.items as Array<any>).map(PodcastModelToJSON)),
+        'total_items': value.totalItems,
     };
 }
 

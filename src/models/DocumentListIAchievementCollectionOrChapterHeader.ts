@@ -36,12 +36,14 @@ export interface DocumentListIAchievementCollectionOrChapterHeader {
      * 
      * @type {string}
      * @memberof DocumentListIAchievementCollectionOrChapterHeader
+     * @deprecated
      */
     translationParent?: string | null;
     /**
      * 
      * @type {string}
      * @memberof DocumentListIAchievementCollectionOrChapterHeader
+     * @deprecated
      */
     translationId?: string | null;
     /**
@@ -56,6 +58,12 @@ export interface DocumentListIAchievementCollectionOrChapterHeader {
      * @memberof DocumentListIAchievementCollectionOrChapterHeader
      */
     items?: Array<IAchievementCollectionOrChapterHeader> | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof DocumentListIAchievementCollectionOrChapterHeader
+     */
+    totalItems?: number;
 }
 
 /**
@@ -82,6 +90,7 @@ export function DocumentListIAchievementCollectionOrChapterHeaderFromJSONTyped(j
         'translationId': !exists(json, 'translation_id') ? undefined : json['translation_id'],
         'supportsPaging': !exists(json, 'supports_paging') ? undefined : json['supports_paging'],
         'items': !exists(json, 'items') ? undefined : (json['items'] === null ? null : (json['items'] as Array<any>).map(IAchievementCollectionOrChapterHeaderFromJSON)),
+        'totalItems': !exists(json, 'total_items') ? undefined : json['total_items'],
     };
 }
 
@@ -99,6 +108,7 @@ export function DocumentListIAchievementCollectionOrChapterHeaderToJSON(value?: 
         'translation_id': value.translationId,
         'supports_paging': value.supportsPaging,
         'items': value.items === undefined ? undefined : (value.items === null ? null : (value.items as Array<any>).map(IAchievementCollectionOrChapterHeaderToJSON)),
+        'total_items': value.totalItems,
     };
 }
 

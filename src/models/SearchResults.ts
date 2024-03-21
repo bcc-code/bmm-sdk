@@ -56,6 +56,12 @@ export interface SearchResults {
      * @memberof SearchResults
      */
     highlightings?: Array<Highlighting> | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof SearchResults
+     */
+    totalResults?: number;
 }
 
 /**
@@ -81,6 +87,7 @@ export function SearchResultsFromJSONTyped(json: any, ignoreDiscriminator: boole
         'items': !exists(json, 'items') ? undefined : (json['items'] === null ? null : (json['items'] as Array<any>).map(IAlbumContributorPodcastPlaylistOrTrackFromJSON)),
         'isFullyLoaded': !exists(json, 'is_fully_loaded') ? undefined : json['is_fully_loaded'],
         'highlightings': !exists(json, 'highlightings') ? undefined : (json['highlightings'] === null ? null : (json['highlightings'] as Array<any>).map(HighlightingFromJSON)),
+        'totalResults': !exists(json, 'total_results') ? undefined : json['total_results'],
     };
 }
 
@@ -97,6 +104,7 @@ export function SearchResultsToJSON(value?: SearchResults | null): any {
         'items': value.items === undefined ? undefined : (value.items === null ? null : (value.items as Array<any>).map(IAlbumContributorPodcastPlaylistOrTrackToJSON)),
         'is_fully_loaded': value.isFullyLoaded,
         'highlightings': value.highlightings === undefined ? undefined : (value.highlightings === null ? null : (value.highlightings as Array<any>).map(HighlightingToJSON)),
+        'total_results': value.totalResults,
     };
 }
 

@@ -36,12 +36,14 @@ export interface DocumentListIAlbumOrChapterHeader {
      * 
      * @type {string}
      * @memberof DocumentListIAlbumOrChapterHeader
+     * @deprecated
      */
     translationParent?: string | null;
     /**
      * 
      * @type {string}
      * @memberof DocumentListIAlbumOrChapterHeader
+     * @deprecated
      */
     translationId?: string | null;
     /**
@@ -56,6 +58,12 @@ export interface DocumentListIAlbumOrChapterHeader {
      * @memberof DocumentListIAlbumOrChapterHeader
      */
     items?: Array<IAlbumOrChapterHeader> | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof DocumentListIAlbumOrChapterHeader
+     */
+    totalItems?: number;
 }
 
 /**
@@ -82,6 +90,7 @@ export function DocumentListIAlbumOrChapterHeaderFromJSONTyped(json: any, ignore
         'translationId': !exists(json, 'translation_id') ? undefined : json['translation_id'],
         'supportsPaging': !exists(json, 'supports_paging') ? undefined : json['supports_paging'],
         'items': !exists(json, 'items') ? undefined : (json['items'] === null ? null : (json['items'] as Array<any>).map(IAlbumOrChapterHeaderFromJSON)),
+        'totalItems': !exists(json, 'total_items') ? undefined : json['total_items'],
     };
 }
 
@@ -99,6 +108,7 @@ export function DocumentListIAlbumOrChapterHeaderToJSON(value?: DocumentListIAlb
         'translation_id': value.translationId,
         'supports_paging': value.supportsPaging,
         'items': value.items === undefined ? undefined : (value.items === null ? null : (value.items as Array<any>).map(IAlbumOrChapterHeaderToJSON)),
+        'total_items': value.totalItems,
     };
 }
 

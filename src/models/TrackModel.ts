@@ -224,6 +224,12 @@ export interface TrackModel {
      * @memberof TrackModel
      */
     hasTranscription?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof TrackModel
+     */
+    isLiked?: boolean;
 }
 
 
@@ -282,6 +288,7 @@ export function TrackModelFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'media': !exists(json, 'media') ? undefined : (json['media'] === null ? null : (json['media'] as Array<any>).map(TrackModelMediumFromJSON)),
         'hasListened': !exists(json, 'has_listened') ? undefined : json['has_listened'],
         'hasTranscription': !exists(json, 'has_transcription') ? undefined : json['has_transcription'],
+        'isLiked': !exists(json, 'is_liked') ? undefined : json['is_liked'],
     };
 }
 
@@ -314,6 +321,7 @@ export function TrackModelToJSON(value?: TrackModel | null): any {
         'media': value.media === undefined ? undefined : (value.media === null ? null : (value.media as Array<any>).map(TrackModelMediumToJSON)),
         'has_listened': value.hasListened,
         'has_transcription': value.hasTranscription,
+        'is_liked': value.isLiked,
     };
 }
 

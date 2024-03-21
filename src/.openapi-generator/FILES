@@ -5,6 +5,7 @@ apis/ContributorApi.ts
 apis/CurrentUserApi.ts
 apis/DefaultApi.ts
 apis/DiscoverApi.ts
+apis/DownloadLinksApi.ts
 apis/EventsApi.ts
 apis/FacetsApi.ts
 apis/FileApi.ts
@@ -28,6 +29,7 @@ models/AlbumModelAlbumMeta.ts
 models/AlbumYearFacetsQueryResult.ts
 models/ApiOverviewModel.ts
 models/ApiOverviewModelStatus.ts
+models/AppDownloadLinksQueryDownloadLinks.ts
 models/BibleBookEnum.ts
 models/ChapterHeader.ts
 models/ContributorContributorMeta.ts
@@ -65,6 +67,8 @@ models/PlaylistModel.ts
 models/PodcastModel.ts
 models/ProblemDetails.ts
 models/ProjectBox.ts
+models/ProjectChurchStatisticsQueryChurchStatistics.ts
+models/ProjectChurchStatisticsQueryChurchStatisticsChurch.ts
 models/ProjectRulesQueryRules.ts
 models/ProjectRulesQueryRulesSection.ts
 models/PublishedFilter.ts

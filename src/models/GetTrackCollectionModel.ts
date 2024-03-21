@@ -80,6 +80,12 @@ export interface GetTrackCollectionModel {
      * @memberof GetTrackCollectionModel
      */
     tracks?: Array<TrackModel> | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof GetTrackCollectionModel
+     */
+    useLikeIcon?: boolean;
 }
 
 /**
@@ -112,6 +118,7 @@ export function GetTrackCollectionModelFromJSONTyped(json: any, ignoreDiscrimina
         'authorName': !exists(json, 'author_name') ? undefined : json['author_name'],
         'canEdit': !exists(json, 'can_edit') ? undefined : json['can_edit'],
         'tracks': !exists(json, 'tracks') ? undefined : (json['tracks'] === null ? null : (json['tracks'] as Array<any>).map(TrackModelFromJSON)),
+        'useLikeIcon': !exists(json, 'use_like_icon') ? undefined : json['use_like_icon'],
     };
 }
 
@@ -132,6 +139,7 @@ export function GetTrackCollectionModelToJSON(value?: GetTrackCollectionModel | 
         'author_name': value.authorName,
         'can_edit': value.canEdit,
         'tracks': value.tracks === undefined ? undefined : (value.tracks === null ? null : (value.tracks as Array<any>).map(TrackModelToJSON)),
+        'use_like_icon': value.useLikeIcon,
     };
 }
 

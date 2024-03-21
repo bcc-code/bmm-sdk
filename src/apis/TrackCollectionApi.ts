@@ -76,6 +76,10 @@ export interface TrackCollectionPostRequest {
     createTrackCollectionCommand?: CreateTrackCollectionCommand;
 }
 
+export interface TrackCollectionUnlikePostRequest {
+    link?: Array<string>;
+}
+
 /**
  * 
  */
@@ -418,6 +422,33 @@ export class TrackCollectionApi extends runtime.BaseAPI {
      */
     async trackCollectionTopSongsPost(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.trackCollectionTopSongsPostRaw(initOverrides);
+    }
+
+    /**
+     */
+    async trackCollectionUnlikePostRaw(requestParameters: TrackCollectionUnlikePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (requestParameters.link) {
+            headerParameters['link'] = requestParameters.link.join(runtime.COLLECTION_FORMATS["csv"]);
+        }
+
+        const response = await this.request({
+            path: `/track_collection/unlike`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async trackCollectionUnlikePost(requestParameters: TrackCollectionUnlikePostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.trackCollectionUnlikePostRaw(requestParameters, initOverrides);
     }
 
 }

@@ -55,6 +55,12 @@ export interface TrackCollectionDetails {
      * @memberof TrackCollectionDetails
      */
     canEdit: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof TrackCollectionDetails
+     */
+    useLikeIcon?: boolean;
 }
 
 /**
@@ -85,6 +91,7 @@ export function TrackCollectionDetailsFromJSONTyped(json: any, ignoreDiscriminat
         'followerCount': json['follower_count'],
         'authorName': !exists(json, 'author_name') ? undefined : json['author_name'],
         'canEdit': json['can_edit'],
+        'useLikeIcon': !exists(json, 'use_like_icon') ? undefined : json['use_like_icon'],
     };
 }
 
@@ -103,6 +110,7 @@ export function TrackCollectionDetailsToJSON(value?: TrackCollectionDetails | nu
         'follower_count': value.followerCount,
         'author_name': value.authorName,
         'can_edit': value.canEdit,
+        'use_like_icon': value.useLikeIcon,
     };
 }
 

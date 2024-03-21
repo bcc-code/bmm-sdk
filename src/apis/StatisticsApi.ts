@@ -22,6 +22,7 @@ import type {
   GetYearInReviewOverviewSlide,
   LanguageEnum,
   ListeningEvent,
+  ProjectChurchStatisticsQueryChurchStatistics,
   ProjectRulesQueryRules,
   StreakPoint,
 } from '../models/index';
@@ -40,6 +41,8 @@ import {
     LanguageEnumToJSON,
     ListeningEventFromJSON,
     ListeningEventToJSON,
+    ProjectChurchStatisticsQueryChurchStatisticsFromJSON,
+    ProjectChurchStatisticsQueryChurchStatisticsToJSON,
     ProjectRulesQueryRulesFromJSON,
     ProjectRulesQueryRulesToJSON,
     StreakPointFromJSON,
@@ -235,6 +238,30 @@ export class StatisticsApi extends runtime.BaseAPI {
      */
     async statisticsListeningPost(requestParameters: StatisticsListeningPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.statisticsListeningPostRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async statisticsProjectChurchGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectChurchStatisticsQueryChurchStatistics>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/Statistics/project/church`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectChurchStatisticsQueryChurchStatisticsFromJSON(jsonValue));
+    }
+
+    /**
+     */
+    async statisticsProjectChurchGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectChurchStatisticsQueryChurchStatistics> {
+        const response = await this.statisticsProjectChurchGetRaw(initOverrides);
+        return await response.value();
     }
 
     /**
