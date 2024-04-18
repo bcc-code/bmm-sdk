@@ -157,7 +157,7 @@ export interface TrackModel {
      * @type {TrackSubtype}
      * @memberof TrackModel
      */
-    subtype?: TrackSubtype;
+    subtype: TrackSubtype;
     /**
      * 
      * @type {Array<string>}
@@ -248,6 +248,7 @@ export type TrackModelTypeEnum = typeof TrackModelTypeEnum[keyof typeof TrackMod
 export function instanceOfTrackModel(value: object): boolean {
     let isInstance = true;
     isInstance = isInstance && "id" in value;
+    isInstance = isInstance && "subtype" in value;
     isInstance = isInstance && "type" in value;
 
     return isInstance;
@@ -276,7 +277,7 @@ export function TrackModelFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'externalRelations': !exists(json, 'external_relations') ? undefined : (json['external_relations'] === null ? null : (json['external_relations'] as Array<any>).map(TrackModelExternalRelationFromJSON)),
         'contributors': !exists(json, 'contributors') ? undefined : (json['contributors'] === null ? null : (json['contributors'] as Array<any>).map(TrackModelContributorRelationFromJSON)),
         'songbookRelations': !exists(json, 'songbook_relations') ? undefined : (json['songbook_relations'] === null ? null : (json['songbook_relations'] as Array<any>).map(TrackModelSongbookRelationFromJSON)),
-        'subtype': !exists(json, 'subtype') ? undefined : TrackSubtypeFromJSON(json['subtype']),
+        'subtype': TrackSubtypeFromJSON(json['subtype']),
         'tags': !exists(json, 'tags') ? undefined : json['tags'],
         'meta': !exists(json, '_meta') ? undefined : TrackModelTrackMetaFromJSON(json['_meta']),
         'type': json['type'],

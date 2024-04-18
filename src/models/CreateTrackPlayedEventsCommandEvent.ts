@@ -152,6 +152,12 @@ export interface CreateTrackPlayedEventsCommandEvent {
      * @memberof CreateTrackPlayedEventsCommandEvent
      */
     adjustedPlaybackSpeed?: number | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof CreateTrackPlayedEventsCommandEvent
+     */
+    client?: string | null;
 }
 
 /**
@@ -192,6 +198,7 @@ export function CreateTrackPlayedEventsCommandEventFromJSONTyped(json: any, igno
         'playbackOrigin': !exists(json, 'playback_origin') ? undefined : json['playback_origin'],
         'lastPosition': !exists(json, 'last_position') ? undefined : json['last_position'],
         'adjustedPlaybackSpeed': !exists(json, 'adjusted_playback_speed') ? undefined : json['adjusted_playback_speed'],
+        'client': !exists(json, 'client') ? undefined : json['client'],
     };
 }
 
@@ -223,6 +230,7 @@ export function CreateTrackPlayedEventsCommandEventToJSON(value?: CreateTrackPla
         'playback_origin': value.playbackOrigin,
         'last_position': value.lastPosition,
         'adjusted_playback_speed': value.adjustedPlaybackSpeed,
+        'client': value.client,
     };
 }
 
