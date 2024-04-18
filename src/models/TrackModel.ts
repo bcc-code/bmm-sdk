@@ -109,19 +109,19 @@ export interface TrackModel {
      * @type {number}
      * @memberof TrackModel
      */
-    parentId?: number;
+    parentId: number;
     /**
      * 
      * @type {Date}
      * @memberof TrackModel
      */
-    publishedAt?: Date;
+    publishedAt: Date;
     /**
      * 
      * @type {Date}
      * @memberof TrackModel
      */
-    recordedAt?: Date;
+    recordedAt: Date;
     /**
      * 
      * @type {Array<TrackModelRelation>}
@@ -163,13 +163,13 @@ export interface TrackModel {
      * @type {Array<string>}
      * @memberof TrackModel
      */
-    tags?: Array<string> | null;
+    tags: Array<string>;
     /**
      * 
      * @type {TrackModelTrackMeta}
      * @memberof TrackModel
      */
-    meta?: TrackModelTrackMeta;
+    meta: TrackModelTrackMeta;
     /**
      * 
      * @type {string}
@@ -187,7 +187,7 @@ export interface TrackModel {
      * @type {LanguageEnum}
      * @memberof TrackModel
      */
-    language?: LanguageEnum;
+    language: LanguageEnum;
     /**
      * 
      * @type {string}
@@ -248,8 +248,14 @@ export type TrackModelTypeEnum = typeof TrackModelTypeEnum[keyof typeof TrackMod
 export function instanceOfTrackModel(value: object): boolean {
     let isInstance = true;
     isInstance = isInstance && "id" in value;
+    isInstance = isInstance && "parentId" in value;
+    isInstance = isInstance && "publishedAt" in value;
+    isInstance = isInstance && "recordedAt" in value;
     isInstance = isInstance && "subtype" in value;
+    isInstance = isInstance && "tags" in value;
+    isInstance = isInstance && "meta" in value;
     isInstance = isInstance && "type" in value;
+    isInstance = isInstance && "language" in value;
 
     return isInstance;
 }
@@ -269,20 +275,20 @@ export function TrackModelFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'id': json['id'],
         'isVisible': !exists(json, 'is_visible') ? undefined : json['is_visible'],
         'order': !exists(json, 'order') ? undefined : json['order'],
-        'parentId': !exists(json, 'parent_id') ? undefined : json['parent_id'],
-        'publishedAt': !exists(json, 'published_at') ? undefined : (new Date(json['published_at'])),
-        'recordedAt': !exists(json, 'recorded_at') ? undefined : (new Date(json['recorded_at'])),
+        'parentId': json['parent_id'],
+        'publishedAt': (new Date(json['published_at'])),
+        'recordedAt': (new Date(json['recorded_at'])),
         'rel': !exists(json, 'rel') ? undefined : (json['rel'] === null ? null : (json['rel'] as Array<any>).map(TrackModelRelationFromJSON)),
         'bibleRelations': !exists(json, 'bible_relations') ? undefined : (json['bible_relations'] === null ? null : (json['bible_relations'] as Array<any>).map(TrackModelBibleRelationFromJSON)),
         'externalRelations': !exists(json, 'external_relations') ? undefined : (json['external_relations'] === null ? null : (json['external_relations'] as Array<any>).map(TrackModelExternalRelationFromJSON)),
         'contributors': !exists(json, 'contributors') ? undefined : (json['contributors'] === null ? null : (json['contributors'] as Array<any>).map(TrackModelContributorRelationFromJSON)),
         'songbookRelations': !exists(json, 'songbook_relations') ? undefined : (json['songbook_relations'] === null ? null : (json['songbook_relations'] as Array<any>).map(TrackModelSongbookRelationFromJSON)),
         'subtype': TrackSubtypeFromJSON(json['subtype']),
-        'tags': !exists(json, 'tags') ? undefined : json['tags'],
-        'meta': !exists(json, '_meta') ? undefined : TrackModelTrackMetaFromJSON(json['_meta']),
+        'tags': json['tags'],
+        'meta': TrackModelTrackMetaFromJSON(json['_meta']),
         'type': json['type'],
         'languages': !exists(json, 'languages') ? undefined : (json['languages'] === null ? null : (json['languages'] as Array<any>).map(LanguageEnumFromJSON)),
-        'language': !exists(json, 'language') ? undefined : LanguageEnumFromJSON(json['language']),
+        'language': LanguageEnumFromJSON(json['language']),
         'title': !exists(json, 'title') ? undefined : json['title'],
         'publisher': !exists(json, 'publisher') ? undefined : json['publisher'],
         'copyright': !exists(json, 'copyright') ? undefined : json['copyright'],
@@ -308,8 +314,8 @@ export function TrackModelToJSON(value?: TrackModel | null): any {
         'is_visible': value.isVisible,
         'order': value.order,
         'parent_id': value.parentId,
-        'published_at': value.publishedAt === undefined ? undefined : (value.publishedAt.toISOString()),
-        'recorded_at': value.recordedAt === undefined ? undefined : (value.recordedAt.toISOString()),
+        'published_at': (value.publishedAt.toISOString()),
+        'recorded_at': (value.recordedAt.toISOString()),
         'rel': value.rel === undefined ? undefined : (value.rel === null ? null : (value.rel as Array<any>).map(TrackModelRelationToJSON)),
         'subtype': TrackSubtypeToJSON(value.subtype),
         'tags': value.tags,
