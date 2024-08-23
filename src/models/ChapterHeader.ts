@@ -21,16 +21,16 @@ import { exists, mapValues } from '../runtime';
 export interface ChapterHeader {
     /**
      * 
-     * @type {string}
-     * @memberof ChapterHeader
-     */
-    readonly type: ChapterHeaderTypeEnum;
-    /**
-     * 
      * @type {number}
      * @memberof ChapterHeader
      */
     id: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ChapterHeader
+     */
+    readonly type: ChapterHeaderTypeEnum;
     /**
      * 
      * @type {string}
@@ -54,8 +54,8 @@ export type ChapterHeaderTypeEnum = typeof ChapterHeaderTypeEnum[keyof typeof Ch
  */
 export function instanceOfChapterHeader(value: object): boolean {
     let isInstance = true;
-    isInstance = isInstance && "type" in value;
     isInstance = isInstance && "id" in value;
+    isInstance = isInstance && "type" in value;
 
     return isInstance;
 }
@@ -70,8 +70,8 @@ export function ChapterHeaderFromJSONTyped(json: any, ignoreDiscriminator: boole
     }
     return {
         
-        'type': json['type'],
         'id': json['id'],
+        'type': json['type'],
         'title': !exists(json, 'title') ? undefined : json['title'],
     };
 }

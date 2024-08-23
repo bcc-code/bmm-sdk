@@ -27,7 +27,6 @@ import {
 
 export interface LinkMetadataTrackIdGetRequest {
     id: number;
-    language: LanguageEnum;
 }
 
 export interface LinkMetadataTrackIdLanguageGetRequest {
@@ -47,16 +46,12 @@ export class LinkMetadataApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling linkMetadataTrackIdGet.');
         }
 
-        if (requestParameters.language === null || requestParameters.language === undefined) {
-            throw new runtime.RequiredError('language','Required parameter requestParameters.language was null or undefined when calling linkMetadataTrackIdGet.');
-        }
-
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
         const response = await this.request({
-            path: `/LinkMetadata/track/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))).replace(`{${"language"}}`, encodeURIComponent(String(requestParameters.language))),
+            path: `/LinkMetadata/track/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,

@@ -28,16 +28,16 @@ import {
 export interface AchievementCollection {
     /**
      * 
-     * @type {string}
-     * @memberof AchievementCollection
-     */
-    readonly type: AchievementCollectionTypeEnum;
-    /**
-     * 
      * @type {number}
      * @memberof AchievementCollection
      */
     id: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof AchievementCollection
+     */
+    readonly type: AchievementCollectionTypeEnum;
     /**
      * 
      * @type {Array<AchievementModel>}
@@ -61,8 +61,8 @@ export type AchievementCollectionTypeEnum = typeof AchievementCollectionTypeEnum
  */
 export function instanceOfAchievementCollection(value: object): boolean {
     let isInstance = true;
-    isInstance = isInstance && "type" in value;
     isInstance = isInstance && "id" in value;
+    isInstance = isInstance && "type" in value;
 
     return isInstance;
 }
@@ -77,8 +77,8 @@ export function AchievementCollectionFromJSONTyped(json: any, ignoreDiscriminato
     }
     return {
         
-        'type': json['type'],
         'id': json['id'],
+        'type': json['type'],
         'list': !exists(json, 'list') ? undefined : (json['list'] === null ? null : (json['list'] as Array<any>).map(AchievementModelFromJSON)),
     };
 }

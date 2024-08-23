@@ -49,12 +49,6 @@ export interface RecommendationModel {
      * @type {string}
      * @memberof RecommendationModel
      */
-    readonly type: RecommendationModelTypeEnum;
-    /**
-     * 
-     * @type {string}
-     * @memberof RecommendationModel
-     */
     title?: string | null;
     /**
      * 
@@ -92,6 +86,12 @@ export interface RecommendationModel {
      * @memberof RecommendationModel
      */
     id: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof RecommendationModel
+     */
+    readonly type: RecommendationModelTypeEnum;
 }
 
 
@@ -109,8 +109,8 @@ export type RecommendationModelTypeEnum = typeof RecommendationModelTypeEnum[key
  */
 export function instanceOfRecommendationModel(value: object): boolean {
     let isInstance = true;
-    isInstance = isInstance && "type" in value;
     isInstance = isInstance && "id" in value;
+    isInstance = isInstance && "type" in value;
 
     return isInstance;
 }
@@ -125,7 +125,6 @@ export function RecommendationModelFromJSONTyped(json: any, ignoreDiscriminator:
     }
     return {
         
-        'type': json['type'],
         'title': !exists(json, 'title') ? undefined : json['title'],
         'subtitle': !exists(json, 'subtitle') ? undefined : json['subtitle'],
         'contributor': !exists(json, 'contributor') ? undefined : ContributorModelFromJSON(json['contributor']),
@@ -133,6 +132,7 @@ export function RecommendationModelFromJSONTyped(json: any, ignoreDiscriminator:
         'playlist': !exists(json, 'playlist') ? undefined : PlaylistModelFromJSON(json['playlist']),
         'album': !exists(json, 'album') ? undefined : AlbumModelFromJSON(json['album']),
         'id': json['id'],
+        'type': json['type'],
     };
 }
 

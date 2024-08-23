@@ -21,16 +21,16 @@ import { exists, mapValues } from '../runtime';
 export interface YearInReviewModel {
     /**
      * 
-     * @type {string}
-     * @memberof YearInReviewModel
-     */
-    readonly type: YearInReviewModelTypeEnum;
-    /**
-     * 
      * @type {number}
      * @memberof YearInReviewModel
      */
     id: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof YearInReviewModel
+     */
+    readonly type: YearInReviewModelTypeEnum;
     /**
      * 
      * @type {string}
@@ -78,8 +78,8 @@ export type YearInReviewModelTypeEnum = typeof YearInReviewModelTypeEnum[keyof t
  */
 export function instanceOfYearInReviewModel(value: object): boolean {
     let isInstance = true;
-    isInstance = isInstance && "type" in value;
     isInstance = isInstance && "id" in value;
+    isInstance = isInstance && "type" in value;
 
     return isInstance;
 }
@@ -94,8 +94,8 @@ export function YearInReviewModelFromJSONTyped(json: any, ignoreDiscriminator: b
     }
     return {
         
-        'type': json['type'],
         'id': json['id'],
+        'type': json['type'],
         'title': !exists(json, 'title') ? undefined : json['title'],
         'description': !exists(json, 'description') ? undefined : json['description'],
         'buttonTitle': !exists(json, 'button_title') ? undefined : json['button_title'],

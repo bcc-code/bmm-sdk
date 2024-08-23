@@ -28,16 +28,16 @@ import {
 export interface ProjectBox {
     /**
      * 
-     * @type {string}
-     * @memberof ProjectBox
-     */
-    readonly type: ProjectBoxTypeEnum;
-    /**
-     * 
      * @type {number}
      * @memberof ProjectBox
      */
     id: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof ProjectBox
+     */
+    readonly type: ProjectBoxTypeEnum;
     /**
      * 
      * @type {string}
@@ -121,8 +121,8 @@ export type ProjectBoxTypeEnum = typeof ProjectBoxTypeEnum[keyof typeof ProjectB
  */
 export function instanceOfProjectBox(value: object): boolean {
     let isInstance = true;
-    isInstance = isInstance && "type" in value;
     isInstance = isInstance && "id" in value;
+    isInstance = isInstance && "type" in value;
 
     return isInstance;
 }
@@ -137,8 +137,8 @@ export function ProjectBoxFromJSONTyped(json: any, ignoreDiscriminator: boolean)
     }
     return {
         
-        'type': json['type'],
         'id': json['id'],
+        'type': json['type'],
         'title': !exists(json, 'title') ? undefined : json['title'],
         'showIcon': !exists(json, 'show_icon') ? undefined : json['show_icon'],
         'openByDefault': !exists(json, 'open_by_default') ? undefined : json['open_by_default'],

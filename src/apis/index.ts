@@ -18,6 +18,7 @@ export * from './SharedPlaylistApi';
 export * from './StatisticsApi';
 export * from './SubscriptionApi';
 export * from './SuggestApi';
+export * from './TopbarSearchApi';
 export * from './TrackApi';
 export * from './TrackCollectionApi';
 export * from './TranscriptionApi';

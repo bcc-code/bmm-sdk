@@ -21,16 +21,16 @@ import { exists, mapValues } from '../runtime';
 export interface TileMessageModel {
     /**
      * 
-     * @type {string}
-     * @memberof TileMessageModel
-     */
-    readonly type: TileMessageModelTypeEnum;
-    /**
-     * 
      * @type {number}
      * @memberof TileMessageModel
      */
     id: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof TileMessageModel
+     */
+    readonly type: TileMessageModelTypeEnum;
     /**
      * 
      * @type {string}
@@ -78,8 +78,8 @@ export type TileMessageModelTypeEnum = typeof TileMessageModelTypeEnum[keyof typ
  */
 export function instanceOfTileMessageModel(value: object): boolean {
     let isInstance = true;
-    isInstance = isInstance && "type" in value;
     isInstance = isInstance && "id" in value;
+    isInstance = isInstance && "type" in value;
 
     return isInstance;
 }
@@ -94,8 +94,8 @@ export function TileMessageModelFromJSONTyped(json: any, ignoreDiscriminator: bo
     }
     return {
         
-        'type': json['type'],
         'id': json['id'],
+        'type': json['type'],
         'header': !exists(json, 'header') ? undefined : json['header'],
         'title': !exists(json, 'title') ? undefined : json['title'],
         'subtitle': !exists(json, 'subtitle') ? undefined : json['subtitle'],

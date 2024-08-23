@@ -51,29 +51,4 @@ export class CurrentUserApi extends runtime.BaseAPI {
         return await response.value();
     }
 
-    /**
-     * Make sure BMM knows an authenticated user.  This method has to be called when you receive 417 errors (ExpectationFailed).
-     */
-    async currentUserPutRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/CurrentUser`,
-            method: 'PUT',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     * Make sure BMM knows an authenticated user.  This method has to be called when you receive 417 errors (ExpectationFailed).
-     */
-    async currentUserPut(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.currentUserPutRaw(initOverrides);
-    }
-
 }

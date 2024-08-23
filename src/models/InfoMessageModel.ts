@@ -21,12 +21,6 @@ import { exists, mapValues } from '../runtime';
 export interface InfoMessageModel {
     /**
      * 
-     * @type {string}
-     * @memberof InfoMessageModel
-     */
-    readonly type: InfoMessageModelTypeEnum;
-    /**
-     * 
      * @type {number}
      * @memberof InfoMessageModel
      */
@@ -36,7 +30,25 @@ export interface InfoMessageModel {
      * @type {string}
      * @memberof InfoMessageModel
      */
+    readonly type: InfoMessageModelTypeEnum;
+    /**
+     * 
+     * @type {string}
+     * @memberof InfoMessageModel
+     */
     translatedMessage?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof InfoMessageModel
+     */
+    readonly messageText?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof InfoMessageModel
+     */
+    link?: string | null;
 }
 
 
@@ -54,8 +66,8 @@ export type InfoMessageModelTypeEnum = typeof InfoMessageModelTypeEnum[keyof typ
  */
 export function instanceOfInfoMessageModel(value: object): boolean {
     let isInstance = true;
-    isInstance = isInstance && "type" in value;
     isInstance = isInstance && "id" in value;
+    isInstance = isInstance && "type" in value;
 
     return isInstance;
 }
@@ -70,9 +82,11 @@ export function InfoMessageModelFromJSONTyped(json: any, ignoreDiscriminator: bo
     }
     return {
         
-        'type': json['type'],
         'id': json['id'],
+        'type': json['type'],
         'translatedMessage': !exists(json, 'translated_message') ? undefined : json['translated_message'],
+        'messageText': !exists(json, 'message_text') ? undefined : json['message_text'],
+        'link': !exists(json, 'link') ? undefined : json['link'],
     };
 }
 
@@ -87,6 +101,7 @@ export function InfoMessageModelToJSON(value?: InfoMessageModel | null): any {
         
         'id': value.id,
         'translated_message': value.translatedMessage,
+        'link': value.link,
     };
 }
 

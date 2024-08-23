@@ -28,16 +28,16 @@ import {
 export interface TileModel {
     /**
      * 
-     * @type {string}
-     * @memberof TileModel
-     */
-    readonly type: TileModelTypeEnum;
-    /**
-     * 
      * @type {number}
      * @memberof TileModel
      */
     id: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof TileModel
+     */
+    readonly type: TileModelTypeEnum;
     /**
      * 
      * @type {string}
@@ -121,8 +121,8 @@ export type TileModelTypeEnum = typeof TileModelTypeEnum[keyof typeof TileModelT
  */
 export function instanceOfTileModel(value: object): boolean {
     let isInstance = true;
-    isInstance = isInstance && "type" in value;
     isInstance = isInstance && "id" in value;
+    isInstance = isInstance && "type" in value;
 
     return isInstance;
 }
@@ -137,8 +137,8 @@ export function TileModelFromJSONTyped(json: any, ignoreDiscriminator: boolean):
     }
     return {
         
-        'type': json['type'],
         'id': json['id'],
+        'type': json['type'],
         'backgroundColor': !exists(json, 'background_color') ? undefined : json['background_color'],
         'coverUrl': !exists(json, 'cover_url') ? undefined : json['cover_url'],
         'title': !exists(json, 'title') ? undefined : json['title'],

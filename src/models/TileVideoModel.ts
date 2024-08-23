@@ -21,16 +21,16 @@ import { exists, mapValues } from '../runtime';
 export interface TileVideoModel {
     /**
      * 
-     * @type {string}
-     * @memberof TileVideoModel
-     */
-    readonly type: TileVideoModelTypeEnum;
-    /**
-     * 
      * @type {number}
      * @memberof TileVideoModel
      */
     id: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof TileVideoModel
+     */
+    readonly type: TileVideoModelTypeEnum;
     /**
      * 
      * @type {string}
@@ -84,8 +84,8 @@ export type TileVideoModelTypeEnum = typeof TileVideoModelTypeEnum[keyof typeof 
  */
 export function instanceOfTileVideoModel(value: object): boolean {
     let isInstance = true;
-    isInstance = isInstance && "type" in value;
     isInstance = isInstance && "id" in value;
+    isInstance = isInstance && "type" in value;
 
     return isInstance;
 }
@@ -100,8 +100,8 @@ export function TileVideoModelFromJSONTyped(json: any, ignoreDiscriminator: bool
     }
     return {
         
-        'type': json['type'],
         'id': json['id'],
+        'type': json['type'],
         'header': !exists(json, 'header') ? undefined : json['header'],
         'buttonText': !exists(json, 'button_text') ? undefined : json['button_text'],
         'buttonUrl': !exists(json, 'button_url') ? undefined : json['button_url'],

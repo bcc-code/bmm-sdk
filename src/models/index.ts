@@ -64,6 +64,7 @@ export * from './SubscriptionModel';
 export * from './TileMessageModel';
 export * from './TileModel';
 export * from './TileVideoModel';
+export * from './TopbarSearchQueryTopbarSearchResult';
 export * from './TrackCollectionDetails';
 export * from './TrackCollectionModel';
 export * from './TrackListReference';

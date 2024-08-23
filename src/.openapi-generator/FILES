@@ -17,6 +17,7 @@ apis/SharedPlaylistApi.ts
 apis/StatisticsApi.ts
 apis/SubscriptionApi.ts
 apis/SuggestApi.ts
+apis/TopbarSearchApi.ts
 apis/TrackApi.ts
 apis/TrackCollectionApi.ts
 apis/TranscriptionApi.ts
@@ -86,6 +87,7 @@ models/SubscriptionModel.ts
 models/TileMessageModel.ts
 models/TileModel.ts
 models/TileVideoModel.ts
+models/TopbarSearchQueryTopbarSearchResult.ts
 models/TrackCollectionDetails.ts
 models/TrackCollectionModel.ts
 models/TrackListReference.ts
