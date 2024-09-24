@@ -64,6 +64,12 @@ export interface TrackIdTranscriptionLanguageGetRequest {
     unpublished?: PublishedFilter;
 }
 
+export interface TrackIdTranscriptionLanguagePostRequest {
+    id: number;
+    language: LanguageEnum;
+    trackTranslationTranscriptionSegment: Array<TrackTranslationTranscriptionSegment>;
+}
+
 /**
  * 
  */
@@ -235,6 +241,44 @@ export class TrackApi extends runtime.BaseAPI {
     async trackIdTranscriptionLanguageGet(requestParameters: TrackIdTranscriptionLanguageGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<TrackTranslationTranscriptionSegment>> {
         const response = await this.trackIdTranscriptionLanguageGetRaw(requestParameters, initOverrides);
         return await response.value();
+    }
+
+    /**
+     */
+    async trackIdTranscriptionLanguagePostRaw(requestParameters: TrackIdTranscriptionLanguagePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling trackIdTranscriptionLanguagePost.');
+        }
+
+        if (requestParameters.language === null || requestParameters.language === undefined) {
+            throw new runtime.RequiredError('language','Required parameter requestParameters.language was null or undefined when calling trackIdTranscriptionLanguagePost.');
+        }
+
+        if (requestParameters.trackTranslationTranscriptionSegment === null || requestParameters.trackTranslationTranscriptionSegment === undefined) {
+            throw new runtime.RequiredError('trackTranslationTranscriptionSegment','Required parameter requestParameters.trackTranslationTranscriptionSegment was null or undefined when calling trackIdTranscriptionLanguagePost.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json-patch+json';
+
+        const response = await this.request({
+            path: `/track/{id}/transcription/{language}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))).replace(`{${"language"}}`, encodeURIComponent(String(requestParameters.language))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: requestParameters.trackTranslationTranscriptionSegment.map(TrackTranslationTranscriptionSegmentToJSON),
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async trackIdTranscriptionLanguagePost(requestParameters: TrackIdTranscriptionLanguagePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.trackIdTranscriptionLanguagePostRaw(requestParameters, initOverrides);
     }
 
     /**

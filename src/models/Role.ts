@@ -28,7 +28,8 @@ export const Role = {
     FeaturePreview: 'ROLE_FEATURE_PREVIEW',
     LiveManager: 'ROLE_LIVE_MANAGER',
     ServiceAdmin: 'ROLE_SERVICE_ADMIN',
-    Downloader: 'ROLE_DOWNLOADER'
+    Downloader: 'ROLE_DOWNLOADER',
+    TranscriptionManager: 'ROLE_TRANSCRIPTION_MANAGER'
 } as const;
 export type Role = typeof Role[keyof typeof Role];
 
