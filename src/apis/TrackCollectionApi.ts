@@ -50,6 +50,11 @@ export interface TrackCollectionIdGetRequest {
     id: number;
 }
 
+export interface TrackCollectionIdPlaylistPlaylistIdPostRequest {
+    id: number;
+    playlistId: number;
+}
+
 export interface TrackCollectionIdPostRequest {
     id: number;
     link?: Array<string>;
@@ -62,6 +67,11 @@ export interface TrackCollectionIdPutRequest {
 
 export interface TrackCollectionIdResetSharePostRequest {
     id: number;
+}
+
+export interface TrackCollectionIdTrackCollectionPlaylistIdPostRequest {
+    id: number;
+    playlistId: number;
 }
 
 export interface TrackCollectionIdUnfollowPostRequest {
@@ -200,6 +210,37 @@ export class TrackCollectionApi extends runtime.BaseAPI {
     }
 
     /**
+     */
+    async trackCollectionIdPlaylistPlaylistIdPostRaw(requestParameters: TrackCollectionIdPlaylistPlaylistIdPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling trackCollectionIdPlaylistPlaylistIdPost.');
+        }
+
+        if (requestParameters.playlistId === null || requestParameters.playlistId === undefined) {
+            throw new runtime.RequiredError('playlistId','Required parameter requestParameters.playlistId was null or undefined when calling trackCollectionIdPlaylistPlaylistIdPost.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/track_collection/{id}/playlist/{playlistId}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))).replace(`{${"playlistId"}}`, encodeURIComponent(String(requestParameters.playlistId))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async trackCollectionIdPlaylistPlaylistIdPost(requestParameters: TrackCollectionIdPlaylistPlaylistIdPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.trackCollectionIdPlaylistPlaylistIdPostRaw(requestParameters, initOverrides);
+    }
+
+    /**
      * Add tracks to existing track collection without changing anything else
      */
     async trackCollectionIdPostRaw(requestParameters: TrackCollectionIdPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
@@ -291,6 +332,37 @@ export class TrackCollectionApi extends runtime.BaseAPI {
      */
     async trackCollectionIdResetSharePost(requestParameters: TrackCollectionIdResetSharePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.trackCollectionIdResetSharePostRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async trackCollectionIdTrackCollectionPlaylistIdPostRaw(requestParameters: TrackCollectionIdTrackCollectionPlaylistIdPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling trackCollectionIdTrackCollectionPlaylistIdPost.');
+        }
+
+        if (requestParameters.playlistId === null || requestParameters.playlistId === undefined) {
+            throw new runtime.RequiredError('playlistId','Required parameter requestParameters.playlistId was null or undefined when calling trackCollectionIdTrackCollectionPlaylistIdPost.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/track_collection/{id}/track_collection/{playlistId}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))).replace(`{${"playlistId"}}`, encodeURIComponent(String(requestParameters.playlistId))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async trackCollectionIdTrackCollectionPlaylistIdPost(requestParameters: TrackCollectionIdTrackCollectionPlaylistIdPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.trackCollectionIdTrackCollectionPlaylistIdPostRaw(requestParameters, initOverrides);
     }
 
     /**
