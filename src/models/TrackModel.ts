@@ -181,13 +181,19 @@ export interface TrackModel {
      * @type {Array<LanguageEnum>}
      * @memberof TrackModel
      */
-    languages?: Array<LanguageEnum> | null;
+    languages: Array<LanguageEnum>;
     /**
      * 
      * @type {LanguageEnum}
      * @memberof TrackModel
      */
     language: LanguageEnum;
+    /**
+     * 
+     * @type {Array<LanguageEnum>}
+     * @memberof TrackModel
+     */
+    transcriptionLanguages?: Array<LanguageEnum>;
     /**
      * 
      * @type {string}
@@ -287,8 +293,9 @@ export function TrackModelFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'tags': json['tags'],
         'meta': TrackModelTrackMetaFromJSON(json['_meta']),
         'type': json['type'],
-        'languages': !exists(json, 'languages') ? undefined : (json['languages'] === null ? null : (json['languages'] as Array<any>).map(LanguageEnumFromJSON)),
+        'languages': (json['languages'] as Array<any>).map(LanguageEnumFromJSON),
         'language': LanguageEnumFromJSON(json['language']),
+        'transcriptionLanguages': (json['transcription_languages'] as Array<any>).map(LanguageEnumFromJSON),
         'title': !exists(json, 'title') ? undefined : json['title'],
         'publisher': !exists(json, 'publisher') ? undefined : json['publisher'],
         'copyright': !exists(json, 'copyright') ? undefined : json['copyright'],
@@ -322,6 +329,7 @@ export function TrackModelToJSON(value?: TrackModel | null): any {
         '_meta': TrackModelTrackMetaToJSON(value.meta),
         'languages': value.languages === undefined ? undefined : (value.languages === null ? null : (value.languages as Array<any>).map(LanguageEnumToJSON)),
         'language': LanguageEnumToJSON(value.language),
+        'transcription_languages': value.transcriptionLanguages === undefined ? undefined : (value.transcriptionLanguages === null ? null : (value.transcriptionLanguages as Array<any>).map(LanguageEnumToJSON)),
         'title': value.title,
         'publisher': value.publisher,
         'copyright': value.copyright,

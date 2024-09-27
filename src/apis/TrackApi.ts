@@ -42,6 +42,7 @@ export interface TrackGetRequest {
     tags?: Array<string>;
     excludeTags?: Array<string>;
     language?: LanguageEnum;
+    hasTranscription?: boolean;
     policy?: string;
     contentType2?: Array<TrackSubtype>;
     tags2?: Array<string>;
@@ -106,6 +107,10 @@ export class TrackApi extends runtime.BaseAPI {
 
         if (requestParameters.language !== undefined) {
             queryParameters['Language'] = requestParameters.language;
+        }
+
+        if (requestParameters.hasTranscription !== undefined) {
+            queryParameters['HasTranscription'] = requestParameters.hasTranscription;
         }
 
         if (requestParameters.policy !== undefined) {
@@ -302,6 +307,30 @@ export class TrackApi extends runtime.BaseAPI {
      */
     async trackRecommendationGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<TrackModel>> {
         const response = await this.trackRecommendationGetRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     */
+    async trackTranscribeGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<TrackModel>>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/track/transcribe`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(TrackModelFromJSON));
+    }
+
+    /**
+     */
+    async trackTranscribeGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<TrackModel>> {
+        const response = await this.trackTranscribeGetRaw(initOverrides);
         return await response.value();
     }
 
