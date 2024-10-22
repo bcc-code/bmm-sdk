@@ -43,7 +43,7 @@ export interface TrackGetRequest {
     excludeTags?: Array<string>;
     language?: LanguageEnum;
     hasTranscription?: boolean;
-    policy?: string;
+    oneOfPolicies?: Array<string>;
     contentType2?: Array<TrackSubtype>;
     tags2?: Array<string>;
     excludeTags2?: Array<string>;
@@ -113,8 +113,8 @@ export class TrackApi extends runtime.BaseAPI {
             queryParameters['HasTranscription'] = requestParameters.hasTranscription;
         }
 
-        if (requestParameters.policy !== undefined) {
-            queryParameters['Policy'] = requestParameters.policy;
+        if (requestParameters.oneOfPolicies) {
+            queryParameters['OneOfPolicies'] = requestParameters.oneOfPolicies;
         }
 
         if (requestParameters.contentType2) {

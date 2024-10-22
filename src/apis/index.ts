@@ -13,6 +13,7 @@ export * from './FileApi';
 export * from './LinkMetadataApi';
 export * from './PlaylistApi';
 export * from './PodcastApi';
+export * from './QuestionApi';
 export * from './SearchApi';
 export * from './SharedPlaylistApi';
 export * from './StatisticsApi';

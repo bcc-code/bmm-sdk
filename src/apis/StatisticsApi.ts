@@ -19,6 +19,7 @@ import type {
   CreateTrackPlayedEventsCommandEvent,
   DocumentListIAchievementCollectionOrChapterHeader,
   ForbildePoints,
+  GetFraKaareStatisticsResponse,
   GetYearInReviewOverviewSlide,
   LanguageEnum,
   ListeningEvent,
@@ -35,6 +36,8 @@ import {
     DocumentListIAchievementCollectionOrChapterHeaderToJSON,
     ForbildePointsFromJSON,
     ForbildePointsToJSON,
+    GetFraKaareStatisticsResponseFromJSON,
+    GetFraKaareStatisticsResponseToJSON,
     GetYearInReviewOverviewSlideFromJSON,
     GetYearInReviewOverviewSlideToJSON,
     LanguageEnumFromJSON,
@@ -65,6 +68,10 @@ export interface StatisticsAchievementsToAcknowledgeGetRequest {
 
 export interface StatisticsListeningPostRequest {
     listeningEvent: Array<ListeningEvent>;
+}
+
+export interface StatisticsProjectChurchChurchGetRequest {
+    church: string;
 }
 
 export interface StatisticsProjectProgressGetRequest {
@@ -212,6 +219,53 @@ export class StatisticsApi extends runtime.BaseAPI {
 
     /**
      */
+    async statisticsExcelGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/Statistics/excel`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async statisticsExcelGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.statisticsExcelGetRaw(initOverrides);
+    }
+
+    /**
+     */
+    async statisticsFraKaareGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetFraKaareStatisticsResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/Statistics/fra-kaare`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetFraKaareStatisticsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     */
+    async statisticsFraKaareGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetFraKaareStatisticsResponse> {
+        const response = await this.statisticsFraKaareGetRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     */
     async statisticsListeningPostRaw(requestParameters: StatisticsListeningPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.listeningEvent === null || requestParameters.listeningEvent === undefined) {
             throw new runtime.RequiredError('listeningEvent','Required parameter requestParameters.listeningEvent was null or undefined when calling statisticsListeningPost.');
@@ -238,6 +292,34 @@ export class StatisticsApi extends runtime.BaseAPI {
      */
     async statisticsListeningPost(requestParameters: StatisticsListeningPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.statisticsListeningPostRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async statisticsProjectChurchChurchGetRaw(requestParameters: StatisticsProjectChurchChurchGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectChurchStatisticsQueryChurchStatistics>> {
+        if (requestParameters.church === null || requestParameters.church === undefined) {
+            throw new runtime.RequiredError('church','Required parameter requestParameters.church was null or undefined when calling statisticsProjectChurchChurchGet.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/Statistics/project/church/{church}`.replace(`{${"church"}}`, encodeURIComponent(String(requestParameters.church))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectChurchStatisticsQueryChurchStatisticsFromJSON(jsonValue));
+    }
+
+    /**
+     */
+    async statisticsProjectChurchChurchGet(requestParameters: StatisticsProjectChurchChurchGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectChurchStatisticsQueryChurchStatistics> {
+        const response = await this.statisticsProjectChurchChurchGetRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
