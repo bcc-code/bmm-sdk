@@ -219,29 +219,6 @@ export class StatisticsApi extends runtime.BaseAPI {
 
     /**
      */
-    async statisticsExcelGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        const queryParameters: any = {};
-
-        const headerParameters: runtime.HTTPHeaders = {};
-
-        const response = await this.request({
-            path: `/Statistics/excel`,
-            method: 'GET',
-            headers: headerParameters,
-            query: queryParameters,
-        }, initOverrides);
-
-        return new runtime.VoidApiResponse(response);
-    }
-
-    /**
-     */
-    async statisticsExcelGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.statisticsExcelGetRaw(initOverrides);
-    }
-
-    /**
-     */
     async statisticsFraKaareGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetFraKaareStatisticsResponse>> {
         const queryParameters: any = {};
 

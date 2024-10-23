@@ -18,18 +18,20 @@
  * @export
  */
 export const Role = {
-    Administrator: 'ROLE_ADMINISTRATOR',
-    AlbumManager: 'ROLE_ALBUM_MANAGER',
-    TrackManager: 'ROLE_TRACK_MANAGER',
-    ContributorManager: 'ROLE_CONTRIBUTOR_MANAGER',
-    PodcastManager: 'ROLE_PODCAST_MANAGER',
-    PlaylistManager: 'ROLE_PLAYLIST_MANAGER',
-    NotificationManager: 'ROLE_NOTIFICATION_MANAGER',
-    FeaturePreview: 'ROLE_FEATURE_PREVIEW',
-    LiveManager: 'ROLE_LIVE_MANAGER',
-    ServiceAdmin: 'ROLE_SERVICE_ADMIN',
-    Downloader: 'ROLE_DOWNLOADER',
-    TranscriptionManager: 'ROLE_TRANSCRIPTION_MANAGER'
+    RoleAdministrator: 'ROLE_ADMINISTRATOR',
+    RoleAlbumManager: 'ROLE_ALBUM_MANAGER',
+    RoleTrackManager: 'ROLE_TRACK_MANAGER',
+    RoleContributorManager: 'ROLE_CONTRIBUTOR_MANAGER',
+    RolePodcastManager: 'ROLE_PODCAST_MANAGER',
+    RolePlaylistManager: 'ROLE_PLAYLIST_MANAGER',
+    RoleNotificationManager: 'ROLE_NOTIFICATION_MANAGER',
+    RoleFeaturePreview: 'ROLE_FEATURE_PREVIEW',
+    RoleLiveManager: 'ROLE_LIVE_MANAGER',
+    RoleServiceAdmin: 'ROLE_SERVICE_ADMIN',
+    RoleDownloader: 'ROLE_DOWNLOADER',
+    RoleTranscriptionManager: 'ROLE_TRANSCRIPTION_MANAGER',
+    RoleFrakaareDashboard: 'ROLE_FRAKAARE_DASHBOARD',
+    MembersYouthLeader: 'MEMBERS_YOUTH_LEADER'
 } as const;
 export type Role = typeof Role[keyof typeof Role];
 
