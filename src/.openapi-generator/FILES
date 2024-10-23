@@ -34,7 +34,6 @@ models/ApiOverviewModelStatus.ts
 models/AppDownloadLinksQueryDownloadLinks.ts
 models/BibleBookEnum.ts
 models/ChapterHeader.ts
-models/Church.ts
 models/ContributorContributorMeta.ts
 models/ContributorModel.ts
 models/CreateTrackCollectionCommand.ts
@@ -48,7 +47,7 @@ models/DocumentListIAlbumPlaylistOrChapterHeader.ts
 models/DocumentListIAllDocumentModels.ts
 models/DocumentListPodcastModel.ts
 models/ForbildePoints.ts
-models/FraKaareChurchStatistics.ts
+models/GetFraKaareStatisticsChurchStatistics.ts
 models/GetFraKaareStatisticsResponse.ts
 models/GetTopSongsCollectionModel.ts
 models/GetTopSongsCollectionModelTrackAndCount.ts

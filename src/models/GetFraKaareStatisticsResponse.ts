@@ -13,12 +13,12 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { FraKaareChurchStatistics } from './FraKaareChurchStatistics';
+import type { GetFraKaareStatisticsChurchStatistics } from './GetFraKaareStatisticsChurchStatistics';
 import {
-    FraKaareChurchStatisticsFromJSON,
-    FraKaareChurchStatisticsFromJSONTyped,
-    FraKaareChurchStatisticsToJSON,
-} from './FraKaareChurchStatistics';
+    GetFraKaareStatisticsChurchStatisticsFromJSON,
+    GetFraKaareStatisticsChurchStatisticsFromJSONTyped,
+    GetFraKaareStatisticsChurchStatisticsToJSON,
+} from './GetFraKaareStatisticsChurchStatistics';
 
 /**
  * 
@@ -28,10 +28,22 @@ import {
 export interface GetFraKaareStatisticsResponse {
     /**
      * 
-     * @type {Array<FraKaareChurchStatistics>}
+     * @type {string}
      * @memberof GetFraKaareStatisticsResponse
      */
-    list?: Array<FraKaareChurchStatistics> | null;
+    highlightedChurchName?: string | null;
+    /**
+     * 
+     * @type {Array<GetFraKaareStatisticsChurchStatistics>}
+     * @memberof GetFraKaareStatisticsResponse
+     */
+    largeChurches?: Array<GetFraKaareStatisticsChurchStatistics> | null;
+    /**
+     * 
+     * @type {Array<GetFraKaareStatisticsChurchStatistics>}
+     * @memberof GetFraKaareStatisticsResponse
+     */
+    smallChurches?: Array<GetFraKaareStatisticsChurchStatistics> | null;
 }
 
 /**
@@ -53,7 +65,9 @@ export function GetFraKaareStatisticsResponseFromJSONTyped(json: any, ignoreDisc
     }
     return {
         
-        'list': !exists(json, 'list') ? undefined : (json['list'] === null ? null : (json['list'] as Array<any>).map(FraKaareChurchStatisticsFromJSON)),
+        'highlightedChurchName': !exists(json, 'highlighted_church_name') ? undefined : json['highlighted_church_name'],
+        'largeChurches': !exists(json, 'large_churches') ? undefined : (json['large_churches'] === null ? null : (json['large_churches'] as Array<any>).map(GetFraKaareStatisticsChurchStatisticsFromJSON)),
+        'smallChurches': !exists(json, 'small_churches') ? undefined : (json['small_churches'] === null ? null : (json['small_churches'] as Array<any>).map(GetFraKaareStatisticsChurchStatisticsFromJSON)),
     };
 }
 
@@ -66,7 +80,9 @@ export function GetFraKaareStatisticsResponseToJSON(value?: GetFraKaareStatistic
     }
     return {
         
-        'list': value.list === undefined ? undefined : (value.list === null ? null : (value.list as Array<any>).map(FraKaareChurchStatisticsToJSON)),
+        'highlighted_church_name': value.highlightedChurchName,
+        'large_churches': value.largeChurches === undefined ? undefined : (value.largeChurches === null ? null : (value.largeChurches as Array<any>).map(GetFraKaareStatisticsChurchStatisticsToJSON)),
+        'small_churches': value.smallChurches === undefined ? undefined : (value.smallChurches === null ? null : (value.smallChurches as Array<any>).map(GetFraKaareStatisticsChurchStatisticsToJSON)),
     };
 }
 
