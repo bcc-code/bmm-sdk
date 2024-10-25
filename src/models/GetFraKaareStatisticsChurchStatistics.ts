@@ -54,6 +54,12 @@ export interface GetFraKaareStatisticsChurchStatistics {
      * @type {number}
      * @memberof GetFraKaareStatisticsChurchStatistics
      */
+    oneEpisodeChange?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetFraKaareStatisticsChurchStatistics
+     */
     allEpisodesPercent13To17?: number;
     /**
      * 
@@ -73,6 +79,12 @@ export interface GetFraKaareStatisticsChurchStatistics {
      * @memberof GetFraKaareStatisticsChurchStatistics
      */
     allEpisodesPercentAverage?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetFraKaareStatisticsChurchStatistics
+     */
+    allEpisodesChange?: number;
 }
 
 /**
@@ -99,10 +111,12 @@ export function GetFraKaareStatisticsChurchStatisticsFromJSONTyped(json: any, ig
         'oneEpisodePercent18To25': !exists(json, 'one_episode_percent18_to25') ? undefined : json['one_episode_percent18_to25'],
         'oneEpisodePercent26To35': !exists(json, 'one_episode_percent26_to35') ? undefined : json['one_episode_percent26_to35'],
         'oneEpisodePercentAverage': !exists(json, 'one_episode_percent_average') ? undefined : json['one_episode_percent_average'],
+        'oneEpisodeChange': !exists(json, 'one_episode_change') ? undefined : json['one_episode_change'],
         'allEpisodesPercent13To17': !exists(json, 'all_episodes_percent13_to17') ? undefined : json['all_episodes_percent13_to17'],
         'allEpisodesPercent18To25': !exists(json, 'all_episodes_percent18_to25') ? undefined : json['all_episodes_percent18_to25'],
         'allEpisodesPercent26To35': !exists(json, 'all_episodes_percent26_to35') ? undefined : json['all_episodes_percent26_to35'],
         'allEpisodesPercentAverage': !exists(json, 'all_episodes_percent_average') ? undefined : json['all_episodes_percent_average'],
+        'allEpisodesChange': !exists(json, 'all_episodes_change') ? undefined : json['all_episodes_change'],
     };
 }
 
@@ -120,10 +134,12 @@ export function GetFraKaareStatisticsChurchStatisticsToJSON(value?: GetFraKaareS
         'one_episode_percent18_to25': value.oneEpisodePercent18To25,
         'one_episode_percent26_to35': value.oneEpisodePercent26To35,
         'one_episode_percent_average': value.oneEpisodePercentAverage,
+        'one_episode_change': value.oneEpisodeChange,
         'all_episodes_percent13_to17': value.allEpisodesPercent13To17,
         'all_episodes_percent18_to25': value.allEpisodesPercent18To25,
         'all_episodes_percent26_to35': value.allEpisodesPercent26To35,
         'all_episodes_percent_average': value.allEpisodesPercentAverage,
+        'all_episodes_change': value.allEpisodesChange,
     };
 }
 
