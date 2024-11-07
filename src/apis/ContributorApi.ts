@@ -54,6 +54,11 @@ export interface ContributorSearchTermGetRequest {
     size?: number;
 }
 
+export interface ContributorSearchUnpublishedTermGetRequest {
+    term: string;
+    size?: number;
+}
+
 export interface ContributorSuggesterCompletionTermGetRequest {
     term: string;
     size?: number;
@@ -248,6 +253,38 @@ export class ContributorApi extends runtime.BaseAPI {
      */
     async contributorSearchTermGet(requestParameters: ContributorSearchTermGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<ContributorModel>> {
         const response = await this.contributorSearchTermGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     */
+    async contributorSearchUnpublishedTermGetRaw(requestParameters: ContributorSearchUnpublishedTermGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<ContributorModel>>> {
+        if (requestParameters.term === null || requestParameters.term === undefined) {
+            throw new runtime.RequiredError('term','Required parameter requestParameters.term was null or undefined when calling contributorSearchUnpublishedTermGet.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.size !== undefined) {
+            queryParameters['size'] = requestParameters.size;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/contributor/search_unpublished/{term}`.replace(`{${"term"}}`, encodeURIComponent(String(requestParameters.term))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(ContributorModelFromJSON));
+    }
+
+    /**
+     */
+    async contributorSearchUnpublishedTermGet(requestParameters: ContributorSearchUnpublishedTermGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<ContributorModel>> {
+        const response = await this.contributorSearchUnpublishedTermGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

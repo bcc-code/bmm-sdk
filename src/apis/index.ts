@@ -11,6 +11,7 @@ export * from './EventsApi';
 export * from './FacetsApi';
 export * from './FileApi';
 export * from './LinkMetadataApi';
+export * from './LyricsApi';
 export * from './PlaylistApi';
 export * from './PodcastApi';
 export * from './QuestionApi';

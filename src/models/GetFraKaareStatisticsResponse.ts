@@ -19,6 +19,12 @@ import {
     GetFraKaareStatisticsChurchStatisticsFromJSONTyped,
     GetFraKaareStatisticsChurchStatisticsToJSON,
 } from './GetFraKaareStatisticsChurchStatistics';
+import type { GetFraKaareStatisticsChurchStatisticsSnapshot } from './GetFraKaareStatisticsChurchStatisticsSnapshot';
+import {
+    GetFraKaareStatisticsChurchStatisticsSnapshotFromJSON,
+    GetFraKaareStatisticsChurchStatisticsSnapshotFromJSONTyped,
+    GetFraKaareStatisticsChurchStatisticsSnapshotToJSON,
+} from './GetFraKaareStatisticsChurchStatisticsSnapshot';
 
 /**
  * 
@@ -44,6 +50,12 @@ export interface GetFraKaareStatisticsResponse {
      * @memberof GetFraKaareStatisticsResponse
      */
     smallChurches?: Array<GetFraKaareStatisticsChurchStatistics> | null;
+    /**
+     * 
+     * @type {Array<GetFraKaareStatisticsChurchStatisticsSnapshot>}
+     * @memberof GetFraKaareStatisticsResponse
+     */
+    timeSeries?: Array<GetFraKaareStatisticsChurchStatisticsSnapshot> | null;
 }
 
 /**
@@ -68,6 +80,7 @@ export function GetFraKaareStatisticsResponseFromJSONTyped(json: any, ignoreDisc
         'highlightedChurchName': !exists(json, 'highlighted_church_name') ? undefined : json['highlighted_church_name'],
         'largeChurches': !exists(json, 'large_churches') ? undefined : (json['large_churches'] === null ? null : (json['large_churches'] as Array<any>).map(GetFraKaareStatisticsChurchStatisticsFromJSON)),
         'smallChurches': !exists(json, 'small_churches') ? undefined : (json['small_churches'] === null ? null : (json['small_churches'] as Array<any>).map(GetFraKaareStatisticsChurchStatisticsFromJSON)),
+        'timeSeries': !exists(json, 'time_series') ? undefined : (json['time_series'] === null ? null : (json['time_series'] as Array<any>).map(GetFraKaareStatisticsChurchStatisticsSnapshotFromJSON)),
     };
 }
 
@@ -83,6 +96,7 @@ export function GetFraKaareStatisticsResponseToJSON(value?: GetFraKaareStatistic
         'highlighted_church_name': value.highlightedChurchName,
         'large_churches': value.largeChurches === undefined ? undefined : (value.largeChurches === null ? null : (value.largeChurches as Array<any>).map(GetFraKaareStatisticsChurchStatisticsToJSON)),
         'small_churches': value.smallChurches === undefined ? undefined : (value.smallChurches === null ? null : (value.smallChurches as Array<any>).map(GetFraKaareStatisticsChurchStatisticsToJSON)),
+        'time_series': value.timeSeries === undefined ? undefined : (value.timeSeries === null ? null : (value.timeSeries as Array<any>).map(GetFraKaareStatisticsChurchStatisticsSnapshotToJSON)),
     };
 }
 

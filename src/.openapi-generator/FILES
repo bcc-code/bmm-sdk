@@ -10,6 +10,7 @@ apis/EventsApi.ts
 apis/FacetsApi.ts
 apis/FileApi.ts
 apis/LinkMetadataApi.ts
+apis/LyricsApi.ts
 apis/PlaylistApi.ts
 apis/PodcastApi.ts
 apis/QuestionApi.ts
@@ -48,6 +49,7 @@ models/DocumentListIAllDocumentModels.ts
 models/DocumentListPodcastModel.ts
 models/ForbildePoints.ts
 models/GetFraKaareStatisticsChurchStatistics.ts
+models/GetFraKaareStatisticsChurchStatisticsSnapshot.ts
 models/GetFraKaareStatisticsResponse.ts
 models/GetTopSongsCollectionModel.ts
 models/GetTopSongsCollectionModelTrackAndCount.ts
@@ -66,6 +68,8 @@ models/InfoMessageModel.ts
 models/LanguageEnum.ts
 models/ListenedStatus.ts
 models/ListeningEvent.ts
+models/Lyrics.ts
+models/LyricsVerse.ts
 models/MediaTypeEnum.ts
 models/MetadataModel.ts
 models/PlaylistModel.ts
@@ -115,6 +119,7 @@ models/TrackModelTrackMeta.ts
 models/TrackReference.ts
 models/TrackSubtype.ts
 models/TrackTranslationTranscriptionSegment.ts
+models/TranscriptionTranscriptionSource.ts
 models/UpdateTrackCollectionCommand.ts
 models/UserModel.ts
 models/YearInReviewModel.ts

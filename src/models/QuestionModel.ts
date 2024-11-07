@@ -100,6 +100,12 @@ export interface QuestionModel {
     solutionTextWrong?: string | null;
     /**
      * 
+     * @type {string}
+     * @memberof QuestionModel
+     */
+    thankYouText?: string | null;
+    /**
+     * 
      * @type {QuestionQuestionStyle}
      * @memberof QuestionModel
      */
@@ -159,6 +165,7 @@ export function QuestionModelFromJSONTyped(json: any, ignoreDiscriminator: boole
         'solutionTextPlaceholder': !exists(json, 'solution_text_placeholder') ? undefined : json['solution_text_placeholder'],
         'solutionTextCorrect': !exists(json, 'solution_text_correct') ? undefined : json['solution_text_correct'],
         'solutionTextWrong': !exists(json, 'solution_text_wrong') ? undefined : json['solution_text_wrong'],
+        'thankYouText': !exists(json, 'thank_you_text') ? undefined : json['thank_you_text'],
         'style': !exists(json, 'style') ? undefined : QuestionQuestionStyleFromJSON(json['style']),
         'answers': !exists(json, 'answers') ? undefined : (json['answers'] === null ? null : (json['answers'] as Array<any>).map(QuestionAnswerFromJSON)),
         'shortAnswers': !exists(json, 'short_answers') ? undefined : (json['short_answers'] === null ? null : (json['short_answers'] as Array<any>).map(QuestionShortAnswerFromJSON)),
@@ -183,6 +190,7 @@ export function QuestionModelToJSON(value?: QuestionModel | null): any {
         'solution_text_placeholder': value.solutionTextPlaceholder,
         'solution_text_correct': value.solutionTextCorrect,
         'solution_text_wrong': value.solutionTextWrong,
+        'thank_you_text': value.thankYouText,
         'style': QuestionQuestionStyleToJSON(value.style),
         'answers': value.answers === undefined ? undefined : (value.answers === null ? null : (value.answers as Array<any>).map(QuestionAnswerToJSON)),
         'short_answers': value.shortAnswers === undefined ? undefined : (value.shortAnswers === null ? null : (value.shortAnswers as Array<any>).map(QuestionShortAnswerToJSON)),
