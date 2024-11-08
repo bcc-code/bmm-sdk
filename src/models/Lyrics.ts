@@ -52,6 +52,12 @@ export interface Lyrics {
     source?: TranscriptionTranscriptionSource;
     /**
      * 
+     * @type {string}
+     * @memberof Lyrics
+     */
+    songTitle?: string | null;
+    /**
+     * 
      * @type {Array<number>}
      * @memberof Lyrics
      */
@@ -116,6 +122,7 @@ export function LyricsFromJSONTyped(json: any, ignoreDiscriminator: boolean): Ly
         'id': !exists(json, 'id') ? undefined : json['id'],
         'type': !exists(json, 'type') ? undefined : json['type'],
         'source': !exists(json, 'source') ? undefined : TranscriptionTranscriptionSourceFromJSON(json['source']),
+        'songTitle': !exists(json, 'song_title') ? undefined : json['song_title'],
         'lyricists': !exists(json, 'lyricists') ? undefined : json['lyricists'],
         'composers': !exists(json, 'composers') ? undefined : json['composers'],
         'shortCopyright': !exists(json, 'short_copyright') ? undefined : json['short_copyright'],
@@ -137,6 +144,7 @@ export function LyricsToJSON(value?: Lyrics | null): any {
         
         'id': value.id,
         'source': TranscriptionTranscriptionSourceToJSON(value.source),
+        'song_title': value.songTitle,
         'lyricists': value.lyricists,
         'composers': value.composers,
         'short_copyright': value.shortCopyright,
