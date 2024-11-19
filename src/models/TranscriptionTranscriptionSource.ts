@@ -20,7 +20,8 @@
 export const TranscriptionTranscriptionSource = {
     Mediabanken: 'Mediabanken',
     SongTreasures: 'SongTreasures',
-    Manual: 'Manual'
+    Manual: 'Manual',
+    Telegraph: 'Telegraph'
 } as const;
 export type TranscriptionTranscriptionSource = typeof TranscriptionTranscriptionSource[keyof typeof TranscriptionTranscriptionSource];
 

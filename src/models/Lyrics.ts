@@ -82,10 +82,22 @@ export interface Lyrics {
     longCopyright?: string | null;
     /**
      * 
+     * @type {number}
+     * @memberof Lyrics
+     */
+    yearPublished?: number | null;
+    /**
+     * 
      * @type {Array<LyricsVerse>}
      * @memberof Lyrics
      */
     verses?: Array<LyricsVerse> | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof Lyrics
+     */
+    originalUrl?: string | null;
     /**
      * 
      * @type {string}
@@ -127,7 +139,9 @@ export function LyricsFromJSONTyped(json: any, ignoreDiscriminator: boolean): Ly
         'composers': !exists(json, 'composers') ? undefined : json['composers'],
         'shortCopyright': !exists(json, 'short_copyright') ? undefined : json['short_copyright'],
         'longCopyright': !exists(json, 'long_copyright') ? undefined : json['long_copyright'],
+        'yearPublished': !exists(json, 'year_published') ? undefined : json['year_published'],
         'verses': !exists(json, 'verses') ? undefined : (json['verses'] === null ? null : (json['verses'] as Array<any>).map(LyricsVerseFromJSON)),
+        'originalUrl': !exists(json, 'original_url') ? undefined : json['original_url'],
         'modifiedBy': !exists(json, 'modified_by') ? undefined : json['modified_by'],
         'modifiedAt': !exists(json, 'modified_at') ? undefined : (new Date(json['modified_at'])),
     };
@@ -149,7 +163,9 @@ export function LyricsToJSON(value?: Lyrics | null): any {
         'composers': value.composers,
         'short_copyright': value.shortCopyright,
         'long_copyright': value.longCopyright,
+        'year_published': value.yearPublished,
         'verses': value.verses === undefined ? undefined : (value.verses === null ? null : (value.verses as Array<any>).map(LyricsVerseToJSON)),
+        'original_url': value.originalUrl,
         'modified_by': value.modifiedBy,
         'modified_at': value.modifiedAt === undefined ? undefined : (value.modifiedAt.toISOString()),
     };

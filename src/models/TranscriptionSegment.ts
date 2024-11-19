@@ -16,49 +16,55 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface TrackTranslationTranscriptionSegment
+ * @interface TranscriptionSegment
  */
-export interface TrackTranslationTranscriptionSegment {
+export interface TranscriptionSegment {
     /**
      * 
      * @type {number}
-     * @memberof TrackTranslationTranscriptionSegment
+     * @memberof TranscriptionSegment
      */
     id?: number;
     /**
      * 
      * @type {number}
-     * @memberof TrackTranslationTranscriptionSegment
+     * @memberof TranscriptionSegment
      */
     start?: number;
     /**
      * 
      * @type {number}
-     * @memberof TrackTranslationTranscriptionSegment
+     * @memberof TranscriptionSegment
      */
     end?: number;
     /**
      * 
      * @type {string}
-     * @memberof TrackTranslationTranscriptionSegment
+     * @memberof TranscriptionSegment
      */
     text?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof TranscriptionSegment
+     */
+    isHeader?: boolean;
 }
 
 /**
- * Check if a given object implements the TrackTranslationTranscriptionSegment interface.
+ * Check if a given object implements the TranscriptionSegment interface.
  */
-export function instanceOfTrackTranslationTranscriptionSegment(value: object): boolean {
+export function instanceOfTranscriptionSegment(value: object): boolean {
     let isInstance = true;
 
     return isInstance;
 }
 
-export function TrackTranslationTranscriptionSegmentFromJSON(json: any): TrackTranslationTranscriptionSegment {
-    return TrackTranslationTranscriptionSegmentFromJSONTyped(json, false);
+export function TranscriptionSegmentFromJSON(json: any): TranscriptionSegment {
+    return TranscriptionSegmentFromJSONTyped(json, false);
 }
 
-export function TrackTranslationTranscriptionSegmentFromJSONTyped(json: any, ignoreDiscriminator: boolean): TrackTranslationTranscriptionSegment {
+export function TranscriptionSegmentFromJSONTyped(json: any, ignoreDiscriminator: boolean): TranscriptionSegment {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -68,10 +74,11 @@ export function TrackTranslationTranscriptionSegmentFromJSONTyped(json: any, ign
         'start': !exists(json, 'start') ? undefined : json['start'],
         'end': !exists(json, 'end') ? undefined : json['end'],
         'text': !exists(json, 'text') ? undefined : json['text'],
+        'isHeader': !exists(json, 'is_header') ? undefined : json['is_header'],
     };
 }
 
-export function TrackTranslationTranscriptionSegmentToJSON(value?: TrackTranslationTranscriptionSegment | null): any {
+export function TranscriptionSegmentToJSON(value?: TranscriptionSegment | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -84,6 +91,7 @@ export function TrackTranslationTranscriptionSegmentToJSON(value?: TrackTranslat
         'start': value.start,
         'end': value.end,
         'text': value.text,
+        'is_header': value.isHeader,
     };
 }
 

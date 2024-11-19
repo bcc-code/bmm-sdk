@@ -39,6 +39,11 @@ export interface LyricsPostRequest {
     lyrics?: Lyrics;
 }
 
+export interface LyricsSearchTermGetRequest {
+    term: string;
+    size?: number;
+}
+
 /**
  * 
  */
@@ -177,6 +182,38 @@ export class LyricsApi extends runtime.BaseAPI {
      */
     async lyricsPost(requestParameters: LyricsPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.lyricsPostRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async lyricsSearchTermGetRaw(requestParameters: LyricsSearchTermGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<Lyrics>>> {
+        if (requestParameters.term === null || requestParameters.term === undefined) {
+            throw new runtime.RequiredError('term','Required parameter requestParameters.term was null or undefined when calling lyricsSearchTermGet.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.size !== undefined) {
+            queryParameters['size'] = requestParameters.size;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/lyrics/search/{term}`.replace(`{${"term"}}`, encodeURIComponent(String(requestParameters.term))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(LyricsFromJSON));
+    }
+
+    /**
+     */
+    async lyricsSearchTermGet(requestParameters: LyricsSearchTermGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<Lyrics>> {
+        const response = await this.lyricsSearchTermGetRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
 }

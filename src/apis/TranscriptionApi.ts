@@ -17,15 +17,15 @@ import * as runtime from '../runtime';
 import type {
   LanguageEnum,
   StoreTranscriptionEditSuggestionsSuggestion,
-  TrackTranslationTranscriptionSegment,
+  TranscriptionSegment,
 } from '../models/index';
 import {
     LanguageEnumFromJSON,
     LanguageEnumToJSON,
     StoreTranscriptionEditSuggestionsSuggestionFromJSON,
     StoreTranscriptionEditSuggestionsSuggestionToJSON,
-    TrackTranslationTranscriptionSegmentFromJSON,
-    TrackTranslationTranscriptionSegmentToJSON,
+    TranscriptionSegmentFromJSON,
+    TranscriptionSegmentToJSON,
 } from '../models/index';
 
 export interface TranscriptionTrackIdLanguageFirstLastGetRequest {
@@ -48,7 +48,7 @@ export class TranscriptionApi extends runtime.BaseAPI {
 
     /**
      */
-    async transcriptionTrackIdLanguageFirstLastGetRaw(requestParameters: TranscriptionTrackIdLanguageFirstLastGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<TrackTranslationTranscriptionSegment>>> {
+    async transcriptionTrackIdLanguageFirstLastGetRaw(requestParameters: TranscriptionTrackIdLanguageFirstLastGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<TranscriptionSegment>>> {
         if (requestParameters.trackId === null || requestParameters.trackId === undefined) {
             throw new runtime.RequiredError('trackId','Required parameter requestParameters.trackId was null or undefined when calling transcriptionTrackIdLanguageFirstLastGet.');
         }
@@ -76,12 +76,12 @@ export class TranscriptionApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(TrackTranslationTranscriptionSegmentFromJSON));
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(TranscriptionSegmentFromJSON));
     }
 
     /**
      */
-    async transcriptionTrackIdLanguageFirstLastGet(requestParameters: TranscriptionTrackIdLanguageFirstLastGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<TrackTranslationTranscriptionSegment>> {
+    async transcriptionTrackIdLanguageFirstLastGet(requestParameters: TranscriptionTrackIdLanguageFirstLastGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<TranscriptionSegment>> {
         const response = await this.transcriptionTrackIdLanguageFirstLastGetRaw(requestParameters, initOverrides);
         return await response.value();
     }

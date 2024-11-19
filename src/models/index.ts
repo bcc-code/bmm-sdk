@@ -93,7 +93,7 @@ export * from './TrackModelTrackContributorType';
 export * from './TrackModelTrackMeta';
 export * from './TrackReference';
 export * from './TrackSubtype';
-export * from './TrackTranslationTranscriptionSegment';
+export * from './TranscriptionSegment';
 export * from './TranscriptionTranscriptionSource';
 export * from './UpdateTrackCollectionCommand';
 export * from './UserModel';

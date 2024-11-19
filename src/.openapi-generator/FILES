@@ -118,7 +118,7 @@ models/TrackModelTrackContributorType.ts
 models/TrackModelTrackMeta.ts
 models/TrackReference.ts
 models/TrackSubtype.ts
-models/TrackTranslationTranscriptionSegment.ts
+models/TranscriptionSegment.ts
 models/TranscriptionTranscriptionSource.ts
 models/UpdateTrackCollectionCommand.ts
 models/UserModel.ts
