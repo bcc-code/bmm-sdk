@@ -424,7 +424,7 @@ export class TrackCollectionApi extends runtime.BaseAPI {
     /**
      * Create a track collection
      */
-    async trackCollectionPostRaw(requestParameters: TrackCollectionPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    async trackCollectionPostRaw(requestParameters: TrackCollectionPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<number>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -439,14 +439,19 @@ export class TrackCollectionApi extends runtime.BaseAPI {
             body: CreateTrackCollectionCommandToJSON(requestParameters.createTrackCollectionCommand),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse<number>(response);
+        } else {
+            return new runtime.TextApiResponse(response) as any;
+        }
     }
 
     /**
      * Create a track collection
      */
-    async trackCollectionPost(requestParameters: TrackCollectionPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.trackCollectionPostRaw(requestParameters, initOverrides);
+    async trackCollectionPost(requestParameters: TrackCollectionPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<number> {
+        const response = await this.trackCollectionPostRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
@@ -475,7 +480,7 @@ export class TrackCollectionApi extends runtime.BaseAPI {
 
     /**
      */
-    async trackCollectionTopSongsPostRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    async trackCollectionTopSongsPostRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<number>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -487,13 +492,18 @@ export class TrackCollectionApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse<number>(response);
+        } else {
+            return new runtime.TextApiResponse(response) as any;
+        }
     }
 
     /**
      */
-    async trackCollectionTopSongsPost(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.trackCollectionTopSongsPostRaw(initOverrides);
+    async trackCollectionTopSongsPost(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<number> {
+        const response = await this.trackCollectionTopSongsPostRaw(initOverrides);
+        return await response.value();
     }
 
     /**
