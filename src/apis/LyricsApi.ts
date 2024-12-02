@@ -160,7 +160,7 @@ export class LyricsApi extends runtime.BaseAPI {
 
     /**
      */
-    async lyricsPostRaw(requestParameters: LyricsPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    async lyricsPostRaw(requestParameters: LyricsPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<number>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -175,13 +175,18 @@ export class LyricsApi extends runtime.BaseAPI {
             body: LyricsToJSON(requestParameters.lyrics),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        if (this.isJsonMime(response.headers.get('content-type'))) {
+            return new runtime.JSONApiResponse<number>(response);
+        } else {
+            return new runtime.TextApiResponse(response) as any;
+        }
     }
 
     /**
      */
-    async lyricsPost(requestParameters: LyricsPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.lyricsPostRaw(requestParameters, initOverrides);
+    async lyricsPost(requestParameters: LyricsPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<number> {
+        const response = await this.lyricsPostRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**

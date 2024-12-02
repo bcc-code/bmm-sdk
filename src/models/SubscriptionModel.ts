@@ -38,6 +38,18 @@ export interface SubscriptionModel {
      * @memberof SubscriptionModel
      */
     podcastReferences?: Array<TrackListReference> | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof SubscriptionModel
+     */
+    showNotificationBadge?: boolean;
+    /**
+     * 
+     * @type {string}
+     * @memberof SubscriptionModel
+     */
+    os?: string | null;
 }
 
 /**
@@ -62,6 +74,8 @@ export function SubscriptionModelFromJSONTyped(json: any, ignoreDiscriminator: b
         
         'token': json['token'],
         'podcastReferences': !exists(json, 'podcast_references') ? undefined : (json['podcast_references'] === null ? null : (json['podcast_references'] as Array<any>).map(TrackListReferenceFromJSON)),
+        'showNotificationBadge': !exists(json, 'show_notification_badge') ? undefined : json['show_notification_badge'],
+        'os': !exists(json, 'os') ? undefined : json['os'],
     };
 }
 
@@ -76,6 +90,8 @@ export function SubscriptionModelToJSON(value?: SubscriptionModel | null): any {
         
         'token': value.token,
         'podcast_references': value.podcastReferences === undefined ? undefined : (value.podcastReferences === null ? null : (value.podcastReferences as Array<any>).map(TrackListReferenceToJSON)),
+        'show_notification_badge': value.showNotificationBadge,
+        'os': value.os,
     };
 }
 
