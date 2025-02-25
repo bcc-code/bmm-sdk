@@ -10,6 +10,7 @@ export * from './DownloadLinksApi';
 export * from './EventsApi';
 export * from './FacetsApi';
 export * from './FileApi';
+export * from './HvheApi';
 export * from './LinkMetadataApi';
 export * from './LyricsApi';
 export * from './PlaylistApi';

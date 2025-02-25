@@ -15,15 +15,22 @@
 
 import * as runtime from '../runtime';
 import type {
+  HandleBccmAnswerCommandBccmAnswer,
   QuestionModel,
   StoreQuestionResponseCommand,
 } from '../models/index';
 import {
+    HandleBccmAnswerCommandBccmAnswerFromJSON,
+    HandleBccmAnswerCommandBccmAnswerToJSON,
     QuestionModelFromJSON,
     QuestionModelToJSON,
     StoreQuestionResponseCommandFromJSON,
     StoreQuestionResponseCommandToJSON,
 } from '../models/index';
+
+export interface QuestionAnswersPostRequest {
+    handleBccmAnswerCommandBccmAnswer: Array<HandleBccmAnswerCommandBccmAnswer>;
+}
 
 export interface QuestionIdGetRequest {
     id: number;
@@ -38,6 +45,36 @@ export interface QuestionIdPostRequest {
  * 
  */
 export class QuestionApi extends runtime.BaseAPI {
+
+    /**
+     */
+    async questionAnswersPostRaw(requestParameters: QuestionAnswersPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.handleBccmAnswerCommandBccmAnswer === null || requestParameters.handleBccmAnswerCommandBccmAnswer === undefined) {
+            throw new runtime.RequiredError('handleBccmAnswerCommandBccmAnswer','Required parameter requestParameters.handleBccmAnswerCommandBccmAnswer was null or undefined when calling questionAnswersPost.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json-patch+json';
+
+        const response = await this.request({
+            path: `/question/answers`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: requestParameters.handleBccmAnswerCommandBccmAnswer.map(HandleBccmAnswerCommandBccmAnswerToJSON),
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async questionAnswersPost(requestParameters: QuestionAnswersPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.questionAnswersPostRaw(requestParameters, initOverrides);
+    }
 
     /**
      */

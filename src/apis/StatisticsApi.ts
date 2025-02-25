@@ -20,9 +20,11 @@ import type {
   DocumentListIAchievementCollectionOrChapterHeader,
   ForbildePoints,
   GetFraKaareStatisticsResponse,
+  GetProjectStandingsProjectStandings,
   GetYearInReviewOverviewSlide,
   LanguageEnum,
   ListeningEvent,
+  ProcessWatchedCommandEvent,
   ProjectChurchStatisticsQueryChurchStatistics,
   ProjectRulesQueryRules,
   StreakPoint,
@@ -38,12 +40,16 @@ import {
     ForbildePointsToJSON,
     GetFraKaareStatisticsResponseFromJSON,
     GetFraKaareStatisticsResponseToJSON,
+    GetProjectStandingsProjectStandingsFromJSON,
+    GetProjectStandingsProjectStandingsToJSON,
     GetYearInReviewOverviewSlideFromJSON,
     GetYearInReviewOverviewSlideToJSON,
     LanguageEnumFromJSON,
     LanguageEnumToJSON,
     ListeningEventFromJSON,
     ListeningEventToJSON,
+    ProcessWatchedCommandEventFromJSON,
+    ProcessWatchedCommandEventToJSON,
     ProjectChurchStatisticsQueryChurchStatisticsFromJSON,
     ProjectChurchStatisticsQueryChurchStatisticsToJSON,
     ProjectRulesQueryRulesFromJSON,
@@ -51,6 +57,12 @@ import {
     StreakPointFromJSON,
     StreakPointToJSON,
 } from '../models/index';
+
+export interface StatisticsAchievementIdGetRequest {
+    id: string;
+    lang?: LanguageEnum;
+    theme?: string;
+}
 
 export interface StatisticsAchievementNameAcknowledgePutRequest {
     name: string;
@@ -98,6 +110,15 @@ export interface StatisticsTrackPlayedPostRequest {
     createTrackPlayedEventsCommandEvent: Array<CreateTrackPlayedEventsCommandEvent>;
 }
 
+export interface StatisticsV2ProjectProgressGetRequest {
+    lang?: LanguageEnum;
+    theme?: string;
+}
+
+export interface StatisticsWatchedPostRequest {
+    processWatchedCommandEvent: Array<ProcessWatchedCommandEvent>;
+}
+
 /**
  * 
  */
@@ -124,6 +145,42 @@ export class StatisticsApi extends runtime.BaseAPI {
      */
     async statisticsAchievementDelete(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.statisticsAchievementDeleteRaw(initOverrides);
+    }
+
+    /**
+     */
+    async statisticsAchievementIdGetRaw(requestParameters: StatisticsAchievementIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<AchievementModel>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling statisticsAchievementIdGet.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.lang !== undefined) {
+            queryParameters['lang'] = requestParameters.lang;
+        }
+
+        if (requestParameters.theme !== undefined) {
+            queryParameters['theme'] = requestParameters.theme;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/Statistics/achievement/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => AchievementModelFromJSON(jsonValue));
+    }
+
+    /**
+     */
+    async statisticsAchievementIdGet(requestParameters: StatisticsAchievementIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<AchievementModel> {
+        const response = await this.statisticsAchievementIdGetRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
@@ -425,6 +482,30 @@ export class StatisticsApi extends runtime.BaseAPI {
 
     /**
      */
+    async statisticsProjectStandingsGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetProjectStandingsProjectStandings>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/Statistics/project/standings`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetProjectStandingsProjectStandingsFromJSON(jsonValue));
+    }
+
+    /**
+     */
+    async statisticsProjectStandingsGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetProjectStandingsProjectStandings> {
+        const response = await this.statisticsProjectStandingsGetRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     */
     async statisticsStreakpointPostRaw(requestParameters: StatisticsStreakpointPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.streakPoint === null || requestParameters.streakPoint === undefined) {
             throw new runtime.RequiredError('streakPoint','Required parameter requestParameters.streakPoint was null or undefined when calling statisticsStreakpointPost.');
@@ -481,6 +562,68 @@ export class StatisticsApi extends runtime.BaseAPI {
      */
     async statisticsTrackPlayedPost(requestParameters: StatisticsTrackPlayedPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.statisticsTrackPlayedPostRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async statisticsV2ProjectProgressGetRaw(requestParameters: StatisticsV2ProjectProgressGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ForbildePoints>> {
+        const queryParameters: any = {};
+
+        if (requestParameters.lang !== undefined) {
+            queryParameters['lang'] = requestParameters.lang;
+        }
+
+        if (requestParameters.theme !== undefined) {
+            queryParameters['theme'] = requestParameters.theme;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/Statistics/v2/project/progress`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ForbildePointsFromJSON(jsonValue));
+    }
+
+    /**
+     */
+    async statisticsV2ProjectProgressGet(requestParameters: StatisticsV2ProjectProgressGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ForbildePoints> {
+        const response = await this.statisticsV2ProjectProgressGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     */
+    async statisticsWatchedPostRaw(requestParameters: StatisticsWatchedPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.processWatchedCommandEvent === null || requestParameters.processWatchedCommandEvent === undefined) {
+            throw new runtime.RequiredError('processWatchedCommandEvent','Required parameter requestParameters.processWatchedCommandEvent was null or undefined when calling statisticsWatchedPost.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json-patch+json';
+
+        const response = await this.request({
+            path: `/Statistics/watched`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: requestParameters.processWatchedCommandEvent.map(ProcessWatchedCommandEventToJSON),
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async statisticsWatchedPost(requestParameters: StatisticsWatchedPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.statisticsWatchedPostRaw(requestParameters, initOverrides);
     }
 
     /**
