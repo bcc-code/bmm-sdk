@@ -28,6 +28,12 @@ import {
 export interface FraKaareDrawCommandResponse {
     /**
      * 
+     * @type {boolean}
+     * @memberof FraKaareDrawCommandResponse
+     */
+    isSuccess?: boolean;
+    /**
+     * 
      * @type {string}
      * @memberof FraKaareDrawCommandResponse
      */
@@ -44,6 +50,12 @@ export interface FraKaareDrawCommandResponse {
      * @memberof FraKaareDrawCommandResponse
      */
     winnerBirthYear?: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof FraKaareDrawCommandResponse
+     */
+    errorMessage?: string | null;
 }
 
 /**
@@ -65,9 +77,11 @@ export function FraKaareDrawCommandResponseFromJSONTyped(json: any, ignoreDiscri
     }
     return {
         
+        'isSuccess': !exists(json, 'is_success') ? undefined : json['is_success'],
         'winnerDisplayName': !exists(json, 'winner_display_name') ? undefined : json['winner_display_name'],
         'winnerGender': !exists(json, 'winner_gender') ? undefined : PersonGenderEnumFromJSON(json['winner_gender']),
         'winnerBirthYear': !exists(json, 'winner_birth_year') ? undefined : json['winner_birth_year'],
+        'errorMessage': !exists(json, 'error_message') ? undefined : json['error_message'],
     };
 }
 
@@ -80,9 +94,11 @@ export function FraKaareDrawCommandResponseToJSON(value?: FraKaareDrawCommandRes
     }
     return {
         
+        'is_success': value.isSuccess,
         'winner_display_name': value.winnerDisplayName,
         'winner_gender': PersonGenderEnumToJSON(value.winnerGender),
         'winner_birth_year': value.winnerBirthYear,
+        'error_message': value.errorMessage,
     };
 }
 
