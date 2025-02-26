@@ -43,7 +43,7 @@ export interface FraKaareDrawCommand {
      * @type {string}
      * @memberof FraKaareDrawCommand
      */
-    churchUid?: string;
+    churchUid?: string | null;
     /**
      * 
      * @type {PersonGenderEnum}

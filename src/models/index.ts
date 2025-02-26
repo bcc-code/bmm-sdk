@@ -24,6 +24,7 @@ export * from './DocumentListIAllDocumentModels';
 export * from './DocumentListPodcastModel';
 export * from './ForbildePoints';
 export * from './FraKaareDrawCommand';
+export * from './FraKaareDrawCommandResponse';
 export * from './GetFraKaareStatisticsChurchStatistics';
 export * from './GetFraKaareStatisticsChurchStatisticsSnapshot';
 export * from './GetFraKaareStatisticsResponse';

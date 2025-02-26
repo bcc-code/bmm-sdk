@@ -20,6 +20,7 @@ import type {
   DocumentListIAchievementCollectionOrChapterHeader,
   ForbildePoints,
   FraKaareDrawCommand,
+  FraKaareDrawCommandResponse,
   GetFraKaareStatisticsResponse,
   GetProjectStandingsProjectStandings,
   GetYearInReviewOverviewSlide,
@@ -42,6 +43,8 @@ import {
     ForbildePointsToJSON,
     FraKaareDrawCommandFromJSON,
     FraKaareDrawCommandToJSON,
+    FraKaareDrawCommandResponseFromJSON,
+    FraKaareDrawCommandResponseToJSON,
     GetFraKaareStatisticsResponseFromJSON,
     GetFraKaareStatisticsResponseToJSON,
     GetProjectStandingsProjectStandingsFromJSON,
@@ -286,7 +289,7 @@ export class StatisticsApi extends runtime.BaseAPI {
 
     /**
      */
-    async statisticsFraKaareDrawPostRaw(requestParameters: StatisticsFraKaareDrawPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    async statisticsFraKaareDrawPostRaw(requestParameters: StatisticsFraKaareDrawPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FraKaareDrawCommandResponse>> {
         if (requestParameters.fraKaareDrawCommand === null || requestParameters.fraKaareDrawCommand === undefined) {
             throw new runtime.RequiredError('fraKaareDrawCommand','Required parameter requestParameters.fraKaareDrawCommand was null or undefined when calling statisticsFraKaareDrawPost.');
         }
@@ -305,13 +308,14 @@ export class StatisticsApi extends runtime.BaseAPI {
             body: FraKaareDrawCommandToJSON(requestParameters.fraKaareDrawCommand),
         }, initOverrides);
 
-        return new runtime.VoidApiResponse(response);
+        return new runtime.JSONApiResponse(response, (jsonValue) => FraKaareDrawCommandResponseFromJSON(jsonValue));
     }
 
     /**
      */
-    async statisticsFraKaareDrawPost(requestParameters: StatisticsFraKaareDrawPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
-        await this.statisticsFraKaareDrawPostRaw(requestParameters, initOverrides);
+    async statisticsFraKaareDrawPost(requestParameters: StatisticsFraKaareDrawPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FraKaareDrawCommandResponse> {
+        const response = await this.statisticsFraKaareDrawPostRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**
