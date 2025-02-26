@@ -19,9 +19,11 @@ import type {
   CreateTrackPlayedEventsCommandEvent,
   DocumentListIAchievementCollectionOrChapterHeader,
   ForbildePoints,
+  FraKaareDrawCommand,
   GetFraKaareStatisticsResponse,
   GetProjectStandingsProjectStandings,
   GetYearInReviewOverviewSlide,
+  HvheProjectBox,
   LanguageEnum,
   ListeningEvent,
   ProcessWatchedCommandEvent,
@@ -38,12 +40,16 @@ import {
     DocumentListIAchievementCollectionOrChapterHeaderToJSON,
     ForbildePointsFromJSON,
     ForbildePointsToJSON,
+    FraKaareDrawCommandFromJSON,
+    FraKaareDrawCommandToJSON,
     GetFraKaareStatisticsResponseFromJSON,
     GetFraKaareStatisticsResponseToJSON,
     GetProjectStandingsProjectStandingsFromJSON,
     GetProjectStandingsProjectStandingsToJSON,
     GetYearInReviewOverviewSlideFromJSON,
     GetYearInReviewOverviewSlideToJSON,
+    HvheProjectBoxFromJSON,
+    HvheProjectBoxToJSON,
     LanguageEnumFromJSON,
     LanguageEnumToJSON,
     ListeningEventFromJSON,
@@ -76,6 +82,10 @@ export interface StatisticsAchievementsGetRequest {
 export interface StatisticsAchievementsToAcknowledgeGetRequest {
     lang?: LanguageEnum;
     theme?: string;
+}
+
+export interface StatisticsFraKaareDrawPostRequest {
+    fraKaareDrawCommand: FraKaareDrawCommand;
 }
 
 export interface StatisticsListeningPostRequest {
@@ -272,6 +282,36 @@ export class StatisticsApi extends runtime.BaseAPI {
     async statisticsAchievementsToAcknowledgeGet(requestParameters: StatisticsAchievementsToAcknowledgeGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<AchievementModel>> {
         const response = await this.statisticsAchievementsToAcknowledgeGetRaw(requestParameters, initOverrides);
         return await response.value();
+    }
+
+    /**
+     */
+    async statisticsFraKaareDrawPostRaw(requestParameters: StatisticsFraKaareDrawPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.fraKaareDrawCommand === null || requestParameters.fraKaareDrawCommand === undefined) {
+            throw new runtime.RequiredError('fraKaareDrawCommand','Required parameter requestParameters.fraKaareDrawCommand was null or undefined when calling statisticsFraKaareDrawPost.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json-patch+json';
+
+        const response = await this.request({
+            path: `/Statistics/fra-kaare/draw`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: FraKaareDrawCommandToJSON(requestParameters.fraKaareDrawCommand),
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async statisticsFraKaareDrawPost(requestParameters: StatisticsFraKaareDrawPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.statisticsFraKaareDrawPostRaw(requestParameters, initOverrides);
     }
 
     /**
@@ -566,7 +606,7 @@ export class StatisticsApi extends runtime.BaseAPI {
 
     /**
      */
-    async statisticsV2ProjectProgressGetRaw(requestParameters: StatisticsV2ProjectProgressGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ForbildePoints>> {
+    async statisticsV2ProjectProgressGetRaw(requestParameters: StatisticsV2ProjectProgressGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<HvheProjectBox>> {
         const queryParameters: any = {};
 
         if (requestParameters.lang !== undefined) {
@@ -586,12 +626,12 @@ export class StatisticsApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => ForbildePointsFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => HvheProjectBoxFromJSON(jsonValue));
     }
 
     /**
      */
-    async statisticsV2ProjectProgressGet(requestParameters: StatisticsV2ProjectProgressGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ForbildePoints> {
+    async statisticsV2ProjectProgressGet(requestParameters: StatisticsV2ProjectProgressGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<HvheProjectBox> {
         const response = await this.statisticsV2ProjectProgressGetRaw(requestParameters, initOverrides);
         return await response.value();
     }

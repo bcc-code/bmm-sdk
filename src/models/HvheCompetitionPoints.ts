@@ -16,37 +16,37 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface HvheControllerHvheStatus
+ * @interface HvheCompetitionPoints
  */
-export interface HvheControllerHvheStatus {
+export interface HvheCompetitionPoints {
     /**
      * 
      * @type {number}
-     * @memberof HvheControllerHvheStatus
+     * @memberof HvheCompetitionPoints
      */
     boys?: number;
     /**
      * 
      * @type {number}
-     * @memberof HvheControllerHvheStatus
+     * @memberof HvheCompetitionPoints
      */
     girls?: number;
 }
 
 /**
- * Check if a given object implements the HvheControllerHvheStatus interface.
+ * Check if a given object implements the HvheCompetitionPoints interface.
  */
-export function instanceOfHvheControllerHvheStatus(value: object): boolean {
+export function instanceOfHvheCompetitionPoints(value: object): boolean {
     let isInstance = true;
 
     return isInstance;
 }
 
-export function HvheControllerHvheStatusFromJSON(json: any): HvheControllerHvheStatus {
-    return HvheControllerHvheStatusFromJSONTyped(json, false);
+export function HvheCompetitionPointsFromJSON(json: any): HvheCompetitionPoints {
+    return HvheCompetitionPointsFromJSONTyped(json, false);
 }
 
-export function HvheControllerHvheStatusFromJSONTyped(json: any, ignoreDiscriminator: boolean): HvheControllerHvheStatus {
+export function HvheCompetitionPointsFromJSONTyped(json: any, ignoreDiscriminator: boolean): HvheCompetitionPoints {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -57,7 +57,7 @@ export function HvheControllerHvheStatusFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-export function HvheControllerHvheStatusToJSON(value?: HvheControllerHvheStatus | null): any {
+export function HvheCompetitionPointsToJSON(value?: HvheCompetitionPoints | null): any {
     if (value === undefined) {
         return undefined;
     }

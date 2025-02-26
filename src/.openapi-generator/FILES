@@ -49,6 +49,7 @@ models/DocumentListIAlbumPlaylistOrChapterHeader.ts
 models/DocumentListIAllDocumentModels.ts
 models/DocumentListPodcastModel.ts
 models/ForbildePoints.ts
+models/FraKaareDrawCommand.ts
 models/GetFraKaareStatisticsChurchStatistics.ts
 models/GetFraKaareStatisticsChurchStatisticsSnapshot.ts
 models/GetFraKaareStatisticsResponse.ts
@@ -62,7 +63,7 @@ models/GetYearInReviewOverviewSlide.ts
 models/GibraltarProjectBox.ts
 models/HandleBccmAnswerCommandBccmAnswer.ts
 models/Highlighting.ts
-models/HvheControllerHvheStatus.ts
+models/HvheCompetitionPoints.ts
 models/HvheProjectBox.ts
 models/IAchievementCollectionOrChapterHeader.ts
 models/IAlbumContributorPodcastPlaylistOrTrack.ts
@@ -79,6 +80,7 @@ models/Lyrics.ts
 models/LyricsVerse.ts
 models/MediaTypeEnum.ts
 models/MetadataModel.ts
+models/PersonGenderEnum.ts
 models/PlaylistModel.ts
 models/PodcastModel.ts
 models/ProblemDetails.ts
