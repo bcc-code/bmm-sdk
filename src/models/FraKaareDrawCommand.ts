@@ -28,6 +28,12 @@ import {
 export interface FraKaareDrawCommand {
     /**
      * 
+     * @type {string}
+     * @memberof FraKaareDrawCommand
+     */
+    drawOptionId?: string | null;
+    /**
+     * 
      * @type {number}
      * @memberof FraKaareDrawCommand
      */
@@ -71,6 +77,7 @@ export function FraKaareDrawCommandFromJSONTyped(json: any, ignoreDiscriminator:
     }
     return {
         
+        'drawOptionId': !exists(json, 'draw_option_id') ? undefined : json['draw_option_id'],
         'earliestBirthYear': !exists(json, 'earliest_birth_year') ? undefined : json['earliest_birth_year'],
         'latestBirthYear': !exists(json, 'latest_birth_year') ? undefined : json['latest_birth_year'],
         'churchUid': !exists(json, 'church_uid') ? undefined : json['church_uid'],
@@ -87,6 +94,7 @@ export function FraKaareDrawCommandToJSON(value?: FraKaareDrawCommand | null): a
     }
     return {
         
+        'draw_option_id': value.drawOptionId,
         'earliest_birth_year': value.earliestBirthYear,
         'latest_birth_year': value.latestBirthYear,
         'church_uid': value.churchUid,

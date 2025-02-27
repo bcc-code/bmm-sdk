@@ -13,6 +13,12 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { FraKaareDrawCommandDrawOption } from './FraKaareDrawCommandDrawOption';
+import {
+    FraKaareDrawCommandDrawOptionFromJSON,
+    FraKaareDrawCommandDrawOptionFromJSONTyped,
+    FraKaareDrawCommandDrawOptionToJSON,
+} from './FraKaareDrawCommandDrawOption';
 import type { GetFraKaareStatisticsChurchStatistics } from './GetFraKaareStatisticsChurchStatistics';
 import {
     GetFraKaareStatisticsChurchStatisticsFromJSON,
@@ -56,6 +62,12 @@ export interface GetFraKaareStatisticsResponse {
      * @memberof GetFraKaareStatisticsResponse
      */
     timeSeries?: Array<GetFraKaareStatisticsChurchStatisticsSnapshot> | null;
+    /**
+     * 
+     * @type {Array<FraKaareDrawCommandDrawOption>}
+     * @memberof GetFraKaareStatisticsResponse
+     */
+    drawOptions?: Array<FraKaareDrawCommandDrawOption> | null;
 }
 
 /**
@@ -81,6 +93,7 @@ export function GetFraKaareStatisticsResponseFromJSONTyped(json: any, ignoreDisc
         'largeChurches': !exists(json, 'large_churches') ? undefined : (json['large_churches'] === null ? null : (json['large_churches'] as Array<any>).map(GetFraKaareStatisticsChurchStatisticsFromJSON)),
         'smallChurches': !exists(json, 'small_churches') ? undefined : (json['small_churches'] === null ? null : (json['small_churches'] as Array<any>).map(GetFraKaareStatisticsChurchStatisticsFromJSON)),
         'timeSeries': !exists(json, 'time_series') ? undefined : (json['time_series'] === null ? null : (json['time_series'] as Array<any>).map(GetFraKaareStatisticsChurchStatisticsSnapshotFromJSON)),
+        'drawOptions': !exists(json, 'draw_options') ? undefined : (json['draw_options'] === null ? null : (json['draw_options'] as Array<any>).map(FraKaareDrawCommandDrawOptionFromJSON)),
     };
 }
 
@@ -97,6 +110,7 @@ export function GetFraKaareStatisticsResponseToJSON(value?: GetFraKaareStatistic
         'large_churches': value.largeChurches === undefined ? undefined : (value.largeChurches === null ? null : (value.largeChurches as Array<any>).map(GetFraKaareStatisticsChurchStatisticsToJSON)),
         'small_churches': value.smallChurches === undefined ? undefined : (value.smallChurches === null ? null : (value.smallChurches as Array<any>).map(GetFraKaareStatisticsChurchStatisticsToJSON)),
         'time_series': value.timeSeries === undefined ? undefined : (value.timeSeries === null ? null : (value.timeSeries as Array<any>).map(GetFraKaareStatisticsChurchStatisticsSnapshotToJSON)),
+        'draw_options': value.drawOptions === undefined ? undefined : (value.drawOptions === null ? null : (value.drawOptions as Array<any>).map(FraKaareDrawCommandDrawOptionToJSON)),
     };
 }
 

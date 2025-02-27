@@ -50,6 +50,7 @@ models/DocumentListIAllDocumentModels.ts
 models/DocumentListPodcastModel.ts
 models/ForbildePoints.ts
 models/FraKaareDrawCommand.ts
+models/FraKaareDrawCommandDrawOption.ts
 models/FraKaareDrawCommandResponse.ts
 models/GetFraKaareStatisticsChurchStatistics.ts
 models/GetFraKaareStatisticsChurchStatisticsSnapshot.ts
