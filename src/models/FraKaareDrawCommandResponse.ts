@@ -56,6 +56,12 @@ export interface FraKaareDrawCommandResponse {
      * @memberof FraKaareDrawCommandResponse
      */
     errorMessage?: string | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof FraKaareDrawCommandResponse
+     */
+    drawsLeft?: number;
 }
 
 /**
@@ -82,6 +88,7 @@ export function FraKaareDrawCommandResponseFromJSONTyped(json: any, ignoreDiscri
         'winnerGender': !exists(json, 'winner_gender') ? undefined : PersonGenderEnumFromJSON(json['winner_gender']),
         'winnerBirthYear': !exists(json, 'winner_birth_year') ? undefined : json['winner_birth_year'],
         'errorMessage': !exists(json, 'error_message') ? undefined : json['error_message'],
+        'drawsLeft': !exists(json, 'draws_left') ? undefined : json['draws_left'],
     };
 }
 
@@ -99,6 +106,7 @@ export function FraKaareDrawCommandResponseToJSON(value?: FraKaareDrawCommandRes
         'winner_gender': PersonGenderEnumToJSON(value.winnerGender),
         'winner_birth_year': value.winnerBirthYear,
         'error_message': value.errorMessage,
+        'draws_left': value.drawsLeft,
     };
 }
 

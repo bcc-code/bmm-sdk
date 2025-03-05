@@ -68,6 +68,18 @@ export interface GetFraKaareStatisticsResponse {
      * @memberof GetFraKaareStatisticsResponse
      */
     drawOptions?: Array<FraKaareDrawCommandDrawOption> | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetFraKaareStatisticsResponse
+     */
+    maxDraws?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetFraKaareStatisticsResponse
+     */
+    drawsLeft?: number;
 }
 
 /**
@@ -94,6 +106,8 @@ export function GetFraKaareStatisticsResponseFromJSONTyped(json: any, ignoreDisc
         'smallChurches': !exists(json, 'small_churches') ? undefined : (json['small_churches'] === null ? null : (json['small_churches'] as Array<any>).map(GetFraKaareStatisticsChurchStatisticsFromJSON)),
         'timeSeries': !exists(json, 'time_series') ? undefined : (json['time_series'] === null ? null : (json['time_series'] as Array<any>).map(GetFraKaareStatisticsChurchStatisticsSnapshotFromJSON)),
         'drawOptions': !exists(json, 'draw_options') ? undefined : (json['draw_options'] === null ? null : (json['draw_options'] as Array<any>).map(FraKaareDrawCommandDrawOptionFromJSON)),
+        'maxDraws': !exists(json, 'max_draws') ? undefined : json['max_draws'],
+        'drawsLeft': !exists(json, 'draws_left') ? undefined : json['draws_left'],
     };
 }
 
@@ -111,6 +125,8 @@ export function GetFraKaareStatisticsResponseToJSON(value?: GetFraKaareStatistic
         'small_churches': value.smallChurches === undefined ? undefined : (value.smallChurches === null ? null : (value.smallChurches as Array<any>).map(GetFraKaareStatisticsChurchStatisticsToJSON)),
         'time_series': value.timeSeries === undefined ? undefined : (value.timeSeries === null ? null : (value.timeSeries as Array<any>).map(GetFraKaareStatisticsChurchStatisticsSnapshotToJSON)),
         'draw_options': value.drawOptions === undefined ? undefined : (value.drawOptions === null ? null : (value.drawOptions as Array<any>).map(FraKaareDrawCommandDrawOptionToJSON)),
+        'max_draws': value.maxDraws,
+        'draws_left': value.drawsLeft,
     };
 }
 
