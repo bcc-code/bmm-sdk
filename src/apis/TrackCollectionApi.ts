@@ -90,6 +90,10 @@ export interface TrackCollectionUnlikePostRequest {
     link?: Array<string>;
 }
 
+export interface TrackCollectionIdDownloadGetRequest {
+    id: number;
+}
+
 /**
  * 
  */
@@ -532,5 +536,35 @@ export class TrackCollectionApi extends runtime.BaseAPI {
     async trackCollectionUnlikePost(requestParameters: TrackCollectionUnlikePostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.trackCollectionUnlikePostRaw(requestParameters, initOverrides);
     }
+
+        /**
+     * Download a track collection
+     */
+    async trackCollectionIdDownloadGetRaw(requestParameters: TrackCollectionIdDownloadGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Blob>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling trackCollectionIdDownloadGet.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/track_collection/{id}/download`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.BlobApiResponse(response);
+    }
+
+    /**
+     * Download a track collection
+     */
+    async trackCollectionIdDownloadGet(requestParameters: TrackCollectionIdDownloadGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Blob> {
+        const response = await this.trackCollectionIdDownloadGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }    
 
 }
