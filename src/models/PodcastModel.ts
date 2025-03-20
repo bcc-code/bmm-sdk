@@ -62,6 +62,12 @@ export interface PodcastModel {
      * @memberof PodcastModel
      */
     title?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof PodcastModel
+     */
+    useWeekGrouping?: boolean;
 }
 
 
@@ -101,6 +107,7 @@ export function PodcastModelFromJSONTyped(json: any, ignoreDiscriminator: boolea
         'languages': !exists(json, 'languages') ? undefined : (json['languages'] === null ? null : (json['languages'] as Array<any>).map(LanguageEnumFromJSON)),
         'language': !exists(json, 'language') ? undefined : LanguageEnumFromJSON(json['language']),
         'title': !exists(json, 'title') ? undefined : json['title'],
+        'useWeekGrouping': !exists(json, 'use_week_grouping') ? undefined : json['use_week_grouping'],
     };
 }
 
@@ -118,6 +125,7 @@ export function PodcastModelToJSON(value?: PodcastModel | null): any {
         'languages': value.languages === undefined ? undefined : (value.languages === null ? null : (value.languages as Array<any>).map(LanguageEnumToJSON)),
         'language': LanguageEnumToJSON(value.language),
         'title': value.title,
+        'use_week_grouping': value.useWeekGrouping,
     };
 }
 

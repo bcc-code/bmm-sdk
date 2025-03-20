@@ -37,6 +37,12 @@ export interface HandleBccmAnswerCommandBccmAnswer {
      * @memberof HandleBccmAnswerCommandBccmAnswer
      */
     selectedAnswerId?: string;
+    /**
+     * 
+     * @type {number}
+     * @memberof HandleBccmAnswerCommandBccmAnswer
+     */
+    personId?: number;
 }
 
 /**
@@ -61,6 +67,7 @@ export function HandleBccmAnswerCommandBccmAnswerFromJSONTyped(json: any, ignore
         'questionId': !exists(json, 'question_id') ? undefined : json['question_id'],
         'answeredCorrectly': !exists(json, 'answered_correctly') ? undefined : json['answered_correctly'],
         'selectedAnswerId': !exists(json, 'selected_answer_id') ? undefined : json['selected_answer_id'],
+        'personId': !exists(json, 'person_id') ? undefined : json['person_id'],
     };
 }
 
@@ -76,6 +83,7 @@ export function HandleBccmAnswerCommandBccmAnswerToJSON(value?: HandleBccmAnswer
         'question_id': value.questionId,
         'answered_correctly': value.answeredCorrectly,
         'selected_answer_id': value.selectedAnswerId,
+        'person_id': value.personId,
     };
 }
 
