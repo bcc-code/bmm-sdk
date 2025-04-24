@@ -17,6 +17,7 @@ import * as runtime from '../runtime';
 import type {
   DocumentListIAllDocumentModels,
   LanguageEnum,
+  PlaylistDetailsModel,
   PlaylistModel,
   PublishedFilter,
   TrackModel,
@@ -26,6 +27,8 @@ import {
     DocumentListIAllDocumentModelsToJSON,
     LanguageEnumFromJSON,
     LanguageEnumToJSON,
+    PlaylistDetailsModelFromJSON,
+    PlaylistDetailsModelToJSON,
     PlaylistModelFromJSON,
     PlaylistModelToJSON,
     PublishedFilterFromJSON,
@@ -40,6 +43,10 @@ export interface PlaylistDocumentsGetRequest {
 }
 
 export interface PlaylistIdCoverGetRequest {
+    id: number;
+}
+
+export interface PlaylistIdDetailsGetRequest {
     id: number;
 }
 
@@ -140,6 +147,34 @@ export class PlaylistApi extends runtime.BaseAPI {
      */
     async playlistIdCoverGet(requestParameters: PlaylistIdCoverGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.playlistIdCoverGetRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async playlistIdDetailsGetRaw(requestParameters: PlaylistIdDetailsGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PlaylistDetailsModel>> {
+        if (requestParameters.id === null || requestParameters.id === undefined) {
+            throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling playlistIdDetailsGet.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/playlist/{id}/details`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => PlaylistDetailsModelFromJSON(jsonValue));
+    }
+
+    /**
+     */
+    async playlistIdDetailsGet(requestParameters: PlaylistIdDetailsGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PlaylistDetailsModel> {
+        const response = await this.playlistIdDetailsGetRaw(requestParameters, initOverrides);
+        return await response.value();
     }
 
     /**

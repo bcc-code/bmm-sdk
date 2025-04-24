@@ -54,13 +54,6 @@ import {
     GibraltarProjectBoxFromJSONTyped,
     GibraltarProjectBoxToJSON,
 } from './GibraltarProjectBox';
-import type { HvheProjectBox } from './HvheProjectBox';
-import {
-    instanceOfHvheProjectBox,
-    HvheProjectBoxFromJSON,
-    HvheProjectBoxFromJSONTyped,
-    HvheProjectBoxToJSON,
-} from './HvheProjectBox';
 import type { InfoMessageModel } from './InfoMessageModel';
 import {
     instanceOfInfoMessageModel,
@@ -68,6 +61,13 @@ import {
     InfoMessageModelFromJSONTyped,
     InfoMessageModelToJSON,
 } from './InfoMessageModel';
+import type { PlaylistDetailsModel } from './PlaylistDetailsModel';
+import {
+    instanceOfPlaylistDetailsModel,
+    PlaylistDetailsModelFromJSON,
+    PlaylistDetailsModelFromJSONTyped,
+    PlaylistDetailsModelToJSON,
+} from './PlaylistDetailsModel';
 import type { PlaylistModel } from './PlaylistModel';
 import {
     instanceOfPlaylistModel,
@@ -89,6 +89,13 @@ import {
     ProjectBoxFromJSONTyped,
     ProjectBoxToJSON,
 } from './ProjectBox';
+import type { ProjectBoxV2 } from './ProjectBoxV2';
+import {
+    instanceOfProjectBoxV2,
+    ProjectBoxV2FromJSON,
+    ProjectBoxV2FromJSONTyped,
+    ProjectBoxV2ToJSON,
+} from './ProjectBoxV2';
 import type { RecommendationModel } from './RecommendationModel';
 import {
     instanceOfRecommendationModel,
@@ -151,7 +158,7 @@ import {
  * 
  * @export
  */
-export type IAllDocumentModels = { type: 'InfoMessage' } & InfoMessageModel | { type: 'Tile' } & TileModel | { type: 'achievement_collection' } & AchievementCollection | { type: 'album' } & AlbumModel | { type: 'chapter_header' } & ChapterHeader | { type: 'contributor' } & ContributorModel | { type: 'gibraltar_project_box' } & GibraltarProjectBox | { type: 'hvhe_project_box' } & HvheProjectBox | { type: 'listening_streak' } & CurrentWeeksStreakVm | { type: 'playlist' } & PlaylistModel | { type: 'podcast' } & PodcastModel | { type: 'project_box' } & ProjectBox | { type: 'recommendation' } & RecommendationModel | { type: 'section_header' } & SectionHeaderModel | { type: 'tile_message' } & TileMessageModel | { type: 'tile_video' } & TileVideoModel | { type: 'track' } & TrackModel | { type: 'track_collection' } & TrackCollectionModel | { type: 'year_in_review' } & YearInReviewModel;
+export type IAllDocumentModels = { type: 'InfoMessage' } & InfoMessageModel | { type: 'Tile' } & TileModel | { type: 'achievement_collection' } & AchievementCollection | { type: 'album' } & AlbumModel | { type: 'chapter_header' } & ChapterHeader | { type: 'contributor' } & ContributorModel | { type: 'gibraltar_project_box' } & GibraltarProjectBox | { type: 'listening_streak' } & CurrentWeeksStreakVm | { type: 'playlist' } & PlaylistModel | { type: 'playlist_details' } & PlaylistDetailsModel | { type: 'podcast' } & PodcastModel | { type: 'project_box' } & ProjectBox | { type: 'project_box_v2' } & ProjectBoxV2 | { type: 'recommendation' } & RecommendationModel | { type: 'section_header' } & SectionHeaderModel | { type: 'tile_message' } & TileMessageModel | { type: 'tile_video' } & TileVideoModel | { type: 'track' } & TrackModel | { type: 'track_collection' } & TrackCollectionModel | { type: 'year_in_review' } & YearInReviewModel;
 
 export function IAllDocumentModelsFromJSON(json: any): IAllDocumentModels {
     return IAllDocumentModelsFromJSONTyped(json, false);
@@ -176,16 +183,18 @@ export function IAllDocumentModelsFromJSONTyped(json: any, ignoreDiscriminator: 
             return {...ContributorModelFromJSONTyped(json, true), type: 'contributor'};
         case 'gibraltar_project_box':
             return {...GibraltarProjectBoxFromJSONTyped(json, true), type: 'gibraltar_project_box'};
-        case 'hvhe_project_box':
-            return {...HvheProjectBoxFromJSONTyped(json, true), type: 'hvhe_project_box'};
         case 'listening_streak':
             return {...CurrentWeeksStreakVmFromJSONTyped(json, true), type: 'listening_streak'};
         case 'playlist':
             return {...PlaylistModelFromJSONTyped(json, true), type: 'playlist'};
+        case 'playlist_details':
+            return {...PlaylistDetailsModelFromJSONTyped(json, true), type: 'playlist_details'};
         case 'podcast':
             return {...PodcastModelFromJSONTyped(json, true), type: 'podcast'};
         case 'project_box':
             return {...ProjectBoxFromJSONTyped(json, true), type: 'project_box'};
+        case 'project_box_v2':
+            return {...ProjectBoxV2FromJSONTyped(json, true), type: 'project_box_v2'};
         case 'recommendation':
             return {...RecommendationModelFromJSONTyped(json, true), type: 'recommendation'};
         case 'section_header':
@@ -227,16 +236,18 @@ export function IAllDocumentModelsToJSON(value?: IAllDocumentModels | null): any
             return ContributorModelToJSON(value);
         case 'gibraltar_project_box':
             return GibraltarProjectBoxToJSON(value);
-        case 'hvhe_project_box':
-            return HvheProjectBoxToJSON(value);
         case 'listening_streak':
             return CurrentWeeksStreakVmToJSON(value);
         case 'playlist':
             return PlaylistModelToJSON(value);
+        case 'playlist_details':
+            return PlaylistDetailsModelToJSON(value);
         case 'podcast':
             return PodcastModelToJSON(value);
         case 'project_box':
             return ProjectBoxToJSON(value);
+        case 'project_box_v2':
+            return ProjectBoxV2ToJSON(value);
         case 'recommendation':
             return RecommendationModelToJSON(value);
         case 'section_header':

@@ -16,13 +16,13 @@
 import * as runtime from '../runtime';
 import type {
   HvheCompetitionPoints,
-  HvheProjectBox,
+  ProjectBoxV2,
 } from '../models/index';
 import {
     HvheCompetitionPointsFromJSON,
     HvheCompetitionPointsToJSON,
-    HvheProjectBoxFromJSON,
-    HvheProjectBoxToJSON,
+    ProjectBoxV2FromJSON,
+    ProjectBoxV2ToJSON,
 } from '../models/index';
 
 export interface HVHEProgressGetRequest {
@@ -36,7 +36,7 @@ export class HvheApi extends runtime.BaseAPI {
 
     /**
      */
-    async hVHEProgressGetRaw(requestParameters: HVHEProgressGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<HvheProjectBox>> {
+    async hVHEProgressGetRaw(requestParameters: HVHEProgressGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectBoxV2>> {
         const queryParameters: any = {};
 
         if (requestParameters.theme !== undefined) {
@@ -52,12 +52,12 @@ export class HvheApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => HvheProjectBoxFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectBoxV2FromJSON(jsonValue));
     }
 
     /**
      */
-    async hVHEProgressGet(requestParameters: HVHEProgressGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<HvheProjectBox> {
+    async hVHEProgressGet(requestParameters: HVHEProgressGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectBoxV2> {
         const response = await this.hVHEProgressGetRaw(requestParameters, initOverrides);
         return await response.value();
     }

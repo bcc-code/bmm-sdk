@@ -26,6 +26,13 @@ import {
     ContributorModelFromJSONTyped,
     ContributorModelToJSON,
 } from './ContributorModel';
+import type { PlaylistDetailsModel } from './PlaylistDetailsModel';
+import {
+    instanceOfPlaylistDetailsModel,
+    PlaylistDetailsModelFromJSON,
+    PlaylistDetailsModelFromJSONTyped,
+    PlaylistDetailsModelToJSON,
+} from './PlaylistDetailsModel';
 import type { PlaylistModel } from './PlaylistModel';
 import {
     instanceOfPlaylistModel,
@@ -53,7 +60,7 @@ import {
  * 
  * @export
  */
-export type IAlbumContributorPodcastPlaylistOrTrack = { type: 'album' } & AlbumModel | { type: 'contributor' } & ContributorModel | { type: 'playlist' } & PlaylistModel | { type: 'podcast' } & PodcastModel | { type: 'track' } & TrackModel;
+export type IAlbumContributorPodcastPlaylistOrTrack = { type: 'album' } & AlbumModel | { type: 'contributor' } & ContributorModel | { type: 'playlist' } & PlaylistModel | { type: 'playlist_details' } & PlaylistDetailsModel | { type: 'podcast' } & PodcastModel | { type: 'track' } & TrackModel;
 
 export function IAlbumContributorPodcastPlaylistOrTrackFromJSON(json: any): IAlbumContributorPodcastPlaylistOrTrack {
     return IAlbumContributorPodcastPlaylistOrTrackFromJSONTyped(json, false);
@@ -70,6 +77,8 @@ export function IAlbumContributorPodcastPlaylistOrTrackFromJSONTyped(json: any, 
             return {...ContributorModelFromJSONTyped(json, true), type: 'contributor'};
         case 'playlist':
             return {...PlaylistModelFromJSONTyped(json, true), type: 'playlist'};
+        case 'playlist_details':
+            return {...PlaylistDetailsModelFromJSONTyped(json, true), type: 'playlist_details'};
         case 'podcast':
             return {...PodcastModelFromJSONTyped(json, true), type: 'podcast'};
         case 'track':
@@ -93,6 +102,8 @@ export function IAlbumContributorPodcastPlaylistOrTrackToJSON(value?: IAlbumCont
             return ContributorModelToJSON(value);
         case 'playlist':
             return PlaylistModelToJSON(value);
+        case 'playlist_details':
+            return PlaylistDetailsModelToJSON(value);
         case 'podcast':
             return PodcastModelToJSON(value);
         case 'track':

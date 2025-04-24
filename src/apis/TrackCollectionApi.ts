@@ -19,7 +19,7 @@ import type {
   GetTopSongsCollectionModel,
   GetTrackCollectionModel,
   ProblemDetails,
-  TrackCollectionDetails,
+  TrackCollectionShell,
   UpdateTrackCollectionCommand,
 } from '../models/index';
 import {
@@ -31,8 +31,8 @@ import {
     GetTrackCollectionModelToJSON,
     ProblemDetailsFromJSON,
     ProblemDetailsToJSON,
-    TrackCollectionDetailsFromJSON,
-    TrackCollectionDetailsToJSON,
+    TrackCollectionShellFromJSON,
+    TrackCollectionShellToJSON,
     UpdateTrackCollectionCommandFromJSON,
     UpdateTrackCollectionCommandToJSON,
 } from '../models/index';
@@ -98,7 +98,7 @@ export class TrackCollectionApi extends runtime.BaseAPI {
     /**
      * Get a list of track collections for the current user.
      */
-    async trackCollectionGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<TrackCollectionDetails>>> {
+    async trackCollectionGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<TrackCollectionShell>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -110,13 +110,13 @@ export class TrackCollectionApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(TrackCollectionDetailsFromJSON));
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(TrackCollectionShellFromJSON));
     }
 
     /**
      * Get a list of track collections for the current user.
      */
-    async trackCollectionGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<TrackCollectionDetails>> {
+    async trackCollectionGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<TrackCollectionShell>> {
         const response = await this.trackCollectionGetRaw(initOverrides);
         return await response.value();
     }

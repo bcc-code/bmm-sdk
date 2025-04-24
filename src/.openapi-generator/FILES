@@ -66,7 +66,6 @@ models/GibraltarProjectBox.ts
 models/HandleBccmAnswerCommandBccmAnswer.ts
 models/Highlighting.ts
 models/HvheCompetitionPoints.ts
-models/HvheProjectBox.ts
 models/IAchievementCollectionOrChapterHeader.ts
 models/IAlbumContributorPodcastPlaylistOrTrack.ts
 models/IAlbumOrChapterHeader.ts
@@ -83,11 +82,13 @@ models/LyricsVerse.ts
 models/MediaTypeEnum.ts
 models/MetadataModel.ts
 models/PersonGenderEnum.ts
+models/PlaylistDetailsModel.ts
 models/PlaylistModel.ts
 models/PodcastModel.ts
 models/ProblemDetails.ts
 models/ProcessWatchedCommandEvent.ts
 models/ProjectBox.ts
+models/ProjectBoxV2.ts
 models/ProjectChurchStatisticsQueryChurchStatistics.ts
 models/ProjectChurchStatisticsQueryChurchStatisticsChurch.ts
 models/ProjectRulesQueryRules.ts
@@ -113,8 +114,8 @@ models/TileMessageModel.ts
 models/TileModel.ts
 models/TileVideoModel.ts
 models/TopbarSearchQueryTopbarSearchResult.ts
-models/TrackCollectionDetails.ts
 models/TrackCollectionModel.ts
+models/TrackCollectionShell.ts
 models/TrackListReference.ts
 models/TrackModel.ts
 models/TrackModelBibleRelation.ts

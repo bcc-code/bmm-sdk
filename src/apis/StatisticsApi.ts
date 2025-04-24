@@ -24,10 +24,10 @@ import type {
   GetFraKaareStatisticsResponse,
   GetProjectStandingsProjectStandings,
   GetYearInReviewOverviewSlide,
-  HvheProjectBox,
   LanguageEnum,
   ListeningEvent,
   ProcessWatchedCommandEvent,
+  ProjectBoxV2,
   ProjectChurchStatisticsQueryChurchStatistics,
   ProjectRulesQueryRules,
   StreakPoint,
@@ -51,14 +51,14 @@ import {
     GetProjectStandingsProjectStandingsToJSON,
     GetYearInReviewOverviewSlideFromJSON,
     GetYearInReviewOverviewSlideToJSON,
-    HvheProjectBoxFromJSON,
-    HvheProjectBoxToJSON,
     LanguageEnumFromJSON,
     LanguageEnumToJSON,
     ListeningEventFromJSON,
     ListeningEventToJSON,
     ProcessWatchedCommandEventFromJSON,
     ProcessWatchedCommandEventToJSON,
+    ProjectBoxV2FromJSON,
+    ProjectBoxV2ToJSON,
     ProjectChurchStatisticsQueryChurchStatisticsFromJSON,
     ProjectChurchStatisticsQueryChurchStatisticsToJSON,
     ProjectRulesQueryRulesFromJSON,
@@ -610,7 +610,7 @@ export class StatisticsApi extends runtime.BaseAPI {
 
     /**
      */
-    async statisticsV2ProjectProgressGetRaw(requestParameters: StatisticsV2ProjectProgressGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<HvheProjectBox>> {
+    async statisticsV2ProjectProgressGetRaw(requestParameters: StatisticsV2ProjectProgressGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProjectBoxV2>> {
         const queryParameters: any = {};
 
         if (requestParameters.lang !== undefined) {
@@ -630,12 +630,12 @@ export class StatisticsApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => HvheProjectBoxFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProjectBoxV2FromJSON(jsonValue));
     }
 
     /**
      */
-    async statisticsV2ProjectProgressGet(requestParameters: StatisticsV2ProjectProgressGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<HvheProjectBox> {
+    async statisticsV2ProjectProgressGet(requestParameters: StatisticsV2ProjectProgressGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProjectBoxV2> {
         const response = await this.statisticsV2ProjectProgressGetRaw(requestParameters, initOverrides);
         return await response.value();
     }

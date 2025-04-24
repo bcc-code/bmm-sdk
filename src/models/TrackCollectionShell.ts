@@ -16,57 +16,57 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface TrackCollectionDetails
+ * @interface TrackCollectionShell
  */
-export interface TrackCollectionDetails {
+export interface TrackCollectionShell {
     /**
      * 
      * @type {number}
-     * @memberof TrackCollectionDetails
+     * @memberof TrackCollectionShell
      */
     id: number;
     /**
      * 
      * @type {string}
-     * @memberof TrackCollectionDetails
+     * @memberof TrackCollectionShell
      */
     name?: string | null;
     /**
      * 
      * @type {number}
-     * @memberof TrackCollectionDetails
+     * @memberof TrackCollectionShell
      */
     trackCount?: number;
     /**
      * 
      * @type {number}
-     * @memberof TrackCollectionDetails
+     * @memberof TrackCollectionShell
      */
     followerCount: number;
     /**
      * 
      * @type {string}
-     * @memberof TrackCollectionDetails
+     * @memberof TrackCollectionShell
      */
     authorName?: string | null;
     /**
      * 
      * @type {boolean}
-     * @memberof TrackCollectionDetails
+     * @memberof TrackCollectionShell
      */
     canEdit: boolean;
     /**
      * 
      * @type {boolean}
-     * @memberof TrackCollectionDetails
+     * @memberof TrackCollectionShell
      */
     useLikeIcon?: boolean;
 }
 
 /**
- * Check if a given object implements the TrackCollectionDetails interface.
+ * Check if a given object implements the TrackCollectionShell interface.
  */
-export function instanceOfTrackCollectionDetails(value: object): boolean {
+export function instanceOfTrackCollectionShell(value: object): boolean {
     let isInstance = true;
     isInstance = isInstance && "id" in value;
     isInstance = isInstance && "followerCount" in value;
@@ -75,11 +75,11 @@ export function instanceOfTrackCollectionDetails(value: object): boolean {
     return isInstance;
 }
 
-export function TrackCollectionDetailsFromJSON(json: any): TrackCollectionDetails {
-    return TrackCollectionDetailsFromJSONTyped(json, false);
+export function TrackCollectionShellFromJSON(json: any): TrackCollectionShell {
+    return TrackCollectionShellFromJSONTyped(json, false);
 }
 
-export function TrackCollectionDetailsFromJSONTyped(json: any, ignoreDiscriminator: boolean): TrackCollectionDetails {
+export function TrackCollectionShellFromJSONTyped(json: any, ignoreDiscriminator: boolean): TrackCollectionShell {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -95,7 +95,7 @@ export function TrackCollectionDetailsFromJSONTyped(json: any, ignoreDiscriminat
     };
 }
 
-export function TrackCollectionDetailsToJSON(value?: TrackCollectionDetails | null): any {
+export function TrackCollectionShellToJSON(value?: TrackCollectionShell | null): any {
     if (value === undefined) {
         return undefined;
     }

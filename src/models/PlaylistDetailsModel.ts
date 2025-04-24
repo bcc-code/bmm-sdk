@@ -19,77 +19,95 @@ import {
     LanguageEnumFromJSONTyped,
     LanguageEnumToJSON,
 } from './LanguageEnum';
+import type { TrackModel } from './TrackModel';
+import {
+    TrackModelFromJSON,
+    TrackModelFromJSONTyped,
+    TrackModelToJSON,
+} from './TrackModel';
 
 /**
  * 
  * @export
- * @interface PodcastModel
+ * @interface PlaylistDetailsModel
  */
-export interface PodcastModel {
+export interface PlaylistDetailsModel {
     /**
      * 
      * @type {string}
-     * @memberof PodcastModel
+     * @memberof PlaylistDetailsModel
      */
     cover?: string | null;
     /**
      * 
      * @type {number}
-     * @memberof PodcastModel
+     * @memberof PlaylistDetailsModel
      */
     id: number;
     /**
      * 
      * @type {string}
-     * @memberof PodcastModel
+     * @memberof PlaylistDetailsModel
      */
-    readonly type: PodcastModelTypeEnum;
+    readonly type: PlaylistDetailsModelTypeEnum;
     /**
      * 
      * @type {Array<LanguageEnum>}
-     * @memberof PodcastModel
+     * @memberof PlaylistDetailsModel
      */
     languages?: Array<LanguageEnum> | null;
     /**
      * 
      * @type {LanguageEnum}
-     * @memberof PodcastModel
+     * @memberof PlaylistDetailsModel
      */
     language?: LanguageEnum;
     /**
      * 
      * @type {string}
-     * @memberof PodcastModel
+     * @memberof PlaylistDetailsModel
      */
     title?: string | null;
     /**
      * 
-     * @type {boolean}
-     * @memberof PodcastModel
+     * @type {string}
+     * @memberof PlaylistDetailsModel
      */
-    useWeekGrouping?: boolean;
+    description?: string | null;
     /**
      * 
-     * @type {boolean}
-     * @memberof PodcastModel
+     * @type {Array<TrackModel>}
+     * @memberof PlaylistDetailsModel
      */
-    readonly showInChronologicalOrder?: boolean;
+    tracks?: Array<TrackModel> | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof PlaylistDetailsModel
+     */
+    trackCount?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof PlaylistDetailsModel
+     */
+    totalSeconds?: number;
 }
 
 
 /**
  * @export
  */
-export const PodcastModelTypeEnum = {
-    Podcast: 'podcast'
+export const PlaylistDetailsModelTypeEnum = {
+    PlaylistDetails: 'playlist_details'
 } as const;
-export type PodcastModelTypeEnum = typeof PodcastModelTypeEnum[keyof typeof PodcastModelTypeEnum];
+export type PlaylistDetailsModelTypeEnum = typeof PlaylistDetailsModelTypeEnum[keyof typeof PlaylistDetailsModelTypeEnum];
 
 
 /**
- * Check if a given object implements the PodcastModel interface.
+ * Check if a given object implements the PlaylistDetailsModel interface.
  */
-export function instanceOfPodcastModel(value: object): boolean {
+export function instanceOfPlaylistDetailsModel(value: object): boolean {
     let isInstance = true;
     isInstance = isInstance && "id" in value;
     isInstance = isInstance && "type" in value;
@@ -97,11 +115,11 @@ export function instanceOfPodcastModel(value: object): boolean {
     return isInstance;
 }
 
-export function PodcastModelFromJSON(json: any): PodcastModel {
-    return PodcastModelFromJSONTyped(json, false);
+export function PlaylistDetailsModelFromJSON(json: any): PlaylistDetailsModel {
+    return PlaylistDetailsModelFromJSONTyped(json, false);
 }
 
-export function PodcastModelFromJSONTyped(json: any, ignoreDiscriminator: boolean): PodcastModel {
+export function PlaylistDetailsModelFromJSONTyped(json: any, ignoreDiscriminator: boolean): PlaylistDetailsModel {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -113,12 +131,14 @@ export function PodcastModelFromJSONTyped(json: any, ignoreDiscriminator: boolea
         'languages': !exists(json, 'languages') ? undefined : (json['languages'] === null ? null : (json['languages'] as Array<any>).map(LanguageEnumFromJSON)),
         'language': !exists(json, 'language') ? undefined : LanguageEnumFromJSON(json['language']),
         'title': !exists(json, 'title') ? undefined : json['title'],
-        'useWeekGrouping': !exists(json, 'use_week_grouping') ? undefined : json['use_week_grouping'],
-        'showInChronologicalOrder': !exists(json, 'show_in_chronological_order') ? undefined : json['show_in_chronological_order'],
+        'description': !exists(json, 'description') ? undefined : json['description'],
+        'tracks': !exists(json, 'tracks') ? undefined : (json['tracks'] === null ? null : (json['tracks'] as Array<any>).map(TrackModelFromJSON)),
+        'trackCount': !exists(json, 'track_count') ? undefined : json['track_count'],
+        'totalSeconds': !exists(json, 'total_seconds') ? undefined : json['total_seconds'],
     };
 }
 
-export function PodcastModelToJSON(value?: PodcastModel | null): any {
+export function PlaylistDetailsModelToJSON(value?: PlaylistDetailsModel | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -132,7 +152,10 @@ export function PodcastModelToJSON(value?: PodcastModel | null): any {
         'languages': value.languages === undefined ? undefined : (value.languages === null ? null : (value.languages as Array<any>).map(LanguageEnumToJSON)),
         'language': LanguageEnumToJSON(value.language),
         'title': value.title,
-        'use_week_grouping': value.useWeekGrouping,
+        'description': value.description,
+        'tracks': value.tracks === undefined ? undefined : (value.tracks === null ? null : (value.tracks as Array<any>).map(TrackModelToJSON)),
+        'track_count': value.trackCount,
+        'total_seconds': value.totalSeconds,
     };
 }
 

@@ -23,79 +23,67 @@ import {
 /**
  * 
  * @export
- * @interface HvheProjectBox
+ * @interface ProjectBoxV2
  */
-export interface HvheProjectBox {
+export interface ProjectBoxV2 {
     /**
      * 
      * @type {number}
-     * @memberof HvheProjectBox
+     * @memberof ProjectBoxV2
      */
     id: number;
     /**
      * 
      * @type {string}
-     * @memberof HvheProjectBox
+     * @memberof ProjectBoxV2
      */
-    readonly type: HvheProjectBoxTypeEnum;
+    readonly type: ProjectBoxV2TypeEnum;
     /**
      * 
      * @type {string}
-     * @memberof HvheProjectBox
+     * @memberof ProjectBoxV2
      */
     title?: string | null;
     /**
      * 
      * @type {number}
-     * @memberof HvheProjectBox
+     * @memberof ProjectBoxV2
      */
     points?: number;
     /**
      * 
      * @type {string}
-     * @memberof HvheProjectBox
+     * @memberof ProjectBoxV2
      */
     pointsDescription?: string | null;
     /**
      * 
      * @type {Array<AchievementModel>}
-     * @memberof HvheProjectBox
+     * @memberof ProjectBoxV2
      */
     achievements?: Array<AchievementModel> | null;
     /**
      * 
      * @type {string}
-     * @memberof HvheProjectBox
+     * @memberof ProjectBoxV2
      */
     rulesLinkTitle?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof HvheProjectBox
-     */
-    boysPoints?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof HvheProjectBox
-     */
-    girlsPoints?: number;
 }
 
 
 /**
  * @export
  */
-export const HvheProjectBoxTypeEnum = {
-    HvheProjectBox: 'hvhe_project_box'
+export const ProjectBoxV2TypeEnum = {
+    ProjectBoxV2: 'project_box_v2'
 } as const;
-export type HvheProjectBoxTypeEnum = typeof HvheProjectBoxTypeEnum[keyof typeof HvheProjectBoxTypeEnum];
+export type ProjectBoxV2TypeEnum = typeof ProjectBoxV2TypeEnum[keyof typeof ProjectBoxV2TypeEnum];
 
 
 /**
- * Check if a given object implements the HvheProjectBox interface.
+ * Check if a given object implements the ProjectBoxV2 interface.
  */
-export function instanceOfHvheProjectBox(value: object): boolean {
+export function instanceOfProjectBoxV2(value: object): boolean {
     let isInstance = true;
     isInstance = isInstance && "id" in value;
     isInstance = isInstance && "type" in value;
@@ -103,11 +91,11 @@ export function instanceOfHvheProjectBox(value: object): boolean {
     return isInstance;
 }
 
-export function HvheProjectBoxFromJSON(json: any): HvheProjectBox {
-    return HvheProjectBoxFromJSONTyped(json, false);
+export function ProjectBoxV2FromJSON(json: any): ProjectBoxV2 {
+    return ProjectBoxV2FromJSONTyped(json, false);
 }
 
-export function HvheProjectBoxFromJSONTyped(json: any, ignoreDiscriminator: boolean): HvheProjectBox {
+export function ProjectBoxV2FromJSONTyped(json: any, ignoreDiscriminator: boolean): ProjectBoxV2 {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -120,12 +108,10 @@ export function HvheProjectBoxFromJSONTyped(json: any, ignoreDiscriminator: bool
         'pointsDescription': !exists(json, 'points_description') ? undefined : json['points_description'],
         'achievements': !exists(json, 'achievements') ? undefined : (json['achievements'] === null ? null : (json['achievements'] as Array<any>).map(AchievementModelFromJSON)),
         'rulesLinkTitle': !exists(json, 'rules_link_title') ? undefined : json['rules_link_title'],
-        'boysPoints': !exists(json, 'boys_points') ? undefined : json['boys_points'],
-        'girlsPoints': !exists(json, 'girls_points') ? undefined : json['girls_points'],
     };
 }
 
-export function HvheProjectBoxToJSON(value?: HvheProjectBox | null): any {
+export function ProjectBoxV2ToJSON(value?: ProjectBoxV2 | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -140,8 +126,6 @@ export function HvheProjectBoxToJSON(value?: HvheProjectBox | null): any {
         'points_description': value.pointsDescription,
         'achievements': value.achievements === undefined ? undefined : (value.achievements === null ? null : (value.achievements as Array<any>).map(AchievementModelToJSON)),
         'rules_link_title': value.rulesLinkTitle,
-        'boys_points': value.boysPoints,
-        'girls_points': value.girlsPoints,
     };
 }
 

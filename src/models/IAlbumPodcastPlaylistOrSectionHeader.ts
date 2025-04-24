@@ -19,6 +19,13 @@ import {
     AlbumModelFromJSONTyped,
     AlbumModelToJSON,
 } from './AlbumModel';
+import type { PlaylistDetailsModel } from './PlaylistDetailsModel';
+import {
+    instanceOfPlaylistDetailsModel,
+    PlaylistDetailsModelFromJSON,
+    PlaylistDetailsModelFromJSONTyped,
+    PlaylistDetailsModelToJSON,
+} from './PlaylistDetailsModel';
 import type { PlaylistModel } from './PlaylistModel';
 import {
     instanceOfPlaylistModel,
@@ -46,7 +53,7 @@ import {
  * 
  * @export
  */
-export type IAlbumPodcastPlaylistOrSectionHeader = { type: 'album' } & AlbumModel | { type: 'playlist' } & PlaylistModel | { type: 'podcast' } & PodcastModel | { type: 'section_header' } & SectionHeaderModel;
+export type IAlbumPodcastPlaylistOrSectionHeader = { type: 'album' } & AlbumModel | { type: 'playlist' } & PlaylistModel | { type: 'playlist_details' } & PlaylistDetailsModel | { type: 'podcast' } & PodcastModel | { type: 'section_header' } & SectionHeaderModel;
 
 export function IAlbumPodcastPlaylistOrSectionHeaderFromJSON(json: any): IAlbumPodcastPlaylistOrSectionHeader {
     return IAlbumPodcastPlaylistOrSectionHeaderFromJSONTyped(json, false);
@@ -61,6 +68,8 @@ export function IAlbumPodcastPlaylistOrSectionHeaderFromJSONTyped(json: any, ign
             return {...AlbumModelFromJSONTyped(json, true), type: 'album'};
         case 'playlist':
             return {...PlaylistModelFromJSONTyped(json, true), type: 'playlist'};
+        case 'playlist_details':
+            return {...PlaylistDetailsModelFromJSONTyped(json, true), type: 'playlist_details'};
         case 'podcast':
             return {...PodcastModelFromJSONTyped(json, true), type: 'podcast'};
         case 'section_header':
@@ -82,6 +91,8 @@ export function IAlbumPodcastPlaylistOrSectionHeaderToJSON(value?: IAlbumPodcast
             return AlbumModelToJSON(value);
         case 'playlist':
             return PlaylistModelToJSON(value);
+        case 'playlist_details':
+            return PlaylistDetailsModelToJSON(value);
         case 'podcast':
             return PodcastModelToJSON(value);
         case 'section_header':

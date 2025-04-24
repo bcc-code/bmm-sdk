@@ -25,6 +25,11 @@ import {
     LanguageEnumToJSON,
 } from '../models/index';
 
+export interface DiscoverCarplayGetRequest {
+    lang?: LanguageEnum;
+    theme?: string;
+}
+
 export interface DiscoverGetRequest {
     lang?: LanguageEnum;
     age?: number;
@@ -35,6 +40,38 @@ export interface DiscoverGetRequest {
  * 
  */
 export class DiscoverApi extends runtime.BaseAPI {
+
+    /**
+     */
+    async discoverCarplayGetRaw(requestParameters: DiscoverCarplayGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<IAllDocumentModels>>> {
+        const queryParameters: any = {};
+
+        if (requestParameters.lang !== undefined) {
+            queryParameters['lang'] = requestParameters.lang;
+        }
+
+        if (requestParameters.theme !== undefined) {
+            queryParameters['theme'] = requestParameters.theme;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/Discover/carplay`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(IAllDocumentModelsFromJSON));
+    }
+
+    /**
+     */
+    async discoverCarplayGet(requestParameters: DiscoverCarplayGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<IAllDocumentModels>> {
+        const response = await this.discoverCarplayGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
 
     /**
      */

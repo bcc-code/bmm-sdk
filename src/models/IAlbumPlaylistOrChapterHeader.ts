@@ -26,6 +26,13 @@ import {
     ChapterHeaderFromJSONTyped,
     ChapterHeaderToJSON,
 } from './ChapterHeader';
+import type { PlaylistDetailsModel } from './PlaylistDetailsModel';
+import {
+    instanceOfPlaylistDetailsModel,
+    PlaylistDetailsModelFromJSON,
+    PlaylistDetailsModelFromJSONTyped,
+    PlaylistDetailsModelToJSON,
+} from './PlaylistDetailsModel';
 import type { PlaylistModel } from './PlaylistModel';
 import {
     instanceOfPlaylistModel,
@@ -39,7 +46,7 @@ import {
  * 
  * @export
  */
-export type IAlbumPlaylistOrChapterHeader = { type: 'album' } & AlbumModel | { type: 'chapter_header' } & ChapterHeader | { type: 'playlist' } & PlaylistModel;
+export type IAlbumPlaylistOrChapterHeader = { type: 'album' } & AlbumModel | { type: 'chapter_header' } & ChapterHeader | { type: 'playlist' } & PlaylistModel | { type: 'playlist_details' } & PlaylistDetailsModel;
 
 export function IAlbumPlaylistOrChapterHeaderFromJSON(json: any): IAlbumPlaylistOrChapterHeader {
     return IAlbumPlaylistOrChapterHeaderFromJSONTyped(json, false);
@@ -56,6 +63,8 @@ export function IAlbumPlaylistOrChapterHeaderFromJSONTyped(json: any, ignoreDisc
             return {...ChapterHeaderFromJSONTyped(json, true), type: 'chapter_header'};
         case 'playlist':
             return {...PlaylistModelFromJSONTyped(json, true), type: 'playlist'};
+        case 'playlist_details':
+            return {...PlaylistDetailsModelFromJSONTyped(json, true), type: 'playlist_details'};
         default:
             throw new Error(`No variant of IAlbumPlaylistOrChapterHeader exists with 'type=${json['type']}'`);
     }
@@ -75,6 +84,8 @@ export function IAlbumPlaylistOrChapterHeaderToJSON(value?: IAlbumPlaylistOrChap
             return ChapterHeaderToJSON(value);
         case 'playlist':
             return PlaylistModelToJSON(value);
+        case 'playlist_details':
+            return PlaylistDetailsModelToJSON(value);
         default:
             throw new Error(`No variant of IAlbumPlaylistOrChapterHeader exists with 'type=${value['type']}'`);
     }

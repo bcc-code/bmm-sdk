@@ -86,6 +86,18 @@ export interface GetTrackCollectionModel {
      * @memberof GetTrackCollectionModel
      */
     useLikeIcon?: boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetTrackCollectionModel
+     */
+    trackCount?: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof GetTrackCollectionModel
+     */
+    totalSeconds?: number;
 }
 
 /**
@@ -119,6 +131,8 @@ export function GetTrackCollectionModelFromJSONTyped(json: any, ignoreDiscrimina
         'canEdit': !exists(json, 'can_edit') ? undefined : json['can_edit'],
         'tracks': !exists(json, 'tracks') ? undefined : (json['tracks'] === null ? null : (json['tracks'] as Array<any>).map(TrackModelFromJSON)),
         'useLikeIcon': !exists(json, 'use_like_icon') ? undefined : json['use_like_icon'],
+        'trackCount': !exists(json, 'track_count') ? undefined : json['track_count'],
+        'totalSeconds': !exists(json, 'total_seconds') ? undefined : json['total_seconds'],
     };
 }
 
@@ -140,6 +154,8 @@ export function GetTrackCollectionModelToJSON(value?: GetTrackCollectionModel | 
         'can_edit': value.canEdit,
         'tracks': value.tracks === undefined ? undefined : (value.tracks === null ? null : (value.tracks as Array<any>).map(TrackModelToJSON)),
         'use_like_icon': value.useLikeIcon,
+        'track_count': value.trackCount,
+        'total_seconds': value.totalSeconds,
     };
 }
 
