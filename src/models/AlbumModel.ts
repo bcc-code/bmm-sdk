@@ -121,6 +121,18 @@ export interface AlbumModel {
      * @type {number}
      * @memberof AlbumModel
      */
+    trackCount: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof AlbumModel
+     */
+    totalSeconds: number;
+    /**
+     * 
+     * @type {number}
+     * @memberof AlbumModel
+     */
     latestTrackId?: number | null;
     /**
      * 
@@ -147,6 +159,8 @@ export function instanceOfAlbumModel(value: object): boolean {
     let isInstance = true;
     isInstance = isInstance && "id" in value;
     isInstance = isInstance && "type" in value;
+    isInstance = isInstance && "trackCount" in value;
+    isInstance = isInstance && "totalSeconds" in value;
 
     return isInstance;
 }
@@ -174,6 +188,8 @@ export function AlbumModelFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'description': !exists(json, 'description') ? undefined : json['description'],
         'type': json['type'],
         'children': !exists(json, 'children') ? undefined : (json['children'] === null ? null : (json['children'] as Array<any>).map(IAlbumOrTrackFromJSON)),
+        'trackCount': json['track_count'],
+        'totalSeconds': json['total_seconds'],
         'latestTrackId': !exists(json, 'latest_track_id') ? undefined : json['latest_track_id'],
         'latestTrackPosition': !exists(json, 'latest_track_position') ? undefined : json['latest_track_position'],
     };
@@ -200,6 +216,8 @@ export function AlbumModelToJSON(value?: AlbumModel | null): any {
         'title': value.title,
         'description': value.description,
         'children': value.children === undefined ? undefined : (value.children === null ? null : (value.children as Array<any>).map(IAlbumOrTrackToJSON)),
+        'track_count': value.trackCount,
+        'total_seconds': value.totalSeconds,
         'latest_track_id': value.latestTrackId,
         'latest_track_position': value.latestTrackPosition,
     };

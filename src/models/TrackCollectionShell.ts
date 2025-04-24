@@ -36,7 +36,7 @@ export interface TrackCollectionShell {
      * @type {number}
      * @memberof TrackCollectionShell
      */
-    trackCount?: number;
+    trackCount: number;
     /**
      * 
      * @type {number}
@@ -69,6 +69,7 @@ export interface TrackCollectionShell {
 export function instanceOfTrackCollectionShell(value: object): boolean {
     let isInstance = true;
     isInstance = isInstance && "id" in value;
+    isInstance = isInstance && "trackCount" in value;
     isInstance = isInstance && "followerCount" in value;
     isInstance = isInstance && "canEdit" in value;
 
@@ -87,7 +88,7 @@ export function TrackCollectionShellFromJSONTyped(json: any, ignoreDiscriminator
         
         'id': json['id'],
         'name': !exists(json, 'name') ? undefined : json['name'],
-        'trackCount': !exists(json, 'track_count') ? undefined : json['track_count'],
+        'trackCount': json['track_count'],
         'followerCount': json['follower_count'],
         'authorName': !exists(json, 'author_name') ? undefined : json['author_name'],
         'canEdit': json['can_edit'],

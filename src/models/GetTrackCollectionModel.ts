@@ -91,13 +91,13 @@ export interface GetTrackCollectionModel {
      * @type {number}
      * @memberof GetTrackCollectionModel
      */
-    trackCount?: number;
+    trackCount: number;
     /**
      * 
      * @type {number}
      * @memberof GetTrackCollectionModel
      */
-    totalSeconds?: number;
+    totalSeconds: number;
 }
 
 /**
@@ -107,6 +107,8 @@ export function instanceOfGetTrackCollectionModel(value: object): boolean {
     let isInstance = true;
     isInstance = isInstance && "type" in value;
     isInstance = isInstance && "id" in value;
+    isInstance = isInstance && "trackCount" in value;
+    isInstance = isInstance && "totalSeconds" in value;
 
     return isInstance;
 }
@@ -131,8 +133,8 @@ export function GetTrackCollectionModelFromJSONTyped(json: any, ignoreDiscrimina
         'canEdit': !exists(json, 'can_edit') ? undefined : json['can_edit'],
         'tracks': !exists(json, 'tracks') ? undefined : (json['tracks'] === null ? null : (json['tracks'] as Array<any>).map(TrackModelFromJSON)),
         'useLikeIcon': !exists(json, 'use_like_icon') ? undefined : json['use_like_icon'],
-        'trackCount': !exists(json, 'track_count') ? undefined : json['track_count'],
-        'totalSeconds': !exists(json, 'total_seconds') ? undefined : json['total_seconds'],
+        'trackCount': json['track_count'],
+        'totalSeconds': json['total_seconds'],
     };
 }
 

@@ -85,13 +85,13 @@ export interface PlaylistDetailsModel {
      * @type {number}
      * @memberof PlaylistDetailsModel
      */
-    trackCount?: number;
+    trackCount: number;
     /**
      * 
      * @type {number}
      * @memberof PlaylistDetailsModel
      */
-    totalSeconds?: number;
+    totalSeconds: number;
 }
 
 
@@ -111,6 +111,8 @@ export function instanceOfPlaylistDetailsModel(value: object): boolean {
     let isInstance = true;
     isInstance = isInstance && "id" in value;
     isInstance = isInstance && "type" in value;
+    isInstance = isInstance && "trackCount" in value;
+    isInstance = isInstance && "totalSeconds" in value;
 
     return isInstance;
 }
@@ -133,8 +135,8 @@ export function PlaylistDetailsModelFromJSONTyped(json: any, ignoreDiscriminator
         'title': !exists(json, 'title') ? undefined : json['title'],
         'description': !exists(json, 'description') ? undefined : json['description'],
         'tracks': !exists(json, 'tracks') ? undefined : (json['tracks'] === null ? null : (json['tracks'] as Array<any>).map(TrackModelFromJSON)),
-        'trackCount': !exists(json, 'track_count') ? undefined : json['track_count'],
-        'totalSeconds': !exists(json, 'total_seconds') ? undefined : json['total_seconds'],
+        'trackCount': json['track_count'],
+        'totalSeconds': json['total_seconds'],
     };
 }
 
