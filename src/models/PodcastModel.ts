@@ -64,6 +64,12 @@ export interface PodcastModel {
     title?: string | null;
     /**
      * 
+     * @type {string}
+     * @memberof PodcastModel
+     */
+    description?: string | null;
+    /**
+     * 
      * @type {boolean}
      * @memberof PodcastModel
      */
@@ -113,6 +119,7 @@ export function PodcastModelFromJSONTyped(json: any, ignoreDiscriminator: boolea
         'languages': !exists(json, 'languages') ? undefined : (json['languages'] === null ? null : (json['languages'] as Array<any>).map(LanguageEnumFromJSON)),
         'language': !exists(json, 'language') ? undefined : LanguageEnumFromJSON(json['language']),
         'title': !exists(json, 'title') ? undefined : json['title'],
+        'description': !exists(json, 'description') ? undefined : json['description'],
         'useWeekGrouping': !exists(json, 'use_week_grouping') ? undefined : json['use_week_grouping'],
         'showInChronologicalOrder': !exists(json, 'show_in_chronological_order') ? undefined : json['show_in_chronological_order'],
     };
@@ -132,6 +139,7 @@ export function PodcastModelToJSON(value?: PodcastModel | null): any {
         'languages': value.languages === undefined ? undefined : (value.languages === null ? null : (value.languages as Array<any>).map(LanguageEnumToJSON)),
         'language': LanguageEnumToJSON(value.language),
         'title': value.title,
+        'description': value.description,
         'use_week_grouping': value.useWeekGrouping,
     };
 }

@@ -140,6 +140,12 @@ export interface AlbumModel {
      * @memberof AlbumModel
      */
     latestTrackPosition?: number | null;
+    /**
+     * 
+     * @type {number}
+     * @memberof AlbumModel
+     */
+    secondsLeft?: number | null;
 }
 
 
@@ -192,6 +198,7 @@ export function AlbumModelFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'totalSeconds': json['total_seconds'],
         'latestTrackId': !exists(json, 'latest_track_id') ? undefined : json['latest_track_id'],
         'latestTrackPosition': !exists(json, 'latest_track_position') ? undefined : json['latest_track_position'],
+        'secondsLeft': !exists(json, 'seconds_left') ? undefined : json['seconds_left'],
     };
 }
 
@@ -220,6 +227,7 @@ export function AlbumModelToJSON(value?: AlbumModel | null): any {
         'total_seconds': value.totalSeconds,
         'latest_track_id': value.latestTrackId,
         'latest_track_position': value.latestTrackPosition,
+        'seconds_left': value.secondsLeft,
     };
 }
 
