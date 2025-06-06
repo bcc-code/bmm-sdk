@@ -92,6 +92,12 @@ export interface GetFraKaareStatisticsResponse {
      * @memberof GetFraKaareStatisticsResponse
      */
     drawsLeft?: number;
+    /**
+     * 
+     * @type {{ [key: string]: string; }}
+     * @memberof GetFraKaareStatisticsResponse
+     */
+    availableChurches?: { [key: string]: string; } | null;
 }
 
 /**
@@ -121,6 +127,7 @@ export function GetFraKaareStatisticsResponseFromJSONTyped(json: any, ignoreDisc
         'drawOptions': !exists(json, 'draw_options') ? undefined : (json['draw_options'] === null ? null : (json['draw_options'] as Array<any>).map(FraKaareDrawCommandDrawOptionFromJSON)),
         'maxDraws': !exists(json, 'max_draws') ? undefined : json['max_draws'],
         'drawsLeft': !exists(json, 'draws_left') ? undefined : json['draws_left'],
+        'availableChurches': !exists(json, 'available_churches') ? undefined : json['available_churches'],
     };
 }
 
@@ -141,6 +148,7 @@ export function GetFraKaareStatisticsResponseToJSON(value?: GetFraKaareStatistic
         'draw_options': value.drawOptions === undefined ? undefined : (value.drawOptions === null ? null : (value.drawOptions as Array<any>).map(FraKaareDrawCommandDrawOptionToJSON)),
         'max_draws': value.maxDraws,
         'draws_left': value.drawsLeft,
+        'available_churches': value.availableChurches,
     };
 }
 
