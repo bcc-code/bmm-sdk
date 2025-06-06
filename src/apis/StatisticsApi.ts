@@ -87,8 +87,16 @@ export interface StatisticsAchievementsToAcknowledgeGetRequest {
     theme?: string;
 }
 
+export interface StatisticsFraKaareChurchGetRequest {
+    church: string;
+}
+
 export interface StatisticsFraKaareDrawPostRequest {
     fraKaareDrawCommand: FraKaareDrawCommand;
+}
+
+export interface StatisticsFraKaareGetRequest {
+    church?: string;
 }
 
 export interface StatisticsListeningPostRequest {
@@ -289,6 +297,34 @@ export class StatisticsApi extends runtime.BaseAPI {
 
     /**
      */
+    async statisticsFraKaareChurchGetRaw(requestParameters: StatisticsFraKaareChurchGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetFraKaareStatisticsResponse>> {
+        if (requestParameters.church === null || requestParameters.church === undefined) {
+            throw new runtime.RequiredError('church','Required parameter requestParameters.church was null or undefined when calling statisticsFraKaareChurchGet.');
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/Statistics/fra-kaare/{church}`.replace(`{${"church"}}`, encodeURIComponent(String(requestParameters.church))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetFraKaareStatisticsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     */
+    async statisticsFraKaareChurchGet(requestParameters: StatisticsFraKaareChurchGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetFraKaareStatisticsResponse> {
+        const response = await this.statisticsFraKaareChurchGetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     */
     async statisticsFraKaareDrawPostRaw(requestParameters: StatisticsFraKaareDrawPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FraKaareDrawCommandResponse>> {
         if (requestParameters.fraKaareDrawCommand === null || requestParameters.fraKaareDrawCommand === undefined) {
             throw new runtime.RequiredError('fraKaareDrawCommand','Required parameter requestParameters.fraKaareDrawCommand was null or undefined when calling statisticsFraKaareDrawPost.');
@@ -320,8 +356,12 @@ export class StatisticsApi extends runtime.BaseAPI {
 
     /**
      */
-    async statisticsFraKaareGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetFraKaareStatisticsResponse>> {
+    async statisticsFraKaareGetRaw(requestParameters: StatisticsFraKaareGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetFraKaareStatisticsResponse>> {
         const queryParameters: any = {};
+
+        if (requestParameters.church !== undefined) {
+            queryParameters['church'] = requestParameters.church;
+        }
 
         const headerParameters: runtime.HTTPHeaders = {};
 
@@ -337,8 +377,8 @@ export class StatisticsApi extends runtime.BaseAPI {
 
     /**
      */
-    async statisticsFraKaareGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetFraKaareStatisticsResponse> {
-        const response = await this.statisticsFraKaareGetRaw(initOverrides);
+    async statisticsFraKaareGet(requestParameters: StatisticsFraKaareGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetFraKaareStatisticsResponse> {
+        const response = await this.statisticsFraKaareGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

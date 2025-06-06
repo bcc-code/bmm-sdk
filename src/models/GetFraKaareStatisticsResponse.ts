@@ -19,6 +19,12 @@ import {
     FraKaareDrawCommandDrawOptionFromJSONTyped,
     FraKaareDrawCommandDrawOptionToJSON,
 } from './FraKaareDrawCommandDrawOption';
+import type { GetFraKaareStatisticsChurch } from './GetFraKaareStatisticsChurch';
+import {
+    GetFraKaareStatisticsChurchFromJSON,
+    GetFraKaareStatisticsChurchFromJSONTyped,
+    GetFraKaareStatisticsChurchToJSON,
+} from './GetFraKaareStatisticsChurch';
 import type { GetFraKaareStatisticsChurchStatistics } from './GetFraKaareStatisticsChurchStatistics';
 import {
     GetFraKaareStatisticsChurchStatisticsFromJSON,
@@ -94,10 +100,10 @@ export interface GetFraKaareStatisticsResponse {
     drawsLeft?: number;
     /**
      * 
-     * @type {{ [key: string]: string; }}
+     * @type {Array<GetFraKaareStatisticsChurch>}
      * @memberof GetFraKaareStatisticsResponse
      */
-    availableChurches?: { [key: string]: string; } | null;
+    availableChurches?: Array<GetFraKaareStatisticsChurch> | null;
 }
 
 /**
@@ -127,7 +133,7 @@ export function GetFraKaareStatisticsResponseFromJSONTyped(json: any, ignoreDisc
         'drawOptions': !exists(json, 'draw_options') ? undefined : (json['draw_options'] === null ? null : (json['draw_options'] as Array<any>).map(FraKaareDrawCommandDrawOptionFromJSON)),
         'maxDraws': !exists(json, 'max_draws') ? undefined : json['max_draws'],
         'drawsLeft': !exists(json, 'draws_left') ? undefined : json['draws_left'],
-        'availableChurches': !exists(json, 'available_churches') ? undefined : json['available_churches'],
+        'availableChurches': !exists(json, 'available_churches') ? undefined : (json['available_churches'] === null ? null : (json['available_churches'] as Array<any>).map(GetFraKaareStatisticsChurchFromJSON)),
     };
 }
 
@@ -148,7 +154,7 @@ export function GetFraKaareStatisticsResponseToJSON(value?: GetFraKaareStatistic
         'draw_options': value.drawOptions === undefined ? undefined : (value.drawOptions === null ? null : (value.drawOptions as Array<any>).map(FraKaareDrawCommandDrawOptionToJSON)),
         'max_draws': value.maxDraws,
         'draws_left': value.drawsLeft,
-        'available_churches': value.availableChurches,
+        'available_churches': value.availableChurches === undefined ? undefined : (value.availableChurches === null ? null : (value.availableChurches as Array<any>).map(GetFraKaareStatisticsChurchToJSON)),
     };
 }
 

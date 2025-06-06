@@ -52,6 +52,7 @@ models/ForbildePoints.ts
 models/FraKaareDrawCommand.ts
 models/FraKaareDrawCommandDrawOption.ts
 models/FraKaareDrawCommandResponse.ts
+models/GetFraKaareStatisticsChurch.ts
 models/GetFraKaareStatisticsChurchStatistics.ts
 models/GetFraKaareStatisticsChurchStatisticsSnapshot.ts
 models/GetFraKaareStatisticsHighlightedChurch.ts

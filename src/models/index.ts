@@ -26,6 +26,7 @@ export * from './ForbildePoints';
 export * from './FraKaareDrawCommand';
 export * from './FraKaareDrawCommandDrawOption';
 export * from './FraKaareDrawCommandResponse';
+export * from './GetFraKaareStatisticsChurch';
 export * from './GetFraKaareStatisticsChurchStatistics';
 export * from './GetFraKaareStatisticsChurchStatisticsSnapshot';
 export * from './GetFraKaareStatisticsHighlightedChurch';
