@@ -15,6 +15,11 @@
 
 import * as runtime from '../runtime';
 
+export interface FileAchievementFileGetRequest {
+    file: string;
+    lastChanged?: number;
+}
+
 export interface FileProtectedTrackIdNameGetRequest {
     id: number;
     name: string;
@@ -33,6 +38,37 @@ export interface FileProtectedTypeIdNameGetRequest {
  * 
  */
 export class FileApi extends runtime.BaseAPI {
+
+    /**
+     */
+    async fileAchievementFileGetRaw(requestParameters: FileAchievementFileGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        if (requestParameters.file === null || requestParameters.file === undefined) {
+            throw new runtime.RequiredError('file','Required parameter requestParameters.file was null or undefined when calling fileAchievementFileGet.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.lastChanged !== undefined) {
+            queryParameters['last-changed'] = requestParameters.lastChanged;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/File/achievement/{file}`.replace(`{${"file"}}`, encodeURIComponent(String(requestParameters.file))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async fileAchievementFileGet(requestParameters: FileAchievementFileGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.fileAchievementFileGetRaw(requestParameters, initOverrides);
+    }
 
     /**
      */

@@ -31,6 +31,12 @@ import {
     GetFraKaareStatisticsChurchStatisticsSnapshotFromJSONTyped,
     GetFraKaareStatisticsChurchStatisticsSnapshotToJSON,
 } from './GetFraKaareStatisticsChurchStatisticsSnapshot';
+import type { GetFraKaareStatisticsHighlightedChurch } from './GetFraKaareStatisticsHighlightedChurch';
+import {
+    GetFraKaareStatisticsHighlightedChurchFromJSON,
+    GetFraKaareStatisticsHighlightedChurchFromJSONTyped,
+    GetFraKaareStatisticsHighlightedChurchToJSON,
+} from './GetFraKaareStatisticsHighlightedChurch';
 
 /**
  * 
@@ -44,6 +50,12 @@ export interface GetFraKaareStatisticsResponse {
      * @memberof GetFraKaareStatisticsResponse
      */
     highlightedChurchName?: string | null;
+    /**
+     * 
+     * @type {GetFraKaareStatisticsHighlightedChurch}
+     * @memberof GetFraKaareStatisticsResponse
+     */
+    highlightedChurch?: GetFraKaareStatisticsHighlightedChurch;
     /**
      * 
      * @type {Array<GetFraKaareStatisticsChurchStatistics>}
@@ -102,6 +114,7 @@ export function GetFraKaareStatisticsResponseFromJSONTyped(json: any, ignoreDisc
     return {
         
         'highlightedChurchName': !exists(json, 'highlighted_church_name') ? undefined : json['highlighted_church_name'],
+        'highlightedChurch': !exists(json, 'highlighted_church') ? undefined : GetFraKaareStatisticsHighlightedChurchFromJSON(json['highlighted_church']),
         'largeChurches': !exists(json, 'large_churches') ? undefined : (json['large_churches'] === null ? null : (json['large_churches'] as Array<any>).map(GetFraKaareStatisticsChurchStatisticsFromJSON)),
         'smallChurches': !exists(json, 'small_churches') ? undefined : (json['small_churches'] === null ? null : (json['small_churches'] as Array<any>).map(GetFraKaareStatisticsChurchStatisticsFromJSON)),
         'timeSeries': !exists(json, 'time_series') ? undefined : (json['time_series'] === null ? null : (json['time_series'] as Array<any>).map(GetFraKaareStatisticsChurchStatisticsSnapshotFromJSON)),
@@ -121,6 +134,7 @@ export function GetFraKaareStatisticsResponseToJSON(value?: GetFraKaareStatistic
     return {
         
         'highlighted_church_name': value.highlightedChurchName,
+        'highlighted_church': GetFraKaareStatisticsHighlightedChurchToJSON(value.highlightedChurch),
         'large_churches': value.largeChurches === undefined ? undefined : (value.largeChurches === null ? null : (value.largeChurches as Array<any>).map(GetFraKaareStatisticsChurchStatisticsToJSON)),
         'small_churches': value.smallChurches === undefined ? undefined : (value.smallChurches === null ? null : (value.smallChurches as Array<any>).map(GetFraKaareStatisticsChurchStatisticsToJSON)),
         'time_series': value.timeSeries === undefined ? undefined : (value.timeSeries === null ? null : (value.timeSeries as Array<any>).map(GetFraKaareStatisticsChurchStatisticsSnapshotToJSON)),

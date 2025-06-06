@@ -288,6 +288,30 @@ export class TrackApi extends runtime.BaseAPI {
 
     /**
      */
+    async trackRecommendationFraKaareGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<TrackModel>>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/track/recommendation/fra-kaare`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => jsonValue.map(TrackModelFromJSON));
+    }
+
+    /**
+     */
+    async trackRecommendationFraKaareGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<TrackModel>> {
+        const response = await this.trackRecommendationFraKaareGetRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     */
     async trackRecommendationGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<TrackModel>>> {
         const queryParameters: any = {};
 

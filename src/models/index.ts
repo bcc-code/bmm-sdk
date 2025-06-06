@@ -28,6 +28,7 @@ export * from './FraKaareDrawCommandDrawOption';
 export * from './FraKaareDrawCommandResponse';
 export * from './GetFraKaareStatisticsChurchStatistics';
 export * from './GetFraKaareStatisticsChurchStatisticsSnapshot';
+export * from './GetFraKaareStatisticsHighlightedChurch';
 export * from './GetFraKaareStatisticsResponse';
 export * from './GetProjectStandingsChurch';
 export * from './GetProjectStandingsChurchGameNight';

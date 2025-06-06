@@ -54,6 +54,7 @@ models/FraKaareDrawCommandDrawOption.ts
 models/FraKaareDrawCommandResponse.ts
 models/GetFraKaareStatisticsChurchStatistics.ts
 models/GetFraKaareStatisticsChurchStatisticsSnapshot.ts
+models/GetFraKaareStatisticsHighlightedChurch.ts
 models/GetFraKaareStatisticsResponse.ts
 models/GetProjectStandingsChurch.ts
 models/GetProjectStandingsChurchGameNight.ts
