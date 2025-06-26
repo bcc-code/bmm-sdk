@@ -32,7 +32,8 @@ export const Role = {
     RoleTranscriptionManager: 'ROLE_TRANSCRIPTION_MANAGER',
     RoleFrakaareDashboard: 'ROLE_FRAKAARE_DASHBOARD',
     MembersYouthLeader: 'MEMBERS_YOUTH_LEADER',
-    RoleLyricsManager: 'ROLE_LYRICS_MANAGER'
+    RoleLyricsManager: 'ROLE_LYRICS_MANAGER',
+    RoleHomeScreenManager: 'ROLE_HOME_SCREEN_MANAGER'
 } as const;
 export type Role = typeof Role[keyof typeof Role];
 

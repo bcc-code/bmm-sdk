@@ -24,6 +24,12 @@ export interface GetFraKaareStatisticsChurchStatistics {
      * @type {string}
      * @memberof GetFraKaareStatisticsChurchStatistics
      */
+    id?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof GetFraKaareStatisticsChurchStatistics
+     */
     churchName?: string | null;
     /**
      * 
@@ -106,6 +112,7 @@ export function GetFraKaareStatisticsChurchStatisticsFromJSONTyped(json: any, ig
     }
     return {
         
+        'id': !exists(json, 'id') ? undefined : json['id'],
         'churchName': !exists(json, 'church_name') ? undefined : json['church_name'],
         'oneEpisodePercent13To17': !exists(json, 'one_episode_percent13_to17') ? undefined : json['one_episode_percent13_to17'],
         'oneEpisodePercent18To25': !exists(json, 'one_episode_percent18_to25') ? undefined : json['one_episode_percent18_to25'],
@@ -129,6 +136,7 @@ export function GetFraKaareStatisticsChurchStatisticsToJSON(value?: GetFraKaareS
     }
     return {
         
+        'id': value.id,
         'church_name': value.churchName,
         'one_episode_percent13_to17': value.oneEpisodePercent13To17,
         'one_episode_percent18_to25': value.oneEpisodePercent18To25,

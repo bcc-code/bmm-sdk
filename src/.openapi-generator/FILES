@@ -43,6 +43,8 @@ models/CreateTrackPlayedEventsCommandEvent.ts
 models/CurrentWeeksStreakVm.ts
 models/CurrentWeeksStreakVmHomeScreenTextOptions.ts
 models/DayOfWeek.ts
+models/DiscoverCollection.ts
+models/DiscoverCollectionElement.ts
 models/DocumentListIAchievementCollectionOrChapterHeader.ts
 models/DocumentListIAlbumOrChapterHeader.ts
 models/DocumentListIAlbumPlaylistOrChapterHeader.ts
@@ -117,7 +119,6 @@ models/TileModel.ts
 models/TileVideoModel.ts
 models/TopbarSearchQueryTopbarSearchResult.ts
 models/TrackCollectionModel.ts
-models/TrackCollectionShell.ts
 models/TrackListReference.ts
 models/TrackModel.ts
 models/TrackModelBibleRelation.ts

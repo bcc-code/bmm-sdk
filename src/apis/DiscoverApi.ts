@@ -15,10 +15,13 @@
 
 import * as runtime from '../runtime';
 import type {
+  DiscoverCollection,
   IAllDocumentModels,
   LanguageEnum,
 } from '../models/index';
 import {
+    DiscoverCollectionFromJSON,
+    DiscoverCollectionToJSON,
     IAllDocumentModelsFromJSON,
     IAllDocumentModelsToJSON,
     LanguageEnumFromJSON,
@@ -34,6 +37,18 @@ export interface DiscoverGetRequest {
     lang?: LanguageEnum;
     age?: number;
     theme?: string;
+}
+
+export interface DiscoverRawCarplayHomePostRequest {
+    discoverCollection?: DiscoverCollection;
+}
+
+export interface DiscoverRawDiscoverCollectionPostRequest {
+    discoverCollection?: DiscoverCollection;
+}
+
+export interface DiscoverRawPlaylistDocumentsPostRequest {
+    discoverCollection?: DiscoverCollection;
 }
 
 /**
@@ -107,6 +122,180 @@ export class DiscoverApi extends runtime.BaseAPI {
     async discoverGet(requestParameters: DiscoverGetRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<IAllDocumentModels>> {
         const response = await this.discoverGetRaw(requestParameters, initOverrides);
         return await response.value();
+    }
+
+    /**
+     */
+    async discoverRawCarplayHomeGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DiscoverCollection>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/Discover/raw/carplay_home`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DiscoverCollectionFromJSON(jsonValue));
+    }
+
+    /**
+     */
+    async discoverRawCarplayHomeGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DiscoverCollection> {
+        const response = await this.discoverRawCarplayHomeGetRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     */
+    async discoverRawCarplayHomePostRaw(requestParameters: DiscoverRawCarplayHomePostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json-patch+json';
+
+        const response = await this.request({
+            path: `/Discover/raw/carplay_home`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: DiscoverCollectionToJSON(requestParameters.discoverCollection),
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async discoverRawCarplayHomePost(requestParameters: DiscoverRawCarplayHomePostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.discoverRawCarplayHomePostRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async discoverRawDiscoverCollectionGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DiscoverCollection>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/Discover/raw/discover_collection`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DiscoverCollectionFromJSON(jsonValue));
+    }
+
+    /**
+     */
+    async discoverRawDiscoverCollectionGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DiscoverCollection> {
+        const response = await this.discoverRawDiscoverCollectionGetRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     */
+    async discoverRawDiscoverCollectionPostRaw(requestParameters: DiscoverRawDiscoverCollectionPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json-patch+json';
+
+        const response = await this.request({
+            path: `/Discover/raw/discover_collection`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: DiscoverCollectionToJSON(requestParameters.discoverCollection),
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async discoverRawDiscoverCollectionPost(requestParameters: DiscoverRawDiscoverCollectionPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.discoverRawDiscoverCollectionPostRaw(requestParameters, initOverrides);
+    }
+
+    /**
+     */
+    async discoverRawGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DiscoverCollection>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/Discover/raw`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DiscoverCollectionFromJSON(jsonValue));
+    }
+
+    /**
+     */
+    async discoverRawGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DiscoverCollection> {
+        const response = await this.discoverRawGetRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     */
+    async discoverRawPlaylistDocumentsGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DiscoverCollection>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        const response = await this.request({
+            path: `/Discover/raw/playlist_documents`,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DiscoverCollectionFromJSON(jsonValue));
+    }
+
+    /**
+     */
+    async discoverRawPlaylistDocumentsGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DiscoverCollection> {
+        const response = await this.discoverRawPlaylistDocumentsGetRaw(initOverrides);
+        return await response.value();
+    }
+
+    /**
+     */
+    async discoverRawPlaylistDocumentsPostRaw(requestParameters: DiscoverRawPlaylistDocumentsPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json-patch+json';
+
+        const response = await this.request({
+            path: `/Discover/raw/playlist_documents`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: DiscoverCollectionToJSON(requestParameters.discoverCollection),
+        }, initOverrides);
+
+        return new runtime.VoidApiResponse(response);
+    }
+
+    /**
+     */
+    async discoverRawPlaylistDocumentsPost(requestParameters: DiscoverRawPlaylistDocumentsPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.discoverRawPlaylistDocumentsPostRaw(requestParameters, initOverrides);
     }
 
 }

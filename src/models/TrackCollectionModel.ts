@@ -13,13 +13,6 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { TrackReference } from './TrackReference';
-import {
-    TrackReferenceFromJSON,
-    TrackReferenceFromJSONTyped,
-    TrackReferenceToJSON,
-} from './TrackReference';
-
 /**
  * 
  * @export
@@ -46,16 +39,34 @@ export interface TrackCollectionModel {
     name: string;
     /**
      * 
-     * @type {Array<string>}
+     * @type {number}
      * @memberof TrackCollectionModel
      */
-    access?: Array<string> | null;
+    trackCount: number;
     /**
      * 
-     * @type {Array<TrackReference>}
+     * @type {number}
      * @memberof TrackCollectionModel
      */
-    trackReferences?: Array<TrackReference> | null;
+    followerCount: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof TrackCollectionModel
+     */
+    authorName?: string | null;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof TrackCollectionModel
+     */
+    canEdit: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof TrackCollectionModel
+     */
+    useLikeIcon?: boolean;
 }
 
 
@@ -76,6 +87,9 @@ export function instanceOfTrackCollectionModel(value: object): boolean {
     isInstance = isInstance && "type" in value;
     isInstance = isInstance && "id" in value;
     isInstance = isInstance && "name" in value;
+    isInstance = isInstance && "trackCount" in value;
+    isInstance = isInstance && "followerCount" in value;
+    isInstance = isInstance && "canEdit" in value;
 
     return isInstance;
 }
@@ -93,8 +107,11 @@ export function TrackCollectionModelFromJSONTyped(json: any, ignoreDiscriminator
         'type': json['type'],
         'id': json['id'],
         'name': json['name'],
-        'access': !exists(json, 'access') ? undefined : json['access'],
-        'trackReferences': !exists(json, 'track_references') ? undefined : (json['track_references'] === null ? null : (json['track_references'] as Array<any>).map(TrackReferenceFromJSON)),
+        'trackCount': json['track_count'],
+        'followerCount': json['follower_count'],
+        'authorName': !exists(json, 'author_name') ? undefined : json['author_name'],
+        'canEdit': json['can_edit'],
+        'useLikeIcon': !exists(json, 'use_like_icon') ? undefined : json['use_like_icon'],
     };
 }
 
@@ -109,8 +126,11 @@ export function TrackCollectionModelToJSON(value?: TrackCollectionModel | null):
         
         'id': value.id,
         'name': value.name,
-        'access': value.access,
-        'track_references': value.trackReferences === undefined ? undefined : (value.trackReferences === null ? null : (value.trackReferences as Array<any>).map(TrackReferenceToJSON)),
+        'track_count': value.trackCount,
+        'follower_count': value.followerCount,
+        'author_name': value.authorName,
+        'can_edit': value.canEdit,
+        'use_like_icon': value.useLikeIcon,
     };
 }
 
