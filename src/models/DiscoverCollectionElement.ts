@@ -181,6 +181,18 @@ export interface DiscoverCollectionElement {
      * @memberof DiscoverCollectionElement
      */
     disabled?: boolean | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof DiscoverCollectionElement
+     */
+    buttonTextEn?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof DiscoverCollectionElement
+     */
+    buttonTextNb?: string | null;
 }
 
 /**
@@ -229,6 +241,8 @@ export function DiscoverCollectionElementFromJSONTyped(json: any, ignoreDiscrimi
         'client': !exists(json, 'client') ? undefined : json['client'],
         'churchUid': !exists(json, 'church_uid') ? undefined : json['church_uid'],
         'disabled': !exists(json, 'disabled') ? undefined : json['disabled'],
+        'buttonTextEn': !exists(json, 'button_text_en') ? undefined : json['button_text_en'],
+        'buttonTextNb': !exists(json, 'button_text_nb') ? undefined : json['button_text_nb'],
     };
 }
 
@@ -268,6 +282,8 @@ export function DiscoverCollectionElementToJSON(value?: DiscoverCollectionElemen
         'client': value.client,
         'church_uid': value.churchUid,
         'disabled': value.disabled,
+        'button_text_en': value.buttonTextEn,
+        'button_text_nb': value.buttonTextNb,
     };
 }
 

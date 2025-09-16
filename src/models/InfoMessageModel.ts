@@ -49,6 +49,12 @@ export interface InfoMessageModel {
      * @memberof InfoMessageModel
      */
     link?: string | null;
+    /**
+     * 
+     * @type {string}
+     * @memberof InfoMessageModel
+     */
+    translatedButtonText?: string | null;
 }
 
 
@@ -87,6 +93,7 @@ export function InfoMessageModelFromJSONTyped(json: any, ignoreDiscriminator: bo
         'translatedMessage': !exists(json, 'translated_message') ? undefined : json['translated_message'],
         'messageText': !exists(json, 'message_text') ? undefined : json['message_text'],
         'link': !exists(json, 'link') ? undefined : json['link'],
+        'translatedButtonText': !exists(json, 'translated_button_text') ? undefined : json['translated_button_text'],
     };
 }
 
@@ -102,6 +109,7 @@ export function InfoMessageModelToJSON(value?: InfoMessageModel | null): any {
         'id': value.id,
         'translated_message': value.translatedMessage,
         'link': value.link,
+        'translated_button_text': value.translatedButtonText,
     };
 }
 
